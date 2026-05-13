@@ -41,7 +41,6 @@ export const errorMiddleware = (
   });
 };
 
-
 export default errorMiddleware;
 
 
