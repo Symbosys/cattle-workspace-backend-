@@ -32,7 +32,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.json({ status: 200, message: "Server is running" });
+  res.json({ status: 200, message: "Server is running", version: "1.0.0" });
 });
 
 app.use(errorMiddleware);
