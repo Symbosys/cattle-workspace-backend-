@@ -35,8 +35,6 @@ app.get("/", (req, res) => {
   res.json({ status: 200, message: "Server is running" });
 });
 
-
-app.use(errorMiddleware)
-
+app.use(errorMiddleware);
 
 export default app;
