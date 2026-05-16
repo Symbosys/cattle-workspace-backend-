@@ -36,26 +36,6 @@ app.get("/", (req, res) => {
   res.json({ status: 200, message: "Server is running", version: "1.0.0" });
 });
 
-app.post("/single-upload", multerUpload.single("photo"), (req, res) => {
-  const image = req.file;
-
-  if (!image) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Image is required" });
-  }
-
-  res.status(200).json({
-    success: true,
-    message: "Image uploaded successfully",
-    data: {
-      fileName: image.fieldname,
-      size: image.size,
-      mimeType: image.mimetype,
-      originalName: image.originalname,
-    },
-  });
-});
 
 app.use(errorMiddleware);
 
