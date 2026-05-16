@@ -1,7 +1,50 @@
+import cors from "cors";
 import express from "express";
+import helmet from "helmet";
+import morgan from "morgan";
+import rateLimit from "express-rate-limit";
+import errorMiddleware from "./middlewares/error.middleware.js";
+import multerUpload from "./middlewares/multer.middleware.js";
 const app = express();
+app.use(express.json({ limit: "20mb" }));
+app.use(helmet());
+app.use(morgan("dev"));
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+}));
+app.use(rateLimit({
+    windowMs: 15 * 60 * 100000, // 15 minutes
+    max: 3000, // limit each IP to 100 requests per windowMs
+    message: {
+        status: 429,
+        message: "Too many requests, please try again later",
+    },
+    standardHeaders: true,
+    legacyHeaders: false,
+}));
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.json({ status: 200, message: "Server is running", version: "1.0.0" });
 });
+app.post("/single-upload", multerUpload.single("photo"), (req, res) => {
+    const image = req.file;
+    if (!image) {
+        return res
+            .status(400)
+            .json({ success: false, message: "Image is required" });
+    }
+    res.status(200).json({
+        success: true,
+        message: "Image uploaded successfully",
+        data: {
+            fileName: image.fieldname,
+            size: image.size,
+            mimeType: image.mimetype,
+            originalName: image.originalname,
+        },
+    });
+});
+app.use(errorMiddleware);
 export default app;
 //# sourceMappingURL=app.js.map
