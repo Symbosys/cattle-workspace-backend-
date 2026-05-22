@@ -198,6 +198,7 @@ export type UserWhereInput = {
     reportsReviewed?: Prisma.ForumReportListRelationFilter;
     subscriptions?: Prisma.SubscriptionListRelationFilter;
     ledgerEntries?: Prisma.PlatformLedgerListRelationFilter;
+    vaccinationRecords?: Prisma.VaccinationRecordListRelationFilter;
 };
 export type UserOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -226,6 +227,7 @@ export type UserOrderByWithRelationInput = {
     reportsReviewed?: Prisma.ForumReportOrderByRelationAggregateInput;
     subscriptions?: Prisma.SubscriptionOrderByRelationAggregateInput;
     ledgerEntries?: Prisma.PlatformLedgerOrderByRelationAggregateInput;
+    vaccinationRecords?: Prisma.VaccinationRecordOrderByRelationAggregateInput;
 };
 export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -257,6 +259,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
     reportsReviewed?: Prisma.ForumReportListRelationFilter;
     subscriptions?: Prisma.SubscriptionListRelationFilter;
     ledgerEntries?: Prisma.PlatformLedgerListRelationFilter;
+    vaccinationRecords?: Prisma.VaccinationRecordListRelationFilter;
 }, "id" | "email" | "phone">;
 export type UserOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -317,6 +320,7 @@ export type UserCreateInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateInput = {
     id?: string;
@@ -345,6 +349,7 @@ export type UserUncheckedCreateInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -373,6 +378,7 @@ export type UserUpdateInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -401,6 +407,7 @@ export type UserUncheckedUpdateInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateManyInput = {
     id?: string;
@@ -497,6 +504,20 @@ export type UserUpdateOneRequiredWithoutAnimalsNestedInput = {
     upsert?: Prisma.UserUpsertWithoutAnimalsInput;
     connect?: Prisma.UserWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAnimalsInput, Prisma.UserUpdateWithoutAnimalsInput>, Prisma.UserUncheckedUpdateWithoutAnimalsInput>;
+};
+export type UserCreateNestedOneWithoutVaccinationRecordsInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutVaccinationRecordsInput, Prisma.UserUncheckedCreateWithoutVaccinationRecordsInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutVaccinationRecordsInput;
+    connect?: Prisma.UserWhereUniqueInput;
+};
+export type UserUpdateOneWithoutVaccinationRecordsNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutVaccinationRecordsInput, Prisma.UserUncheckedCreateWithoutVaccinationRecordsInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutVaccinationRecordsInput;
+    upsert?: Prisma.UserUpsertWithoutVaccinationRecordsInput;
+    disconnect?: Prisma.UserWhereInput | boolean;
+    delete?: Prisma.UserWhereInput | boolean;
+    connect?: Prisma.UserWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVaccinationRecordsInput, Prisma.UserUpdateWithoutVaccinationRecordsInput>, Prisma.UserUncheckedUpdateWithoutVaccinationRecordsInput>;
 };
 export type UserCreateNestedOneWithoutBreederProfileInput = {
     create?: Prisma.XOR<Prisma.UserCreateWithoutBreederProfileInput, Prisma.UserUncheckedCreateWithoutBreederProfileInput>;
@@ -700,6 +721,7 @@ export type UserCreateWithoutAnimalsInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutAnimalsInput = {
     id?: string;
@@ -727,6 +749,7 @@ export type UserUncheckedCreateWithoutAnimalsInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutAnimalsInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -767,6 +790,7 @@ export type UserUpdateWithoutAnimalsInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutAnimalsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -780,6 +804,132 @@ export type UserUncheckedUpdateWithoutAnimalsInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    listings?: Prisma.CattleListingUncheckedUpdateManyWithoutOwnerNestedInput;
+    doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput;
+    breederProfile?: Prisma.BreederProfileUncheckedUpdateOneWithoutUserNestedInput;
+    brandProfile?: Prisma.BrandProfileUncheckedUpdateOneWithoutUserNestedInput;
+    appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput;
+    orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
+    questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
+    answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
+    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
+    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
+    reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
+    subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
+    ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
+};
+export type UserCreateWithoutVaccinationRecordsInput = {
+    id?: string;
+    email?: string | null;
+    name?: string | null;
+    phone: string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: $Enums.UserRole;
+    status?: $Enums.UserStatus;
+    lastLoginAt?: Date | string | null;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    animals?: Prisma.AnimalCreateNestedManyWithoutOwnerInput;
+    listings?: Prisma.CattleListingCreateNestedManyWithoutOwnerInput;
+    doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput;
+    breederProfile?: Prisma.BreederProfileCreateNestedOneWithoutUserInput;
+    brandProfile?: Prisma.BrandProfileCreateNestedOneWithoutUserInput;
+    appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput;
+    orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
+    questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
+    answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
+    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
+    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
+    reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
+    subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
+    ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+};
+export type UserUncheckedCreateWithoutVaccinationRecordsInput = {
+    id?: string;
+    email?: string | null;
+    name?: string | null;
+    phone: string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: $Enums.UserRole;
+    status?: $Enums.UserStatus;
+    lastLoginAt?: Date | string | null;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    animals?: Prisma.AnimalUncheckedCreateNestedManyWithoutOwnerInput;
+    listings?: Prisma.CattleListingUncheckedCreateNestedManyWithoutOwnerInput;
+    doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput;
+    breederProfile?: Prisma.BreederProfileUncheckedCreateNestedOneWithoutUserInput;
+    brandProfile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutUserInput;
+    appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput;
+    orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
+    questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
+    answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
+    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
+    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
+    reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
+    subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
+    ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+};
+export type UserCreateOrConnectWithoutVaccinationRecordsInput = {
+    where: Prisma.UserWhereUniqueInput;
+    create: Prisma.XOR<Prisma.UserCreateWithoutVaccinationRecordsInput, Prisma.UserUncheckedCreateWithoutVaccinationRecordsInput>;
+};
+export type UserUpsertWithoutVaccinationRecordsInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutVaccinationRecordsInput, Prisma.UserUncheckedUpdateWithoutVaccinationRecordsInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutVaccinationRecordsInput, Prisma.UserUncheckedCreateWithoutVaccinationRecordsInput>;
+    where?: Prisma.UserWhereInput;
+};
+export type UserUpdateToOneWithWhereWithoutVaccinationRecordsInput = {
+    where?: Prisma.UserWhereInput;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutVaccinationRecordsInput, Prisma.UserUncheckedUpdateWithoutVaccinationRecordsInput>;
+};
+export type UserUpdateWithoutVaccinationRecordsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    phone?: Prisma.StringFieldUpdateOperationsInput | string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus;
+    lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    animals?: Prisma.AnimalUpdateManyWithoutOwnerNestedInput;
+    listings?: Prisma.CattleListingUpdateManyWithoutOwnerNestedInput;
+    doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput;
+    breederProfile?: Prisma.BreederProfileUpdateOneWithoutUserNestedInput;
+    brandProfile?: Prisma.BrandProfileUpdateOneWithoutUserNestedInput;
+    appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput;
+    orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
+    questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
+    answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
+    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
+    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
+    reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
+    subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
+    ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+};
+export type UserUncheckedUpdateWithoutVaccinationRecordsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    phone?: Prisma.StringFieldUpdateOperationsInput | string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus;
+    lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    animals?: Prisma.AnimalUncheckedUpdateManyWithoutOwnerNestedInput;
     listings?: Prisma.CattleListingUncheckedUpdateManyWithoutOwnerNestedInput;
     doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput;
     breederProfile?: Prisma.BreederProfileUncheckedUpdateOneWithoutUserNestedInput;
@@ -821,6 +971,7 @@ export type UserCreateWithoutBreederProfileInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutBreederProfileInput = {
     id?: string;
@@ -848,6 +999,7 @@ export type UserUncheckedCreateWithoutBreederProfileInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutBreederProfileInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -888,6 +1040,7 @@ export type UserUpdateWithoutBreederProfileInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutBreederProfileInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -915,6 +1068,7 @@ export type UserUncheckedUpdateWithoutBreederProfileInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutDoctorProfileInput = {
     id?: string;
@@ -942,6 +1096,7 @@ export type UserCreateWithoutDoctorProfileInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutDoctorProfileInput = {
     id?: string;
@@ -969,6 +1124,7 @@ export type UserUncheckedCreateWithoutDoctorProfileInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutDoctorProfileInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1009,6 +1165,7 @@ export type UserUpdateWithoutDoctorProfileInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutDoctorProfileInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1036,6 +1193,7 @@ export type UserUncheckedUpdateWithoutDoctorProfileInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutAppointmentsInput = {
     id?: string;
@@ -1063,6 +1221,7 @@ export type UserCreateWithoutAppointmentsInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutAppointmentsInput = {
     id?: string;
@@ -1090,6 +1249,7 @@ export type UserUncheckedCreateWithoutAppointmentsInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutAppointmentsInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1130,6 +1290,7 @@ export type UserUpdateWithoutAppointmentsInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutAppointmentsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1157,6 +1318,7 @@ export type UserUncheckedUpdateWithoutAppointmentsInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutQuestionsInput = {
     id?: string;
@@ -1184,6 +1346,7 @@ export type UserCreateWithoutQuestionsInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutQuestionsInput = {
     id?: string;
@@ -1211,6 +1374,7 @@ export type UserUncheckedCreateWithoutQuestionsInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutQuestionsInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1251,6 +1415,7 @@ export type UserUpdateWithoutQuestionsInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutQuestionsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1278,6 +1443,7 @@ export type UserUncheckedUpdateWithoutQuestionsInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutAnswersInput = {
     id?: string;
@@ -1305,6 +1471,7 @@ export type UserCreateWithoutAnswersInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutAnswersInput = {
     id?: string;
@@ -1332,6 +1499,7 @@ export type UserUncheckedCreateWithoutAnswersInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutAnswersInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1372,6 +1540,7 @@ export type UserUpdateWithoutAnswersInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutAnswersInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1399,6 +1568,7 @@ export type UserUncheckedUpdateWithoutAnswersInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutQuestionVotesInput = {
     id?: string;
@@ -1426,6 +1596,7 @@ export type UserCreateWithoutQuestionVotesInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutQuestionVotesInput = {
     id?: string;
@@ -1453,6 +1624,7 @@ export type UserUncheckedCreateWithoutQuestionVotesInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutQuestionVotesInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1493,6 +1665,7 @@ export type UserUpdateWithoutQuestionVotesInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutQuestionVotesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1520,6 +1693,7 @@ export type UserUncheckedUpdateWithoutQuestionVotesInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutAnswerVotesInput = {
     id?: string;
@@ -1547,6 +1721,7 @@ export type UserCreateWithoutAnswerVotesInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutAnswerVotesInput = {
     id?: string;
@@ -1574,6 +1749,7 @@ export type UserUncheckedCreateWithoutAnswerVotesInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutAnswerVotesInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1614,6 +1790,7 @@ export type UserUpdateWithoutAnswerVotesInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutAnswerVotesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1641,6 +1818,7 @@ export type UserUncheckedUpdateWithoutAnswerVotesInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutReportsFiledInput = {
     id?: string;
@@ -1668,6 +1846,7 @@ export type UserCreateWithoutReportsFiledInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutReportsFiledInput = {
     id?: string;
@@ -1695,6 +1874,7 @@ export type UserUncheckedCreateWithoutReportsFiledInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutReportsFiledInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1726,6 +1906,7 @@ export type UserCreateWithoutReportsReviewedInput = {
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutReportsReviewedInput = {
     id?: string;
@@ -1753,6 +1934,7 @@ export type UserUncheckedCreateWithoutReportsReviewedInput = {
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutReportsReviewedInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1793,6 +1975,7 @@ export type UserUpdateWithoutReportsFiledInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutReportsFiledInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1820,6 +2003,7 @@ export type UserUncheckedUpdateWithoutReportsFiledInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUpsertWithoutReportsReviewedInput = {
     update: Prisma.XOR<Prisma.UserUpdateWithoutReportsReviewedInput, Prisma.UserUncheckedUpdateWithoutReportsReviewedInput>;
@@ -1856,6 +2040,7 @@ export type UserUpdateWithoutReportsReviewedInput = {
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutReportsReviewedInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1883,6 +2068,7 @@ export type UserUncheckedUpdateWithoutReportsReviewedInput = {
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutListingsInput = {
     id?: string;
@@ -1910,6 +2096,7 @@ export type UserCreateWithoutListingsInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutListingsInput = {
     id?: string;
@@ -1937,6 +2124,7 @@ export type UserUncheckedCreateWithoutListingsInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutListingsInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -1977,6 +2165,7 @@ export type UserUpdateWithoutListingsInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutListingsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -2004,6 +2193,7 @@ export type UserUncheckedUpdateWithoutListingsInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutBrandProfileInput = {
     id?: string;
@@ -2031,6 +2221,7 @@ export type UserCreateWithoutBrandProfileInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutBrandProfileInput = {
     id?: string;
@@ -2058,6 +2249,7 @@ export type UserUncheckedCreateWithoutBrandProfileInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutBrandProfileInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -2098,6 +2290,7 @@ export type UserUpdateWithoutBrandProfileInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutBrandProfileInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -2125,6 +2318,7 @@ export type UserUncheckedUpdateWithoutBrandProfileInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutOrdersInput = {
     id?: string;
@@ -2152,6 +2346,7 @@ export type UserCreateWithoutOrdersInput = {
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutOrdersInput = {
     id?: string;
@@ -2179,6 +2374,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutOrdersInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -2219,6 +2415,7 @@ export type UserUpdateWithoutOrdersInput = {
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutOrdersInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -2246,6 +2443,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutSubscriptionsInput = {
     id?: string;
@@ -2273,6 +2471,7 @@ export type UserCreateWithoutSubscriptionsInput = {
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutSubscriptionsInput = {
     id?: string;
@@ -2300,6 +2499,7 @@ export type UserUncheckedCreateWithoutSubscriptionsInput = {
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutSubscriptionsInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -2340,6 +2540,7 @@ export type UserUpdateWithoutSubscriptionsInput = {
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutSubscriptionsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -2367,6 +2568,7 @@ export type UserUncheckedUpdateWithoutSubscriptionsInput = {
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type UserCreateWithoutLedgerEntriesInput = {
     id?: string;
@@ -2394,6 +2596,7 @@ export type UserCreateWithoutLedgerEntriesInput = {
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
 };
 export type UserUncheckedCreateWithoutLedgerEntriesInput = {
     id?: string;
@@ -2421,6 +2624,7 @@ export type UserUncheckedCreateWithoutLedgerEntriesInput = {
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type UserCreateOrConnectWithoutLedgerEntriesInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -2461,6 +2665,7 @@ export type UserUpdateWithoutLedgerEntriesInput = {
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
 };
 export type UserUncheckedUpdateWithoutLedgerEntriesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -2488,6 +2693,7 @@ export type UserUncheckedUpdateWithoutLedgerEntriesInput = {
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 /**
  * Count Type UserCountOutputType
@@ -2505,6 +2711,7 @@ export type UserCountOutputType = {
     reportsReviewed: number;
     subscriptions: number;
     ledgerEntries: number;
+    vaccinationRecords: number;
 };
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     animals?: boolean | UserCountOutputTypeCountAnimalsArgs;
@@ -2519,6 +2726,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
     reportsReviewed?: boolean | UserCountOutputTypeCountReportsReviewedArgs;
     subscriptions?: boolean | UserCountOutputTypeCountSubscriptionsArgs;
     ledgerEntries?: boolean | UserCountOutputTypeCountLedgerEntriesArgs;
+    vaccinationRecords?: boolean | UserCountOutputTypeCountVaccinationRecordsArgs;
 };
 /**
  * UserCountOutputType without action
@@ -2601,6 +2809,12 @@ export type UserCountOutputTypeCountSubscriptionsArgs<ExtArgs extends runtime.Ty
 export type UserCountOutputTypeCountLedgerEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.PlatformLedgerWhereInput;
 };
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountVaccinationRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.VaccinationRecordWhereInput;
+};
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     email?: boolean;
@@ -2628,6 +2842,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
     reportsReviewed?: boolean | Prisma.User$reportsReviewedArgs<ExtArgs>;
     subscriptions?: boolean | Prisma.User$subscriptionsArgs<ExtArgs>;
     ledgerEntries?: boolean | Prisma.User$ledgerEntriesArgs<ExtArgs>;
+    vaccinationRecords?: boolean | Prisma.User$vaccinationRecordsArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["user"]>;
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2686,6 +2901,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     reportsReviewed?: boolean | Prisma.User$reportsReviewedArgs<ExtArgs>;
     subscriptions?: boolean | Prisma.User$subscriptionsArgs<ExtArgs>;
     ledgerEntries?: boolean | Prisma.User$ledgerEntriesArgs<ExtArgs>;
+    vaccinationRecords?: boolean | Prisma.User$vaccinationRecordsArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
@@ -2708,6 +2924,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
         reportsReviewed: Prisma.$ForumReportPayload<ExtArgs>[];
         subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[];
         ledgerEntries: Prisma.$PlatformLedgerPayload<ExtArgs>[];
+        vaccinationRecords: Prisma.$VaccinationRecordPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -3065,6 +3282,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
     reportsReviewed<T extends Prisma.User$reportsReviewedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportsReviewedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     subscriptions<T extends Prisma.User$subscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     ledgerEntries<T extends Prisma.User$ledgerEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ledgerEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlatformLedgerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    vaccinationRecords<T extends Prisma.User$vaccinationRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$vaccinationRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VaccinationRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3805,6 +4023,29 @@ export type User$ledgerEntriesArgs<ExtArgs extends runtime.Types.Extensions.Inte
     take?: number;
     skip?: number;
     distinct?: Prisma.PlatformLedgerScalarFieldEnum | Prisma.PlatformLedgerScalarFieldEnum[];
+};
+/**
+ * User.vaccinationRecords
+ */
+export type User$vaccinationRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VaccinationRecord
+     */
+    select?: Prisma.VaccinationRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the VaccinationRecord
+     */
+    omit?: Prisma.VaccinationRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.VaccinationRecordInclude<ExtArgs> | null;
+    where?: Prisma.VaccinationRecordWhereInput;
+    orderBy?: Prisma.VaccinationRecordOrderByWithRelationInput | Prisma.VaccinationRecordOrderByWithRelationInput[];
+    cursor?: Prisma.VaccinationRecordWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.VaccinationRecordScalarFieldEnum | Prisma.VaccinationRecordScalarFieldEnum[];
 };
 /**
  * User without action

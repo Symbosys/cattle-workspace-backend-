@@ -28,6 +28,8 @@ export declare const AnyNull: import("@prisma/client-runtime-utils").AnyNullClas
 export declare const ModelName: {
     readonly Animal: "Animal";
     readonly VaccinationRecord: "VaccinationRecord";
+    readonly Category: "Category";
+    readonly SubCategory: "SubCategory";
     readonly BreederProfile: "BreederProfile";
     readonly BreedingRequest: "BreedingRequest";
     readonly BreederReview: "BreederReview";
@@ -89,6 +91,25 @@ export declare const VaccinationRecordScalarFieldEnum: {
     readonly createdAt: "createdAt";
 };
 export type VaccinationRecordScalarFieldEnum = (typeof VaccinationRecordScalarFieldEnum)[keyof typeof VaccinationRecordScalarFieldEnum];
+export declare const CategoryScalarFieldEnum: {
+    readonly id: "id";
+    readonly name: "name";
+    readonly description: "description";
+    readonly imageUrl: "imageUrl";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum];
+export declare const SubCategoryScalarFieldEnum: {
+    readonly id: "id";
+    readonly categoryId: "categoryId";
+    readonly name: "name";
+    readonly description: "description";
+    readonly imageUrl: "imageUrl";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type SubCategoryScalarFieldEnum = (typeof SubCategoryScalarFieldEnum)[keyof typeof SubCategoryScalarFieldEnum];
 export declare const BreederProfileScalarFieldEnum: {
     readonly id: "id";
     readonly userId: "userId";

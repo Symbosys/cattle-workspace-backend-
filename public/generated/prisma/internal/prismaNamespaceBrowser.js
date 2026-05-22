@@ -41,6 +41,8 @@ export const AnyNull = runtime.AnyNull;
 export const ModelName = {
     Animal: 'Animal',
     VaccinationRecord: 'VaccinationRecord',
+    Category: 'Category',
+    SubCategory: 'SubCategory',
     BreederProfile: 'BreederProfile',
     BreedingRequest: 'BreedingRequest',
     BreederReview: 'BreederReview',
@@ -100,6 +102,23 @@ export const VaccinationRecordScalarFieldEnum = {
     proofDocUrl: 'proofDocUrl',
     verifiedByDoctorId: 'verifiedByDoctorId',
     createdAt: 'createdAt'
+};
+export const CategoryScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    imageUrl: 'imageUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const SubCategoryScalarFieldEnum = {
+    id: 'id',
+    categoryId: 'categoryId',
+    name: 'name',
+    description: 'description',
+    imageUrl: 'imageUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
 };
 export const BreederProfileScalarFieldEnum = {
     id: 'id',

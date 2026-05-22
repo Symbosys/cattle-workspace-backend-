@@ -37,8 +37,8 @@ export const sendOtp = asyncHandler(async (req, res, next) => {
 
   return SuccessResponse(
     res,
-    "OTP generated successfully. Check your mobile device or server logs.",
-    process.env.NODE_ENV === "production" ? {} : { otp },
+    "OTP generated successfully",
+    process.env.NODE_ENV === "development" ? { otp } : {},
     200
   );
 });

@@ -53,6 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Animal: 'Animal',
   VaccinationRecord: 'VaccinationRecord',
+  Category: 'Category',
+  SubCategory: 'SubCategory',
   BreederProfile: 'BreederProfile',
   BreedingRequest: 'BreedingRequest',
   BreederReview: 'BreederReview',
@@ -127,6 +129,31 @@ export const VaccinationRecordScalarFieldEnum = {
 } as const
 
 export type VaccinationRecordScalarFieldEnum = (typeof VaccinationRecordScalarFieldEnum)[keyof typeof VaccinationRecordScalarFieldEnum]
+
+
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const SubCategoryScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  name: 'name',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubCategoryScalarFieldEnum = (typeof SubCategoryScalarFieldEnum)[keyof typeof SubCategoryScalarFieldEnum]
 
 
 export const BreederProfileScalarFieldEnum = {

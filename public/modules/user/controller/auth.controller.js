@@ -27,7 +27,7 @@ export const sendOtp = asyncHandler(async (req, res, next) => {
     await AuthService.upsertOtp(mobile, otp, expiresAt);
     // Send OTP (Mock / Console Log)
     console.log(`[SMS-MOCK] OTP for mobile ${mobile} is: ${otp}`);
-    return SuccessResponse(res, "OTP generated successfully. Check your mobile device or server logs.", process.env.NODE_ENV === "production" ? {} : { otp }, 200);
+    return SuccessResponse(res, "OTP generated successfully", process.env.NODE_ENV === "development" ? { otp } : {}, 200);
 });
 export const verifyOtp = asyncHandler(async (req, res, next) => {
     const { mobile, otp } = req.body;

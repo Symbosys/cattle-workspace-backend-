@@ -1,5 +1,7 @@
 export type * from './models/Animal.js';
 export type * from './models/VaccinationRecord.js';
+export type * from './models/Category.js';
+export type * from './models/SubCategory.js';
 export type * from './models/BreederProfile.js';
 export type * from './models/BreedingRequest.js';
 export type * from './models/BreederReview.js';

@@ -34,12 +34,38 @@ model VaccinationRecord {
   vaccineName        String
   administeredAt     DateTime
   nextDueDate        DateTime?
-  proofDocUrl        String?
+  proofDocUrl        Json?
   verifiedByDoctorId String?
   createdAt          DateTime  @default(now())
 
   // Relations
   animal Animal @relation(fields: [animalId], references: [id], onDelete: Cascade)
+  doctor User?  @relation(fields: [verifiedByDoctorId], references: [id])
 
   @@index([animalId])
+}
+
+model Category {
+  id            String        @id @default(uuid())
+  name          String        @unique
+  description   String?
+  imageUrl      Json?
+  subCategories SubCategory[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SubCategory {
+  id          String  @id @default(uuid())
+  categoryId  String
+  name        String  @unique
+  description String?
+  imageUrl    Json?
+
+  // Relations
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

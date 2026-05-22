@@ -43,6 +43,7 @@ model User {
   ledgerEntries   PlatformLedger[]
 
   @@index([email, status])
+  vaccinationRecords VaccinationRecord[]
 }
 
 model OtpCode {

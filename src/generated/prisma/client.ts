@@ -52,6 +52,16 @@ export type Animal = Prisma.AnimalModel
  */
 export type VaccinationRecord = Prisma.VaccinationRecordModel
 /**
+ * Model Category
+ * 
+ */
+export type Category = Prisma.CategoryModel
+/**
+ * Model SubCategory
+ * 
+ */
+export type SubCategory = Prisma.SubCategoryModel
+/**
  * Model BreederProfile
  * 
  */

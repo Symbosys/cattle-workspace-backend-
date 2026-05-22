@@ -140,6 +140,28 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
         omit: OmitOpts;
     }>;
     /**
+     * `prisma.category`: Exposes CRUD operations for the **Category** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Categories
+      * const categories = await prisma.category.findMany()
+      * ```
+      */
+    get category(): Prisma.CategoryDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.subCategory`: Exposes CRUD operations for the **SubCategory** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more SubCategories
+      * const subCategories = await prisma.subCategory.findMany()
+      * ```
+      */
+    get subCategory(): Prisma.SubCategoryDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
      * `prisma.breederProfile`: Exposes CRUD operations for the **BreederProfile** model.
       * Example usage:
       * ```ts

@@ -4,7 +4,6 @@ import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import errorMiddleware from "./middlewares/error.middleware.js";
-import multerUpload from "./middlewares/multer.middleware.js";
 import userRouter from "./modules/user/routes/index.js";
 const app = express();
 app.use(express.json({ limit: "20mb" }));
