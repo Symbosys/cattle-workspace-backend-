@@ -1,0 +1,53 @@
+model BreederProfile {
+  id          String  @id @default(uuid())
+  userId      String  @unique
+  description String
+  serviceFee  Decimal @db.Decimal(10, 2)
+  isVerified  Boolean @default(false)
+
+  // Geolocation
+  latitude  Decimal  @db.Decimal(10, 8)
+  longitude Decimal  @db.Decimal(11, 8)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  studAnimals      Animal[]          @relation("BreederStuds")
+  breedingRequests BreedingRequest[]
+  reviews          BreederReview[]
+
+  @@index([latitude, longitude])
+}
+
+model BreedingRequest {
+  id                String            @id @default(uuid())
+  breederId         String
+  requesterId       String
+  requesterAnimalId String
+  breederAnimalId   String
+  status            AppointmentStatus @default(PENDING)
+  agreedPrice       Decimal           @db.Decimal(10, 2)
+  paymentIntentId   String?           @unique
+  breedingDate      DateTime?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  // Relations
+  breeder BreederProfile @relation(fields: [breederId], references: [id], onDelete: Cascade)
+
+  @@index([breederId])
+}
+
+model BreederReview {
+  id        String   @id @default(uuid())
+  breederId String
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  breeder BreederProfile @relation(fields: [breederId], references: [id], onDelete: Cascade)
+
+  @@index([breederId])
+}

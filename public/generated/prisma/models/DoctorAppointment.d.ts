@@ -1,0 +1,1741 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model DoctorAppointment
+ *
+ */
+export type DoctorAppointmentModel = runtime.Types.Result.DefaultSelection<Prisma.$DoctorAppointmentPayload>;
+export type AggregateDoctorAppointment = {
+    _count: DoctorAppointmentCountAggregateOutputType | null;
+    _avg: DoctorAppointmentAvgAggregateOutputType | null;
+    _sum: DoctorAppointmentSumAggregateOutputType | null;
+    _min: DoctorAppointmentMinAggregateOutputType | null;
+    _max: DoctorAppointmentMaxAggregateOutputType | null;
+};
+export type DoctorAppointmentAvgAggregateOutputType = {
+    totalPaid: runtime.Decimal | null;
+    commissionAmount: runtime.Decimal | null;
+    payoutAmount: runtime.Decimal | null;
+};
+export type DoctorAppointmentSumAggregateOutputType = {
+    totalPaid: runtime.Decimal | null;
+    commissionAmount: runtime.Decimal | null;
+    payoutAmount: runtime.Decimal | null;
+};
+export type DoctorAppointmentMinAggregateOutputType = {
+    id: string | null;
+    doctorId: string | null;
+    patientId: string | null;
+    appointmentDate: Date | null;
+    timeSlot: string | null;
+    status: $Enums.AppointmentStatus | null;
+    totalPaid: runtime.Decimal | null;
+    commissionAmount: runtime.Decimal | null;
+    payoutAmount: runtime.Decimal | null;
+    paymentIntentId: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type DoctorAppointmentMaxAggregateOutputType = {
+    id: string | null;
+    doctorId: string | null;
+    patientId: string | null;
+    appointmentDate: Date | null;
+    timeSlot: string | null;
+    status: $Enums.AppointmentStatus | null;
+    totalPaid: runtime.Decimal | null;
+    commissionAmount: runtime.Decimal | null;
+    payoutAmount: runtime.Decimal | null;
+    paymentIntentId: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type DoctorAppointmentCountAggregateOutputType = {
+    id: number;
+    doctorId: number;
+    patientId: number;
+    appointmentDate: number;
+    timeSlot: number;
+    status: number;
+    totalPaid: number;
+    commissionAmount: number;
+    payoutAmount: number;
+    paymentIntentId: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type DoctorAppointmentAvgAggregateInputType = {
+    totalPaid?: true;
+    commissionAmount?: true;
+    payoutAmount?: true;
+};
+export type DoctorAppointmentSumAggregateInputType = {
+    totalPaid?: true;
+    commissionAmount?: true;
+    payoutAmount?: true;
+};
+export type DoctorAppointmentMinAggregateInputType = {
+    id?: true;
+    doctorId?: true;
+    patientId?: true;
+    appointmentDate?: true;
+    timeSlot?: true;
+    status?: true;
+    totalPaid?: true;
+    commissionAmount?: true;
+    payoutAmount?: true;
+    paymentIntentId?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type DoctorAppointmentMaxAggregateInputType = {
+    id?: true;
+    doctorId?: true;
+    patientId?: true;
+    appointmentDate?: true;
+    timeSlot?: true;
+    status?: true;
+    totalPaid?: true;
+    commissionAmount?: true;
+    payoutAmount?: true;
+    paymentIntentId?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type DoctorAppointmentCountAggregateInputType = {
+    id?: true;
+    doctorId?: true;
+    patientId?: true;
+    appointmentDate?: true;
+    timeSlot?: true;
+    status?: true;
+    totalPaid?: true;
+    commissionAmount?: true;
+    payoutAmount?: true;
+    paymentIntentId?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type DoctorAppointmentAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which DoctorAppointment to aggregate.
+     */
+    where?: Prisma.DoctorAppointmentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DoctorAppointments to fetch.
+     */
+    orderBy?: Prisma.DoctorAppointmentOrderByWithRelationInput | Prisma.DoctorAppointmentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.DoctorAppointmentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DoctorAppointments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DoctorAppointments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned DoctorAppointments
+    **/
+    _count?: true | DoctorAppointmentCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: DoctorAppointmentAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: DoctorAppointmentSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: DoctorAppointmentMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: DoctorAppointmentMaxAggregateInputType;
+};
+export type GetDoctorAppointmentAggregateType<T extends DoctorAppointmentAggregateArgs> = {
+    [P in keyof T & keyof AggregateDoctorAppointment]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateDoctorAppointment[P]> : Prisma.GetScalarType<T[P], AggregateDoctorAppointment[P]>;
+};
+export type DoctorAppointmentGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DoctorAppointmentWhereInput;
+    orderBy?: Prisma.DoctorAppointmentOrderByWithAggregationInput | Prisma.DoctorAppointmentOrderByWithAggregationInput[];
+    by: Prisma.DoctorAppointmentScalarFieldEnum[] | Prisma.DoctorAppointmentScalarFieldEnum;
+    having?: Prisma.DoctorAppointmentScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: DoctorAppointmentCountAggregateInputType | true;
+    _avg?: DoctorAppointmentAvgAggregateInputType;
+    _sum?: DoctorAppointmentSumAggregateInputType;
+    _min?: DoctorAppointmentMinAggregateInputType;
+    _max?: DoctorAppointmentMaxAggregateInputType;
+};
+export type DoctorAppointmentGroupByOutputType = {
+    id: string;
+    doctorId: string;
+    patientId: string;
+    appointmentDate: Date;
+    timeSlot: string;
+    status: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal;
+    commissionAmount: runtime.Decimal;
+    payoutAmount: runtime.Decimal;
+    paymentIntentId: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: DoctorAppointmentCountAggregateOutputType | null;
+    _avg: DoctorAppointmentAvgAggregateOutputType | null;
+    _sum: DoctorAppointmentSumAggregateOutputType | null;
+    _min: DoctorAppointmentMinAggregateOutputType | null;
+    _max: DoctorAppointmentMaxAggregateOutputType | null;
+};
+export type GetDoctorAppointmentGroupByPayload<T extends DoctorAppointmentGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<DoctorAppointmentGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof DoctorAppointmentGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], DoctorAppointmentGroupByOutputType[P]> : Prisma.GetScalarType<T[P], DoctorAppointmentGroupByOutputType[P]>;
+}>>;
+export type DoctorAppointmentWhereInput = {
+    AND?: Prisma.DoctorAppointmentWhereInput | Prisma.DoctorAppointmentWhereInput[];
+    OR?: Prisma.DoctorAppointmentWhereInput[];
+    NOT?: Prisma.DoctorAppointmentWhereInput | Prisma.DoctorAppointmentWhereInput[];
+    id?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    doctorId?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    patientId?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    appointmentDate?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    timeSlot?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    status?: Prisma.EnumAppointmentStatusFilter<"DoctorAppointment"> | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.StringNullableFilter<"DoctorAppointment"> | string | null;
+    createdAt?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    doctor?: Prisma.XOR<Prisma.DoctorProfileScalarRelationFilter, Prisma.DoctorProfileWhereInput>;
+    patient?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    review?: Prisma.XOR<Prisma.DoctorReviewNullableScalarRelationFilter, Prisma.DoctorReviewWhereInput> | null;
+};
+export type DoctorAppointmentOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    doctorId?: Prisma.SortOrder;
+    patientId?: Prisma.SortOrder;
+    appointmentDate?: Prisma.SortOrder;
+    timeSlot?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    totalPaid?: Prisma.SortOrder;
+    commissionAmount?: Prisma.SortOrder;
+    payoutAmount?: Prisma.SortOrder;
+    paymentIntentId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    doctor?: Prisma.DoctorProfileOrderByWithRelationInput;
+    patient?: Prisma.UserOrderByWithRelationInput;
+    review?: Prisma.DoctorReviewOrderByWithRelationInput;
+};
+export type DoctorAppointmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    paymentIntentId?: string;
+    AND?: Prisma.DoctorAppointmentWhereInput | Prisma.DoctorAppointmentWhereInput[];
+    OR?: Prisma.DoctorAppointmentWhereInput[];
+    NOT?: Prisma.DoctorAppointmentWhereInput | Prisma.DoctorAppointmentWhereInput[];
+    doctorId?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    patientId?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    appointmentDate?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    timeSlot?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    status?: Prisma.EnumAppointmentStatusFilter<"DoctorAppointment"> | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    doctor?: Prisma.XOR<Prisma.DoctorProfileScalarRelationFilter, Prisma.DoctorProfileWhereInput>;
+    patient?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    review?: Prisma.XOR<Prisma.DoctorReviewNullableScalarRelationFilter, Prisma.DoctorReviewWhereInput> | null;
+}, "id" | "paymentIntentId">;
+export type DoctorAppointmentOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    doctorId?: Prisma.SortOrder;
+    patientId?: Prisma.SortOrder;
+    appointmentDate?: Prisma.SortOrder;
+    timeSlot?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    totalPaid?: Prisma.SortOrder;
+    commissionAmount?: Prisma.SortOrder;
+    payoutAmount?: Prisma.SortOrder;
+    paymentIntentId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.DoctorAppointmentCountOrderByAggregateInput;
+    _avg?: Prisma.DoctorAppointmentAvgOrderByAggregateInput;
+    _max?: Prisma.DoctorAppointmentMaxOrderByAggregateInput;
+    _min?: Prisma.DoctorAppointmentMinOrderByAggregateInput;
+    _sum?: Prisma.DoctorAppointmentSumOrderByAggregateInput;
+};
+export type DoctorAppointmentScalarWhereWithAggregatesInput = {
+    AND?: Prisma.DoctorAppointmentScalarWhereWithAggregatesInput | Prisma.DoctorAppointmentScalarWhereWithAggregatesInput[];
+    OR?: Prisma.DoctorAppointmentScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.DoctorAppointmentScalarWhereWithAggregatesInput | Prisma.DoctorAppointmentScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"DoctorAppointment"> | string;
+    doctorId?: Prisma.StringWithAggregatesFilter<"DoctorAppointment"> | string;
+    patientId?: Prisma.StringWithAggregatesFilter<"DoctorAppointment"> | string;
+    appointmentDate?: Prisma.DateTimeWithAggregatesFilter<"DoctorAppointment"> | Date | string;
+    timeSlot?: Prisma.StringWithAggregatesFilter<"DoctorAppointment"> | string;
+    status?: Prisma.EnumAppointmentStatusWithAggregatesFilter<"DoctorAppointment"> | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalWithAggregatesFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalWithAggregatesFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalWithAggregatesFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.StringNullableWithAggregatesFilter<"DoctorAppointment"> | string | null;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"DoctorAppointment"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"DoctorAppointment"> | Date | string;
+};
+export type DoctorAppointmentCreateInput = {
+    id?: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    doctor: Prisma.DoctorProfileCreateNestedOneWithoutAppointmentsInput;
+    patient: Prisma.UserCreateNestedOneWithoutAppointmentsInput;
+    review?: Prisma.DoctorReviewCreateNestedOneWithoutAppointmentInput;
+};
+export type DoctorAppointmentUncheckedCreateInput = {
+    id?: string;
+    doctorId: string;
+    patientId: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    review?: Prisma.DoctorReviewUncheckedCreateNestedOneWithoutAppointmentInput;
+};
+export type DoctorAppointmentUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutAppointmentsNestedInput;
+    patient?: Prisma.UserUpdateOneRequiredWithoutAppointmentsNestedInput;
+    review?: Prisma.DoctorReviewUpdateOneWithoutAppointmentNestedInput;
+};
+export type DoctorAppointmentUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    doctorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    patientId?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    review?: Prisma.DoctorReviewUncheckedUpdateOneWithoutAppointmentNestedInput;
+};
+export type DoctorAppointmentCreateManyInput = {
+    id?: string;
+    doctorId: string;
+    patientId: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DoctorAppointmentUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DoctorAppointmentUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    doctorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    patientId?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DoctorAppointmentListRelationFilter = {
+    every?: Prisma.DoctorAppointmentWhereInput;
+    some?: Prisma.DoctorAppointmentWhereInput;
+    none?: Prisma.DoctorAppointmentWhereInput;
+};
+export type DoctorAppointmentOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type DoctorAppointmentCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    doctorId?: Prisma.SortOrder;
+    patientId?: Prisma.SortOrder;
+    appointmentDate?: Prisma.SortOrder;
+    timeSlot?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    totalPaid?: Prisma.SortOrder;
+    commissionAmount?: Prisma.SortOrder;
+    payoutAmount?: Prisma.SortOrder;
+    paymentIntentId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type DoctorAppointmentAvgOrderByAggregateInput = {
+    totalPaid?: Prisma.SortOrder;
+    commissionAmount?: Prisma.SortOrder;
+    payoutAmount?: Prisma.SortOrder;
+};
+export type DoctorAppointmentMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    doctorId?: Prisma.SortOrder;
+    patientId?: Prisma.SortOrder;
+    appointmentDate?: Prisma.SortOrder;
+    timeSlot?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    totalPaid?: Prisma.SortOrder;
+    commissionAmount?: Prisma.SortOrder;
+    payoutAmount?: Prisma.SortOrder;
+    paymentIntentId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type DoctorAppointmentMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    doctorId?: Prisma.SortOrder;
+    patientId?: Prisma.SortOrder;
+    appointmentDate?: Prisma.SortOrder;
+    timeSlot?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    totalPaid?: Prisma.SortOrder;
+    commissionAmount?: Prisma.SortOrder;
+    payoutAmount?: Prisma.SortOrder;
+    paymentIntentId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type DoctorAppointmentSumOrderByAggregateInput = {
+    totalPaid?: Prisma.SortOrder;
+    commissionAmount?: Prisma.SortOrder;
+    payoutAmount?: Prisma.SortOrder;
+};
+export type DoctorAppointmentScalarRelationFilter = {
+    is?: Prisma.DoctorAppointmentWhereInput;
+    isNot?: Prisma.DoctorAppointmentWhereInput;
+};
+export type DoctorAppointmentCreateNestedManyWithoutDoctorInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput> | Prisma.DoctorAppointmentCreateWithoutDoctorInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput | Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyDoctorInputEnvelope;
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+};
+export type DoctorAppointmentUncheckedCreateNestedManyWithoutDoctorInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput> | Prisma.DoctorAppointmentCreateWithoutDoctorInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput | Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyDoctorInputEnvelope;
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+};
+export type DoctorAppointmentUpdateManyWithoutDoctorNestedInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput> | Prisma.DoctorAppointmentCreateWithoutDoctorInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput | Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput[];
+    upsert?: Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutDoctorInput | Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutDoctorInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyDoctorInputEnvelope;
+    set?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    disconnect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    delete?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    update?: Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutDoctorInput | Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutDoctorInput[];
+    updateMany?: Prisma.DoctorAppointmentUpdateManyWithWhereWithoutDoctorInput | Prisma.DoctorAppointmentUpdateManyWithWhereWithoutDoctorInput[];
+    deleteMany?: Prisma.DoctorAppointmentScalarWhereInput | Prisma.DoctorAppointmentScalarWhereInput[];
+};
+export type DoctorAppointmentUncheckedUpdateManyWithoutDoctorNestedInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput> | Prisma.DoctorAppointmentCreateWithoutDoctorInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput | Prisma.DoctorAppointmentCreateOrConnectWithoutDoctorInput[];
+    upsert?: Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutDoctorInput | Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutDoctorInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyDoctorInputEnvelope;
+    set?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    disconnect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    delete?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    update?: Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutDoctorInput | Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutDoctorInput[];
+    updateMany?: Prisma.DoctorAppointmentUpdateManyWithWhereWithoutDoctorInput | Prisma.DoctorAppointmentUpdateManyWithWhereWithoutDoctorInput[];
+    deleteMany?: Prisma.DoctorAppointmentScalarWhereInput | Prisma.DoctorAppointmentScalarWhereInput[];
+};
+export type DoctorAppointmentCreateNestedOneWithoutReviewInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutReviewInput, Prisma.DoctorAppointmentUncheckedCreateWithoutReviewInput>;
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutReviewInput;
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput;
+};
+export type DoctorAppointmentUpdateOneRequiredWithoutReviewNestedInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutReviewInput, Prisma.DoctorAppointmentUncheckedCreateWithoutReviewInput>;
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutReviewInput;
+    upsert?: Prisma.DoctorAppointmentUpsertWithoutReviewInput;
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.DoctorAppointmentUpdateToOneWithWhereWithoutReviewInput, Prisma.DoctorAppointmentUpdateWithoutReviewInput>, Prisma.DoctorAppointmentUncheckedUpdateWithoutReviewInput>;
+};
+export type DoctorAppointmentCreateNestedManyWithoutPatientInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput> | Prisma.DoctorAppointmentCreateWithoutPatientInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput | Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyPatientInputEnvelope;
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+};
+export type DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput> | Prisma.DoctorAppointmentCreateWithoutPatientInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput | Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyPatientInputEnvelope;
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+};
+export type DoctorAppointmentUpdateManyWithoutPatientNestedInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput> | Prisma.DoctorAppointmentCreateWithoutPatientInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput | Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput[];
+    upsert?: Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutPatientInput | Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutPatientInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyPatientInputEnvelope;
+    set?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    disconnect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    delete?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    update?: Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutPatientInput | Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutPatientInput[];
+    updateMany?: Prisma.DoctorAppointmentUpdateManyWithWhereWithoutPatientInput | Prisma.DoctorAppointmentUpdateManyWithWhereWithoutPatientInput[];
+    deleteMany?: Prisma.DoctorAppointmentScalarWhereInput | Prisma.DoctorAppointmentScalarWhereInput[];
+};
+export type DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput = {
+    create?: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput> | Prisma.DoctorAppointmentCreateWithoutPatientInput[] | Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput[];
+    connectOrCreate?: Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput | Prisma.DoctorAppointmentCreateOrConnectWithoutPatientInput[];
+    upsert?: Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutPatientInput | Prisma.DoctorAppointmentUpsertWithWhereUniqueWithoutPatientInput[];
+    createMany?: Prisma.DoctorAppointmentCreateManyPatientInputEnvelope;
+    set?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    disconnect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    delete?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    connect?: Prisma.DoctorAppointmentWhereUniqueInput | Prisma.DoctorAppointmentWhereUniqueInput[];
+    update?: Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutPatientInput | Prisma.DoctorAppointmentUpdateWithWhereUniqueWithoutPatientInput[];
+    updateMany?: Prisma.DoctorAppointmentUpdateManyWithWhereWithoutPatientInput | Prisma.DoctorAppointmentUpdateManyWithWhereWithoutPatientInput[];
+    deleteMany?: Prisma.DoctorAppointmentScalarWhereInput | Prisma.DoctorAppointmentScalarWhereInput[];
+};
+export type DoctorAppointmentCreateWithoutDoctorInput = {
+    id?: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    patient: Prisma.UserCreateNestedOneWithoutAppointmentsInput;
+    review?: Prisma.DoctorReviewCreateNestedOneWithoutAppointmentInput;
+};
+export type DoctorAppointmentUncheckedCreateWithoutDoctorInput = {
+    id?: string;
+    patientId: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    review?: Prisma.DoctorReviewUncheckedCreateNestedOneWithoutAppointmentInput;
+};
+export type DoctorAppointmentCreateOrConnectWithoutDoctorInput = {
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput>;
+};
+export type DoctorAppointmentCreateManyDoctorInputEnvelope = {
+    data: Prisma.DoctorAppointmentCreateManyDoctorInput | Prisma.DoctorAppointmentCreateManyDoctorInput[];
+    skipDuplicates?: boolean;
+};
+export type DoctorAppointmentUpsertWithWhereUniqueWithoutDoctorInput = {
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    update: Prisma.XOR<Prisma.DoctorAppointmentUpdateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedUpdateWithoutDoctorInput>;
+    create: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedCreateWithoutDoctorInput>;
+};
+export type DoctorAppointmentUpdateWithWhereUniqueWithoutDoctorInput = {
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateWithoutDoctorInput, Prisma.DoctorAppointmentUncheckedUpdateWithoutDoctorInput>;
+};
+export type DoctorAppointmentUpdateManyWithWhereWithoutDoctorInput = {
+    where: Prisma.DoctorAppointmentScalarWhereInput;
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateManyMutationInput, Prisma.DoctorAppointmentUncheckedUpdateManyWithoutDoctorInput>;
+};
+export type DoctorAppointmentScalarWhereInput = {
+    AND?: Prisma.DoctorAppointmentScalarWhereInput | Prisma.DoctorAppointmentScalarWhereInput[];
+    OR?: Prisma.DoctorAppointmentScalarWhereInput[];
+    NOT?: Prisma.DoctorAppointmentScalarWhereInput | Prisma.DoctorAppointmentScalarWhereInput[];
+    id?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    doctorId?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    patientId?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    appointmentDate?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    timeSlot?: Prisma.StringFilter<"DoctorAppointment"> | string;
+    status?: Prisma.EnumAppointmentStatusFilter<"DoctorAppointment"> | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFilter<"DoctorAppointment"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.StringNullableFilter<"DoctorAppointment"> | string | null;
+    createdAt?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"DoctorAppointment"> | Date | string;
+};
+export type DoctorAppointmentCreateWithoutReviewInput = {
+    id?: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    doctor: Prisma.DoctorProfileCreateNestedOneWithoutAppointmentsInput;
+    patient: Prisma.UserCreateNestedOneWithoutAppointmentsInput;
+};
+export type DoctorAppointmentUncheckedCreateWithoutReviewInput = {
+    id?: string;
+    doctorId: string;
+    patientId: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DoctorAppointmentCreateOrConnectWithoutReviewInput = {
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutReviewInput, Prisma.DoctorAppointmentUncheckedCreateWithoutReviewInput>;
+};
+export type DoctorAppointmentUpsertWithoutReviewInput = {
+    update: Prisma.XOR<Prisma.DoctorAppointmentUpdateWithoutReviewInput, Prisma.DoctorAppointmentUncheckedUpdateWithoutReviewInput>;
+    create: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutReviewInput, Prisma.DoctorAppointmentUncheckedCreateWithoutReviewInput>;
+    where?: Prisma.DoctorAppointmentWhereInput;
+};
+export type DoctorAppointmentUpdateToOneWithWhereWithoutReviewInput = {
+    where?: Prisma.DoctorAppointmentWhereInput;
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateWithoutReviewInput, Prisma.DoctorAppointmentUncheckedUpdateWithoutReviewInput>;
+};
+export type DoctorAppointmentUpdateWithoutReviewInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutAppointmentsNestedInput;
+    patient?: Prisma.UserUpdateOneRequiredWithoutAppointmentsNestedInput;
+};
+export type DoctorAppointmentUncheckedUpdateWithoutReviewInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    doctorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    patientId?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DoctorAppointmentCreateWithoutPatientInput = {
+    id?: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    doctor: Prisma.DoctorProfileCreateNestedOneWithoutAppointmentsInput;
+    review?: Prisma.DoctorReviewCreateNestedOneWithoutAppointmentInput;
+};
+export type DoctorAppointmentUncheckedCreateWithoutPatientInput = {
+    id?: string;
+    doctorId: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    review?: Prisma.DoctorReviewUncheckedCreateNestedOneWithoutAppointmentInput;
+};
+export type DoctorAppointmentCreateOrConnectWithoutPatientInput = {
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput>;
+};
+export type DoctorAppointmentCreateManyPatientInputEnvelope = {
+    data: Prisma.DoctorAppointmentCreateManyPatientInput | Prisma.DoctorAppointmentCreateManyPatientInput[];
+    skipDuplicates?: boolean;
+};
+export type DoctorAppointmentUpsertWithWhereUniqueWithoutPatientInput = {
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    update: Prisma.XOR<Prisma.DoctorAppointmentUpdateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedUpdateWithoutPatientInput>;
+    create: Prisma.XOR<Prisma.DoctorAppointmentCreateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedCreateWithoutPatientInput>;
+};
+export type DoctorAppointmentUpdateWithWhereUniqueWithoutPatientInput = {
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateWithoutPatientInput, Prisma.DoctorAppointmentUncheckedUpdateWithoutPatientInput>;
+};
+export type DoctorAppointmentUpdateManyWithWhereWithoutPatientInput = {
+    where: Prisma.DoctorAppointmentScalarWhereInput;
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateManyMutationInput, Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientInput>;
+};
+export type DoctorAppointmentCreateManyDoctorInput = {
+    id?: string;
+    patientId: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DoctorAppointmentUpdateWithoutDoctorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    patient?: Prisma.UserUpdateOneRequiredWithoutAppointmentsNestedInput;
+    review?: Prisma.DoctorReviewUpdateOneWithoutAppointmentNestedInput;
+};
+export type DoctorAppointmentUncheckedUpdateWithoutDoctorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    patientId?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    review?: Prisma.DoctorReviewUncheckedUpdateOneWithoutAppointmentNestedInput;
+};
+export type DoctorAppointmentUncheckedUpdateManyWithoutDoctorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    patientId?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DoctorAppointmentCreateManyPatientInput = {
+    id?: string;
+    doctorId: string;
+    appointmentDate: Date | string;
+    timeSlot: string;
+    status?: $Enums.AppointmentStatus;
+    totalPaid: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DoctorAppointmentUpdateWithoutPatientInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutAppointmentsNestedInput;
+    review?: Prisma.DoctorReviewUpdateOneWithoutAppointmentNestedInput;
+};
+export type DoctorAppointmentUncheckedUpdateWithoutPatientInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    doctorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    review?: Prisma.DoctorReviewUncheckedUpdateOneWithoutAppointmentNestedInput;
+};
+export type DoctorAppointmentUncheckedUpdateManyWithoutPatientInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    doctorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    appointmentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    timeSlot?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus;
+    totalPaid?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    payoutAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DoctorAppointmentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    doctorId?: boolean;
+    patientId?: boolean;
+    appointmentDate?: boolean;
+    timeSlot?: boolean;
+    status?: boolean;
+    totalPaid?: boolean;
+    commissionAmount?: boolean;
+    payoutAmount?: boolean;
+    paymentIntentId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>;
+    patient?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    review?: boolean | Prisma.DoctorAppointment$reviewArgs<ExtArgs>;
+}, ExtArgs["result"]["doctorAppointment"]>;
+export type DoctorAppointmentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    doctorId?: boolean;
+    patientId?: boolean;
+    appointmentDate?: boolean;
+    timeSlot?: boolean;
+    status?: boolean;
+    totalPaid?: boolean;
+    commissionAmount?: boolean;
+    payoutAmount?: boolean;
+    paymentIntentId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>;
+    patient?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["doctorAppointment"]>;
+export type DoctorAppointmentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    doctorId?: boolean;
+    patientId?: boolean;
+    appointmentDate?: boolean;
+    timeSlot?: boolean;
+    status?: boolean;
+    totalPaid?: boolean;
+    commissionAmount?: boolean;
+    payoutAmount?: boolean;
+    paymentIntentId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>;
+    patient?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["doctorAppointment"]>;
+export type DoctorAppointmentSelectScalar = {
+    id?: boolean;
+    doctorId?: boolean;
+    patientId?: boolean;
+    appointmentDate?: boolean;
+    timeSlot?: boolean;
+    status?: boolean;
+    totalPaid?: boolean;
+    commissionAmount?: boolean;
+    payoutAmount?: boolean;
+    paymentIntentId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type DoctorAppointmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "doctorId" | "patientId" | "appointmentDate" | "timeSlot" | "status" | "totalPaid" | "commissionAmount" | "payoutAmount" | "paymentIntentId" | "createdAt" | "updatedAt", ExtArgs["result"]["doctorAppointment"]>;
+export type DoctorAppointmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>;
+    patient?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    review?: boolean | Prisma.DoctorAppointment$reviewArgs<ExtArgs>;
+};
+export type DoctorAppointmentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>;
+    patient?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type DoctorAppointmentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>;
+    patient?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type $DoctorAppointmentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "DoctorAppointment";
+    objects: {
+        doctor: Prisma.$DoctorProfilePayload<ExtArgs>;
+        patient: Prisma.$UserPayload<ExtArgs>;
+        review: Prisma.$DoctorReviewPayload<ExtArgs> | null;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        doctorId: string;
+        patientId: string;
+        appointmentDate: Date;
+        timeSlot: string;
+        status: $Enums.AppointmentStatus;
+        totalPaid: runtime.Decimal;
+        commissionAmount: runtime.Decimal;
+        payoutAmount: runtime.Decimal;
+        paymentIntentId: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["doctorAppointment"]>;
+    composites: {};
+};
+export type DoctorAppointmentGetPayload<S extends boolean | null | undefined | DoctorAppointmentDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload, S>;
+export type DoctorAppointmentCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<DoctorAppointmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: DoctorAppointmentCountAggregateInputType | true;
+};
+export interface DoctorAppointmentDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['DoctorAppointment'];
+        meta: {
+            name: 'DoctorAppointment';
+        };
+    };
+    /**
+     * Find zero or one DoctorAppointment that matches the filter.
+     * @param {DoctorAppointmentFindUniqueArgs} args - Arguments to find a DoctorAppointment
+     * @example
+     * // Get one DoctorAppointment
+     * const doctorAppointment = await prisma.doctorAppointment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DoctorAppointmentFindUniqueArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentFindUniqueArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one DoctorAppointment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DoctorAppointmentFindUniqueOrThrowArgs} args - Arguments to find a DoctorAppointment
+     * @example
+     * // Get one DoctorAppointment
+     * const doctorAppointment = await prisma.doctorAppointment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DoctorAppointmentFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first DoctorAppointment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAppointmentFindFirstArgs} args - Arguments to find a DoctorAppointment
+     * @example
+     * // Get one DoctorAppointment
+     * const doctorAppointment = await prisma.doctorAppointment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DoctorAppointmentFindFirstArgs>(args?: Prisma.SelectSubset<T, DoctorAppointmentFindFirstArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first DoctorAppointment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAppointmentFindFirstOrThrowArgs} args - Arguments to find a DoctorAppointment
+     * @example
+     * // Get one DoctorAppointment
+     * const doctorAppointment = await prisma.doctorAppointment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DoctorAppointmentFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, DoctorAppointmentFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more DoctorAppointments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAppointmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DoctorAppointments
+     * const doctorAppointments = await prisma.doctorAppointment.findMany()
+     *
+     * // Get first 10 DoctorAppointments
+     * const doctorAppointments = await prisma.doctorAppointment.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const doctorAppointmentWithIdOnly = await prisma.doctorAppointment.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends DoctorAppointmentFindManyArgs>(args?: Prisma.SelectSubset<T, DoctorAppointmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a DoctorAppointment.
+     * @param {DoctorAppointmentCreateArgs} args - Arguments to create a DoctorAppointment.
+     * @example
+     * // Create one DoctorAppointment
+     * const DoctorAppointment = await prisma.doctorAppointment.create({
+     *   data: {
+     *     // ... data to create a DoctorAppointment
+     *   }
+     * })
+     *
+     */
+    create<T extends DoctorAppointmentCreateArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentCreateArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many DoctorAppointments.
+     * @param {DoctorAppointmentCreateManyArgs} args - Arguments to create many DoctorAppointments.
+     * @example
+     * // Create many DoctorAppointments
+     * const doctorAppointment = await prisma.doctorAppointment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends DoctorAppointmentCreateManyArgs>(args?: Prisma.SelectSubset<T, DoctorAppointmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many DoctorAppointments and returns the data saved in the database.
+     * @param {DoctorAppointmentCreateManyAndReturnArgs} args - Arguments to create many DoctorAppointments.
+     * @example
+     * // Create many DoctorAppointments
+     * const doctorAppointment = await prisma.doctorAppointment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many DoctorAppointments and only return the `id`
+     * const doctorAppointmentWithIdOnly = await prisma.doctorAppointment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends DoctorAppointmentCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, DoctorAppointmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a DoctorAppointment.
+     * @param {DoctorAppointmentDeleteArgs} args - Arguments to delete one DoctorAppointment.
+     * @example
+     * // Delete one DoctorAppointment
+     * const DoctorAppointment = await prisma.doctorAppointment.delete({
+     *   where: {
+     *     // ... filter to delete one DoctorAppointment
+     *   }
+     * })
+     *
+     */
+    delete<T extends DoctorAppointmentDeleteArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentDeleteArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one DoctorAppointment.
+     * @param {DoctorAppointmentUpdateArgs} args - Arguments to update one DoctorAppointment.
+     * @example
+     * // Update one DoctorAppointment
+     * const doctorAppointment = await prisma.doctorAppointment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends DoctorAppointmentUpdateArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentUpdateArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more DoctorAppointments.
+     * @param {DoctorAppointmentDeleteManyArgs} args - Arguments to filter DoctorAppointments to delete.
+     * @example
+     * // Delete a few DoctorAppointments
+     * const { count } = await prisma.doctorAppointment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends DoctorAppointmentDeleteManyArgs>(args?: Prisma.SelectSubset<T, DoctorAppointmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more DoctorAppointments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAppointmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DoctorAppointments
+     * const doctorAppointment = await prisma.doctorAppointment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends DoctorAppointmentUpdateManyArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more DoctorAppointments and returns the data updated in the database.
+     * @param {DoctorAppointmentUpdateManyAndReturnArgs} args - Arguments to update many DoctorAppointments.
+     * @example
+     * // Update many DoctorAppointments
+     * const doctorAppointment = await prisma.doctorAppointment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more DoctorAppointments and only return the `id`
+     * const doctorAppointmentWithIdOnly = await prisma.doctorAppointment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends DoctorAppointmentUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one DoctorAppointment.
+     * @param {DoctorAppointmentUpsertArgs} args - Arguments to update or create a DoctorAppointment.
+     * @example
+     * // Update or create a DoctorAppointment
+     * const doctorAppointment = await prisma.doctorAppointment.upsert({
+     *   create: {
+     *     // ... data to create a DoctorAppointment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DoctorAppointment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DoctorAppointmentUpsertArgs>(args: Prisma.SelectSubset<T, DoctorAppointmentUpsertArgs<ExtArgs>>): Prisma.Prisma__DoctorAppointmentClient<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of DoctorAppointments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAppointmentCountArgs} args - Arguments to filter DoctorAppointments to count.
+     * @example
+     * // Count the number of DoctorAppointments
+     * const count = await prisma.doctorAppointment.count({
+     *   where: {
+     *     // ... the filter for the DoctorAppointments we want to count
+     *   }
+     * })
+    **/
+    count<T extends DoctorAppointmentCountArgs>(args?: Prisma.Subset<T, DoctorAppointmentCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], DoctorAppointmentCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a DoctorAppointment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAppointmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DoctorAppointmentAggregateArgs>(args: Prisma.Subset<T, DoctorAppointmentAggregateArgs>): Prisma.PrismaPromise<GetDoctorAppointmentAggregateType<T>>;
+    /**
+     * Group by DoctorAppointment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAppointmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends DoctorAppointmentGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: DoctorAppointmentGroupByArgs['orderBy'];
+    } : {
+        orderBy?: DoctorAppointmentGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, DoctorAppointmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDoctorAppointmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the DoctorAppointment model
+     */
+    readonly fields: DoctorAppointmentFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for DoctorAppointment.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__DoctorAppointmentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    doctor<T extends Prisma.DoctorProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__DoctorProfileClient<runtime.Types.Result.GetResult<Prisma.$DoctorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    patient<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    review<T extends Prisma.DoctorAppointment$reviewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorAppointment$reviewArgs<ExtArgs>>): Prisma.Prisma__DoctorReviewClient<runtime.Types.Result.GetResult<Prisma.$DoctorReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the DoctorAppointment model
+ */
+export interface DoctorAppointmentFieldRefs {
+    readonly id: Prisma.FieldRef<"DoctorAppointment", 'String'>;
+    readonly doctorId: Prisma.FieldRef<"DoctorAppointment", 'String'>;
+    readonly patientId: Prisma.FieldRef<"DoctorAppointment", 'String'>;
+    readonly appointmentDate: Prisma.FieldRef<"DoctorAppointment", 'DateTime'>;
+    readonly timeSlot: Prisma.FieldRef<"DoctorAppointment", 'String'>;
+    readonly status: Prisma.FieldRef<"DoctorAppointment", 'AppointmentStatus'>;
+    readonly totalPaid: Prisma.FieldRef<"DoctorAppointment", 'Decimal'>;
+    readonly commissionAmount: Prisma.FieldRef<"DoctorAppointment", 'Decimal'>;
+    readonly payoutAmount: Prisma.FieldRef<"DoctorAppointment", 'Decimal'>;
+    readonly paymentIntentId: Prisma.FieldRef<"DoctorAppointment", 'String'>;
+    readonly createdAt: Prisma.FieldRef<"DoctorAppointment", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"DoctorAppointment", 'DateTime'>;
+}
+/**
+ * DoctorAppointment findUnique
+ */
+export type DoctorAppointmentFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * Filter, which DoctorAppointment to fetch.
+     */
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+};
+/**
+ * DoctorAppointment findUniqueOrThrow
+ */
+export type DoctorAppointmentFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * Filter, which DoctorAppointment to fetch.
+     */
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+};
+/**
+ * DoctorAppointment findFirst
+ */
+export type DoctorAppointmentFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * Filter, which DoctorAppointment to fetch.
+     */
+    where?: Prisma.DoctorAppointmentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DoctorAppointments to fetch.
+     */
+    orderBy?: Prisma.DoctorAppointmentOrderByWithRelationInput | Prisma.DoctorAppointmentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for DoctorAppointments.
+     */
+    cursor?: Prisma.DoctorAppointmentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DoctorAppointments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DoctorAppointments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of DoctorAppointments.
+     */
+    distinct?: Prisma.DoctorAppointmentScalarFieldEnum | Prisma.DoctorAppointmentScalarFieldEnum[];
+};
+/**
+ * DoctorAppointment findFirstOrThrow
+ */
+export type DoctorAppointmentFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * Filter, which DoctorAppointment to fetch.
+     */
+    where?: Prisma.DoctorAppointmentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DoctorAppointments to fetch.
+     */
+    orderBy?: Prisma.DoctorAppointmentOrderByWithRelationInput | Prisma.DoctorAppointmentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for DoctorAppointments.
+     */
+    cursor?: Prisma.DoctorAppointmentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DoctorAppointments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DoctorAppointments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of DoctorAppointments.
+     */
+    distinct?: Prisma.DoctorAppointmentScalarFieldEnum | Prisma.DoctorAppointmentScalarFieldEnum[];
+};
+/**
+ * DoctorAppointment findMany
+ */
+export type DoctorAppointmentFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * Filter, which DoctorAppointments to fetch.
+     */
+    where?: Prisma.DoctorAppointmentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DoctorAppointments to fetch.
+     */
+    orderBy?: Prisma.DoctorAppointmentOrderByWithRelationInput | Prisma.DoctorAppointmentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing DoctorAppointments.
+     */
+    cursor?: Prisma.DoctorAppointmentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DoctorAppointments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DoctorAppointments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of DoctorAppointments.
+     */
+    distinct?: Prisma.DoctorAppointmentScalarFieldEnum | Prisma.DoctorAppointmentScalarFieldEnum[];
+};
+/**
+ * DoctorAppointment create
+ */
+export type DoctorAppointmentCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a DoctorAppointment.
+     */
+    data: Prisma.XOR<Prisma.DoctorAppointmentCreateInput, Prisma.DoctorAppointmentUncheckedCreateInput>;
+};
+/**
+ * DoctorAppointment createMany
+ */
+export type DoctorAppointmentCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DoctorAppointments.
+     */
+    data: Prisma.DoctorAppointmentCreateManyInput | Prisma.DoctorAppointmentCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * DoctorAppointment createManyAndReturn
+ */
+export type DoctorAppointmentCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * The data used to create many DoctorAppointments.
+     */
+    data: Prisma.DoctorAppointmentCreateManyInput | Prisma.DoctorAppointmentCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * DoctorAppointment update
+ */
+export type DoctorAppointmentUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a DoctorAppointment.
+     */
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateInput, Prisma.DoctorAppointmentUncheckedUpdateInput>;
+    /**
+     * Choose, which DoctorAppointment to update.
+     */
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+};
+/**
+ * DoctorAppointment updateMany
+ */
+export type DoctorAppointmentUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DoctorAppointments.
+     */
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateManyMutationInput, Prisma.DoctorAppointmentUncheckedUpdateManyInput>;
+    /**
+     * Filter which DoctorAppointments to update
+     */
+    where?: Prisma.DoctorAppointmentWhereInput;
+    /**
+     * Limit how many DoctorAppointments to update.
+     */
+    limit?: number;
+};
+/**
+ * DoctorAppointment updateManyAndReturn
+ */
+export type DoctorAppointmentUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * The data used to update DoctorAppointments.
+     */
+    data: Prisma.XOR<Prisma.DoctorAppointmentUpdateManyMutationInput, Prisma.DoctorAppointmentUncheckedUpdateManyInput>;
+    /**
+     * Filter which DoctorAppointments to update
+     */
+    where?: Prisma.DoctorAppointmentWhereInput;
+    /**
+     * Limit how many DoctorAppointments to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * DoctorAppointment upsert
+ */
+export type DoctorAppointmentUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the DoctorAppointment to update in case it exists.
+     */
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+    /**
+     * In case the DoctorAppointment found by the `where` argument doesn't exist, create a new DoctorAppointment with this data.
+     */
+    create: Prisma.XOR<Prisma.DoctorAppointmentCreateInput, Prisma.DoctorAppointmentUncheckedCreateInput>;
+    /**
+     * In case the DoctorAppointment was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.DoctorAppointmentUpdateInput, Prisma.DoctorAppointmentUncheckedUpdateInput>;
+};
+/**
+ * DoctorAppointment delete
+ */
+export type DoctorAppointmentDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+    /**
+     * Filter which DoctorAppointment to delete.
+     */
+    where: Prisma.DoctorAppointmentWhereUniqueInput;
+};
+/**
+ * DoctorAppointment deleteMany
+ */
+export type DoctorAppointmentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which DoctorAppointments to delete
+     */
+    where?: Prisma.DoctorAppointmentWhereInput;
+    /**
+     * Limit how many DoctorAppointments to delete.
+     */
+    limit?: number;
+};
+/**
+ * DoctorAppointment.review
+ */
+export type DoctorAppointment$reviewArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorReview
+     */
+    select?: Prisma.DoctorReviewSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorReview
+     */
+    omit?: Prisma.DoctorReviewOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorReviewInclude<ExtArgs> | null;
+    where?: Prisma.DoctorReviewWhereInput;
+};
+/**
+ * DoctorAppointment without action
+ */
+export type DoctorAppointmentDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorAppointment
+     */
+    select?: Prisma.DoctorAppointmentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorAppointment
+     */
+    omit?: Prisma.DoctorAppointmentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorAppointmentInclude<ExtArgs> | null;
+};
+//# sourceMappingURL=DoctorAppointment.d.ts.map

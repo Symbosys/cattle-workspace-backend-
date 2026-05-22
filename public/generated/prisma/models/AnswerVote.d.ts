@@ -1,0 +1,1283 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model AnswerVote
+ *
+ */
+export type AnswerVoteModel = runtime.Types.Result.DefaultSelection<Prisma.$AnswerVotePayload>;
+export type AggregateAnswerVote = {
+    _count: AnswerVoteCountAggregateOutputType | null;
+    _avg: AnswerVoteAvgAggregateOutputType | null;
+    _sum: AnswerVoteSumAggregateOutputType | null;
+    _min: AnswerVoteMinAggregateOutputType | null;
+    _max: AnswerVoteMaxAggregateOutputType | null;
+};
+export type AnswerVoteAvgAggregateOutputType = {
+    value: number | null;
+};
+export type AnswerVoteSumAggregateOutputType = {
+    value: number | null;
+};
+export type AnswerVoteMinAggregateOutputType = {
+    id: string | null;
+    answerId: string | null;
+    userId: string | null;
+    value: number | null;
+};
+export type AnswerVoteMaxAggregateOutputType = {
+    id: string | null;
+    answerId: string | null;
+    userId: string | null;
+    value: number | null;
+};
+export type AnswerVoteCountAggregateOutputType = {
+    id: number;
+    answerId: number;
+    userId: number;
+    value: number;
+    _all: number;
+};
+export type AnswerVoteAvgAggregateInputType = {
+    value?: true;
+};
+export type AnswerVoteSumAggregateInputType = {
+    value?: true;
+};
+export type AnswerVoteMinAggregateInputType = {
+    id?: true;
+    answerId?: true;
+    userId?: true;
+    value?: true;
+};
+export type AnswerVoteMaxAggregateInputType = {
+    id?: true;
+    answerId?: true;
+    userId?: true;
+    value?: true;
+};
+export type AnswerVoteCountAggregateInputType = {
+    id?: true;
+    answerId?: true;
+    userId?: true;
+    value?: true;
+    _all?: true;
+};
+export type AnswerVoteAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which AnswerVote to aggregate.
+     */
+    where?: Prisma.AnswerVoteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of AnswerVotes to fetch.
+     */
+    orderBy?: Prisma.AnswerVoteOrderByWithRelationInput | Prisma.AnswerVoteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.AnswerVoteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` AnswerVotes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` AnswerVotes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned AnswerVotes
+    **/
+    _count?: true | AnswerVoteCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: AnswerVoteAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: AnswerVoteSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: AnswerVoteMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: AnswerVoteMaxAggregateInputType;
+};
+export type GetAnswerVoteAggregateType<T extends AnswerVoteAggregateArgs> = {
+    [P in keyof T & keyof AggregateAnswerVote]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateAnswerVote[P]> : Prisma.GetScalarType<T[P], AggregateAnswerVote[P]>;
+};
+export type AnswerVoteGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AnswerVoteWhereInput;
+    orderBy?: Prisma.AnswerVoteOrderByWithAggregationInput | Prisma.AnswerVoteOrderByWithAggregationInput[];
+    by: Prisma.AnswerVoteScalarFieldEnum[] | Prisma.AnswerVoteScalarFieldEnum;
+    having?: Prisma.AnswerVoteScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: AnswerVoteCountAggregateInputType | true;
+    _avg?: AnswerVoteAvgAggregateInputType;
+    _sum?: AnswerVoteSumAggregateInputType;
+    _min?: AnswerVoteMinAggregateInputType;
+    _max?: AnswerVoteMaxAggregateInputType;
+};
+export type AnswerVoteGroupByOutputType = {
+    id: string;
+    answerId: string;
+    userId: string;
+    value: number;
+    _count: AnswerVoteCountAggregateOutputType | null;
+    _avg: AnswerVoteAvgAggregateOutputType | null;
+    _sum: AnswerVoteSumAggregateOutputType | null;
+    _min: AnswerVoteMinAggregateOutputType | null;
+    _max: AnswerVoteMaxAggregateOutputType | null;
+};
+export type GetAnswerVoteGroupByPayload<T extends AnswerVoteGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<AnswerVoteGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof AnswerVoteGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], AnswerVoteGroupByOutputType[P]> : Prisma.GetScalarType<T[P], AnswerVoteGroupByOutputType[P]>;
+}>>;
+export type AnswerVoteWhereInput = {
+    AND?: Prisma.AnswerVoteWhereInput | Prisma.AnswerVoteWhereInput[];
+    OR?: Prisma.AnswerVoteWhereInput[];
+    NOT?: Prisma.AnswerVoteWhereInput | Prisma.AnswerVoteWhereInput[];
+    id?: Prisma.StringFilter<"AnswerVote"> | string;
+    answerId?: Prisma.StringFilter<"AnswerVote"> | string;
+    userId?: Prisma.StringFilter<"AnswerVote"> | string;
+    value?: Prisma.IntFilter<"AnswerVote"> | number;
+    answer?: Prisma.XOR<Prisma.ForumAnswerScalarRelationFilter, Prisma.ForumAnswerWhereInput>;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+};
+export type AnswerVoteOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    value?: Prisma.SortOrder;
+    answer?: Prisma.ForumAnswerOrderByWithRelationInput;
+    user?: Prisma.UserOrderByWithRelationInput;
+};
+export type AnswerVoteWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    answerId_userId?: Prisma.AnswerVoteAnswerIdUserIdCompoundUniqueInput;
+    AND?: Prisma.AnswerVoteWhereInput | Prisma.AnswerVoteWhereInput[];
+    OR?: Prisma.AnswerVoteWhereInput[];
+    NOT?: Prisma.AnswerVoteWhereInput | Prisma.AnswerVoteWhereInput[];
+    answerId?: Prisma.StringFilter<"AnswerVote"> | string;
+    userId?: Prisma.StringFilter<"AnswerVote"> | string;
+    value?: Prisma.IntFilter<"AnswerVote"> | number;
+    answer?: Prisma.XOR<Prisma.ForumAnswerScalarRelationFilter, Prisma.ForumAnswerWhereInput>;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+}, "id" | "answerId_userId">;
+export type AnswerVoteOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    value?: Prisma.SortOrder;
+    _count?: Prisma.AnswerVoteCountOrderByAggregateInput;
+    _avg?: Prisma.AnswerVoteAvgOrderByAggregateInput;
+    _max?: Prisma.AnswerVoteMaxOrderByAggregateInput;
+    _min?: Prisma.AnswerVoteMinOrderByAggregateInput;
+    _sum?: Prisma.AnswerVoteSumOrderByAggregateInput;
+};
+export type AnswerVoteScalarWhereWithAggregatesInput = {
+    AND?: Prisma.AnswerVoteScalarWhereWithAggregatesInput | Prisma.AnswerVoteScalarWhereWithAggregatesInput[];
+    OR?: Prisma.AnswerVoteScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.AnswerVoteScalarWhereWithAggregatesInput | Prisma.AnswerVoteScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"AnswerVote"> | string;
+    answerId?: Prisma.StringWithAggregatesFilter<"AnswerVote"> | string;
+    userId?: Prisma.StringWithAggregatesFilter<"AnswerVote"> | string;
+    value?: Prisma.IntWithAggregatesFilter<"AnswerVote"> | number;
+};
+export type AnswerVoteCreateInput = {
+    id?: string;
+    value: number;
+    answer: Prisma.ForumAnswerCreateNestedOneWithoutVotesInput;
+    user: Prisma.UserCreateNestedOneWithoutAnswerVotesInput;
+};
+export type AnswerVoteUncheckedCreateInput = {
+    id?: string;
+    answerId: string;
+    userId: string;
+    value: number;
+};
+export type AnswerVoteUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+    answer?: Prisma.ForumAnswerUpdateOneRequiredWithoutVotesNestedInput;
+    user?: Prisma.UserUpdateOneRequiredWithoutAnswerVotesNestedInput;
+};
+export type AnswerVoteUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    answerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type AnswerVoteCreateManyInput = {
+    id?: string;
+    answerId: string;
+    userId: string;
+    value: number;
+};
+export type AnswerVoteUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type AnswerVoteUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    answerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type AnswerVoteListRelationFilter = {
+    every?: Prisma.AnswerVoteWhereInput;
+    some?: Prisma.AnswerVoteWhereInput;
+    none?: Prisma.AnswerVoteWhereInput;
+};
+export type AnswerVoteOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type AnswerVoteAnswerIdUserIdCompoundUniqueInput = {
+    answerId: string;
+    userId: string;
+};
+export type AnswerVoteCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    value?: Prisma.SortOrder;
+};
+export type AnswerVoteAvgOrderByAggregateInput = {
+    value?: Prisma.SortOrder;
+};
+export type AnswerVoteMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    value?: Prisma.SortOrder;
+};
+export type AnswerVoteMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    value?: Prisma.SortOrder;
+};
+export type AnswerVoteSumOrderByAggregateInput = {
+    value?: Prisma.SortOrder;
+};
+export type AnswerVoteCreateNestedManyWithoutAnswerInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutAnswerInput, Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput> | Prisma.AnswerVoteCreateWithoutAnswerInput[] | Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput | Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput[];
+    createMany?: Prisma.AnswerVoteCreateManyAnswerInputEnvelope;
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+};
+export type AnswerVoteUncheckedCreateNestedManyWithoutAnswerInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutAnswerInput, Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput> | Prisma.AnswerVoteCreateWithoutAnswerInput[] | Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput | Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput[];
+    createMany?: Prisma.AnswerVoteCreateManyAnswerInputEnvelope;
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+};
+export type AnswerVoteUpdateManyWithoutAnswerNestedInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutAnswerInput, Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput> | Prisma.AnswerVoteCreateWithoutAnswerInput[] | Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput | Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput[];
+    upsert?: Prisma.AnswerVoteUpsertWithWhereUniqueWithoutAnswerInput | Prisma.AnswerVoteUpsertWithWhereUniqueWithoutAnswerInput[];
+    createMany?: Prisma.AnswerVoteCreateManyAnswerInputEnvelope;
+    set?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    disconnect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    delete?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    update?: Prisma.AnswerVoteUpdateWithWhereUniqueWithoutAnswerInput | Prisma.AnswerVoteUpdateWithWhereUniqueWithoutAnswerInput[];
+    updateMany?: Prisma.AnswerVoteUpdateManyWithWhereWithoutAnswerInput | Prisma.AnswerVoteUpdateManyWithWhereWithoutAnswerInput[];
+    deleteMany?: Prisma.AnswerVoteScalarWhereInput | Prisma.AnswerVoteScalarWhereInput[];
+};
+export type AnswerVoteUncheckedUpdateManyWithoutAnswerNestedInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutAnswerInput, Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput> | Prisma.AnswerVoteCreateWithoutAnswerInput[] | Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput | Prisma.AnswerVoteCreateOrConnectWithoutAnswerInput[];
+    upsert?: Prisma.AnswerVoteUpsertWithWhereUniqueWithoutAnswerInput | Prisma.AnswerVoteUpsertWithWhereUniqueWithoutAnswerInput[];
+    createMany?: Prisma.AnswerVoteCreateManyAnswerInputEnvelope;
+    set?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    disconnect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    delete?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    update?: Prisma.AnswerVoteUpdateWithWhereUniqueWithoutAnswerInput | Prisma.AnswerVoteUpdateWithWhereUniqueWithoutAnswerInput[];
+    updateMany?: Prisma.AnswerVoteUpdateManyWithWhereWithoutAnswerInput | Prisma.AnswerVoteUpdateManyWithWhereWithoutAnswerInput[];
+    deleteMany?: Prisma.AnswerVoteScalarWhereInput | Prisma.AnswerVoteScalarWhereInput[];
+};
+export type AnswerVoteCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutUserInput, Prisma.AnswerVoteUncheckedCreateWithoutUserInput> | Prisma.AnswerVoteCreateWithoutUserInput[] | Prisma.AnswerVoteUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutUserInput | Prisma.AnswerVoteCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.AnswerVoteCreateManyUserInputEnvelope;
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+};
+export type AnswerVoteUncheckedCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutUserInput, Prisma.AnswerVoteUncheckedCreateWithoutUserInput> | Prisma.AnswerVoteCreateWithoutUserInput[] | Prisma.AnswerVoteUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutUserInput | Prisma.AnswerVoteCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.AnswerVoteCreateManyUserInputEnvelope;
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+};
+export type AnswerVoteUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutUserInput, Prisma.AnswerVoteUncheckedCreateWithoutUserInput> | Prisma.AnswerVoteCreateWithoutUserInput[] | Prisma.AnswerVoteUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutUserInput | Prisma.AnswerVoteCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.AnswerVoteUpsertWithWhereUniqueWithoutUserInput | Prisma.AnswerVoteUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.AnswerVoteCreateManyUserInputEnvelope;
+    set?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    disconnect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    delete?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    update?: Prisma.AnswerVoteUpdateWithWhereUniqueWithoutUserInput | Prisma.AnswerVoteUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.AnswerVoteUpdateManyWithWhereWithoutUserInput | Prisma.AnswerVoteUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.AnswerVoteScalarWhereInput | Prisma.AnswerVoteScalarWhereInput[];
+};
+export type AnswerVoteUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.AnswerVoteCreateWithoutUserInput, Prisma.AnswerVoteUncheckedCreateWithoutUserInput> | Prisma.AnswerVoteCreateWithoutUserInput[] | Prisma.AnswerVoteUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AnswerVoteCreateOrConnectWithoutUserInput | Prisma.AnswerVoteCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.AnswerVoteUpsertWithWhereUniqueWithoutUserInput | Prisma.AnswerVoteUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.AnswerVoteCreateManyUserInputEnvelope;
+    set?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    disconnect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    delete?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    connect?: Prisma.AnswerVoteWhereUniqueInput | Prisma.AnswerVoteWhereUniqueInput[];
+    update?: Prisma.AnswerVoteUpdateWithWhereUniqueWithoutUserInput | Prisma.AnswerVoteUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.AnswerVoteUpdateManyWithWhereWithoutUserInput | Prisma.AnswerVoteUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.AnswerVoteScalarWhereInput | Prisma.AnswerVoteScalarWhereInput[];
+};
+export type AnswerVoteCreateWithoutAnswerInput = {
+    id?: string;
+    value: number;
+    user: Prisma.UserCreateNestedOneWithoutAnswerVotesInput;
+};
+export type AnswerVoteUncheckedCreateWithoutAnswerInput = {
+    id?: string;
+    userId: string;
+    value: number;
+};
+export type AnswerVoteCreateOrConnectWithoutAnswerInput = {
+    where: Prisma.AnswerVoteWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AnswerVoteCreateWithoutAnswerInput, Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput>;
+};
+export type AnswerVoteCreateManyAnswerInputEnvelope = {
+    data: Prisma.AnswerVoteCreateManyAnswerInput | Prisma.AnswerVoteCreateManyAnswerInput[];
+    skipDuplicates?: boolean;
+};
+export type AnswerVoteUpsertWithWhereUniqueWithoutAnswerInput = {
+    where: Prisma.AnswerVoteWhereUniqueInput;
+    update: Prisma.XOR<Prisma.AnswerVoteUpdateWithoutAnswerInput, Prisma.AnswerVoteUncheckedUpdateWithoutAnswerInput>;
+    create: Prisma.XOR<Prisma.AnswerVoteCreateWithoutAnswerInput, Prisma.AnswerVoteUncheckedCreateWithoutAnswerInput>;
+};
+export type AnswerVoteUpdateWithWhereUniqueWithoutAnswerInput = {
+    where: Prisma.AnswerVoteWhereUniqueInput;
+    data: Prisma.XOR<Prisma.AnswerVoteUpdateWithoutAnswerInput, Prisma.AnswerVoteUncheckedUpdateWithoutAnswerInput>;
+};
+export type AnswerVoteUpdateManyWithWhereWithoutAnswerInput = {
+    where: Prisma.AnswerVoteScalarWhereInput;
+    data: Prisma.XOR<Prisma.AnswerVoteUpdateManyMutationInput, Prisma.AnswerVoteUncheckedUpdateManyWithoutAnswerInput>;
+};
+export type AnswerVoteScalarWhereInput = {
+    AND?: Prisma.AnswerVoteScalarWhereInput | Prisma.AnswerVoteScalarWhereInput[];
+    OR?: Prisma.AnswerVoteScalarWhereInput[];
+    NOT?: Prisma.AnswerVoteScalarWhereInput | Prisma.AnswerVoteScalarWhereInput[];
+    id?: Prisma.StringFilter<"AnswerVote"> | string;
+    answerId?: Prisma.StringFilter<"AnswerVote"> | string;
+    userId?: Prisma.StringFilter<"AnswerVote"> | string;
+    value?: Prisma.IntFilter<"AnswerVote"> | number;
+};
+export type AnswerVoteCreateWithoutUserInput = {
+    id?: string;
+    value: number;
+    answer: Prisma.ForumAnswerCreateNestedOneWithoutVotesInput;
+};
+export type AnswerVoteUncheckedCreateWithoutUserInput = {
+    id?: string;
+    answerId: string;
+    value: number;
+};
+export type AnswerVoteCreateOrConnectWithoutUserInput = {
+    where: Prisma.AnswerVoteWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AnswerVoteCreateWithoutUserInput, Prisma.AnswerVoteUncheckedCreateWithoutUserInput>;
+};
+export type AnswerVoteCreateManyUserInputEnvelope = {
+    data: Prisma.AnswerVoteCreateManyUserInput | Prisma.AnswerVoteCreateManyUserInput[];
+    skipDuplicates?: boolean;
+};
+export type AnswerVoteUpsertWithWhereUniqueWithoutUserInput = {
+    where: Prisma.AnswerVoteWhereUniqueInput;
+    update: Prisma.XOR<Prisma.AnswerVoteUpdateWithoutUserInput, Prisma.AnswerVoteUncheckedUpdateWithoutUserInput>;
+    create: Prisma.XOR<Prisma.AnswerVoteCreateWithoutUserInput, Prisma.AnswerVoteUncheckedCreateWithoutUserInput>;
+};
+export type AnswerVoteUpdateWithWhereUniqueWithoutUserInput = {
+    where: Prisma.AnswerVoteWhereUniqueInput;
+    data: Prisma.XOR<Prisma.AnswerVoteUpdateWithoutUserInput, Prisma.AnswerVoteUncheckedUpdateWithoutUserInput>;
+};
+export type AnswerVoteUpdateManyWithWhereWithoutUserInput = {
+    where: Prisma.AnswerVoteScalarWhereInput;
+    data: Prisma.XOR<Prisma.AnswerVoteUpdateManyMutationInput, Prisma.AnswerVoteUncheckedUpdateManyWithoutUserInput>;
+};
+export type AnswerVoteCreateManyAnswerInput = {
+    id?: string;
+    userId: string;
+    value: number;
+};
+export type AnswerVoteUpdateWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+    user?: Prisma.UserUpdateOneRequiredWithoutAnswerVotesNestedInput;
+};
+export type AnswerVoteUncheckedUpdateWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type AnswerVoteUncheckedUpdateManyWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type AnswerVoteCreateManyUserInput = {
+    id?: string;
+    answerId: string;
+    value: number;
+};
+export type AnswerVoteUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+    answer?: Prisma.ForumAnswerUpdateOneRequiredWithoutVotesNestedInput;
+};
+export type AnswerVoteUncheckedUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    answerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type AnswerVoteUncheckedUpdateManyWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    answerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    value?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type AnswerVoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    answerId?: boolean;
+    userId?: boolean;
+    value?: boolean;
+    answer?: boolean | Prisma.ForumAnswerDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["answerVote"]>;
+export type AnswerVoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    answerId?: boolean;
+    userId?: boolean;
+    value?: boolean;
+    answer?: boolean | Prisma.ForumAnswerDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["answerVote"]>;
+export type AnswerVoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    answerId?: boolean;
+    userId?: boolean;
+    value?: boolean;
+    answer?: boolean | Prisma.ForumAnswerDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["answerVote"]>;
+export type AnswerVoteSelectScalar = {
+    id?: boolean;
+    answerId?: boolean;
+    userId?: boolean;
+    value?: boolean;
+};
+export type AnswerVoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "answerId" | "userId" | "value", ExtArgs["result"]["answerVote"]>;
+export type AnswerVoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    answer?: boolean | Prisma.ForumAnswerDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type AnswerVoteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    answer?: boolean | Prisma.ForumAnswerDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type AnswerVoteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    answer?: boolean | Prisma.ForumAnswerDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type $AnswerVotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "AnswerVote";
+    objects: {
+        answer: Prisma.$ForumAnswerPayload<ExtArgs>;
+        user: Prisma.$UserPayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        answerId: string;
+        userId: string;
+        value: number;
+    }, ExtArgs["result"]["answerVote"]>;
+    composites: {};
+};
+export type AnswerVoteGetPayload<S extends boolean | null | undefined | AnswerVoteDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload, S>;
+export type AnswerVoteCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<AnswerVoteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: AnswerVoteCountAggregateInputType | true;
+};
+export interface AnswerVoteDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['AnswerVote'];
+        meta: {
+            name: 'AnswerVote';
+        };
+    };
+    /**
+     * Find zero or one AnswerVote that matches the filter.
+     * @param {AnswerVoteFindUniqueArgs} args - Arguments to find a AnswerVote
+     * @example
+     * // Get one AnswerVote
+     * const answerVote = await prisma.answerVote.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AnswerVoteFindUniqueArgs>(args: Prisma.SelectSubset<T, AnswerVoteFindUniqueArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one AnswerVote that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AnswerVoteFindUniqueOrThrowArgs} args - Arguments to find a AnswerVote
+     * @example
+     * // Get one AnswerVote
+     * const answerVote = await prisma.answerVote.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AnswerVoteFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, AnswerVoteFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first AnswerVote that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnswerVoteFindFirstArgs} args - Arguments to find a AnswerVote
+     * @example
+     * // Get one AnswerVote
+     * const answerVote = await prisma.answerVote.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AnswerVoteFindFirstArgs>(args?: Prisma.SelectSubset<T, AnswerVoteFindFirstArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first AnswerVote that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnswerVoteFindFirstOrThrowArgs} args - Arguments to find a AnswerVote
+     * @example
+     * // Get one AnswerVote
+     * const answerVote = await prisma.answerVote.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AnswerVoteFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, AnswerVoteFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more AnswerVotes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnswerVoteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AnswerVotes
+     * const answerVotes = await prisma.answerVote.findMany()
+     *
+     * // Get first 10 AnswerVotes
+     * const answerVotes = await prisma.answerVote.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const answerVoteWithIdOnly = await prisma.answerVote.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends AnswerVoteFindManyArgs>(args?: Prisma.SelectSubset<T, AnswerVoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a AnswerVote.
+     * @param {AnswerVoteCreateArgs} args - Arguments to create a AnswerVote.
+     * @example
+     * // Create one AnswerVote
+     * const AnswerVote = await prisma.answerVote.create({
+     *   data: {
+     *     // ... data to create a AnswerVote
+     *   }
+     * })
+     *
+     */
+    create<T extends AnswerVoteCreateArgs>(args: Prisma.SelectSubset<T, AnswerVoteCreateArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many AnswerVotes.
+     * @param {AnswerVoteCreateManyArgs} args - Arguments to create many AnswerVotes.
+     * @example
+     * // Create many AnswerVotes
+     * const answerVote = await prisma.answerVote.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends AnswerVoteCreateManyArgs>(args?: Prisma.SelectSubset<T, AnswerVoteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many AnswerVotes and returns the data saved in the database.
+     * @param {AnswerVoteCreateManyAndReturnArgs} args - Arguments to create many AnswerVotes.
+     * @example
+     * // Create many AnswerVotes
+     * const answerVote = await prisma.answerVote.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many AnswerVotes and only return the `id`
+     * const answerVoteWithIdOnly = await prisma.answerVote.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends AnswerVoteCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, AnswerVoteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a AnswerVote.
+     * @param {AnswerVoteDeleteArgs} args - Arguments to delete one AnswerVote.
+     * @example
+     * // Delete one AnswerVote
+     * const AnswerVote = await prisma.answerVote.delete({
+     *   where: {
+     *     // ... filter to delete one AnswerVote
+     *   }
+     * })
+     *
+     */
+    delete<T extends AnswerVoteDeleteArgs>(args: Prisma.SelectSubset<T, AnswerVoteDeleteArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one AnswerVote.
+     * @param {AnswerVoteUpdateArgs} args - Arguments to update one AnswerVote.
+     * @example
+     * // Update one AnswerVote
+     * const answerVote = await prisma.answerVote.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends AnswerVoteUpdateArgs>(args: Prisma.SelectSubset<T, AnswerVoteUpdateArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more AnswerVotes.
+     * @param {AnswerVoteDeleteManyArgs} args - Arguments to filter AnswerVotes to delete.
+     * @example
+     * // Delete a few AnswerVotes
+     * const { count } = await prisma.answerVote.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends AnswerVoteDeleteManyArgs>(args?: Prisma.SelectSubset<T, AnswerVoteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more AnswerVotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnswerVoteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AnswerVotes
+     * const answerVote = await prisma.answerVote.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends AnswerVoteUpdateManyArgs>(args: Prisma.SelectSubset<T, AnswerVoteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more AnswerVotes and returns the data updated in the database.
+     * @param {AnswerVoteUpdateManyAndReturnArgs} args - Arguments to update many AnswerVotes.
+     * @example
+     * // Update many AnswerVotes
+     * const answerVote = await prisma.answerVote.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more AnswerVotes and only return the `id`
+     * const answerVoteWithIdOnly = await prisma.answerVote.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends AnswerVoteUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, AnswerVoteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one AnswerVote.
+     * @param {AnswerVoteUpsertArgs} args - Arguments to update or create a AnswerVote.
+     * @example
+     * // Update or create a AnswerVote
+     * const answerVote = await prisma.answerVote.upsert({
+     *   create: {
+     *     // ... data to create a AnswerVote
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AnswerVote we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AnswerVoteUpsertArgs>(args: Prisma.SelectSubset<T, AnswerVoteUpsertArgs<ExtArgs>>): Prisma.Prisma__AnswerVoteClient<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of AnswerVotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnswerVoteCountArgs} args - Arguments to filter AnswerVotes to count.
+     * @example
+     * // Count the number of AnswerVotes
+     * const count = await prisma.answerVote.count({
+     *   where: {
+     *     // ... the filter for the AnswerVotes we want to count
+     *   }
+     * })
+    **/
+    count<T extends AnswerVoteCountArgs>(args?: Prisma.Subset<T, AnswerVoteCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], AnswerVoteCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a AnswerVote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnswerVoteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AnswerVoteAggregateArgs>(args: Prisma.Subset<T, AnswerVoteAggregateArgs>): Prisma.PrismaPromise<GetAnswerVoteAggregateType<T>>;
+    /**
+     * Group by AnswerVote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnswerVoteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends AnswerVoteGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: AnswerVoteGroupByArgs['orderBy'];
+    } : {
+        orderBy?: AnswerVoteGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, AnswerVoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAnswerVoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the AnswerVote model
+     */
+    readonly fields: AnswerVoteFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for AnswerVote.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__AnswerVoteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    answer<T extends Prisma.ForumAnswerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumAnswerDefaultArgs<ExtArgs>>): Prisma.Prisma__ForumAnswerClient<runtime.Types.Result.GetResult<Prisma.$ForumAnswerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the AnswerVote model
+ */
+export interface AnswerVoteFieldRefs {
+    readonly id: Prisma.FieldRef<"AnswerVote", 'String'>;
+    readonly answerId: Prisma.FieldRef<"AnswerVote", 'String'>;
+    readonly userId: Prisma.FieldRef<"AnswerVote", 'String'>;
+    readonly value: Prisma.FieldRef<"AnswerVote", 'Int'>;
+}
+/**
+ * AnswerVote findUnique
+ */
+export type AnswerVoteFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * Filter, which AnswerVote to fetch.
+     */
+    where: Prisma.AnswerVoteWhereUniqueInput;
+};
+/**
+ * AnswerVote findUniqueOrThrow
+ */
+export type AnswerVoteFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * Filter, which AnswerVote to fetch.
+     */
+    where: Prisma.AnswerVoteWhereUniqueInput;
+};
+/**
+ * AnswerVote findFirst
+ */
+export type AnswerVoteFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * Filter, which AnswerVote to fetch.
+     */
+    where?: Prisma.AnswerVoteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of AnswerVotes to fetch.
+     */
+    orderBy?: Prisma.AnswerVoteOrderByWithRelationInput | Prisma.AnswerVoteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for AnswerVotes.
+     */
+    cursor?: Prisma.AnswerVoteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` AnswerVotes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` AnswerVotes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of AnswerVotes.
+     */
+    distinct?: Prisma.AnswerVoteScalarFieldEnum | Prisma.AnswerVoteScalarFieldEnum[];
+};
+/**
+ * AnswerVote findFirstOrThrow
+ */
+export type AnswerVoteFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * Filter, which AnswerVote to fetch.
+     */
+    where?: Prisma.AnswerVoteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of AnswerVotes to fetch.
+     */
+    orderBy?: Prisma.AnswerVoteOrderByWithRelationInput | Prisma.AnswerVoteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for AnswerVotes.
+     */
+    cursor?: Prisma.AnswerVoteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` AnswerVotes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` AnswerVotes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of AnswerVotes.
+     */
+    distinct?: Prisma.AnswerVoteScalarFieldEnum | Prisma.AnswerVoteScalarFieldEnum[];
+};
+/**
+ * AnswerVote findMany
+ */
+export type AnswerVoteFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * Filter, which AnswerVotes to fetch.
+     */
+    where?: Prisma.AnswerVoteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of AnswerVotes to fetch.
+     */
+    orderBy?: Prisma.AnswerVoteOrderByWithRelationInput | Prisma.AnswerVoteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing AnswerVotes.
+     */
+    cursor?: Prisma.AnswerVoteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` AnswerVotes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` AnswerVotes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of AnswerVotes.
+     */
+    distinct?: Prisma.AnswerVoteScalarFieldEnum | Prisma.AnswerVoteScalarFieldEnum[];
+};
+/**
+ * AnswerVote create
+ */
+export type AnswerVoteCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a AnswerVote.
+     */
+    data: Prisma.XOR<Prisma.AnswerVoteCreateInput, Prisma.AnswerVoteUncheckedCreateInput>;
+};
+/**
+ * AnswerVote createMany
+ */
+export type AnswerVoteCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AnswerVotes.
+     */
+    data: Prisma.AnswerVoteCreateManyInput | Prisma.AnswerVoteCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * AnswerVote createManyAndReturn
+ */
+export type AnswerVoteCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * The data used to create many AnswerVotes.
+     */
+    data: Prisma.AnswerVoteCreateManyInput | Prisma.AnswerVoteCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * AnswerVote update
+ */
+export type AnswerVoteUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a AnswerVote.
+     */
+    data: Prisma.XOR<Prisma.AnswerVoteUpdateInput, Prisma.AnswerVoteUncheckedUpdateInput>;
+    /**
+     * Choose, which AnswerVote to update.
+     */
+    where: Prisma.AnswerVoteWhereUniqueInput;
+};
+/**
+ * AnswerVote updateMany
+ */
+export type AnswerVoteUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AnswerVotes.
+     */
+    data: Prisma.XOR<Prisma.AnswerVoteUpdateManyMutationInput, Prisma.AnswerVoteUncheckedUpdateManyInput>;
+    /**
+     * Filter which AnswerVotes to update
+     */
+    where?: Prisma.AnswerVoteWhereInput;
+    /**
+     * Limit how many AnswerVotes to update.
+     */
+    limit?: number;
+};
+/**
+ * AnswerVote updateManyAndReturn
+ */
+export type AnswerVoteUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * The data used to update AnswerVotes.
+     */
+    data: Prisma.XOR<Prisma.AnswerVoteUpdateManyMutationInput, Prisma.AnswerVoteUncheckedUpdateManyInput>;
+    /**
+     * Filter which AnswerVotes to update
+     */
+    where?: Prisma.AnswerVoteWhereInput;
+    /**
+     * Limit how many AnswerVotes to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * AnswerVote upsert
+ */
+export type AnswerVoteUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the AnswerVote to update in case it exists.
+     */
+    where: Prisma.AnswerVoteWhereUniqueInput;
+    /**
+     * In case the AnswerVote found by the `where` argument doesn't exist, create a new AnswerVote with this data.
+     */
+    create: Prisma.XOR<Prisma.AnswerVoteCreateInput, Prisma.AnswerVoteUncheckedCreateInput>;
+    /**
+     * In case the AnswerVote was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.AnswerVoteUpdateInput, Prisma.AnswerVoteUncheckedUpdateInput>;
+};
+/**
+ * AnswerVote delete
+ */
+export type AnswerVoteDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+    /**
+     * Filter which AnswerVote to delete.
+     */
+    where: Prisma.AnswerVoteWhereUniqueInput;
+};
+/**
+ * AnswerVote deleteMany
+ */
+export type AnswerVoteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which AnswerVotes to delete
+     */
+    where?: Prisma.AnswerVoteWhereInput;
+    /**
+     * Limit how many AnswerVotes to delete.
+     */
+    limit?: number;
+};
+/**
+ * AnswerVote without action
+ */
+export type AnswerVoteDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnswerVote
+     */
+    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the AnswerVote
+     */
+    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
+};
+//# sourceMappingURL=AnswerVote.d.ts.map

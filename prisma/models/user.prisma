@@ -1,0 +1,60 @@
+enum UserRole {
+  USER
+  DOCTOR
+  BREEDER
+  BRAND
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+model User {
+  id          String     @id @default(uuid())
+  email       String?    @unique
+  name        String?
+  phone       String     @unique
+  avatarUrl   Json?
+  role        UserRole   @default(USER)
+  status      UserStatus @default(ACTIVE)
+  lastLoginAt DateTime?
+  deletedAt   DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  animals         Animal[]
+  listings        CattleListing[]
+  doctorProfile   DoctorProfile?
+  breederProfile  BreederProfile?
+  brandProfile    BrandProfile?
+  appointments    DoctorAppointment[] @relation("PatientAppointments")
+  orders          MarketplaceOrder[]
+  questions       ForumQuestion[]
+  answers         ForumAnswer[]
+  questionVotes   QuestionVote[]
+  answerVotes     AnswerVote[]
+  reportsFiled    ForumReport[]       @relation("ReporterRelation")
+  reportsReviewed ForumReport[]       @relation("ReviewerRelation")
+  subscriptions   Subscription[]
+  ledgerEntries   PlatformLedger[]
+
+  @@index([email, status])
+}
+
+model OtpCode {
+  id              String   @id @default(uuid())
+  mobile          String   @unique
+  otp             String
+  expiresAt       DateTime
+  attempts        Int      @default(0)
+  lastAttemptedAt DateTime?
+  isUsed          Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([mobile, expiresAt])
+}

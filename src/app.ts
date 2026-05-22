@@ -4,7 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import errorMiddleware from "./middlewares/error.middleware.js";
-import multerUpload from "./middlewares/multer.middleware.js";
+import userRouter from "./modules/user/routes/index.js";
 
 const app = express();
 
@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
   res.json({ status: 200, message: "Server is running", version: "1.0.0" });
 });
 
+app.use("/api/v1/user", userRouter);
 
 app.use(errorMiddleware);
 

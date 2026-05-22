@@ -1,0 +1,88 @@
+enum ReportStatus {
+  PENDING
+  RESOLVED
+  DISMISSED
+}
+
+model ForumQuestion {
+  id        String   @id @default(uuid())
+  authorId  String
+  title     String
+  content   String
+  tags      String[]
+  viewCount Int      @default(0)
+  isLocked  Boolean  @default(false)
+  isPinned  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  author  User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  answers ForumAnswer[]
+  votes   QuestionVote[]
+  reports ForumReport[]
+
+  @@index([authorId])
+  @@index([createdAt])
+}
+
+model ForumAnswer {
+  id         String   @id @default(uuid())
+  questionId String
+  authorId   String
+  content    String
+  isAccepted Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  question ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  votes    AnswerVote[]
+
+  @@index([questionId])
+}
+
+model QuestionVote {
+  id         String @id @default(uuid())
+  questionId String
+  userId     String
+  value      Int
+
+  // Relations
+  question ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, userId])
+}
+
+model AnswerVote {
+  id       String @id @default(uuid())
+  answerId String
+  userId   String
+  value    Int
+
+  // Relations
+  answer ForumAnswer @relation(fields: [answerId], references: [id], onDelete: Cascade)
+  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([answerId, userId])
+}
+
+model ForumReport {
+  id         String       @id @default(uuid())
+  questionId String
+  reporterId String
+  reason     String
+  status     ReportStatus @default(PENDING)
+  reviewerId String?
+  remarks    String?
+  createdAt  DateTime     @default(now())
+
+  // Relations
+  question ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  reporter User          @relation("ReporterRelation", fields: [reporterId], references: [id], onDelete: Cascade)
+  reviewer User?         @relation("ReviewerRelation", fields: [reviewerId], references: [id])
+
+  @@index([questionId])
+}

@@ -1,0 +1,145 @@
+import * as Prisma from './internal/prismaNamespaceBrowser.js';
+export { Prisma };
+export * as $Enums from './enums.js';
+export * from './enums.js';
+/**
+ * Model Animal
+ *
+ */
+export type Animal = Prisma.AnimalModel;
+/**
+ * Model VaccinationRecord
+ *
+ */
+export type VaccinationRecord = Prisma.VaccinationRecordModel;
+/**
+ * Model BreederProfile
+ *
+ */
+export type BreederProfile = Prisma.BreederProfileModel;
+/**
+ * Model BreedingRequest
+ *
+ */
+export type BreedingRequest = Prisma.BreedingRequestModel;
+/**
+ * Model BreederReview
+ *
+ */
+export type BreederReview = Prisma.BreederReviewModel;
+/**
+ * Model DoctorProfile
+ *
+ */
+export type DoctorProfile = Prisma.DoctorProfileModel;
+/**
+ * Model DoctorVerificationLog
+ *
+ */
+export type DoctorVerificationLog = Prisma.DoctorVerificationLogModel;
+/**
+ * Model DoctorAppointment
+ *
+ */
+export type DoctorAppointment = Prisma.DoctorAppointmentModel;
+/**
+ * Model DoctorReview
+ *
+ */
+export type DoctorReview = Prisma.DoctorReviewModel;
+/**
+ * Model ForumQuestion
+ *
+ */
+export type ForumQuestion = Prisma.ForumQuestionModel;
+/**
+ * Model ForumAnswer
+ *
+ */
+export type ForumAnswer = Prisma.ForumAnswerModel;
+/**
+ * Model QuestionVote
+ *
+ */
+export type QuestionVote = Prisma.QuestionVoteModel;
+/**
+ * Model AnswerVote
+ *
+ */
+export type AnswerVote = Prisma.AnswerVoteModel;
+/**
+ * Model ForumReport
+ *
+ */
+export type ForumReport = Prisma.ForumReportModel;
+/**
+ * Model CattleListing
+ *
+ */
+export type CattleListing = Prisma.CattleListingModel;
+/**
+ * Model ListingImage
+ *
+ */
+export type ListingImage = Prisma.ListingImageModel;
+/**
+ * Model BrandProfile
+ *
+ */
+export type BrandProfile = Prisma.BrandProfileModel;
+/**
+ * Model MarketplaceProduct
+ *
+ */
+export type MarketplaceProduct = Prisma.MarketplaceProductModel;
+/**
+ * Model ProductReview
+ *
+ */
+export type ProductReview = Prisma.ProductReviewModel;
+/**
+ * Model Cart
+ *
+ */
+export type Cart = Prisma.CartModel;
+/**
+ * Model CartItem
+ *
+ */
+export type CartItem = Prisma.CartItemModel;
+/**
+ * Model MarketplaceOrder
+ *
+ */
+export type MarketplaceOrder = Prisma.MarketplaceOrderModel;
+/**
+ * Model MarketplaceOrderItem
+ *
+ */
+export type MarketplaceOrderItem = Prisma.MarketplaceOrderItemModel;
+/**
+ * Model SubscriptionPlan
+ *
+ */
+export type SubscriptionPlan = Prisma.SubscriptionPlanModel;
+/**
+ * Model Subscription
+ *
+ */
+export type Subscription = Prisma.SubscriptionModel;
+/**
+ * Model PlatformLedger
+ *
+ */
+export type PlatformLedger = Prisma.PlatformLedgerModel;
+/**
+ * Model User
+ *
+ */
+export type User = Prisma.UserModel;
+/**
+ * Model OtpCode
+ *
+ */
+export type OtpCode = Prisma.OtpCodeModel;
+//# sourceMappingURL=browser.d.ts.map
