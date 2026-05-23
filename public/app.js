@@ -5,6 +5,7 @@ import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import userRouter from "./modules/user/routes/index.js";
+import animalRouter from "./modules/animal/routes/index.js";
 const app = express();
 app.use(express.json({ limit: "20mb" }));
 app.use(helmet());
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
     res.json({ status: 200, message: "Server is running", version: "1.0.0" });
 });
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/animal", animalRouter);
 app.use(errorMiddleware);
 export default app;
 //# sourceMappingURL=app.js.map

@@ -1,4 +1,6 @@
+import type { NextFunction, Request, Response } from "express";
 import { asyncHandler } from "../../../middlewares/error.middleware.js";
+import type { UserRole } from "../../../types/types.js";
 import { ErrorResponse } from "../../../utils/response.util.js";
 import UserService from "../services/user.service.js";
 import { verifyJwt } from "../utils.js";
@@ -12,7 +14,7 @@ export const authenticate = asyncHandler(async (req, res, next) => {
 
   const token = tokenFromCookie || tokenFromHeader;
 
-  if (!token) return next(new ErrorResponse("Unauthorized", 401));
+  if (!token) return next(new ErrorResponse("Token is required", 401));
 
   let decode;
   try {
@@ -31,3 +33,15 @@ export const authenticate = asyncHandler(async (req, res, next) => {
 
   next();
 });
+
+
+export const authorizeRole = (...roles: UserRole[]) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    if (!req.user || !roles.includes(req.user.role)) {
+      return next(new ErrorResponse("Forbidden : you don't have permission to access this resource", 403));
+    }
+    next();
+  }
+}
+  
+  

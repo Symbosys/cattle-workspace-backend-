@@ -1,3 +1,4 @@
+export * from "../generated/prisma/client.js";
 export declare enum statusCode {
     OK = 200,
     Created = 201,

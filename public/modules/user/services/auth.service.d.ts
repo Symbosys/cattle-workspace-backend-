@@ -51,8 +51,8 @@ export declare class AuthService {
         email: string | null;
         phone: string;
         avatarUrl: import("@prisma/client/runtime/client").JsonValue | null;
-        role: import("../../../generated/prisma/enums.js").UserRole;
-        status: import("../../../generated/prisma/enums.js").UserStatus;
+        role: import("../../../types/types.js").UserRole;
+        status: import("../../../types/types.js").UserStatus;
         lastLoginAt: Date | null;
         deletedAt: Date | null;
     } | null>;
@@ -64,8 +64,8 @@ export declare class AuthService {
         email: string | null;
         phone: string;
         avatarUrl: import("@prisma/client/runtime/client").JsonValue | null;
-        role: import("../../../generated/prisma/enums.js").UserRole;
-        status: import("../../../generated/prisma/enums.js").UserStatus;
+        role: import("../../../types/types.js").UserRole;
+        status: import("../../../types/types.js").UserStatus;
         lastLoginAt: Date | null;
         deletedAt: Date | null;
     }>;
@@ -77,8 +77,8 @@ export declare class AuthService {
         email: string | null;
         phone: string;
         avatarUrl: import("@prisma/client/runtime/client").JsonValue | null;
-        role: import("../../../generated/prisma/enums.js").UserRole;
-        status: import("../../../generated/prisma/enums.js").UserStatus;
+        role: import("../../../types/types.js").UserRole;
+        status: import("../../../types/types.js").UserStatus;
         lastLoginAt: Date | null;
         deletedAt: Date | null;
     }>;

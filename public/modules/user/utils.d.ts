@@ -10,5 +10,5 @@ export declare const signJwt: (payload: string | object | Buffer, secret: string
 /**
  * Verifies a JWT using the jsonwebtoken package.
  */
-export declare const verifyJwt: (token: string, secret: string, options?: jwt.VerifyOptions) => any;
+export declare const verifyJwt: (token: string, options?: jwt.VerifyOptions) => any;
 //# sourceMappingURL=utils.d.ts.map
