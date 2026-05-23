@@ -6,13 +6,15 @@ enum AnimalStatus {
 }
 
 model Animal {
-  id          String       @id @default(uuid())
-  ownerId     String
-  name        String?
-  category    String // e.g., "COW", "DOG", "CAT", "BUFFALO"
-  breed       String?
-  ageMonths   Int?
-  gender      String? // "MALE", "FEMALE"
+  id             String       @id @default(uuid())
+  ownerId        String
+  mainCategoryId String
+  subCategoryId  String
+  name           String?
+  category       String // e.g., "COW", "DOG", "CAT", "BUFFALO"
+  breed          String?
+  ageMonths      Int?
+  gender         String? // "MALE", "FEMALE"
   weightKg    Decimal?     @db.Decimal(8, 2)
   description String?
   status      AnimalStatus @default(OWNED)
@@ -24,6 +26,9 @@ model Animal {
   listings         CattleListing[]
   vaccinations     VaccinationRecord[]
   breedingRequests BreederProfile[]    @relation("BreederStuds")
+
+  mainCategory Category @relation(fields: [mainCategoryId], references: [id], onDelete: Cascade)
+  subCategory  SubCategory @relation(fields: [subCategoryId], references: [id], onDelete: Cascade)
 
   @@index([ownerId, category])
 }
@@ -54,6 +59,8 @@ model Category {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  animals Animal[]
 }
 
 model SubCategory {
@@ -68,4 +75,6 @@ model SubCategory {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  animals Animal[]
 }

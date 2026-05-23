@@ -1,3 +1,4 @@
+import env from "../../../config/env.js";
 import { asyncHandler } from "../../../middlewares/error.middleware.js";
 import { ErrorResponse, SuccessResponse } from "../../../utils/response.util.js";
 import { AuthService } from "../services/auth.service.js";
@@ -33,12 +34,12 @@ export const sendOtp = asyncHandler(async (req, res, next) => {
   await AuthService.upsertOtp(mobile, otp, expiresAt);
 
   // Send OTP (Mock / Console Log)
-  console.log(`[SMS-MOCK] OTP for mobile ${mobile} is: ${otp}`);
+  env.nodeEnv === "development" && console.log(`[SMS-MOCK] OTP for mobile ${mobile} is: ${otp}`);
 
   return SuccessResponse(
     res,
-    "OTP generated successfully",
-    process.env.NODE_ENV === "development" ? { otp } : {},
+    `${env.nodeEnv === "development" ? "your otp is " + otp : "otp sent successfully"}`,
+    env.nodeEnv === "development" ? { otp } : {},
     200
   );
 });
@@ -103,6 +104,14 @@ export const verifyOtp = asyncHandler(async (req, res, next) => {
     },
     secret
   );
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+    maxAge: 24 * 60 * 60 * 1000,
+  })
+  .setHeader("Authorization", `Bearer ${token}`);
 
   return SuccessResponse(
     res,
