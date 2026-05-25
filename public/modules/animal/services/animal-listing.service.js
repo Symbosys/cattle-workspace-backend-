@@ -1,4 +1,6 @@
 import { db } from "../../../db/db.js";
+import { deleteFromCloudinary } from "../../../config/cloudinary.js";
+import { ErrorResponse } from "../../../utils/response.util.js";
 export class AnimalListingService {
     /**
      * Count the total number of listings created by the user
@@ -129,6 +131,180 @@ export class AnimalListingService {
                 },
             });
             return listing;
+        });
+    }
+    /**
+     * Update animal and listing in a transaction
+     */
+    static async updateListing(ownerId, listingId, dto, newImages) {
+        return await db.$transaction(async (tx) => {
+            // 1. Fetch listing and check authorization
+            const listing = await tx.cattleListing.findUnique({
+                where: { id: listingId },
+                include: { animal: true, location: true, images: true },
+            });
+            if (!listing) {
+                throw new ErrorResponse("Listing not found", 404);
+            }
+            if (listing.ownerId !== ownerId) {
+                throw new ErrorResponse("You are not authorized to update this listing", 403);
+            }
+            // 2. Update Animal details
+            const animalUpdateData = {
+                ...(dto.mainCategoryId !== undefined && { mainCategoryId: dto.mainCategoryId }),
+                ...(dto.subCategoryId !== undefined && { subCategoryId: dto.subCategoryId }),
+                ...(dto.name !== undefined && { name: dto.name ?? null }),
+                ...(dto.category !== undefined && { category: dto.category }),
+                ...(dto.breed !== undefined && { breed: dto.breed ?? null }),
+                ...(dto.ageMonths !== undefined && { ageMonths: dto.ageMonths ?? null }),
+                ...(dto.gender !== undefined && { gender: dto.gender ?? null }),
+                ...(dto.weightKg !== undefined && { weightKg: dto.weightKg ?? null }),
+                ...(dto.description !== undefined && { description: dto.description ?? null }),
+                ...(dto.doesGiveMilk !== undefined && { doesGiveMilk: dto.doesGiveMilk }),
+                ...(dto.dailyMilkProdLtr !== undefined && { dailyMilkProdLtr: dto.dailyMilkProdLtr ?? null }),
+            };
+            await tx.animal.update({
+                where: { id: listing.animalId },
+                data: animalUpdateData,
+            });
+            // 3. Update Location if required
+            const needsLocationUpdate = dto.stateName !== undefined ||
+                dto.cityName !== undefined ||
+                dto.areaName !== undefined;
+            if (needsLocationUpdate && listing.location) {
+                const currentState = await tx.state.findUnique({ where: { id: listing.location.stateId } });
+                const currentCity = await tx.city.findUnique({ where: { id: listing.location.cityId } });
+                const stateName = dto.stateName ?? currentState?.name;
+                const cityName = dto.cityName ?? currentCity?.name;
+                if (!stateName || !cityName) {
+                    throw new ErrorResponse("State name and City name are required for location update", 400);
+                }
+                // Resolve State
+                let state = await tx.state.findFirst({
+                    where: { name: { equals: stateName, mode: "insensitive" } },
+                });
+                if (!state) {
+                    state = await tx.state.create({
+                        data: {
+                            name: stateName,
+                            stateCode: dto.stateCode || stateName.substring(0, 2).toUpperCase(),
+                            country: "India",
+                            countryCode: "IN",
+                            latitude: dto.stateLatitude ?? null,
+                            longitude: dto.stateLongitude ?? null,
+                        },
+                    });
+                }
+                // Resolve City
+                let city = await tx.city.findFirst({
+                    where: {
+                        name: { equals: cityName, mode: "insensitive" },
+                        stateId: state.id,
+                    },
+                });
+                if (!city) {
+                    city = await tx.city.create({
+                        data: {
+                            name: cityName,
+                            stateId: state.id,
+                            stateCode: state.stateCode || "JH",
+                            country: "India",
+                            countryCode: "IN",
+                            latitude: dto.cityLatitude ?? null,
+                            longitude: dto.cityLongitude ?? null,
+                        },
+                    });
+                }
+                // Resolve Area if provided
+                let area = null;
+                const areaName = dto.areaName !== undefined ? dto.areaName : (listing.location.areaId ? (await tx.area.findUnique({ where: { id: listing.location.areaId } }))?.name : null);
+                if (areaName) {
+                    area = await tx.area.findFirst({
+                        where: {
+                            name: { equals: areaName, mode: "insensitive" },
+                            cityId: city.id,
+                        },
+                    });
+                    if (!area) {
+                        area = await tx.area.create({
+                            data: {
+                                cityId: city.id,
+                                name: areaName,
+                                latitude: dto.areaLatitude ?? dto.latitude ?? 0.0,
+                                longitude: dto.areaLongitude ?? dto.longitude ?? 0.0,
+                            },
+                        });
+                    }
+                }
+                await tx.listingLocation.update({
+                    where: { listingId: listing.id },
+                    data: {
+                        stateId: state.id,
+                        cityId: city.id,
+                        areaId: area ? area.id : null,
+                    },
+                });
+            }
+            // 4. Update Images: if user updates images (newImages provided), delete old images from Cloudinary and DB, and save new ones.
+            if (newImages && newImages.length > 0) {
+                // Delete all old images from Cloudinary
+                for (const img of listing.images) {
+                    const urlObj = img.url;
+                    if (urlObj && urlObj.public_id) {
+                        await deleteFromCloudinary(urlObj.public_id).catch((err) => {
+                            console.error(`Failed to delete Cloudinary image: ${urlObj.public_id}`, err);
+                        });
+                    }
+                }
+                // Delete all old images from DB
+                await tx.listingImage.deleteMany({
+                    where: { listingId },
+                });
+                // Save new ones in DB
+                await tx.listingImage.createMany({
+                    data: newImages.map((img, index) => ({
+                        listingId,
+                        url: img,
+                        sortOrder: index,
+                    })),
+                });
+            }
+            else if (dto.keepImageIds) {
+                // Otherwise, handle selective deletes of images if keepImageIds is provided
+                const imagesToDelete = listing.images.filter((img) => !dto.keepImageIds.includes(img.id));
+                for (const img of imagesToDelete) {
+                    const urlObj = img.url;
+                    if (urlObj && urlObj.public_id) {
+                        await deleteFromCloudinary(urlObj.public_id).catch((err) => {
+                            console.error(`Failed to delete Cloudinary image: ${urlObj.public_id}`, err);
+                        });
+                    }
+                    await tx.listingImage.delete({ where: { id: img.id } });
+                }
+            }
+            // 6. Update CattleListing details
+            const updatedListing = await tx.cattleListing.update({
+                where: { id: listingId },
+                data: {
+                    ...(dto.title !== undefined && { title: dto.title }),
+                    ...(dto.listingDescription !== undefined && { description: dto.listingDescription }),
+                    ...(dto.price !== undefined && { price: dto.price }),
+                    ...(dto.latitude !== undefined && { latitude: dto.latitude ?? null }),
+                    ...(dto.longitude !== undefined && { longitude: dto.longitude ?? null }),
+                },
+                include: {
+                    animal: true,
+                    location: {
+                        include: {
+                            state: true,
+                            city: true,
+                            area: true,
+                        },
+                    },
+                    images: true,
+                },
+            });
+            return updatedListing;
         });
     }
 }

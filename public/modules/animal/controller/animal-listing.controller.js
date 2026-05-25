@@ -1,6 +1,6 @@
 import { asyncHandler } from "../../../middlewares/error.middleware.js";
 import { ErrorResponse, SuccessResponse } from "../../../utils/response.util.js";
-import { createAnimalListingSchema } from "../schemas/animal-listing.schema.js";
+import { createAnimalListingSchema, updateAnimalListingSchema } from "../schemas/animal-listing.schema.js";
 import { AnimalListingService } from "../services/animal-listing.service.js";
 import { uploadMultipleToCloudinary } from "../../../config/cloudinary.js";
 export const createAnimalListing = asyncHandler(async (req, res, next) => {
@@ -30,5 +30,30 @@ export const createAnimalListing = asyncHandler(async (req, res, next) => {
     // 6. Return response
     return SuccessResponse(res, "Animal listing created successfully", listing, 201);
 });
-export default createAnimalListing;
+export const updateAnimalListing = asyncHandler(async (req, res, next) => {
+    // 1. Ensure user is authenticated
+    if (!req.user) {
+        return next(new ErrorResponse("Authentication required", 401));
+    }
+    const id = req.params.id;
+    if (!id) {
+        return next(new ErrorResponse("Listing ID is required", 400));
+    }
+    // 2. Validate request body with Zod
+    const validated = updateAnimalListingSchema.parse(req.body);
+    // 3. Upload new images to Cloudinary (if files were sent)
+    let uploadedImages = [];
+    if (req.files) {
+        const files = Array.isArray(req.files)
+            ? req.files
+            : Object.values(req.files).flat();
+        if (files.length > 0) {
+            uploadedImages = await uploadMultipleToCloudinary(files.map((file) => file.buffer), "animal_listings");
+        }
+    }
+    // 4. Update listing
+    const listing = await AnimalListingService.updateListing(req.user.id, id, validated, uploadedImages);
+    // 5. Return response
+    return SuccessResponse(res, "Animal listing updated successfully", listing, 200);
+});
 //# sourceMappingURL=animal-listing.controller.js.map

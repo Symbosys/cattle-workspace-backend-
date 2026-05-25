@@ -27,5 +27,35 @@ export declare const createAnimalListingSchema: z.ZodObject<{
     areaLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
     areaLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
 }, z.core.$strip>;
+export declare const updateAnimalListingSchema: z.ZodObject<{
+    mainCategoryId: z.ZodOptional<z.ZodString>;
+    subCategoryId: z.ZodOptional<z.ZodString>;
+    name: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    category: z.ZodOptional<z.ZodString>;
+    breed: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    ageMonths: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    gender: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    weightKg: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    description: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    doesGiveMilk: z.ZodPreprocess<z.ZodOptional<z.ZodBoolean>>;
+    dailyMilkProdLtr: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    title: z.ZodOptional<z.ZodString>;
+    price: z.ZodPreprocess<z.ZodOptional<z.ZodNumber>>;
+    listingDescription: z.ZodOptional<z.ZodString>;
+    latitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    longitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateName: z.ZodOptional<z.ZodString>;
+    stateCode: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    stateLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityName: z.ZodOptional<z.ZodString>;
+    cityLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    areaName: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    areaLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    areaLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    keepImageIds: z.ZodPreprocess<z.ZodOptional<z.ZodArray<z.ZodString>>>;
+}, z.core.$strip>;
 export type CreateAnimalListingDto = z.infer<typeof createAnimalListingSchema>;
+export type UpdateAnimalListingDto = z.infer<typeof updateAnimalListingSchema>;
 //# sourceMappingURL=animal-listing.schema.d.ts.map
