@@ -8,17 +8,18 @@ import {
   updateSubCategory,
 } from "../controller/animal-category.controller.js";
 import multerUpload from "../../../middlewares/multer.middleware.js";
+import { authenticate, authorizeRole } from "../../user/middlewares/auth.middleware.js";
 
 const animalCategoryRouter = Router();
 
 // Category Routes
-animalCategoryRouter.post("/categories", multerUpload.single("image"), createCategory);
 animalCategoryRouter.get("/categories", getAllCategories);
-animalCategoryRouter.put("/categories/:id", multerUpload.single("image"), updateCategory);
+animalCategoryRouter.post("/categories", authenticate, authorizeRole("ADMIN"), multerUpload.single("image"), createCategory);
+animalCategoryRouter.put("/categories/:id", authenticate, authorizeRole("ADMIN"), multerUpload.single("image"), updateCategory);
 
 // SubCategory Routes
-animalCategoryRouter.post("/subcategories", multerUpload.single("image"), createSubCategory);
 animalCategoryRouter.get("/subcategories", getAllSubCategories);
-animalCategoryRouter.put("/subcategories/:id", multerUpload.single("image"), updateSubCategory);
+animalCategoryRouter.post("/subcategories", authenticate, authorizeRole("ADMIN"), multerUpload.single("image"), createSubCategory);
+animalCategoryRouter.put("/subcategories/:id", authenticate, authorizeRole("ADMIN"), multerUpload.single("image"), updateSubCategory);
 
 export default animalCategoryRouter;

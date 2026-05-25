@@ -1,0 +1,31 @@
+import { z } from "zod";
+export declare const createAnimalListingSchema: z.ZodObject<{
+    mainCategoryId: z.ZodString;
+    subCategoryId: z.ZodString;
+    name: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    category: z.ZodString;
+    breed: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    ageMonths: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    gender: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    weightKg: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    description: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    doesGiveMilk: z.ZodPreprocess<z.ZodDefault<z.ZodBoolean>>;
+    dailyMilkProdLtr: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    title: z.ZodString;
+    price: z.ZodPreprocess<z.ZodNumber>;
+    listingDescription: z.ZodString;
+    latitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    longitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateName: z.ZodString;
+    stateCode: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    stateLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityName: z.ZodString;
+    cityLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    areaName: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    areaLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    areaLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+}, z.core.$strip>;
+export type CreateAnimalListingDto = z.infer<typeof createAnimalListingSchema>;
+//# sourceMappingURL=animal-listing.schema.d.ts.map

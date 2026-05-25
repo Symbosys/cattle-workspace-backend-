@@ -69,6 +69,7 @@ export const ModelName = {
   ForumReport: 'ForumReport',
   CattleListing: 'CattleListing',
   ListingImage: 'ListingImage',
+  ListingLocation: 'ListingLocation',
   BrandProfile: 'BrandProfile',
   MarketplaceProduct: 'MarketplaceProduct',
   ProductReview: 'ProductReview',
@@ -80,6 +81,9 @@ export const ModelName = {
   Subscription: 'Subscription',
   PlatformLedger: 'PlatformLedger',
   User: 'User',
+  State: 'State',
+  City: 'City',
+  Area: 'Area',
   OtpCode: 'OtpCode'
 } as const
 
@@ -102,6 +106,8 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const AnimalScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
+  mainCategoryId: 'mainCategoryId',
+  subCategoryId: 'subCategoryId',
   name: 'name',
   category: 'category',
   breed: 'breed',
@@ -109,6 +115,8 @@ export const AnimalScalarFieldEnum = {
   gender: 'gender',
   weightKg: 'weightKg',
   description: 'description',
+  doesGiveMilk: 'doesGiveMilk',
+  dailyMilkProdLtr: 'dailyMilkProdLtr',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -331,8 +339,6 @@ export const CattleListingScalarFieldEnum = {
   status: 'status',
   latitude: 'latitude',
   longitude: 'longitude',
-  isPremium: 'isPremium',
-  premiumExpiresAt: 'premiumExpiresAt',
   listingExpiresAt: 'listingExpiresAt',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
@@ -351,6 +357,19 @@ export const ListingImageScalarFieldEnum = {
 } as const
 
 export type ListingImageScalarFieldEnum = (typeof ListingImageScalarFieldEnum)[keyof typeof ListingImageScalarFieldEnum]
+
+
+export const ListingLocationScalarFieldEnum = {
+  id: 'id',
+  listingId: 'listingId',
+  stateId: 'stateId',
+  cityId: 'cityId',
+  areaId: 'areaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ListingLocationScalarFieldEnum = (typeof ListingLocationScalarFieldEnum)[keyof typeof ListingLocationScalarFieldEnum]
 
 
 export const BrandProfileScalarFieldEnum = {
@@ -504,6 +523,62 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const StateScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  state: 'state',
+  country: 'country',
+  countryCode: 'countryCode',
+  stateCode: 'stateCode',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  isActive: 'isActive',
+  isHiring: 'isHiring',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type StateScalarFieldEnum = (typeof StateScalarFieldEnum)[keyof typeof StateScalarFieldEnum]
+
+
+export const CityScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  country: 'country',
+  countryCode: 'countryCode',
+  stateCode: 'stateCode',
+  stateId: 'stateId',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  isActive: 'isActive',
+  isHiring: 'isHiring',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CityScalarFieldEnum = (typeof CityScalarFieldEnum)[keyof typeof CityScalarFieldEnum]
+
+
+export const AreaScalarFieldEnum = {
+  id: 'id',
+  cityId: 'cityId',
+  name: 'name',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  serviceRadiusKm: 'serviceRadiusKm',
+  isActive: 'isActive',
+  isHiring: 'isHiring',
+  priority: 'priority',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type AreaScalarFieldEnum = (typeof AreaScalarFieldEnum)[keyof typeof AreaScalarFieldEnum]
 
 
 export const OtpCodeScalarFieldEnum = {

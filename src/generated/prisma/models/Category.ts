@@ -187,6 +187,7 @@ export type CategoryWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   subCategories?: Prisma.SubCategoryListRelationFilter
+  animals?: Prisma.AnimalListRelationFilter
 }
 
 export type CategoryOrderByWithRelationInput = {
@@ -197,6 +198,7 @@ export type CategoryOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   subCategories?: Prisma.SubCategoryOrderByRelationAggregateInput
+  animals?: Prisma.AnimalOrderByRelationAggregateInput
 }
 
 export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -210,6 +212,7 @@ export type CategoryWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   subCategories?: Prisma.SubCategoryListRelationFilter
+  animals?: Prisma.AnimalListRelationFilter
 }, "id" | "name">
 
 export type CategoryOrderByWithAggregationInput = {
@@ -244,6 +247,7 @@ export type CategoryCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   subCategories?: Prisma.SubCategoryCreateNestedManyWithoutCategoryInput
+  animals?: Prisma.AnimalCreateNestedManyWithoutMainCategoryInput
 }
 
 export type CategoryUncheckedCreateInput = {
@@ -254,6 +258,7 @@ export type CategoryUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   subCategories?: Prisma.SubCategoryUncheckedCreateNestedManyWithoutCategoryInput
+  animals?: Prisma.AnimalUncheckedCreateNestedManyWithoutMainCategoryInput
 }
 
 export type CategoryUpdateInput = {
@@ -264,6 +269,7 @@ export type CategoryUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subCategories?: Prisma.SubCategoryUpdateManyWithoutCategoryNestedInput
+  animals?: Prisma.AnimalUpdateManyWithoutMainCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateInput = {
@@ -274,6 +280,7 @@ export type CategoryUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subCategories?: Prisma.SubCategoryUncheckedUpdateManyWithoutCategoryNestedInput
+  animals?: Prisma.AnimalUncheckedUpdateManyWithoutMainCategoryNestedInput
 }
 
 export type CategoryCreateManyInput = {
@@ -303,6 +310,11 @@ export type CategoryUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type CategoryScalarRelationFilter = {
+  is?: Prisma.CategoryWhereInput
+  isNot?: Prisma.CategoryWhereInput
+}
+
 export type CategoryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -328,9 +340,18 @@ export type CategoryMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type CategoryScalarRelationFilter = {
-  is?: Prisma.CategoryWhereInput
-  isNot?: Prisma.CategoryWhereInput
+export type CategoryCreateNestedOneWithoutAnimalsInput = {
+  create?: Prisma.XOR<Prisma.CategoryCreateWithoutAnimalsInput, Prisma.CategoryUncheckedCreateWithoutAnimalsInput>
+  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutAnimalsInput
+  connect?: Prisma.CategoryWhereUniqueInput
+}
+
+export type CategoryUpdateOneRequiredWithoutAnimalsNestedInput = {
+  create?: Prisma.XOR<Prisma.CategoryCreateWithoutAnimalsInput, Prisma.CategoryUncheckedCreateWithoutAnimalsInput>
+  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutAnimalsInput
+  upsert?: Prisma.CategoryUpsertWithoutAnimalsInput
+  connect?: Prisma.CategoryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutAnimalsInput, Prisma.CategoryUpdateWithoutAnimalsInput>, Prisma.CategoryUncheckedUpdateWithoutAnimalsInput>
 }
 
 export type CategoryCreateNestedOneWithoutSubCategoriesInput = {
@@ -347,6 +368,62 @@ export type CategoryUpdateOneRequiredWithoutSubCategoriesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutSubCategoriesInput, Prisma.CategoryUpdateWithoutSubCategoriesInput>, Prisma.CategoryUncheckedUpdateWithoutSubCategoriesInput>
 }
 
+export type CategoryCreateWithoutAnimalsInput = {
+  id?: string
+  name: string
+  description?: string | null
+  imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  subCategories?: Prisma.SubCategoryCreateNestedManyWithoutCategoryInput
+}
+
+export type CategoryUncheckedCreateWithoutAnimalsInput = {
+  id?: string
+  name: string
+  description?: string | null
+  imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  subCategories?: Prisma.SubCategoryUncheckedCreateNestedManyWithoutCategoryInput
+}
+
+export type CategoryCreateOrConnectWithoutAnimalsInput = {
+  where: Prisma.CategoryWhereUniqueInput
+  create: Prisma.XOR<Prisma.CategoryCreateWithoutAnimalsInput, Prisma.CategoryUncheckedCreateWithoutAnimalsInput>
+}
+
+export type CategoryUpsertWithoutAnimalsInput = {
+  update: Prisma.XOR<Prisma.CategoryUpdateWithoutAnimalsInput, Prisma.CategoryUncheckedUpdateWithoutAnimalsInput>
+  create: Prisma.XOR<Prisma.CategoryCreateWithoutAnimalsInput, Prisma.CategoryUncheckedCreateWithoutAnimalsInput>
+  where?: Prisma.CategoryWhereInput
+}
+
+export type CategoryUpdateToOneWithWhereWithoutAnimalsInput = {
+  where?: Prisma.CategoryWhereInput
+  data: Prisma.XOR<Prisma.CategoryUpdateWithoutAnimalsInput, Prisma.CategoryUncheckedUpdateWithoutAnimalsInput>
+}
+
+export type CategoryUpdateWithoutAnimalsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subCategories?: Prisma.SubCategoryUpdateManyWithoutCategoryNestedInput
+}
+
+export type CategoryUncheckedUpdateWithoutAnimalsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subCategories?: Prisma.SubCategoryUncheckedUpdateManyWithoutCategoryNestedInput
+}
+
 export type CategoryCreateWithoutSubCategoriesInput = {
   id?: string
   name: string
@@ -354,6 +431,7 @@ export type CategoryCreateWithoutSubCategoriesInput = {
   imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  animals?: Prisma.AnimalCreateNestedManyWithoutMainCategoryInput
 }
 
 export type CategoryUncheckedCreateWithoutSubCategoriesInput = {
@@ -363,6 +441,7 @@ export type CategoryUncheckedCreateWithoutSubCategoriesInput = {
   imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  animals?: Prisma.AnimalUncheckedCreateNestedManyWithoutMainCategoryInput
 }
 
 export type CategoryCreateOrConnectWithoutSubCategoriesInput = {
@@ -388,6 +467,7 @@ export type CategoryUpdateWithoutSubCategoriesInput = {
   imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUpdateManyWithoutMainCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateWithoutSubCategoriesInput = {
@@ -397,6 +477,7 @@ export type CategoryUncheckedUpdateWithoutSubCategoriesInput = {
   imageUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUncheckedUpdateManyWithoutMainCategoryNestedInput
 }
 
 
@@ -406,10 +487,12 @@ export type CategoryUncheckedUpdateWithoutSubCategoriesInput = {
 
 export type CategoryCountOutputType = {
   subCategories: number
+  animals: number
 }
 
 export type CategoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subCategories?: boolean | CategoryCountOutputTypeCountSubCategoriesArgs
+  animals?: boolean | CategoryCountOutputTypeCountAnimalsArgs
 }
 
 /**
@@ -429,6 +512,13 @@ export type CategoryCountOutputTypeCountSubCategoriesArgs<ExtArgs extends runtim
   where?: Prisma.SubCategoryWhereInput
 }
 
+/**
+ * CategoryCountOutputType without action
+ */
+export type CategoryCountOutputTypeCountAnimalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AnimalWhereInput
+}
+
 
 export type CategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -438,6 +528,7 @@ export type CategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   subCategories?: boolean | Prisma.Category$subCategoriesArgs<ExtArgs>
+  animals?: boolean | Prisma.Category$animalsArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["category"]>
 
@@ -471,6 +562,7 @@ export type CategorySelectScalar = {
 export type CategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "imageUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
 export type CategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subCategories?: boolean | Prisma.Category$subCategoriesArgs<ExtArgs>
+  animals?: boolean | Prisma.Category$animalsArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -480,6 +572,7 @@ export type $CategoryPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   name: "Category"
   objects: {
     subCategories: Prisma.$SubCategoryPayload<ExtArgs>[]
+    animals: Prisma.$AnimalPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -883,6 +976,7 @@ readonly fields: CategoryFieldRefs;
 export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   subCategories<T extends Prisma.Category$subCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$subCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  animals<T extends Prisma.Category$animalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$animalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnimalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1332,6 +1426,30 @@ export type Category$subCategoriesArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.SubCategoryScalarFieldEnum | Prisma.SubCategoryScalarFieldEnum[]
+}
+
+/**
+ * Category.animals
+ */
+export type Category$animalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Animal
+   */
+  select?: Prisma.AnimalSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Animal
+   */
+  omit?: Prisma.AnimalOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AnimalInclude<ExtArgs> | null
+  where?: Prisma.AnimalWhereInput
+  orderBy?: Prisma.AnimalOrderByWithRelationInput | Prisma.AnimalOrderByWithRelationInput[]
+  cursor?: Prisma.AnimalWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AnimalScalarFieldEnum | Prisma.AnimalScalarFieldEnum[]
 }
 
 /**

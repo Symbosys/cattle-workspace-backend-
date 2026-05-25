@@ -18,13 +18,13 @@ export const sendOtp = asyncHandler(async (req, res, next) => {
   }
 
   // Check rate limit (1 minute)
-  const existingOtp = await AuthService.findOtpByMobile(mobile);
-  if (existingOtp) {
-    const timeDiff = Date.now() - new Date(existingOtp.updatedAt).getTime();
-    if (timeDiff < 60 * 1000) {
-      return next(new ErrorResponse("Please wait 1 minute before requesting another OTP", 429));
-    }
-  }
+  // const existingOtp = await AuthService.findOtpByMobile(mobile);
+  // if (existingOtp) {
+  //   const timeDiff = Date.now() - new Date(existingOtp.updatedAt).getTime();
+  //   if (timeDiff < 60 * 1000) {
+  //     return next(new ErrorResponse("Please wait 1 minute before requesting another OTP", 429));
+  //   }
+  // }
 
   // Generate new OTP
   const otp = generateOtp();

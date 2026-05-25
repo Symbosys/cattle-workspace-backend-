@@ -316,6 +316,17 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
         omit: OmitOpts;
     }>;
     /**
+     * `prisma.listingLocation`: Exposes CRUD operations for the **ListingLocation** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ListingLocations
+      * const listingLocations = await prisma.listingLocation.findMany()
+      * ```
+      */
+    get listingLocation(): Prisma.ListingLocationDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
      * `prisma.brandProfile`: Exposes CRUD operations for the **BrandProfile** model.
       * Example usage:
       * ```ts
@@ -434,6 +445,39 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
       * ```
       */
     get user(): Prisma.UserDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.state`: Exposes CRUD operations for the **State** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more States
+      * const states = await prisma.state.findMany()
+      * ```
+      */
+    get state(): Prisma.StateDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.city`: Exposes CRUD operations for the **City** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Cities
+      * const cities = await prisma.city.findMany()
+      * ```
+      */
+    get city(): Prisma.CityDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.area`: Exposes CRUD operations for the **Area** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Areas
+      * const areas = await prisma.area.findMany()
+      * ```
+      */
+    get area(): Prisma.AreaDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
     /**

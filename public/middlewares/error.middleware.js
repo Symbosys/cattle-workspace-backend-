@@ -1,7 +1,9 @@
 import { ZodError } from "zod";
 import { statusCode } from "../types/types.js";
 import { zodError } from "../utils/utils.js";
+import env from "../config/env.js";
 export const errorMiddleware = (err, req, res, next) => {
+    env.nodeEnv === "development" && console.log(err);
     err.message ||= "Internal Server Error";
     err.statusCode ||= 500;
     if (err.name === "CastError")

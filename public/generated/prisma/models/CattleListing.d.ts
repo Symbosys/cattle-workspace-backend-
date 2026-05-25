@@ -33,8 +33,6 @@ export type CattleListingMinAggregateOutputType = {
     status: $Enums.ListingStatus | null;
     latitude: runtime.Decimal | null;
     longitude: runtime.Decimal | null;
-    isPremium: boolean | null;
-    premiumExpiresAt: Date | null;
     listingExpiresAt: Date | null;
     deletedAt: Date | null;
     createdAt: Date | null;
@@ -50,8 +48,6 @@ export type CattleListingMaxAggregateOutputType = {
     status: $Enums.ListingStatus | null;
     latitude: runtime.Decimal | null;
     longitude: runtime.Decimal | null;
-    isPremium: boolean | null;
-    premiumExpiresAt: Date | null;
     listingExpiresAt: Date | null;
     deletedAt: Date | null;
     createdAt: Date | null;
@@ -67,8 +63,6 @@ export type CattleListingCountAggregateOutputType = {
     status: number;
     latitude: number;
     longitude: number;
-    isPremium: number;
-    premiumExpiresAt: number;
     listingExpiresAt: number;
     deletedAt: number;
     createdAt: number;
@@ -95,8 +89,6 @@ export type CattleListingMinAggregateInputType = {
     status?: true;
     latitude?: true;
     longitude?: true;
-    isPremium?: true;
-    premiumExpiresAt?: true;
     listingExpiresAt?: true;
     deletedAt?: true;
     createdAt?: true;
@@ -112,8 +104,6 @@ export type CattleListingMaxAggregateInputType = {
     status?: true;
     latitude?: true;
     longitude?: true;
-    isPremium?: true;
-    premiumExpiresAt?: true;
     listingExpiresAt?: true;
     deletedAt?: true;
     createdAt?: true;
@@ -129,8 +119,6 @@ export type CattleListingCountAggregateInputType = {
     status?: true;
     latitude?: true;
     longitude?: true;
-    isPremium?: true;
-    premiumExpiresAt?: true;
     listingExpiresAt?: true;
     deletedAt?: true;
     createdAt?: true;
@@ -221,10 +209,8 @@ export type CattleListingGroupByOutputType = {
     description: string;
     price: runtime.Decimal;
     status: $Enums.ListingStatus;
-    latitude: runtime.Decimal;
-    longitude: runtime.Decimal;
-    isPremium: boolean;
-    premiumExpiresAt: Date | null;
+    latitude: runtime.Decimal | null;
+    longitude: runtime.Decimal | null;
     listingExpiresAt: Date;
     deletedAt: Date | null;
     createdAt: Date;
@@ -249,10 +235,8 @@ export type CattleListingWhereInput = {
     description?: Prisma.StringFilter<"CattleListing"> | string;
     price?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFilter<"CattleListing"> | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFilter<"CattleListing"> | boolean;
-    premiumExpiresAt?: Prisma.DateTimeNullableFilter<"CattleListing"> | Date | string | null;
+    latitude?: Prisma.DecimalNullableFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.DecimalNullableFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFilter<"CattleListing"> | Date | string;
     deletedAt?: Prisma.DateTimeNullableFilter<"CattleListing"> | Date | string | null;
     createdAt?: Prisma.DateTimeFilter<"CattleListing"> | Date | string;
@@ -260,6 +244,7 @@ export type CattleListingWhereInput = {
     owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     animal?: Prisma.XOR<Prisma.AnimalScalarRelationFilter, Prisma.AnimalWhereInput>;
     images?: Prisma.ListingImageListRelationFilter;
+    location?: Prisma.XOR<Prisma.ListingLocationNullableScalarRelationFilter, Prisma.ListingLocationWhereInput> | null;
 };
 export type CattleListingOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -269,10 +254,8 @@ export type CattleListingOrderByWithRelationInput = {
     description?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
-    latitude?: Prisma.SortOrder;
-    longitude?: Prisma.SortOrder;
-    isPremium?: Prisma.SortOrder;
-    premiumExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+    latitude?: Prisma.SortOrderInput | Prisma.SortOrder;
+    longitude?: Prisma.SortOrderInput | Prisma.SortOrder;
     listingExpiresAt?: Prisma.SortOrder;
     deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
@@ -280,6 +263,7 @@ export type CattleListingOrderByWithRelationInput = {
     owner?: Prisma.UserOrderByWithRelationInput;
     animal?: Prisma.AnimalOrderByWithRelationInput;
     images?: Prisma.ListingImageOrderByRelationAggregateInput;
+    location?: Prisma.ListingLocationOrderByWithRelationInput;
 };
 export type CattleListingWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -292,10 +276,8 @@ export type CattleListingWhereUniqueInput = Prisma.AtLeast<{
     description?: Prisma.StringFilter<"CattleListing"> | string;
     price?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFilter<"CattleListing"> | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFilter<"CattleListing"> | boolean;
-    premiumExpiresAt?: Prisma.DateTimeNullableFilter<"CattleListing"> | Date | string | null;
+    latitude?: Prisma.DecimalNullableFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.DecimalNullableFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFilter<"CattleListing"> | Date | string;
     deletedAt?: Prisma.DateTimeNullableFilter<"CattleListing"> | Date | string | null;
     createdAt?: Prisma.DateTimeFilter<"CattleListing"> | Date | string;
@@ -303,6 +285,7 @@ export type CattleListingWhereUniqueInput = Prisma.AtLeast<{
     owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     animal?: Prisma.XOR<Prisma.AnimalScalarRelationFilter, Prisma.AnimalWhereInput>;
     images?: Prisma.ListingImageListRelationFilter;
+    location?: Prisma.XOR<Prisma.ListingLocationNullableScalarRelationFilter, Prisma.ListingLocationWhereInput> | null;
 }, "id">;
 export type CattleListingOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -312,10 +295,8 @@ export type CattleListingOrderByWithAggregationInput = {
     description?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
-    latitude?: Prisma.SortOrder;
-    longitude?: Prisma.SortOrder;
-    isPremium?: Prisma.SortOrder;
-    premiumExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+    latitude?: Prisma.SortOrderInput | Prisma.SortOrder;
+    longitude?: Prisma.SortOrderInput | Prisma.SortOrder;
     listingExpiresAt?: Prisma.SortOrder;
     deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
@@ -337,10 +318,8 @@ export type CattleListingScalarWhereWithAggregatesInput = {
     description?: Prisma.StringWithAggregatesFilter<"CattleListing"> | string;
     price?: Prisma.DecimalWithAggregatesFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusWithAggregatesFilter<"CattleListing"> | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalWithAggregatesFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalWithAggregatesFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolWithAggregatesFilter<"CattleListing"> | boolean;
-    premiumExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CattleListing"> | Date | string | null;
+    latitude?: Prisma.DecimalNullableWithAggregatesFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.DecimalNullableWithAggregatesFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeWithAggregatesFilter<"CattleListing"> | Date | string;
     deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CattleListing"> | Date | string | null;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"CattleListing"> | Date | string;
@@ -352,10 +331,8 @@ export type CattleListingCreateInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
@@ -363,6 +340,7 @@ export type CattleListingCreateInput = {
     owner: Prisma.UserCreateNestedOneWithoutListingsInput;
     animal: Prisma.AnimalCreateNestedOneWithoutListingsInput;
     images?: Prisma.ListingImageCreateNestedManyWithoutListingInput;
+    location?: Prisma.ListingLocationCreateNestedOneWithoutListingInput;
 };
 export type CattleListingUncheckedCreateInput = {
     id?: string;
@@ -372,15 +350,14 @@ export type CattleListingUncheckedCreateInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: Prisma.ListingImageUncheckedCreateNestedManyWithoutListingInput;
+    location?: Prisma.ListingLocationUncheckedCreateNestedOneWithoutListingInput;
 };
 export type CattleListingUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -388,10 +365,8 @@ export type CattleListingUpdateInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -399,6 +374,7 @@ export type CattleListingUpdateInput = {
     owner?: Prisma.UserUpdateOneRequiredWithoutListingsNestedInput;
     animal?: Prisma.AnimalUpdateOneRequiredWithoutListingsNestedInput;
     images?: Prisma.ListingImageUpdateManyWithoutListingNestedInput;
+    location?: Prisma.ListingLocationUpdateOneWithoutListingNestedInput;
 };
 export type CattleListingUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -408,15 +384,14 @@ export type CattleListingUncheckedUpdateInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     images?: Prisma.ListingImageUncheckedUpdateManyWithoutListingNestedInput;
+    location?: Prisma.ListingLocationUncheckedUpdateOneWithoutListingNestedInput;
 };
 export type CattleListingCreateManyInput = {
     id?: string;
@@ -426,10 +401,8 @@ export type CattleListingCreateManyInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
@@ -441,10 +414,8 @@ export type CattleListingUpdateManyMutationInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -458,10 +429,8 @@ export type CattleListingUncheckedUpdateManyInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -485,8 +454,6 @@ export type CattleListingCountOrderByAggregateInput = {
     status?: Prisma.SortOrder;
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
-    isPremium?: Prisma.SortOrder;
-    premiumExpiresAt?: Prisma.SortOrder;
     listingExpiresAt?: Prisma.SortOrder;
     deletedAt?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
@@ -507,8 +474,6 @@ export type CattleListingMaxOrderByAggregateInput = {
     status?: Prisma.SortOrder;
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
-    isPremium?: Prisma.SortOrder;
-    premiumExpiresAt?: Prisma.SortOrder;
     listingExpiresAt?: Prisma.SortOrder;
     deletedAt?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
@@ -524,8 +489,6 @@ export type CattleListingMinOrderByAggregateInput = {
     status?: Prisma.SortOrder;
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
-    isPremium?: Prisma.SortOrder;
-    premiumExpiresAt?: Prisma.SortOrder;
     listingExpiresAt?: Prisma.SortOrder;
     deletedAt?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
@@ -593,6 +556,18 @@ export type CattleListingUpdateOneRequiredWithoutImagesNestedInput = {
     connect?: Prisma.CattleListingWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.CattleListingUpdateToOneWithWhereWithoutImagesInput, Prisma.CattleListingUpdateWithoutImagesInput>, Prisma.CattleListingUncheckedUpdateWithoutImagesInput>;
 };
+export type CattleListingCreateNestedOneWithoutLocationInput = {
+    create?: Prisma.XOR<Prisma.CattleListingCreateWithoutLocationInput, Prisma.CattleListingUncheckedCreateWithoutLocationInput>;
+    connectOrCreate?: Prisma.CattleListingCreateOrConnectWithoutLocationInput;
+    connect?: Prisma.CattleListingWhereUniqueInput;
+};
+export type CattleListingUpdateOneRequiredWithoutLocationNestedInput = {
+    create?: Prisma.XOR<Prisma.CattleListingCreateWithoutLocationInput, Prisma.CattleListingUncheckedCreateWithoutLocationInput>;
+    connectOrCreate?: Prisma.CattleListingCreateOrConnectWithoutLocationInput;
+    upsert?: Prisma.CattleListingUpsertWithoutLocationInput;
+    connect?: Prisma.CattleListingWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.CattleListingUpdateToOneWithWhereWithoutLocationInput, Prisma.CattleListingUpdateWithoutLocationInput>, Prisma.CattleListingUncheckedUpdateWithoutLocationInput>;
+};
 export type CattleListingCreateNestedManyWithoutOwnerInput = {
     create?: Prisma.XOR<Prisma.CattleListingCreateWithoutOwnerInput, Prisma.CattleListingUncheckedCreateWithoutOwnerInput> | Prisma.CattleListingCreateWithoutOwnerInput[] | Prisma.CattleListingUncheckedCreateWithoutOwnerInput[];
     connectOrCreate?: Prisma.CattleListingCreateOrConnectWithoutOwnerInput | Prisma.CattleListingCreateOrConnectWithoutOwnerInput[];
@@ -637,16 +612,15 @@ export type CattleListingCreateWithoutAnimalInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     owner: Prisma.UserCreateNestedOneWithoutListingsInput;
     images?: Prisma.ListingImageCreateNestedManyWithoutListingInput;
+    location?: Prisma.ListingLocationCreateNestedOneWithoutListingInput;
 };
 export type CattleListingUncheckedCreateWithoutAnimalInput = {
     id?: string;
@@ -655,15 +629,14 @@ export type CattleListingUncheckedCreateWithoutAnimalInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: Prisma.ListingImageUncheckedCreateNestedManyWithoutListingInput;
+    location?: Prisma.ListingLocationUncheckedCreateNestedOneWithoutListingInput;
 };
 export type CattleListingCreateOrConnectWithoutAnimalInput = {
     where: Prisma.CattleListingWhereUniqueInput;
@@ -697,10 +670,8 @@ export type CattleListingScalarWhereInput = {
     description?: Prisma.StringFilter<"CattleListing"> | string;
     price?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFilter<"CattleListing"> | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFilter<"CattleListing"> | boolean;
-    premiumExpiresAt?: Prisma.DateTimeNullableFilter<"CattleListing"> | Date | string | null;
+    latitude?: Prisma.DecimalNullableFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.DecimalNullableFilter<"CattleListing"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFilter<"CattleListing"> | Date | string;
     deletedAt?: Prisma.DateTimeNullableFilter<"CattleListing"> | Date | string | null;
     createdAt?: Prisma.DateTimeFilter<"CattleListing"> | Date | string;
@@ -712,16 +683,15 @@ export type CattleListingCreateWithoutImagesInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     owner: Prisma.UserCreateNestedOneWithoutListingsInput;
     animal: Prisma.AnimalCreateNestedOneWithoutListingsInput;
+    location?: Prisma.ListingLocationCreateNestedOneWithoutListingInput;
 };
 export type CattleListingUncheckedCreateWithoutImagesInput = {
     id?: string;
@@ -731,14 +701,13 @@ export type CattleListingUncheckedCreateWithoutImagesInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    location?: Prisma.ListingLocationUncheckedCreateNestedOneWithoutListingInput;
 };
 export type CattleListingCreateOrConnectWithoutImagesInput = {
     where: Prisma.CattleListingWhereUniqueInput;
@@ -759,16 +728,15 @@ export type CattleListingUpdateWithoutImagesInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     owner?: Prisma.UserUpdateOneRequiredWithoutListingsNestedInput;
     animal?: Prisma.AnimalUpdateOneRequiredWithoutListingsNestedInput;
+    location?: Prisma.ListingLocationUpdateOneWithoutListingNestedInput;
 };
 export type CattleListingUncheckedUpdateWithoutImagesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -778,14 +746,90 @@ export type CattleListingUncheckedUpdateWithoutImagesInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    location?: Prisma.ListingLocationUncheckedUpdateOneWithoutListingNestedInput;
+};
+export type CattleListingCreateWithoutLocationInput = {
+    id?: string;
+    title: string;
+    description: string;
+    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.ListingStatus;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    listingExpiresAt: Date | string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    owner: Prisma.UserCreateNestedOneWithoutListingsInput;
+    animal: Prisma.AnimalCreateNestedOneWithoutListingsInput;
+    images?: Prisma.ListingImageCreateNestedManyWithoutListingInput;
+};
+export type CattleListingUncheckedCreateWithoutLocationInput = {
+    id?: string;
+    ownerId: string;
+    animalId: string;
+    title: string;
+    description: string;
+    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.ListingStatus;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    listingExpiresAt: Date | string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    images?: Prisma.ListingImageUncheckedCreateNestedManyWithoutListingInput;
+};
+export type CattleListingCreateOrConnectWithoutLocationInput = {
+    where: Prisma.CattleListingWhereUniqueInput;
+    create: Prisma.XOR<Prisma.CattleListingCreateWithoutLocationInput, Prisma.CattleListingUncheckedCreateWithoutLocationInput>;
+};
+export type CattleListingUpsertWithoutLocationInput = {
+    update: Prisma.XOR<Prisma.CattleListingUpdateWithoutLocationInput, Prisma.CattleListingUncheckedUpdateWithoutLocationInput>;
+    create: Prisma.XOR<Prisma.CattleListingCreateWithoutLocationInput, Prisma.CattleListingUncheckedCreateWithoutLocationInput>;
+    where?: Prisma.CattleListingWhereInput;
+};
+export type CattleListingUpdateToOneWithWhereWithoutLocationInput = {
+    where?: Prisma.CattleListingWhereInput;
+    data: Prisma.XOR<Prisma.CattleListingUpdateWithoutLocationInput, Prisma.CattleListingUncheckedUpdateWithoutLocationInput>;
+};
+export type CattleListingUpdateWithoutLocationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    owner?: Prisma.UserUpdateOneRequiredWithoutListingsNestedInput;
+    animal?: Prisma.AnimalUpdateOneRequiredWithoutListingsNestedInput;
+    images?: Prisma.ListingImageUpdateManyWithoutListingNestedInput;
+};
+export type CattleListingUncheckedUpdateWithoutLocationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    animalId?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    images?: Prisma.ListingImageUncheckedUpdateManyWithoutListingNestedInput;
 };
 export type CattleListingCreateWithoutOwnerInput = {
     id?: string;
@@ -793,16 +837,15 @@ export type CattleListingCreateWithoutOwnerInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     animal: Prisma.AnimalCreateNestedOneWithoutListingsInput;
     images?: Prisma.ListingImageCreateNestedManyWithoutListingInput;
+    location?: Prisma.ListingLocationCreateNestedOneWithoutListingInput;
 };
 export type CattleListingUncheckedCreateWithoutOwnerInput = {
     id?: string;
@@ -811,15 +854,14 @@ export type CattleListingUncheckedCreateWithoutOwnerInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: Prisma.ListingImageUncheckedCreateNestedManyWithoutListingInput;
+    location?: Prisma.ListingLocationUncheckedCreateNestedOneWithoutListingInput;
 };
 export type CattleListingCreateOrConnectWithoutOwnerInput = {
     where: Prisma.CattleListingWhereUniqueInput;
@@ -849,10 +891,8 @@ export type CattleListingCreateManyAnimalInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
@@ -864,16 +904,15 @@ export type CattleListingUpdateWithoutAnimalInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     owner?: Prisma.UserUpdateOneRequiredWithoutListingsNestedInput;
     images?: Prisma.ListingImageUpdateManyWithoutListingNestedInput;
+    location?: Prisma.ListingLocationUpdateOneWithoutListingNestedInput;
 };
 export type CattleListingUncheckedUpdateWithoutAnimalInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -882,15 +921,14 @@ export type CattleListingUncheckedUpdateWithoutAnimalInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     images?: Prisma.ListingImageUncheckedUpdateManyWithoutListingNestedInput;
+    location?: Prisma.ListingLocationUncheckedUpdateOneWithoutListingNestedInput;
 };
 export type CattleListingUncheckedUpdateManyWithoutAnimalInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -899,10 +937,8 @@ export type CattleListingUncheckedUpdateManyWithoutAnimalInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -915,10 +951,8 @@ export type CattleListingCreateManyOwnerInput = {
     description: string;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: $Enums.ListingStatus;
-    latitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: boolean;
-    premiumExpiresAt?: Date | string | null;
+    latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt: Date | string;
     deletedAt?: Date | string | null;
     createdAt?: Date | string;
@@ -930,16 +964,15 @@ export type CattleListingUpdateWithoutOwnerInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     animal?: Prisma.AnimalUpdateOneRequiredWithoutListingsNestedInput;
     images?: Prisma.ListingImageUpdateManyWithoutListingNestedInput;
+    location?: Prisma.ListingLocationUpdateOneWithoutListingNestedInput;
 };
 export type CattleListingUncheckedUpdateWithoutOwnerInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -948,15 +981,14 @@ export type CattleListingUncheckedUpdateWithoutOwnerInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     images?: Prisma.ListingImageUncheckedUpdateManyWithoutListingNestedInput;
+    location?: Prisma.ListingLocationUncheckedUpdateOneWithoutListingNestedInput;
 };
 export type CattleListingUncheckedUpdateManyWithoutOwnerInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -965,10 +997,8 @@ export type CattleListingUncheckedUpdateManyWithoutOwnerInput = {
     description?: Prisma.StringFieldUpdateOperationsInput | string;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     status?: Prisma.EnumListingStatusFieldUpdateOperationsInput | $Enums.ListingStatus;
-    latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    premiumExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     listingExpiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1008,8 +1038,6 @@ export type CattleListingSelect<ExtArgs extends runtime.Types.Extensions.Interna
     status?: boolean;
     latitude?: boolean;
     longitude?: boolean;
-    isPremium?: boolean;
-    premiumExpiresAt?: boolean;
     listingExpiresAt?: boolean;
     deletedAt?: boolean;
     createdAt?: boolean;
@@ -1017,6 +1045,7 @@ export type CattleListingSelect<ExtArgs extends runtime.Types.Extensions.Interna
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     animal?: boolean | Prisma.AnimalDefaultArgs<ExtArgs>;
     images?: boolean | Prisma.CattleListing$imagesArgs<ExtArgs>;
+    location?: boolean | Prisma.CattleListing$locationArgs<ExtArgs>;
     _count?: boolean | Prisma.CattleListingCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["cattleListing"]>;
 export type CattleListingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1029,8 +1058,6 @@ export type CattleListingSelectCreateManyAndReturn<ExtArgs extends runtime.Types
     status?: boolean;
     latitude?: boolean;
     longitude?: boolean;
-    isPremium?: boolean;
-    premiumExpiresAt?: boolean;
     listingExpiresAt?: boolean;
     deletedAt?: boolean;
     createdAt?: boolean;
@@ -1048,8 +1075,6 @@ export type CattleListingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
     status?: boolean;
     latitude?: boolean;
     longitude?: boolean;
-    isPremium?: boolean;
-    premiumExpiresAt?: boolean;
     listingExpiresAt?: boolean;
     deletedAt?: boolean;
     createdAt?: boolean;
@@ -1067,18 +1092,17 @@ export type CattleListingSelectScalar = {
     status?: boolean;
     latitude?: boolean;
     longitude?: boolean;
-    isPremium?: boolean;
-    premiumExpiresAt?: boolean;
     listingExpiresAt?: boolean;
     deletedAt?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
 };
-export type CattleListingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "animalId" | "title" | "description" | "price" | "status" | "latitude" | "longitude" | "isPremium" | "premiumExpiresAt" | "listingExpiresAt" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["cattleListing"]>;
+export type CattleListingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "animalId" | "title" | "description" | "price" | "status" | "latitude" | "longitude" | "listingExpiresAt" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["cattleListing"]>;
 export type CattleListingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     animal?: boolean | Prisma.AnimalDefaultArgs<ExtArgs>;
     images?: boolean | Prisma.CattleListing$imagesArgs<ExtArgs>;
+    location?: boolean | Prisma.CattleListing$locationArgs<ExtArgs>;
     _count?: boolean | Prisma.CattleListingCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type CattleListingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1095,6 +1119,7 @@ export type $CattleListingPayload<ExtArgs extends runtime.Types.Extensions.Inter
         owner: Prisma.$UserPayload<ExtArgs>;
         animal: Prisma.$AnimalPayload<ExtArgs>;
         images: Prisma.$ListingImagePayload<ExtArgs>[];
+        location: Prisma.$ListingLocationPayload<ExtArgs> | null;
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -1104,10 +1129,8 @@ export type $CattleListingPayload<ExtArgs extends runtime.Types.Extensions.Inter
         description: string;
         price: runtime.Decimal;
         status: $Enums.ListingStatus;
-        latitude: runtime.Decimal;
-        longitude: runtime.Decimal;
-        isPremium: boolean;
-        premiumExpiresAt: Date | null;
+        latitude: runtime.Decimal | null;
+        longitude: runtime.Decimal | null;
         listingExpiresAt: Date;
         deletedAt: Date | null;
         createdAt: Date;
@@ -1444,6 +1467,7 @@ export interface Prisma__CattleListingClient<T, Null = never, ExtArgs extends ru
     owner<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     animal<T extends Prisma.AnimalDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnimalDefaultArgs<ExtArgs>>): Prisma.Prisma__AnimalClient<runtime.Types.Result.GetResult<Prisma.$AnimalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     images<T extends Prisma.CattleListing$imagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CattleListing$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ListingImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    location<T extends Prisma.CattleListing$locationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CattleListing$locationArgs<ExtArgs>>): Prisma.Prisma__ListingLocationClient<runtime.Types.Result.GetResult<Prisma.$ListingLocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1478,8 +1502,6 @@ export interface CattleListingFieldRefs {
     readonly status: Prisma.FieldRef<"CattleListing", 'ListingStatus'>;
     readonly latitude: Prisma.FieldRef<"CattleListing", 'Decimal'>;
     readonly longitude: Prisma.FieldRef<"CattleListing", 'Decimal'>;
-    readonly isPremium: Prisma.FieldRef<"CattleListing", 'Boolean'>;
-    readonly premiumExpiresAt: Prisma.FieldRef<"CattleListing", 'DateTime'>;
     readonly listingExpiresAt: Prisma.FieldRef<"CattleListing", 'DateTime'>;
     readonly deletedAt: Prisma.FieldRef<"CattleListing", 'DateTime'>;
     readonly createdAt: Prisma.FieldRef<"CattleListing", 'DateTime'>;
@@ -1889,6 +1911,24 @@ export type CattleListing$imagesArgs<ExtArgs extends runtime.Types.Extensions.In
     take?: number;
     skip?: number;
     distinct?: Prisma.ListingImageScalarFieldEnum | Prisma.ListingImageScalarFieldEnum[];
+};
+/**
+ * CattleListing.location
+ */
+export type CattleListing$locationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ListingLocation
+     */
+    select?: Prisma.ListingLocationSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ListingLocation
+     */
+    omit?: Prisma.ListingLocationOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ListingLocationInclude<ExtArgs> | null;
+    where?: Prisma.ListingLocationWhereInput;
 };
 /**
  * CattleListing without action

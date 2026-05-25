@@ -16,14 +16,18 @@ export type AggregateAnimal = {
 export type AnimalAvgAggregateOutputType = {
     ageMonths: number | null;
     weightKg: runtime.Decimal | null;
+    dailyMilkProdLtr: runtime.Decimal | null;
 };
 export type AnimalSumAggregateOutputType = {
     ageMonths: number | null;
     weightKg: runtime.Decimal | null;
+    dailyMilkProdLtr: runtime.Decimal | null;
 };
 export type AnimalMinAggregateOutputType = {
     id: string | null;
     ownerId: string | null;
+    mainCategoryId: string | null;
+    subCategoryId: string | null;
     name: string | null;
     category: string | null;
     breed: string | null;
@@ -31,6 +35,8 @@ export type AnimalMinAggregateOutputType = {
     gender: string | null;
     weightKg: runtime.Decimal | null;
     description: string | null;
+    doesGiveMilk: boolean | null;
+    dailyMilkProdLtr: runtime.Decimal | null;
     status: $Enums.AnimalStatus | null;
     createdAt: Date | null;
     updatedAt: Date | null;
@@ -38,6 +44,8 @@ export type AnimalMinAggregateOutputType = {
 export type AnimalMaxAggregateOutputType = {
     id: string | null;
     ownerId: string | null;
+    mainCategoryId: string | null;
+    subCategoryId: string | null;
     name: string | null;
     category: string | null;
     breed: string | null;
@@ -45,6 +53,8 @@ export type AnimalMaxAggregateOutputType = {
     gender: string | null;
     weightKg: runtime.Decimal | null;
     description: string | null;
+    doesGiveMilk: boolean | null;
+    dailyMilkProdLtr: runtime.Decimal | null;
     status: $Enums.AnimalStatus | null;
     createdAt: Date | null;
     updatedAt: Date | null;
@@ -52,6 +62,8 @@ export type AnimalMaxAggregateOutputType = {
 export type AnimalCountAggregateOutputType = {
     id: number;
     ownerId: number;
+    mainCategoryId: number;
+    subCategoryId: number;
     name: number;
     category: number;
     breed: number;
@@ -59,6 +71,8 @@ export type AnimalCountAggregateOutputType = {
     gender: number;
     weightKg: number;
     description: number;
+    doesGiveMilk: number;
+    dailyMilkProdLtr: number;
     status: number;
     createdAt: number;
     updatedAt: number;
@@ -67,14 +81,18 @@ export type AnimalCountAggregateOutputType = {
 export type AnimalAvgAggregateInputType = {
     ageMonths?: true;
     weightKg?: true;
+    dailyMilkProdLtr?: true;
 };
 export type AnimalSumAggregateInputType = {
     ageMonths?: true;
     weightKg?: true;
+    dailyMilkProdLtr?: true;
 };
 export type AnimalMinAggregateInputType = {
     id?: true;
     ownerId?: true;
+    mainCategoryId?: true;
+    subCategoryId?: true;
     name?: true;
     category?: true;
     breed?: true;
@@ -82,6 +100,8 @@ export type AnimalMinAggregateInputType = {
     gender?: true;
     weightKg?: true;
     description?: true;
+    doesGiveMilk?: true;
+    dailyMilkProdLtr?: true;
     status?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -89,6 +109,8 @@ export type AnimalMinAggregateInputType = {
 export type AnimalMaxAggregateInputType = {
     id?: true;
     ownerId?: true;
+    mainCategoryId?: true;
+    subCategoryId?: true;
     name?: true;
     category?: true;
     breed?: true;
@@ -96,6 +118,8 @@ export type AnimalMaxAggregateInputType = {
     gender?: true;
     weightKg?: true;
     description?: true;
+    doesGiveMilk?: true;
+    dailyMilkProdLtr?: true;
     status?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -103,6 +127,8 @@ export type AnimalMaxAggregateInputType = {
 export type AnimalCountAggregateInputType = {
     id?: true;
     ownerId?: true;
+    mainCategoryId?: true;
+    subCategoryId?: true;
     name?: true;
     category?: true;
     breed?: true;
@@ -110,6 +136,8 @@ export type AnimalCountAggregateInputType = {
     gender?: true;
     weightKg?: true;
     description?: true;
+    doesGiveMilk?: true;
+    dailyMilkProdLtr?: true;
     status?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -194,6 +222,8 @@ export type AnimalGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type AnimalGroupByOutputType = {
     id: string;
     ownerId: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name: string | null;
     category: string;
     breed: string | null;
@@ -201,6 +231,8 @@ export type AnimalGroupByOutputType = {
     gender: string | null;
     weightKg: runtime.Decimal | null;
     description: string | null;
+    doesGiveMilk: boolean;
+    dailyMilkProdLtr: runtime.Decimal | null;
     status: $Enums.AnimalStatus;
     createdAt: Date;
     updatedAt: Date;
@@ -219,6 +251,8 @@ export type AnimalWhereInput = {
     NOT?: Prisma.AnimalWhereInput | Prisma.AnimalWhereInput[];
     id?: Prisma.StringFilter<"Animal"> | string;
     ownerId?: Prisma.StringFilter<"Animal"> | string;
+    mainCategoryId?: Prisma.StringFilter<"Animal"> | string;
+    subCategoryId?: Prisma.StringFilter<"Animal"> | string;
     name?: Prisma.StringNullableFilter<"Animal"> | string | null;
     category?: Prisma.StringFilter<"Animal"> | string;
     breed?: Prisma.StringNullableFilter<"Animal"> | string | null;
@@ -226,6 +260,8 @@ export type AnimalWhereInput = {
     gender?: Prisma.StringNullableFilter<"Animal"> | string | null;
     weightKg?: Prisma.DecimalNullableFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.StringNullableFilter<"Animal"> | string | null;
+    doesGiveMilk?: Prisma.BoolFilter<"Animal"> | boolean;
+    dailyMilkProdLtr?: Prisma.DecimalNullableFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFilter<"Animal"> | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
@@ -233,10 +269,14 @@ export type AnimalWhereInput = {
     listings?: Prisma.CattleListingListRelationFilter;
     vaccinations?: Prisma.VaccinationRecordListRelationFilter;
     breedingRequests?: Prisma.BreederProfileListRelationFilter;
+    mainCategory?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>;
+    subCategory?: Prisma.XOR<Prisma.SubCategoryScalarRelationFilter, Prisma.SubCategoryWhereInput>;
 };
 export type AnimalOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     ownerId?: Prisma.SortOrder;
+    mainCategoryId?: Prisma.SortOrder;
+    subCategoryId?: Prisma.SortOrder;
     name?: Prisma.SortOrderInput | Prisma.SortOrder;
     category?: Prisma.SortOrder;
     breed?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -244,6 +284,8 @@ export type AnimalOrderByWithRelationInput = {
     gender?: Prisma.SortOrderInput | Prisma.SortOrder;
     weightKg?: Prisma.SortOrderInput | Prisma.SortOrder;
     description?: Prisma.SortOrderInput | Prisma.SortOrder;
+    doesGiveMilk?: Prisma.SortOrder;
+    dailyMilkProdLtr?: Prisma.SortOrderInput | Prisma.SortOrder;
     status?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -251,6 +293,8 @@ export type AnimalOrderByWithRelationInput = {
     listings?: Prisma.CattleListingOrderByRelationAggregateInput;
     vaccinations?: Prisma.VaccinationRecordOrderByRelationAggregateInput;
     breedingRequests?: Prisma.BreederProfileOrderByRelationAggregateInput;
+    mainCategory?: Prisma.CategoryOrderByWithRelationInput;
+    subCategory?: Prisma.SubCategoryOrderByWithRelationInput;
 };
 export type AnimalWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -258,6 +302,8 @@ export type AnimalWhereUniqueInput = Prisma.AtLeast<{
     OR?: Prisma.AnimalWhereInput[];
     NOT?: Prisma.AnimalWhereInput | Prisma.AnimalWhereInput[];
     ownerId?: Prisma.StringFilter<"Animal"> | string;
+    mainCategoryId?: Prisma.StringFilter<"Animal"> | string;
+    subCategoryId?: Prisma.StringFilter<"Animal"> | string;
     name?: Prisma.StringNullableFilter<"Animal"> | string | null;
     category?: Prisma.StringFilter<"Animal"> | string;
     breed?: Prisma.StringNullableFilter<"Animal"> | string | null;
@@ -265,6 +311,8 @@ export type AnimalWhereUniqueInput = Prisma.AtLeast<{
     gender?: Prisma.StringNullableFilter<"Animal"> | string | null;
     weightKg?: Prisma.DecimalNullableFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.StringNullableFilter<"Animal"> | string | null;
+    doesGiveMilk?: Prisma.BoolFilter<"Animal"> | boolean;
+    dailyMilkProdLtr?: Prisma.DecimalNullableFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFilter<"Animal"> | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
@@ -272,10 +320,14 @@ export type AnimalWhereUniqueInput = Prisma.AtLeast<{
     listings?: Prisma.CattleListingListRelationFilter;
     vaccinations?: Prisma.VaccinationRecordListRelationFilter;
     breedingRequests?: Prisma.BreederProfileListRelationFilter;
+    mainCategory?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>;
+    subCategory?: Prisma.XOR<Prisma.SubCategoryScalarRelationFilter, Prisma.SubCategoryWhereInput>;
 }, "id">;
 export type AnimalOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
     ownerId?: Prisma.SortOrder;
+    mainCategoryId?: Prisma.SortOrder;
+    subCategoryId?: Prisma.SortOrder;
     name?: Prisma.SortOrderInput | Prisma.SortOrder;
     category?: Prisma.SortOrder;
     breed?: Prisma.SortOrderInput | Prisma.SortOrder;
@@ -283,6 +335,8 @@ export type AnimalOrderByWithAggregationInput = {
     gender?: Prisma.SortOrderInput | Prisma.SortOrder;
     weightKg?: Prisma.SortOrderInput | Prisma.SortOrder;
     description?: Prisma.SortOrderInput | Prisma.SortOrder;
+    doesGiveMilk?: Prisma.SortOrder;
+    dailyMilkProdLtr?: Prisma.SortOrderInput | Prisma.SortOrder;
     status?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -298,6 +352,8 @@ export type AnimalScalarWhereWithAggregatesInput = {
     NOT?: Prisma.AnimalScalarWhereWithAggregatesInput | Prisma.AnimalScalarWhereWithAggregatesInput[];
     id?: Prisma.StringWithAggregatesFilter<"Animal"> | string;
     ownerId?: Prisma.StringWithAggregatesFilter<"Animal"> | string;
+    mainCategoryId?: Prisma.StringWithAggregatesFilter<"Animal"> | string;
+    subCategoryId?: Prisma.StringWithAggregatesFilter<"Animal"> | string;
     name?: Prisma.StringNullableWithAggregatesFilter<"Animal"> | string | null;
     category?: Prisma.StringWithAggregatesFilter<"Animal"> | string;
     breed?: Prisma.StringNullableWithAggregatesFilter<"Animal"> | string | null;
@@ -305,6 +361,8 @@ export type AnimalScalarWhereWithAggregatesInput = {
     gender?: Prisma.StringNullableWithAggregatesFilter<"Animal"> | string | null;
     weightKg?: Prisma.DecimalNullableWithAggregatesFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.StringNullableWithAggregatesFilter<"Animal"> | string | null;
+    doesGiveMilk?: Prisma.BoolWithAggregatesFilter<"Animal"> | boolean;
+    dailyMilkProdLtr?: Prisma.DecimalNullableWithAggregatesFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusWithAggregatesFilter<"Animal"> | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"Animal"> | Date | string;
     updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Animal"> | Date | string;
@@ -318,6 +376,8 @@ export type AnimalCreateInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -325,10 +385,14 @@ export type AnimalCreateInput = {
     listings?: Prisma.CattleListingCreateNestedManyWithoutAnimalInput;
     vaccinations?: Prisma.VaccinationRecordCreateNestedManyWithoutAnimalInput;
     breedingRequests?: Prisma.BreederProfileCreateNestedManyWithoutStudAnimalsInput;
+    mainCategory: Prisma.CategoryCreateNestedOneWithoutAnimalsInput;
+    subCategory: Prisma.SubCategoryCreateNestedOneWithoutAnimalsInput;
 };
 export type AnimalUncheckedCreateInput = {
     id?: string;
     ownerId: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name?: string | null;
     category: string;
     breed?: string | null;
@@ -336,6 +400,8 @@ export type AnimalUncheckedCreateInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -352,6 +418,8 @@ export type AnimalUpdateInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -359,10 +427,14 @@ export type AnimalUpdateInput = {
     listings?: Prisma.CattleListingUpdateManyWithoutAnimalNestedInput;
     vaccinations?: Prisma.VaccinationRecordUpdateManyWithoutAnimalNestedInput;
     breedingRequests?: Prisma.BreederProfileUpdateManyWithoutStudAnimalsNestedInput;
+    mainCategory?: Prisma.CategoryUpdateOneRequiredWithoutAnimalsNestedInput;
+    subCategory?: Prisma.SubCategoryUpdateOneRequiredWithoutAnimalsNestedInput;
 };
 export type AnimalUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -370,6 +442,8 @@ export type AnimalUncheckedUpdateInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -380,6 +454,8 @@ export type AnimalUncheckedUpdateInput = {
 export type AnimalCreateManyInput = {
     id?: string;
     ownerId: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name?: string | null;
     category: string;
     breed?: string | null;
@@ -387,6 +463,8 @@ export type AnimalCreateManyInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -400,6 +478,8 @@ export type AnimalUpdateManyMutationInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -407,6 +487,8 @@ export type AnimalUpdateManyMutationInput = {
 export type AnimalUncheckedUpdateManyInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -414,6 +496,8 @@ export type AnimalUncheckedUpdateManyInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -421,6 +505,8 @@ export type AnimalUncheckedUpdateManyInput = {
 export type AnimalCountOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     ownerId?: Prisma.SortOrder;
+    mainCategoryId?: Prisma.SortOrder;
+    subCategoryId?: Prisma.SortOrder;
     name?: Prisma.SortOrder;
     category?: Prisma.SortOrder;
     breed?: Prisma.SortOrder;
@@ -428,6 +514,8 @@ export type AnimalCountOrderByAggregateInput = {
     gender?: Prisma.SortOrder;
     weightKg?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
+    doesGiveMilk?: Prisma.SortOrder;
+    dailyMilkProdLtr?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -435,10 +523,13 @@ export type AnimalCountOrderByAggregateInput = {
 export type AnimalAvgOrderByAggregateInput = {
     ageMonths?: Prisma.SortOrder;
     weightKg?: Prisma.SortOrder;
+    dailyMilkProdLtr?: Prisma.SortOrder;
 };
 export type AnimalMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     ownerId?: Prisma.SortOrder;
+    mainCategoryId?: Prisma.SortOrder;
+    subCategoryId?: Prisma.SortOrder;
     name?: Prisma.SortOrder;
     category?: Prisma.SortOrder;
     breed?: Prisma.SortOrder;
@@ -446,6 +537,8 @@ export type AnimalMaxOrderByAggregateInput = {
     gender?: Prisma.SortOrder;
     weightKg?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
+    doesGiveMilk?: Prisma.SortOrder;
+    dailyMilkProdLtr?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -453,6 +546,8 @@ export type AnimalMaxOrderByAggregateInput = {
 export type AnimalMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     ownerId?: Prisma.SortOrder;
+    mainCategoryId?: Prisma.SortOrder;
+    subCategoryId?: Prisma.SortOrder;
     name?: Prisma.SortOrder;
     category?: Prisma.SortOrder;
     breed?: Prisma.SortOrder;
@@ -460,6 +555,8 @@ export type AnimalMinOrderByAggregateInput = {
     gender?: Prisma.SortOrder;
     weightKg?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
+    doesGiveMilk?: Prisma.SortOrder;
+    dailyMilkProdLtr?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -467,6 +564,7 @@ export type AnimalMinOrderByAggregateInput = {
 export type AnimalSumOrderByAggregateInput = {
     ageMonths?: Prisma.SortOrder;
     weightKg?: Prisma.SortOrder;
+    dailyMilkProdLtr?: Prisma.SortOrder;
 };
 export type AnimalScalarRelationFilter = {
     is?: Prisma.AnimalWhereInput;
@@ -500,6 +598,9 @@ export type NullableDecimalFieldUpdateOperationsInput = {
     multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     divide?: runtime.Decimal | runtime.DecimalJsLike | number | string;
 };
+export type BoolFieldUpdateOperationsInput = {
+    set?: boolean;
+};
 export type EnumAnimalStatusFieldUpdateOperationsInput = {
     set?: $Enums.AnimalStatus;
 };
@@ -517,6 +618,82 @@ export type AnimalUpdateOneRequiredWithoutVaccinationsNestedInput = {
     upsert?: Prisma.AnimalUpsertWithoutVaccinationsInput;
     connect?: Prisma.AnimalWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.AnimalUpdateToOneWithWhereWithoutVaccinationsInput, Prisma.AnimalUpdateWithoutVaccinationsInput>, Prisma.AnimalUncheckedUpdateWithoutVaccinationsInput>;
+};
+export type AnimalCreateNestedManyWithoutMainCategoryInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutMainCategoryInput, Prisma.AnimalUncheckedCreateWithoutMainCategoryInput> | Prisma.AnimalCreateWithoutMainCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutMainCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutMainCategoryInput | Prisma.AnimalCreateOrConnectWithoutMainCategoryInput[];
+    createMany?: Prisma.AnimalCreateManyMainCategoryInputEnvelope;
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+};
+export type AnimalUncheckedCreateNestedManyWithoutMainCategoryInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutMainCategoryInput, Prisma.AnimalUncheckedCreateWithoutMainCategoryInput> | Prisma.AnimalCreateWithoutMainCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutMainCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutMainCategoryInput | Prisma.AnimalCreateOrConnectWithoutMainCategoryInput[];
+    createMany?: Prisma.AnimalCreateManyMainCategoryInputEnvelope;
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+};
+export type AnimalUpdateManyWithoutMainCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutMainCategoryInput, Prisma.AnimalUncheckedCreateWithoutMainCategoryInput> | Prisma.AnimalCreateWithoutMainCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutMainCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutMainCategoryInput | Prisma.AnimalCreateOrConnectWithoutMainCategoryInput[];
+    upsert?: Prisma.AnimalUpsertWithWhereUniqueWithoutMainCategoryInput | Prisma.AnimalUpsertWithWhereUniqueWithoutMainCategoryInput[];
+    createMany?: Prisma.AnimalCreateManyMainCategoryInputEnvelope;
+    set?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    disconnect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    delete?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    update?: Prisma.AnimalUpdateWithWhereUniqueWithoutMainCategoryInput | Prisma.AnimalUpdateWithWhereUniqueWithoutMainCategoryInput[];
+    updateMany?: Prisma.AnimalUpdateManyWithWhereWithoutMainCategoryInput | Prisma.AnimalUpdateManyWithWhereWithoutMainCategoryInput[];
+    deleteMany?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
+};
+export type AnimalUncheckedUpdateManyWithoutMainCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutMainCategoryInput, Prisma.AnimalUncheckedCreateWithoutMainCategoryInput> | Prisma.AnimalCreateWithoutMainCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutMainCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutMainCategoryInput | Prisma.AnimalCreateOrConnectWithoutMainCategoryInput[];
+    upsert?: Prisma.AnimalUpsertWithWhereUniqueWithoutMainCategoryInput | Prisma.AnimalUpsertWithWhereUniqueWithoutMainCategoryInput[];
+    createMany?: Prisma.AnimalCreateManyMainCategoryInputEnvelope;
+    set?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    disconnect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    delete?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    update?: Prisma.AnimalUpdateWithWhereUniqueWithoutMainCategoryInput | Prisma.AnimalUpdateWithWhereUniqueWithoutMainCategoryInput[];
+    updateMany?: Prisma.AnimalUpdateManyWithWhereWithoutMainCategoryInput | Prisma.AnimalUpdateManyWithWhereWithoutMainCategoryInput[];
+    deleteMany?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
+};
+export type AnimalCreateNestedManyWithoutSubCategoryInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutSubCategoryInput, Prisma.AnimalUncheckedCreateWithoutSubCategoryInput> | Prisma.AnimalCreateWithoutSubCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutSubCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutSubCategoryInput | Prisma.AnimalCreateOrConnectWithoutSubCategoryInput[];
+    createMany?: Prisma.AnimalCreateManySubCategoryInputEnvelope;
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+};
+export type AnimalUncheckedCreateNestedManyWithoutSubCategoryInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutSubCategoryInput, Prisma.AnimalUncheckedCreateWithoutSubCategoryInput> | Prisma.AnimalCreateWithoutSubCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutSubCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutSubCategoryInput | Prisma.AnimalCreateOrConnectWithoutSubCategoryInput[];
+    createMany?: Prisma.AnimalCreateManySubCategoryInputEnvelope;
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+};
+export type AnimalUpdateManyWithoutSubCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutSubCategoryInput, Prisma.AnimalUncheckedCreateWithoutSubCategoryInput> | Prisma.AnimalCreateWithoutSubCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutSubCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutSubCategoryInput | Prisma.AnimalCreateOrConnectWithoutSubCategoryInput[];
+    upsert?: Prisma.AnimalUpsertWithWhereUniqueWithoutSubCategoryInput | Prisma.AnimalUpsertWithWhereUniqueWithoutSubCategoryInput[];
+    createMany?: Prisma.AnimalCreateManySubCategoryInputEnvelope;
+    set?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    disconnect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    delete?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    update?: Prisma.AnimalUpdateWithWhereUniqueWithoutSubCategoryInput | Prisma.AnimalUpdateWithWhereUniqueWithoutSubCategoryInput[];
+    updateMany?: Prisma.AnimalUpdateManyWithWhereWithoutSubCategoryInput | Prisma.AnimalUpdateManyWithWhereWithoutSubCategoryInput[];
+    deleteMany?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
+};
+export type AnimalUncheckedUpdateManyWithoutSubCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.AnimalCreateWithoutSubCategoryInput, Prisma.AnimalUncheckedCreateWithoutSubCategoryInput> | Prisma.AnimalCreateWithoutSubCategoryInput[] | Prisma.AnimalUncheckedCreateWithoutSubCategoryInput[];
+    connectOrCreate?: Prisma.AnimalCreateOrConnectWithoutSubCategoryInput | Prisma.AnimalCreateOrConnectWithoutSubCategoryInput[];
+    upsert?: Prisma.AnimalUpsertWithWhereUniqueWithoutSubCategoryInput | Prisma.AnimalUpsertWithWhereUniqueWithoutSubCategoryInput[];
+    createMany?: Prisma.AnimalCreateManySubCategoryInputEnvelope;
+    set?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    disconnect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    delete?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    connect?: Prisma.AnimalWhereUniqueInput | Prisma.AnimalWhereUniqueInput[];
+    update?: Prisma.AnimalUpdateWithWhereUniqueWithoutSubCategoryInput | Prisma.AnimalUpdateWithWhereUniqueWithoutSubCategoryInput[];
+    updateMany?: Prisma.AnimalUpdateManyWithWhereWithoutSubCategoryInput | Prisma.AnimalUpdateManyWithWhereWithoutSubCategoryInput[];
+    deleteMany?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
 };
 export type AnimalCreateNestedManyWithoutBreedingRequestsInput = {
     create?: Prisma.XOR<Prisma.AnimalCreateWithoutBreedingRequestsInput, Prisma.AnimalUncheckedCreateWithoutBreedingRequestsInput> | Prisma.AnimalCreateWithoutBreedingRequestsInput[] | Prisma.AnimalUncheckedCreateWithoutBreedingRequestsInput[];
@@ -611,16 +788,22 @@ export type AnimalCreateWithoutVaccinationsInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     owner: Prisma.UserCreateNestedOneWithoutAnimalsInput;
     listings?: Prisma.CattleListingCreateNestedManyWithoutAnimalInput;
     breedingRequests?: Prisma.BreederProfileCreateNestedManyWithoutStudAnimalsInput;
+    mainCategory: Prisma.CategoryCreateNestedOneWithoutAnimalsInput;
+    subCategory: Prisma.SubCategoryCreateNestedOneWithoutAnimalsInput;
 };
 export type AnimalUncheckedCreateWithoutVaccinationsInput = {
     id?: string;
     ownerId: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name?: string | null;
     category: string;
     breed?: string | null;
@@ -628,6 +811,8 @@ export type AnimalUncheckedCreateWithoutVaccinationsInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -656,16 +841,22 @@ export type AnimalUpdateWithoutVaccinationsInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     owner?: Prisma.UserUpdateOneRequiredWithoutAnimalsNestedInput;
     listings?: Prisma.CattleListingUpdateManyWithoutAnimalNestedInput;
     breedingRequests?: Prisma.BreederProfileUpdateManyWithoutStudAnimalsNestedInput;
+    mainCategory?: Prisma.CategoryUpdateOneRequiredWithoutAnimalsNestedInput;
+    subCategory?: Prisma.SubCategoryUpdateOneRequiredWithoutAnimalsNestedInput;
 };
 export type AnimalUncheckedUpdateWithoutVaccinationsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -673,11 +864,156 @@ export type AnimalUncheckedUpdateWithoutVaccinationsInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     listings?: Prisma.CattleListingUncheckedUpdateManyWithoutAnimalNestedInput;
     breedingRequests?: Prisma.BreederProfileUncheckedUpdateManyWithoutStudAnimalsNestedInput;
+};
+export type AnimalCreateWithoutMainCategoryInput = {
+    id?: string;
+    name?: string | null;
+    category: string;
+    breed?: string | null;
+    ageMonths?: number | null;
+    gender?: string | null;
+    weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: $Enums.AnimalStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    owner: Prisma.UserCreateNestedOneWithoutAnimalsInput;
+    listings?: Prisma.CattleListingCreateNestedManyWithoutAnimalInput;
+    vaccinations?: Prisma.VaccinationRecordCreateNestedManyWithoutAnimalInput;
+    breedingRequests?: Prisma.BreederProfileCreateNestedManyWithoutStudAnimalsInput;
+    subCategory: Prisma.SubCategoryCreateNestedOneWithoutAnimalsInput;
+};
+export type AnimalUncheckedCreateWithoutMainCategoryInput = {
+    id?: string;
+    ownerId: string;
+    subCategoryId: string;
+    name?: string | null;
+    category: string;
+    breed?: string | null;
+    ageMonths?: number | null;
+    gender?: string | null;
+    weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: $Enums.AnimalStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    listings?: Prisma.CattleListingUncheckedCreateNestedManyWithoutAnimalInput;
+    vaccinations?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutAnimalInput;
+    breedingRequests?: Prisma.BreederProfileUncheckedCreateNestedManyWithoutStudAnimalsInput;
+};
+export type AnimalCreateOrConnectWithoutMainCategoryInput = {
+    where: Prisma.AnimalWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AnimalCreateWithoutMainCategoryInput, Prisma.AnimalUncheckedCreateWithoutMainCategoryInput>;
+};
+export type AnimalCreateManyMainCategoryInputEnvelope = {
+    data: Prisma.AnimalCreateManyMainCategoryInput | Prisma.AnimalCreateManyMainCategoryInput[];
+    skipDuplicates?: boolean;
+};
+export type AnimalUpsertWithWhereUniqueWithoutMainCategoryInput = {
+    where: Prisma.AnimalWhereUniqueInput;
+    update: Prisma.XOR<Prisma.AnimalUpdateWithoutMainCategoryInput, Prisma.AnimalUncheckedUpdateWithoutMainCategoryInput>;
+    create: Prisma.XOR<Prisma.AnimalCreateWithoutMainCategoryInput, Prisma.AnimalUncheckedCreateWithoutMainCategoryInput>;
+};
+export type AnimalUpdateWithWhereUniqueWithoutMainCategoryInput = {
+    where: Prisma.AnimalWhereUniqueInput;
+    data: Prisma.XOR<Prisma.AnimalUpdateWithoutMainCategoryInput, Prisma.AnimalUncheckedUpdateWithoutMainCategoryInput>;
+};
+export type AnimalUpdateManyWithWhereWithoutMainCategoryInput = {
+    where: Prisma.AnimalScalarWhereInput;
+    data: Prisma.XOR<Prisma.AnimalUpdateManyMutationInput, Prisma.AnimalUncheckedUpdateManyWithoutMainCategoryInput>;
+};
+export type AnimalScalarWhereInput = {
+    AND?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
+    OR?: Prisma.AnimalScalarWhereInput[];
+    NOT?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
+    id?: Prisma.StringFilter<"Animal"> | string;
+    ownerId?: Prisma.StringFilter<"Animal"> | string;
+    mainCategoryId?: Prisma.StringFilter<"Animal"> | string;
+    subCategoryId?: Prisma.StringFilter<"Animal"> | string;
+    name?: Prisma.StringNullableFilter<"Animal"> | string | null;
+    category?: Prisma.StringFilter<"Animal"> | string;
+    breed?: Prisma.StringNullableFilter<"Animal"> | string | null;
+    ageMonths?: Prisma.IntNullableFilter<"Animal"> | number | null;
+    gender?: Prisma.StringNullableFilter<"Animal"> | string | null;
+    weightKg?: Prisma.DecimalNullableFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: Prisma.StringNullableFilter<"Animal"> | string | null;
+    doesGiveMilk?: Prisma.BoolFilter<"Animal"> | boolean;
+    dailyMilkProdLtr?: Prisma.DecimalNullableFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: Prisma.EnumAnimalStatusFilter<"Animal"> | $Enums.AnimalStatus;
+    createdAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
+};
+export type AnimalCreateWithoutSubCategoryInput = {
+    id?: string;
+    name?: string | null;
+    category: string;
+    breed?: string | null;
+    ageMonths?: number | null;
+    gender?: string | null;
+    weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: $Enums.AnimalStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    owner: Prisma.UserCreateNestedOneWithoutAnimalsInput;
+    listings?: Prisma.CattleListingCreateNestedManyWithoutAnimalInput;
+    vaccinations?: Prisma.VaccinationRecordCreateNestedManyWithoutAnimalInput;
+    breedingRequests?: Prisma.BreederProfileCreateNestedManyWithoutStudAnimalsInput;
+    mainCategory: Prisma.CategoryCreateNestedOneWithoutAnimalsInput;
+};
+export type AnimalUncheckedCreateWithoutSubCategoryInput = {
+    id?: string;
+    ownerId: string;
+    mainCategoryId: string;
+    name?: string | null;
+    category: string;
+    breed?: string | null;
+    ageMonths?: number | null;
+    gender?: string | null;
+    weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: $Enums.AnimalStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    listings?: Prisma.CattleListingUncheckedCreateNestedManyWithoutAnimalInput;
+    vaccinations?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutAnimalInput;
+    breedingRequests?: Prisma.BreederProfileUncheckedCreateNestedManyWithoutStudAnimalsInput;
+};
+export type AnimalCreateOrConnectWithoutSubCategoryInput = {
+    where: Prisma.AnimalWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AnimalCreateWithoutSubCategoryInput, Prisma.AnimalUncheckedCreateWithoutSubCategoryInput>;
+};
+export type AnimalCreateManySubCategoryInputEnvelope = {
+    data: Prisma.AnimalCreateManySubCategoryInput | Prisma.AnimalCreateManySubCategoryInput[];
+    skipDuplicates?: boolean;
+};
+export type AnimalUpsertWithWhereUniqueWithoutSubCategoryInput = {
+    where: Prisma.AnimalWhereUniqueInput;
+    update: Prisma.XOR<Prisma.AnimalUpdateWithoutSubCategoryInput, Prisma.AnimalUncheckedUpdateWithoutSubCategoryInput>;
+    create: Prisma.XOR<Prisma.AnimalCreateWithoutSubCategoryInput, Prisma.AnimalUncheckedCreateWithoutSubCategoryInput>;
+};
+export type AnimalUpdateWithWhereUniqueWithoutSubCategoryInput = {
+    where: Prisma.AnimalWhereUniqueInput;
+    data: Prisma.XOR<Prisma.AnimalUpdateWithoutSubCategoryInput, Prisma.AnimalUncheckedUpdateWithoutSubCategoryInput>;
+};
+export type AnimalUpdateManyWithWhereWithoutSubCategoryInput = {
+    where: Prisma.AnimalScalarWhereInput;
+    data: Prisma.XOR<Prisma.AnimalUpdateManyMutationInput, Prisma.AnimalUncheckedUpdateManyWithoutSubCategoryInput>;
 };
 export type AnimalCreateWithoutBreedingRequestsInput = {
     id?: string;
@@ -688,16 +1024,22 @@ export type AnimalCreateWithoutBreedingRequestsInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     owner: Prisma.UserCreateNestedOneWithoutAnimalsInput;
     listings?: Prisma.CattleListingCreateNestedManyWithoutAnimalInput;
     vaccinations?: Prisma.VaccinationRecordCreateNestedManyWithoutAnimalInput;
+    mainCategory: Prisma.CategoryCreateNestedOneWithoutAnimalsInput;
+    subCategory: Prisma.SubCategoryCreateNestedOneWithoutAnimalsInput;
 };
 export type AnimalUncheckedCreateWithoutBreedingRequestsInput = {
     id?: string;
     ownerId: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name?: string | null;
     category: string;
     breed?: string | null;
@@ -705,6 +1047,8 @@ export type AnimalUncheckedCreateWithoutBreedingRequestsInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -728,23 +1072,6 @@ export type AnimalUpdateManyWithWhereWithoutBreedingRequestsInput = {
     where: Prisma.AnimalScalarWhereInput;
     data: Prisma.XOR<Prisma.AnimalUpdateManyMutationInput, Prisma.AnimalUncheckedUpdateManyWithoutBreedingRequestsInput>;
 };
-export type AnimalScalarWhereInput = {
-    AND?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
-    OR?: Prisma.AnimalScalarWhereInput[];
-    NOT?: Prisma.AnimalScalarWhereInput | Prisma.AnimalScalarWhereInput[];
-    id?: Prisma.StringFilter<"Animal"> | string;
-    ownerId?: Prisma.StringFilter<"Animal"> | string;
-    name?: Prisma.StringNullableFilter<"Animal"> | string | null;
-    category?: Prisma.StringFilter<"Animal"> | string;
-    breed?: Prisma.StringNullableFilter<"Animal"> | string | null;
-    ageMonths?: Prisma.IntNullableFilter<"Animal"> | number | null;
-    gender?: Prisma.StringNullableFilter<"Animal"> | string | null;
-    weightKg?: Prisma.DecimalNullableFilter<"Animal"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
-    description?: Prisma.StringNullableFilter<"Animal"> | string | null;
-    status?: Prisma.EnumAnimalStatusFilter<"Animal"> | $Enums.AnimalStatus;
-    createdAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
-    updatedAt?: Prisma.DateTimeFilter<"Animal"> | Date | string;
-};
 export type AnimalCreateWithoutListingsInput = {
     id?: string;
     name?: string | null;
@@ -754,16 +1081,22 @@ export type AnimalCreateWithoutListingsInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     owner: Prisma.UserCreateNestedOneWithoutAnimalsInput;
     vaccinations?: Prisma.VaccinationRecordCreateNestedManyWithoutAnimalInput;
     breedingRequests?: Prisma.BreederProfileCreateNestedManyWithoutStudAnimalsInput;
+    mainCategory: Prisma.CategoryCreateNestedOneWithoutAnimalsInput;
+    subCategory: Prisma.SubCategoryCreateNestedOneWithoutAnimalsInput;
 };
 export type AnimalUncheckedCreateWithoutListingsInput = {
     id?: string;
     ownerId: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name?: string | null;
     category: string;
     breed?: string | null;
@@ -771,6 +1104,8 @@ export type AnimalUncheckedCreateWithoutListingsInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -799,16 +1134,22 @@ export type AnimalUpdateWithoutListingsInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     owner?: Prisma.UserUpdateOneRequiredWithoutAnimalsNestedInput;
     vaccinations?: Prisma.VaccinationRecordUpdateManyWithoutAnimalNestedInput;
     breedingRequests?: Prisma.BreederProfileUpdateManyWithoutStudAnimalsNestedInput;
+    mainCategory?: Prisma.CategoryUpdateOneRequiredWithoutAnimalsNestedInput;
+    subCategory?: Prisma.SubCategoryUpdateOneRequiredWithoutAnimalsNestedInput;
 };
 export type AnimalUncheckedUpdateWithoutListingsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -816,6 +1157,8 @@ export type AnimalUncheckedUpdateWithoutListingsInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -831,15 +1174,21 @@ export type AnimalCreateWithoutOwnerInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     listings?: Prisma.CattleListingCreateNestedManyWithoutAnimalInput;
     vaccinations?: Prisma.VaccinationRecordCreateNestedManyWithoutAnimalInput;
     breedingRequests?: Prisma.BreederProfileCreateNestedManyWithoutStudAnimalsInput;
+    mainCategory: Prisma.CategoryCreateNestedOneWithoutAnimalsInput;
+    subCategory: Prisma.SubCategoryCreateNestedOneWithoutAnimalsInput;
 };
 export type AnimalUncheckedCreateWithoutOwnerInput = {
     id?: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name?: string | null;
     category: string;
     breed?: string | null;
@@ -847,6 +1196,8 @@ export type AnimalUncheckedCreateWithoutOwnerInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -875,6 +1226,154 @@ export type AnimalUpdateManyWithWhereWithoutOwnerInput = {
     where: Prisma.AnimalScalarWhereInput;
     data: Prisma.XOR<Prisma.AnimalUpdateManyMutationInput, Prisma.AnimalUncheckedUpdateManyWithoutOwnerInput>;
 };
+export type AnimalCreateManyMainCategoryInput = {
+    id?: string;
+    ownerId: string;
+    subCategoryId: string;
+    name?: string | null;
+    category: string;
+    breed?: string | null;
+    ageMonths?: number | null;
+    gender?: string | null;
+    weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: $Enums.AnimalStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type AnimalUpdateWithoutMainCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.StringFieldUpdateOperationsInput | string;
+    breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    ageMonths?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    owner?: Prisma.UserUpdateOneRequiredWithoutAnimalsNestedInput;
+    listings?: Prisma.CattleListingUpdateManyWithoutAnimalNestedInput;
+    vaccinations?: Prisma.VaccinationRecordUpdateManyWithoutAnimalNestedInput;
+    breedingRequests?: Prisma.BreederProfileUpdateManyWithoutStudAnimalsNestedInput;
+    subCategory?: Prisma.SubCategoryUpdateOneRequiredWithoutAnimalsNestedInput;
+};
+export type AnimalUncheckedUpdateWithoutMainCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.StringFieldUpdateOperationsInput | string;
+    breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    ageMonths?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    listings?: Prisma.CattleListingUncheckedUpdateManyWithoutAnimalNestedInput;
+    vaccinations?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutAnimalNestedInput;
+    breedingRequests?: Prisma.BreederProfileUncheckedUpdateManyWithoutStudAnimalsNestedInput;
+};
+export type AnimalUncheckedUpdateManyWithoutMainCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.StringFieldUpdateOperationsInput | string;
+    breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    ageMonths?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AnimalCreateManySubCategoryInput = {
+    id?: string;
+    ownerId: string;
+    mainCategoryId: string;
+    name?: string | null;
+    category: string;
+    breed?: string | null;
+    ageMonths?: number | null;
+    gender?: string | null;
+    weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: $Enums.AnimalStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type AnimalUpdateWithoutSubCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.StringFieldUpdateOperationsInput | string;
+    breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    ageMonths?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    owner?: Prisma.UserUpdateOneRequiredWithoutAnimalsNestedInput;
+    listings?: Prisma.CattleListingUpdateManyWithoutAnimalNestedInput;
+    vaccinations?: Prisma.VaccinationRecordUpdateManyWithoutAnimalNestedInput;
+    breedingRequests?: Prisma.BreederProfileUpdateManyWithoutStudAnimalsNestedInput;
+    mainCategory?: Prisma.CategoryUpdateOneRequiredWithoutAnimalsNestedInput;
+};
+export type AnimalUncheckedUpdateWithoutSubCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.StringFieldUpdateOperationsInput | string;
+    breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    ageMonths?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    listings?: Prisma.CattleListingUncheckedUpdateManyWithoutAnimalNestedInput;
+    vaccinations?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutAnimalNestedInput;
+    breedingRequests?: Prisma.BreederProfileUncheckedUpdateManyWithoutStudAnimalsNestedInput;
+};
+export type AnimalUncheckedUpdateManyWithoutSubCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.StringFieldUpdateOperationsInput | string;
+    breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    ageMonths?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
 export type AnimalUpdateWithoutBreedingRequestsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -884,16 +1383,22 @@ export type AnimalUpdateWithoutBreedingRequestsInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     owner?: Prisma.UserUpdateOneRequiredWithoutAnimalsNestedInput;
     listings?: Prisma.CattleListingUpdateManyWithoutAnimalNestedInput;
     vaccinations?: Prisma.VaccinationRecordUpdateManyWithoutAnimalNestedInput;
+    mainCategory?: Prisma.CategoryUpdateOneRequiredWithoutAnimalsNestedInput;
+    subCategory?: Prisma.SubCategoryUpdateOneRequiredWithoutAnimalsNestedInput;
 };
 export type AnimalUncheckedUpdateWithoutBreedingRequestsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -901,6 +1406,8 @@ export type AnimalUncheckedUpdateWithoutBreedingRequestsInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -910,6 +1417,8 @@ export type AnimalUncheckedUpdateWithoutBreedingRequestsInput = {
 export type AnimalUncheckedUpdateManyWithoutBreedingRequestsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -917,12 +1426,16 @@ export type AnimalUncheckedUpdateManyWithoutBreedingRequestsInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type AnimalCreateManyOwnerInput = {
     id?: string;
+    mainCategoryId: string;
+    subCategoryId: string;
     name?: string | null;
     category: string;
     breed?: string | null;
@@ -930,6 +1443,8 @@ export type AnimalCreateManyOwnerInput = {
     gender?: string | null;
     weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: string | null;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: $Enums.AnimalStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -943,15 +1458,21 @@ export type AnimalUpdateWithoutOwnerInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     listings?: Prisma.CattleListingUpdateManyWithoutAnimalNestedInput;
     vaccinations?: Prisma.VaccinationRecordUpdateManyWithoutAnimalNestedInput;
     breedingRequests?: Prisma.BreederProfileUpdateManyWithoutStudAnimalsNestedInput;
+    mainCategory?: Prisma.CategoryUpdateOneRequiredWithoutAnimalsNestedInput;
+    subCategory?: Prisma.SubCategoryUpdateOneRequiredWithoutAnimalsNestedInput;
 };
 export type AnimalUncheckedUpdateWithoutOwnerInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -959,6 +1480,8 @@ export type AnimalUncheckedUpdateWithoutOwnerInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -968,6 +1491,8 @@ export type AnimalUncheckedUpdateWithoutOwnerInput = {
 };
 export type AnimalUncheckedUpdateManyWithoutOwnerInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    mainCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    subCategoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     category?: Prisma.StringFieldUpdateOperationsInput | string;
     breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -975,6 +1500,8 @@ export type AnimalUncheckedUpdateManyWithoutOwnerInput = {
     gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    doesGiveMilk?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    dailyMilkProdLtr?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     status?: Prisma.EnumAnimalStatusFieldUpdateOperationsInput | $Enums.AnimalStatus;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -1022,6 +1549,8 @@ export type AnimalCountOutputTypeCountBreedingRequestsArgs<ExtArgs extends runti
 export type AnimalSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     ownerId?: boolean;
+    mainCategoryId?: boolean;
+    subCategoryId?: boolean;
     name?: boolean;
     category?: boolean;
     breed?: boolean;
@@ -1029,6 +1558,8 @@ export type AnimalSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     gender?: boolean;
     weightKg?: boolean;
     description?: boolean;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: boolean;
     status?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -1036,11 +1567,15 @@ export type AnimalSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     listings?: boolean | Prisma.Animal$listingsArgs<ExtArgs>;
     vaccinations?: boolean | Prisma.Animal$vaccinationsArgs<ExtArgs>;
     breedingRequests?: boolean | Prisma.Animal$breedingRequestsArgs<ExtArgs>;
+    mainCategory?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+    subCategory?: boolean | Prisma.SubCategoryDefaultArgs<ExtArgs>;
     _count?: boolean | Prisma.AnimalCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["animal"]>;
 export type AnimalSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     ownerId?: boolean;
+    mainCategoryId?: boolean;
+    subCategoryId?: boolean;
     name?: boolean;
     category?: boolean;
     breed?: boolean;
@@ -1048,14 +1583,20 @@ export type AnimalSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
     gender?: boolean;
     weightKg?: boolean;
     description?: boolean;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: boolean;
     status?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    mainCategory?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+    subCategory?: boolean | Prisma.SubCategoryDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["animal"]>;
 export type AnimalSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     ownerId?: boolean;
+    mainCategoryId?: boolean;
+    subCategoryId?: boolean;
     name?: boolean;
     category?: boolean;
     breed?: boolean;
@@ -1063,14 +1604,20 @@ export type AnimalSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
     gender?: boolean;
     weightKg?: boolean;
     description?: boolean;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: boolean;
     status?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    mainCategory?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+    subCategory?: boolean | Prisma.SubCategoryDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["animal"]>;
 export type AnimalSelectScalar = {
     id?: boolean;
     ownerId?: boolean;
+    mainCategoryId?: boolean;
+    subCategoryId?: boolean;
     name?: boolean;
     category?: boolean;
     breed?: boolean;
@@ -1078,23 +1625,31 @@ export type AnimalSelectScalar = {
     gender?: boolean;
     weightKg?: boolean;
     description?: boolean;
+    doesGiveMilk?: boolean;
+    dailyMilkProdLtr?: boolean;
     status?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
 };
-export type AnimalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "name" | "category" | "breed" | "ageMonths" | "gender" | "weightKg" | "description" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["animal"]>;
+export type AnimalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "mainCategoryId" | "subCategoryId" | "name" | "category" | "breed" | "ageMonths" | "gender" | "weightKg" | "description" | "doesGiveMilk" | "dailyMilkProdLtr" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["animal"]>;
 export type AnimalInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     listings?: boolean | Prisma.Animal$listingsArgs<ExtArgs>;
     vaccinations?: boolean | Prisma.Animal$vaccinationsArgs<ExtArgs>;
     breedingRequests?: boolean | Prisma.Animal$breedingRequestsArgs<ExtArgs>;
+    mainCategory?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+    subCategory?: boolean | Prisma.SubCategoryDefaultArgs<ExtArgs>;
     _count?: boolean | Prisma.AnimalCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type AnimalIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    mainCategory?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+    subCategory?: boolean | Prisma.SubCategoryDefaultArgs<ExtArgs>;
 };
 export type AnimalIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    mainCategory?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+    subCategory?: boolean | Prisma.SubCategoryDefaultArgs<ExtArgs>;
 };
 export type $AnimalPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "Animal";
@@ -1103,10 +1658,14 @@ export type $AnimalPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
         listings: Prisma.$CattleListingPayload<ExtArgs>[];
         vaccinations: Prisma.$VaccinationRecordPayload<ExtArgs>[];
         breedingRequests: Prisma.$BreederProfilePayload<ExtArgs>[];
+        mainCategory: Prisma.$CategoryPayload<ExtArgs>;
+        subCategory: Prisma.$SubCategoryPayload<ExtArgs>;
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
         ownerId: string;
+        mainCategoryId: string;
+        subCategoryId: string;
         name: string | null;
         category: string;
         breed: string | null;
@@ -1114,6 +1673,8 @@ export type $AnimalPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
         gender: string | null;
         weightKg: runtime.Decimal | null;
         description: string | null;
+        doesGiveMilk: boolean;
+        dailyMilkProdLtr: runtime.Decimal | null;
         status: $Enums.AnimalStatus;
         createdAt: Date;
         updatedAt: Date;
@@ -1450,6 +2011,8 @@ export interface Prisma__AnimalClient<T, Null = never, ExtArgs extends runtime.T
     listings<T extends Prisma.Animal$listingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Animal$listingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CattleListingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     vaccinations<T extends Prisma.Animal$vaccinationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Animal$vaccinationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VaccinationRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     breedingRequests<T extends Prisma.Animal$breedingRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Animal$breedingRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BreederProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    mainCategory<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    subCategory<T extends Prisma.SubCategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SubCategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__SubCategoryClient<runtime.Types.Result.GetResult<Prisma.$SubCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1477,6 +2040,8 @@ export interface Prisma__AnimalClient<T, Null = never, ExtArgs extends runtime.T
 export interface AnimalFieldRefs {
     readonly id: Prisma.FieldRef<"Animal", 'String'>;
     readonly ownerId: Prisma.FieldRef<"Animal", 'String'>;
+    readonly mainCategoryId: Prisma.FieldRef<"Animal", 'String'>;
+    readonly subCategoryId: Prisma.FieldRef<"Animal", 'String'>;
     readonly name: Prisma.FieldRef<"Animal", 'String'>;
     readonly category: Prisma.FieldRef<"Animal", 'String'>;
     readonly breed: Prisma.FieldRef<"Animal", 'String'>;
@@ -1484,6 +2049,8 @@ export interface AnimalFieldRefs {
     readonly gender: Prisma.FieldRef<"Animal", 'String'>;
     readonly weightKg: Prisma.FieldRef<"Animal", 'Decimal'>;
     readonly description: Prisma.FieldRef<"Animal", 'String'>;
+    readonly doesGiveMilk: Prisma.FieldRef<"Animal", 'Boolean'>;
+    readonly dailyMilkProdLtr: Prisma.FieldRef<"Animal", 'Decimal'>;
     readonly status: Prisma.FieldRef<"Animal", 'AnimalStatus'>;
     readonly createdAt: Prisma.FieldRef<"Animal", 'DateTime'>;
     readonly updatedAt: Prisma.FieldRef<"Animal", 'DateTime'>;

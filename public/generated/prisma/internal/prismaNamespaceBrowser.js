@@ -57,6 +57,7 @@ export const ModelName = {
     ForumReport: 'ForumReport',
     CattleListing: 'CattleListing',
     ListingImage: 'ListingImage',
+    ListingLocation: 'ListingLocation',
     BrandProfile: 'BrandProfile',
     MarketplaceProduct: 'MarketplaceProduct',
     ProductReview: 'ProductReview',
@@ -68,6 +69,9 @@ export const ModelName = {
     Subscription: 'Subscription',
     PlatformLedger: 'PlatformLedger',
     User: 'User',
+    State: 'State',
+    City: 'City',
+    Area: 'Area',
     OtpCode: 'OtpCode'
 };
 /*
@@ -82,6 +86,8 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export const AnimalScalarFieldEnum = {
     id: 'id',
     ownerId: 'ownerId',
+    mainCategoryId: 'mainCategoryId',
+    subCategoryId: 'subCategoryId',
     name: 'name',
     category: 'category',
     breed: 'breed',
@@ -89,6 +95,8 @@ export const AnimalScalarFieldEnum = {
     gender: 'gender',
     weightKg: 'weightKg',
     description: 'description',
+    doesGiveMilk: 'doesGiveMilk',
+    dailyMilkProdLtr: 'dailyMilkProdLtr',
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -247,8 +255,6 @@ export const CattleListingScalarFieldEnum = {
     status: 'status',
     latitude: 'latitude',
     longitude: 'longitude',
-    isPremium: 'isPremium',
-    premiumExpiresAt: 'premiumExpiresAt',
     listingExpiresAt: 'listingExpiresAt',
     deletedAt: 'deletedAt',
     createdAt: 'createdAt',
@@ -260,6 +266,15 @@ export const ListingImageScalarFieldEnum = {
     url: 'url',
     sortOrder: 'sortOrder',
     createdAt: 'createdAt'
+};
+export const ListingLocationScalarFieldEnum = {
+    id: 'id',
+    listingId: 'listingId',
+    stateId: 'stateId',
+    cityId: 'cityId',
+    areaId: 'areaId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
 };
 export const BrandProfileScalarFieldEnum = {
     id: 'id',
@@ -369,6 +384,50 @@ export const UserScalarFieldEnum = {
     deletedAt: 'deletedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
+};
+export const StateScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    state: 'state',
+    country: 'country',
+    countryCode: 'countryCode',
+    stateCode: 'stateCode',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    isActive: 'isActive',
+    isHiring: 'isHiring',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+};
+export const CityScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    country: 'country',
+    countryCode: 'countryCode',
+    stateCode: 'stateCode',
+    stateId: 'stateId',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    isActive: 'isActive',
+    isHiring: 'isHiring',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+};
+export const AreaScalarFieldEnum = {
+    id: 'id',
+    cityId: 'cityId',
+    name: 'name',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    serviceRadiusKm: 'serviceRadiusKm',
+    isActive: 'isActive',
+    isHiring: 'isHiring',
+    priority: 'priority',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
 };
 export const OtpCodeScalarFieldEnum = {
     id: 'id',

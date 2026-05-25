@@ -16,12 +16,8 @@ model CattleListing {
   status      ListingStatus @default(DRAFT)
 
   // Geolocation
-  latitude  Decimal @db.Decimal(10, 8)
-  longitude Decimal @db.Decimal(11, 8)
-
-  // Paid boost
-  isPremium        Boolean   @default(false)
-  premiumExpiresAt DateTime?
+  latitude  Decimal? @db.Decimal(10, 8)
+  longitude Decimal? @db.Decimal(11, 8)
 
   // Listing subscription
   listingExpiresAt DateTime
@@ -30,19 +26,20 @@ model CattleListing {
   updatedAt        DateTime  @updatedAt
 
   // Relations
-  owner  User           @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  animal Animal         @relation(fields: [animalId], references: [id], onDelete: Cascade)
-  images ListingImage[]
+  owner    User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  animal   Animal           @relation(fields: [animalId], references: [id], onDelete: Cascade)
+  images   ListingImage[]
+  location ListingLocation?
 
   @@index([ownerId])
-  @@index([status, isPremium])
+  @@index([status])
   @@index([latitude, longitude])
 }
 
 model ListingImage {
   id        String   @id @default(uuid())
   listingId String
-  url       String
+  url       Json?
   sortOrder Int      @default(0)
   createdAt DateTime @default(now())
 
@@ -50,4 +47,26 @@ model ListingImage {
   listing CattleListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 
   @@index([listingId])
+}
+
+model ListingLocation {
+  id        String        @id @default(uuid())
+  listingId String        @unique
+  listing   CattleListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  
+  stateId   BigInt
+  state     State         @relation(fields: [stateId], references: [id])
+  
+  cityId    BigInt
+  city      City          @relation(fields: [cityId], references: [id])
+  
+  areaId    BigInt?
+  area      Area?          @relation(fields: [areaId], references: [id])
+
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([stateId])
+  @@index([cityId])
+  @@index([areaId])
 }

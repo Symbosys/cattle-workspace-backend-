@@ -464,9 +464,6 @@ export type DecimalFieldUpdateOperationsInput = {
     multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     divide?: runtime.Decimal | runtime.DecimalJsLike | number | string;
 };
-export type BoolFieldUpdateOperationsInput = {
-    set?: boolean;
-};
 export type BreederProfileCreateNestedOneWithoutBreedingRequestsInput = {
     create?: Prisma.XOR<Prisma.BreederProfileCreateWithoutBreedingRequestsInput, Prisma.BreederProfileUncheckedCreateWithoutBreedingRequestsInput>;
     connectOrCreate?: Prisma.BreederProfileCreateOrConnectWithoutBreedingRequestsInput;

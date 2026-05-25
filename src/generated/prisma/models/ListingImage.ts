@@ -37,7 +37,6 @@ export type ListingImageSumAggregateOutputType = {
 export type ListingImageMinAggregateOutputType = {
   id: string | null
   listingId: string | null
-  url: string | null
   sortOrder: number | null
   createdAt: Date | null
 }
@@ -45,7 +44,6 @@ export type ListingImageMinAggregateOutputType = {
 export type ListingImageMaxAggregateOutputType = {
   id: string | null
   listingId: string | null
-  url: string | null
   sortOrder: number | null
   createdAt: Date | null
 }
@@ -71,7 +69,6 @@ export type ListingImageSumAggregateInputType = {
 export type ListingImageMinAggregateInputType = {
   id?: true
   listingId?: true
-  url?: true
   sortOrder?: true
   createdAt?: true
 }
@@ -79,7 +76,6 @@ export type ListingImageMinAggregateInputType = {
 export type ListingImageMaxAggregateInputType = {
   id?: true
   listingId?: true
-  url?: true
   sortOrder?: true
   createdAt?: true
 }
@@ -182,7 +178,7 @@ export type ListingImageGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 export type ListingImageGroupByOutputType = {
   id: string
   listingId: string
-  url: string
+  url: runtime.JsonValue | null
   sortOrder: number
   createdAt: Date
   _count: ListingImageCountAggregateOutputType | null
@@ -213,7 +209,7 @@ export type ListingImageWhereInput = {
   NOT?: Prisma.ListingImageWhereInput | Prisma.ListingImageWhereInput[]
   id?: Prisma.StringFilter<"ListingImage"> | string
   listingId?: Prisma.StringFilter<"ListingImage"> | string
-  url?: Prisma.StringFilter<"ListingImage"> | string
+  url?: Prisma.JsonNullableFilter<"ListingImage">
   sortOrder?: Prisma.IntFilter<"ListingImage"> | number
   createdAt?: Prisma.DateTimeFilter<"ListingImage"> | Date | string
   listing?: Prisma.XOR<Prisma.CattleListingScalarRelationFilter, Prisma.CattleListingWhereInput>
@@ -222,7 +218,7 @@ export type ListingImageWhereInput = {
 export type ListingImageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   listingId?: Prisma.SortOrder
-  url?: Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   listing?: Prisma.CattleListingOrderByWithRelationInput
@@ -234,7 +230,7 @@ export type ListingImageWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ListingImageWhereInput[]
   NOT?: Prisma.ListingImageWhereInput | Prisma.ListingImageWhereInput[]
   listingId?: Prisma.StringFilter<"ListingImage"> | string
-  url?: Prisma.StringFilter<"ListingImage"> | string
+  url?: Prisma.JsonNullableFilter<"ListingImage">
   sortOrder?: Prisma.IntFilter<"ListingImage"> | number
   createdAt?: Prisma.DateTimeFilter<"ListingImage"> | Date | string
   listing?: Prisma.XOR<Prisma.CattleListingScalarRelationFilter, Prisma.CattleListingWhereInput>
@@ -243,7 +239,7 @@ export type ListingImageWhereUniqueInput = Prisma.AtLeast<{
 export type ListingImageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   listingId?: Prisma.SortOrder
-  url?: Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.ListingImageCountOrderByAggregateInput
@@ -259,14 +255,14 @@ export type ListingImageScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ListingImageScalarWhereWithAggregatesInput | Prisma.ListingImageScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"ListingImage"> | string
   listingId?: Prisma.StringWithAggregatesFilter<"ListingImage"> | string
-  url?: Prisma.StringWithAggregatesFilter<"ListingImage"> | string
+  url?: Prisma.JsonNullableWithAggregatesFilter<"ListingImage">
   sortOrder?: Prisma.IntWithAggregatesFilter<"ListingImage"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ListingImage"> | Date | string
 }
 
 export type ListingImageCreateInput = {
   id?: string
-  url: string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: number
   createdAt?: Date | string
   listing: Prisma.CattleListingCreateNestedOneWithoutImagesInput
@@ -275,14 +271,14 @@ export type ListingImageCreateInput = {
 export type ListingImageUncheckedCreateInput = {
   id?: string
   listingId: string
-  url: string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: number
   createdAt?: Date | string
 }
 
 export type ListingImageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   listing?: Prisma.CattleListingUpdateOneRequiredWithoutImagesNestedInput
@@ -291,7 +287,7 @@ export type ListingImageUpdateInput = {
 export type ListingImageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   listingId?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -299,14 +295,14 @@ export type ListingImageUncheckedUpdateInput = {
 export type ListingImageCreateManyInput = {
   id?: string
   listingId: string
-  url: string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: number
   createdAt?: Date | string
 }
 
 export type ListingImageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -314,7 +310,7 @@ export type ListingImageUpdateManyMutationInput = {
 export type ListingImageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   listingId?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -344,7 +340,6 @@ export type ListingImageAvgOrderByAggregateInput = {
 export type ListingImageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   listingId?: Prisma.SortOrder
-  url?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -352,7 +347,6 @@ export type ListingImageMaxOrderByAggregateInput = {
 export type ListingImageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   listingId?: Prisma.SortOrder
-  url?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -405,14 +399,14 @@ export type ListingImageUncheckedUpdateManyWithoutListingNestedInput = {
 
 export type ListingImageCreateWithoutListingInput = {
   id?: string
-  url: string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: number
   createdAt?: Date | string
 }
 
 export type ListingImageUncheckedCreateWithoutListingInput = {
   id?: string
-  url: string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: number
   createdAt?: Date | string
 }
@@ -449,35 +443,35 @@ export type ListingImageScalarWhereInput = {
   NOT?: Prisma.ListingImageScalarWhereInput | Prisma.ListingImageScalarWhereInput[]
   id?: Prisma.StringFilter<"ListingImage"> | string
   listingId?: Prisma.StringFilter<"ListingImage"> | string
-  url?: Prisma.StringFilter<"ListingImage"> | string
+  url?: Prisma.JsonNullableFilter<"ListingImage">
   sortOrder?: Prisma.IntFilter<"ListingImage"> | number
   createdAt?: Prisma.DateTimeFilter<"ListingImage"> | Date | string
 }
 
 export type ListingImageCreateManyListingInput = {
   id?: string
-  url: string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: number
   createdAt?: Date | string
 }
 
 export type ListingImageUpdateWithoutListingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ListingImageUncheckedUpdateWithoutListingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ListingImageUncheckedUpdateManyWithoutListingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -538,7 +532,7 @@ export type $ListingImagePayload<ExtArgs extends runtime.Types.Extensions.Intern
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     listingId: string
-    url: string
+    url: runtime.JsonValue | null
     sortOrder: number
     createdAt: Date
   }, ExtArgs["result"]["listingImage"]>
@@ -967,7 +961,7 @@ export interface Prisma__ListingImageClient<T, Null = never, ExtArgs extends run
 export interface ListingImageFieldRefs {
   readonly id: Prisma.FieldRef<"ListingImage", 'String'>
   readonly listingId: Prisma.FieldRef<"ListingImage", 'String'>
-  readonly url: Prisma.FieldRef<"ListingImage", 'String'>
+  readonly url: Prisma.FieldRef<"ListingImage", 'Json'>
   readonly sortOrder: Prisma.FieldRef<"ListingImage", 'Int'>
   readonly createdAt: Prisma.FieldRef<"ListingImage", 'DateTime'>
 }

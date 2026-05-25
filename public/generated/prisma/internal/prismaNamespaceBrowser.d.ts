@@ -44,6 +44,7 @@ export declare const ModelName: {
     readonly ForumReport: "ForumReport";
     readonly CattleListing: "CattleListing";
     readonly ListingImage: "ListingImage";
+    readonly ListingLocation: "ListingLocation";
     readonly BrandProfile: "BrandProfile";
     readonly MarketplaceProduct: "MarketplaceProduct";
     readonly ProductReview: "ProductReview";
@@ -55,6 +56,9 @@ export declare const ModelName: {
     readonly Subscription: "Subscription";
     readonly PlatformLedger: "PlatformLedger";
     readonly User: "User";
+    readonly State: "State";
+    readonly City: "City";
+    readonly Area: "Area";
     readonly OtpCode: "OtpCode";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -68,6 +72,8 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export declare const AnimalScalarFieldEnum: {
     readonly id: "id";
     readonly ownerId: "ownerId";
+    readonly mainCategoryId: "mainCategoryId";
+    readonly subCategoryId: "subCategoryId";
     readonly name: "name";
     readonly category: "category";
     readonly breed: "breed";
@@ -75,6 +81,8 @@ export declare const AnimalScalarFieldEnum: {
     readonly gender: "gender";
     readonly weightKg: "weightKg";
     readonly description: "description";
+    readonly doesGiveMilk: "doesGiveMilk";
+    readonly dailyMilkProdLtr: "dailyMilkProdLtr";
     readonly status: "status";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
@@ -249,8 +257,6 @@ export declare const CattleListingScalarFieldEnum: {
     readonly status: "status";
     readonly latitude: "latitude";
     readonly longitude: "longitude";
-    readonly isPremium: "isPremium";
-    readonly premiumExpiresAt: "premiumExpiresAt";
     readonly listingExpiresAt: "listingExpiresAt";
     readonly deletedAt: "deletedAt";
     readonly createdAt: "createdAt";
@@ -265,6 +271,16 @@ export declare const ListingImageScalarFieldEnum: {
     readonly createdAt: "createdAt";
 };
 export type ListingImageScalarFieldEnum = (typeof ListingImageScalarFieldEnum)[keyof typeof ListingImageScalarFieldEnum];
+export declare const ListingLocationScalarFieldEnum: {
+    readonly id: "id";
+    readonly listingId: "listingId";
+    readonly stateId: "stateId";
+    readonly cityId: "cityId";
+    readonly areaId: "areaId";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type ListingLocationScalarFieldEnum = (typeof ListingLocationScalarFieldEnum)[keyof typeof ListingLocationScalarFieldEnum];
 export declare const BrandProfileScalarFieldEnum: {
     readonly id: "id";
     readonly userId: "userId";
@@ -385,6 +401,53 @@ export declare const UserScalarFieldEnum: {
     readonly updatedAt: "updatedAt";
 };
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+export declare const StateScalarFieldEnum: {
+    readonly id: "id";
+    readonly name: "name";
+    readonly state: "state";
+    readonly country: "country";
+    readonly countryCode: "countryCode";
+    readonly stateCode: "stateCode";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly isActive: "isActive";
+    readonly isHiring: "isHiring";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+    readonly deletedAt: "deletedAt";
+};
+export type StateScalarFieldEnum = (typeof StateScalarFieldEnum)[keyof typeof StateScalarFieldEnum];
+export declare const CityScalarFieldEnum: {
+    readonly id: "id";
+    readonly name: "name";
+    readonly country: "country";
+    readonly countryCode: "countryCode";
+    readonly stateCode: "stateCode";
+    readonly stateId: "stateId";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly isActive: "isActive";
+    readonly isHiring: "isHiring";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+    readonly deletedAt: "deletedAt";
+};
+export type CityScalarFieldEnum = (typeof CityScalarFieldEnum)[keyof typeof CityScalarFieldEnum];
+export declare const AreaScalarFieldEnum: {
+    readonly id: "id";
+    readonly cityId: "cityId";
+    readonly name: "name";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly serviceRadiusKm: "serviceRadiusKm";
+    readonly isActive: "isActive";
+    readonly isHiring: "isHiring";
+    readonly priority: "priority";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+    readonly deletedAt: "deletedAt";
+};
+export type AreaScalarFieldEnum = (typeof AreaScalarFieldEnum)[keyof typeof AreaScalarFieldEnum];
 export declare const OtpCodeScalarFieldEnum: {
     readonly id: "id";
     readonly mobile: "mobile";

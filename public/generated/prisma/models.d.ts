@@ -16,6 +16,7 @@ export type * from './models/AnswerVote.js';
 export type * from './models/ForumReport.js';
 export type * from './models/CattleListing.js';
 export type * from './models/ListingImage.js';
+export type * from './models/ListingLocation.js';
 export type * from './models/BrandProfile.js';
 export type * from './models/MarketplaceProduct.js';
 export type * from './models/ProductReview.js';
@@ -27,6 +28,9 @@ export type * from './models/SubscriptionPlan.js';
 export type * from './models/Subscription.js';
 export type * from './models/PlatformLedger.js';
 export type * from './models/User.js';
+export type * from './models/State.js';
+export type * from './models/City.js';
+export type * from './models/Area.js';
 export type * from './models/OtpCode.js';
 export type * from './commonInputTypes.js';
 //# sourceMappingURL=models.d.ts.map

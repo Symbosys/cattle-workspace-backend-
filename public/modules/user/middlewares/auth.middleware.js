@@ -6,8 +6,9 @@ export const authenticate = asyncHandler(async (req, res, next) => {
     const tokenFromHeader = req.headers["authorization"]?.startsWith("Bearer ")
         ? req.headers["authorization"].split("Bearer ")[1]
         : null;
-    const tokenFromCookie = req.cookies.token;
+    const tokenFromCookie = req.cookies?.token;
     const token = tokenFromCookie || tokenFromHeader;
+    console.log(`token: ${token},  fromHeader: ${tokenFromHeader}, fromCookie: ${tokenFromCookie}`);
     if (!token)
         return next(new ErrorResponse("Token is required", 401));
     let decode;

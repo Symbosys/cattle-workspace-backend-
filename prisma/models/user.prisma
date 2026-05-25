@@ -26,36 +26,119 @@ model User {
   updatedAt   DateTime   @updatedAt
 
   // Relations
-  animals         Animal[]
-  listings        CattleListing[]
-  doctorProfile   DoctorProfile?
-  breederProfile  BreederProfile?
-  brandProfile    BrandProfile?
-  appointments    DoctorAppointment[] @relation("PatientAppointments")
-  orders          MarketplaceOrder[]
-  questions       ForumQuestion[]
-  answers         ForumAnswer[]
-  questionVotes   QuestionVote[]
-  answerVotes     AnswerVote[]
-  reportsFiled    ForumReport[]       @relation("ReporterRelation")
-  reportsReviewed ForumReport[]       @relation("ReviewerRelation")
-  subscriptions   Subscription[]
-  ledgerEntries   PlatformLedger[]
+  animals            Animal[]
+  listings           CattleListing[]
+  doctorProfile      DoctorProfile?
+  breederProfile     BreederProfile?
+  brandProfile       BrandProfile?
+  appointments       DoctorAppointment[] @relation("PatientAppointments")
+  orders             MarketplaceOrder[]
+  questions          ForumQuestion[]
+  answers            ForumAnswer[]
+  questionVotes      QuestionVote[]
+  answerVotes        AnswerVote[]
+  reportsFiled       ForumReport[]       @relation("ReporterRelation")
+  reportsReviewed    ForumReport[]       @relation("ReviewerRelation")
+  subscriptions      Subscription[]
+  ledgerEntries      PlatformLedger[]
+  vaccinationRecords VaccinationRecord[]
 
   @@index([email, status])
-  vaccinationRecords VaccinationRecord[]
+}
+
+model State {
+  id          BigInt  @id @default(autoincrement())
+  name        String
+  state       String?
+  country     String  @default("India")
+  countryCode String  @default("IN")
+  stateCode   String  @default("JH")
+
+  latitude  Float?
+  longitude Float?
+
+  isActive Boolean @default(true)
+  isHiring Boolean @default(true)
+
+  // areas                 Area[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  cities    City[]
+  listingLocations ListingLocation[]
+
+  @@index([name, stateCode])
+  @@index([isActive])
+  @@index([stateCode])
+}
+
+model City {
+  id          BigInt @id @default(autoincrement())
+  name        String
+  country     String @default("India")
+  countryCode String @default("IN")
+  stateCode   String @default("JH")
+  stateId     BigInt
+  state       State  @relation(fields: [stateId], references: [id])
+
+  latitude  Float?
+  longitude Float?
+
+  isActive Boolean @default(true)
+  isHiring Boolean @default(true)
+
+  areas                 Area[]
+  listingLocations ListingLocation[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([name, stateCode])
+  @@index([isActive])
+  @@index([stateCode])
+}
+
+model Area {
+  id     BigInt @id @default(autoincrement())
+  cityId BigInt
+  city   City   @relation(fields: [cityId], references: [id])
+
+  name String
+
+  latitude  Float
+  longitude Float
+
+  serviceRadiusKm Float @default(10.0)
+
+  isActive Boolean @default(true)
+  isHiring Boolean @default(true)
+
+  priority Int @default(0)
+
+  listingLocations ListingLocation[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@unique([cityId, name])
+  @@index([cityId])
+  @@index([latitude, longitude])
+  @@index([isActive, isHiring])
 }
 
 model OtpCode {
-  id              String   @id @default(uuid())
-  mobile          String   @unique
+  id              String    @id @default(uuid())
+  mobile          String    @unique
   otp             String
   expiresAt       DateTime
-  attempts        Int      @default(0)
+  attempts        Int       @default(0)
   lastAttemptedAt DateTime?
-  isUsed          Boolean  @default(false)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  isUsed          Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 
   @@index([mobile, expiresAt])
 }

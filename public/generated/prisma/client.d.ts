@@ -112,6 +112,11 @@ export type CattleListing = Prisma.CattleListingModel;
  */
 export type ListingImage = Prisma.ListingImageModel;
 /**
+ * Model ListingLocation
+ *
+ */
+export type ListingLocation = Prisma.ListingLocationModel;
+/**
  * Model BrandProfile
  *
  */
@@ -166,6 +171,21 @@ export type PlatformLedger = Prisma.PlatformLedgerModel;
  *
  */
 export type User = Prisma.UserModel;
+/**
+ * Model State
+ *
+ */
+export type State = Prisma.StateModel;
+/**
+ * Model City
+ *
+ */
+export type City = Prisma.CityModel;
+/**
+ * Model Area
+ *
+ */
+export type Area = Prisma.AreaModel;
 /**
  * Model OtpCode
  *

@@ -14,13 +14,13 @@ export const sendOtp = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse("Invalid mobile number format", 400));
     }
     // Check rate limit (1 minute)
-    const existingOtp = await AuthService.findOtpByMobile(mobile);
-    if (existingOtp) {
-        const timeDiff = Date.now() - new Date(existingOtp.updatedAt).getTime();
-        if (timeDiff < 60 * 1000) {
-            return next(new ErrorResponse("Please wait 1 minute before requesting another OTP", 429));
-        }
-    }
+    // const existingOtp = await AuthService.findOtpByMobile(mobile);
+    // if (existingOtp) {
+    //   const timeDiff = Date.now() - new Date(existingOtp.updatedAt).getTime();
+    //   if (timeDiff < 60 * 1000) {
+    //     return next(new ErrorResponse("Please wait 1 minute before requesting another OTP", 429));
+    //   }
+    // }
     // Generate new OTP
     const otp = generateOtp();
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes expiration
