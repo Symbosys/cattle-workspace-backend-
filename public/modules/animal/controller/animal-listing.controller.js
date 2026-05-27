@@ -57,7 +57,7 @@ export const updateAnimalListing = asyncHandler(async (req, res, next) => {
     return SuccessResponse(res, "Animal listing updated successfully", listing, 200);
 });
 export const getListedAnimalsByLocation = asyncHandler(async (req, res, next) => {
-    const { latitude, longitude, page = "1", limit = "10" } = req.query;
+    const { latitude, longitude, page = "1", limit = "10", categoryId } = req.query;
     if (!latitude || !longitude) {
         return next(new ErrorResponse("Latitude and longitude are required", 400));
     }
@@ -68,7 +68,7 @@ export const getListedAnimalsByLocation = asyncHandler(async (req, res, next) =>
     if (isNaN(lat) || isNaN(lng)) {
         return next(new ErrorResponse("Invalid latitude or longitude", 400));
     }
-    const result = await AnimalListingService.getListingsByLocation(lat, lng, pageNumber, pageSize);
+    const result = await AnimalListingService.getListingsByLocation(lat, lng, pageNumber, pageSize, categoryId);
     if (!result.city) {
         return next(new ErrorResponse("No city found near the provided location", 404));
     }

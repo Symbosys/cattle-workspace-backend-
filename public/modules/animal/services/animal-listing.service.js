@@ -310,7 +310,7 @@ export class AnimalListingService {
     /**
      * Get active listings by nearest city
      */
-    static async getListingsByLocation(lat, lng, page, limit) {
+    static async getListingsByLocation(lat, lng, page, limit, categoryId) {
         // Fetch all cities with coordinates
         const cities = await db.city.findMany({
             where: {
@@ -348,6 +348,7 @@ export class AnimalListingService {
                     location: {
                         cityId: nearestCity?.id || '',
                     },
+                    ...(categoryId ? { animal: { mainCategoryId: categoryId } } : {}),
                 },
                 include: {
                     animal: true,
@@ -370,6 +371,7 @@ export class AnimalListingService {
                     location: {
                         cityId: nearestCity?.id || '',
                     },
+                    ...(categoryId ? { animal: { mainCategoryId: categoryId } } : {}),
                 },
             }),
         ]);

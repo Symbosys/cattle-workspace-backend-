@@ -12,22 +12,22 @@ export declare class AnimalListingService {
         secure_url: string;
     }[]): Promise<{
         animal: {
-            category: string;
             id: string;
-            description: string | null;
-            status: import("../../../types/types.js").AnimalStatus;
             createdAt: Date;
             updatedAt: Date;
-            ownerId: string;
             name: string | null;
+            status: import("../../../types/types.js").AnimalStatus;
+            description: string | null;
+            category: string;
             breed: string | null;
             ageMonths: number | null;
             gender: string | null;
             weightKg: import("@prisma/client-runtime-utils").Decimal | null;
             doesGiveMilk: boolean;
             dailyMilkProdLtr: import("@prisma/client-runtime-utils").Decimal | null;
-            mainCategoryId: string;
+            ownerId: string;
             subCategoryId: string;
+            mainCategoryId: string;
         };
         images: {
             id: string;
@@ -38,15 +38,15 @@ export declare class AnimalListingService {
         }[];
         location: ({
             state: {
-                state: string | null;
                 id: string;
-                latitude: number | null;
-                longitude: number | null;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number | null;
+                longitude: number | null;
                 stateCode: string;
+                state: string | null;
                 country: string;
                 countryCode: string;
                 isActive: boolean;
@@ -54,12 +54,12 @@ export declare class AnimalListingService {
             };
             city: {
                 id: string;
-                latitude: number | null;
-                longitude: number | null;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number | null;
+                longitude: number | null;
                 stateCode: string;
                 stateId: string;
                 country: string;
@@ -69,12 +69,12 @@ export declare class AnimalListingService {
             };
             area: {
                 id: string;
-                latitude: number;
-                longitude: number;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number;
+                longitude: number;
                 cityId: string;
                 isActive: boolean;
                 isHiring: boolean;
@@ -92,17 +92,17 @@ export declare class AnimalListingService {
         }) | null;
     } & {
         id: string;
-        title: string;
-        description: string;
-        price: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        updatedAt: Date;
         status: import("../../../types/types.js").ListingStatus;
+        deletedAt: Date | null;
+        description: string;
+        ownerId: string;
+        title: string;
+        price: import("@prisma/client-runtime-utils").Decimal;
         latitude: import("@prisma/client-runtime-utils").Decimal | null;
         longitude: import("@prisma/client-runtime-utils").Decimal | null;
         listingExpiresAt: Date;
-        deletedAt: Date | null;
-        createdAt: Date;
-        updatedAt: Date;
-        ownerId: string;
         animalId: string;
     }>;
     /**
@@ -113,22 +113,22 @@ export declare class AnimalListingService {
         secure_url: string;
     }[]): Promise<{
         animal: {
-            category: string;
             id: string;
-            description: string | null;
-            status: import("../../../types/types.js").AnimalStatus;
             createdAt: Date;
             updatedAt: Date;
-            ownerId: string;
             name: string | null;
+            status: import("../../../types/types.js").AnimalStatus;
+            description: string | null;
+            category: string;
             breed: string | null;
             ageMonths: number | null;
             gender: string | null;
             weightKg: import("@prisma/client-runtime-utils").Decimal | null;
             doesGiveMilk: boolean;
             dailyMilkProdLtr: import("@prisma/client-runtime-utils").Decimal | null;
-            mainCategoryId: string;
+            ownerId: string;
             subCategoryId: string;
+            mainCategoryId: string;
         };
         images: {
             id: string;
@@ -139,15 +139,15 @@ export declare class AnimalListingService {
         }[];
         location: ({
             state: {
-                state: string | null;
                 id: string;
-                latitude: number | null;
-                longitude: number | null;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number | null;
+                longitude: number | null;
                 stateCode: string;
+                state: string | null;
                 country: string;
                 countryCode: string;
                 isActive: boolean;
@@ -155,12 +155,12 @@ export declare class AnimalListingService {
             };
             city: {
                 id: string;
-                latitude: number | null;
-                longitude: number | null;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number | null;
+                longitude: number | null;
                 stateCode: string;
                 stateId: string;
                 country: string;
@@ -170,12 +170,12 @@ export declare class AnimalListingService {
             };
             area: {
                 id: string;
-                latitude: number;
-                longitude: number;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number;
+                longitude: number;
                 cityId: string;
                 isActive: boolean;
                 isHiring: boolean;
@@ -193,23 +193,23 @@ export declare class AnimalListingService {
         }) | null;
     } & {
         id: string;
-        title: string;
-        description: string;
-        price: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        updatedAt: Date;
         status: import("../../../types/types.js").ListingStatus;
+        deletedAt: Date | null;
+        description: string;
+        ownerId: string;
+        title: string;
+        price: import("@prisma/client-runtime-utils").Decimal;
         latitude: import("@prisma/client-runtime-utils").Decimal | null;
         longitude: import("@prisma/client-runtime-utils").Decimal | null;
         listingExpiresAt: Date;
-        deletedAt: Date | null;
-        createdAt: Date;
-        updatedAt: Date;
-        ownerId: string;
         animalId: string;
     }>;
     /**
      * Get active listings by nearest city
      */
-    static getListingsByLocation(lat: number, lng: number, page: number, limit: number): Promise<{
+    static getListingsByLocation(lat: number, lng: number, page: number, limit: number, categoryId?: string): Promise<{
         city: null;
         listings: never[];
         total: number;
@@ -217,28 +217,28 @@ export declare class AnimalListingService {
         city: {
             id: string | undefined;
             stateId: string | undefined;
+            name?: string;
             latitude?: number | null;
             longitude?: number | null;
-            name?: string;
         };
         listings: ({
             animal: {
-                category: string;
                 id: string;
-                description: string | null;
-                status: import("../../../types/types.js").AnimalStatus;
                 createdAt: Date;
                 updatedAt: Date;
-                ownerId: string;
                 name: string | null;
+                status: import("../../../types/types.js").AnimalStatus;
+                description: string | null;
+                category: string;
                 breed: string | null;
                 ageMonths: number | null;
                 gender: string | null;
                 weightKg: import("@prisma/client-runtime-utils").Decimal | null;
                 doesGiveMilk: boolean;
                 dailyMilkProdLtr: import("@prisma/client-runtime-utils").Decimal | null;
-                mainCategoryId: string;
+                ownerId: string;
                 subCategoryId: string;
+                mainCategoryId: string;
             };
             images: {
                 id: string;
@@ -249,15 +249,15 @@ export declare class AnimalListingService {
             }[];
             location: ({
                 state: {
-                    state: string | null;
                     id: string;
-                    latitude: number | null;
-                    longitude: number | null;
-                    deletedAt: Date | null;
                     createdAt: Date;
                     updatedAt: Date;
                     name: string;
+                    deletedAt: Date | null;
+                    latitude: number | null;
+                    longitude: number | null;
                     stateCode: string;
+                    state: string | null;
                     country: string;
                     countryCode: string;
                     isActive: boolean;
@@ -265,12 +265,12 @@ export declare class AnimalListingService {
                 };
                 city: {
                     id: string;
-                    latitude: number | null;
-                    longitude: number | null;
-                    deletedAt: Date | null;
                     createdAt: Date;
                     updatedAt: Date;
                     name: string;
+                    deletedAt: Date | null;
+                    latitude: number | null;
+                    longitude: number | null;
                     stateCode: string;
                     stateId: string;
                     country: string;
@@ -280,12 +280,12 @@ export declare class AnimalListingService {
                 };
                 area: {
                     id: string;
-                    latitude: number;
-                    longitude: number;
-                    deletedAt: Date | null;
                     createdAt: Date;
                     updatedAt: Date;
                     name: string;
+                    deletedAt: Date | null;
+                    latitude: number;
+                    longitude: number;
                     cityId: string;
                     isActive: boolean;
                     isHiring: boolean;
@@ -303,17 +303,17 @@ export declare class AnimalListingService {
             }) | null;
         } & {
             id: string;
-            title: string;
-            description: string;
-            price: import("@prisma/client-runtime-utils").Decimal;
+            createdAt: Date;
+            updatedAt: Date;
             status: import("../../../types/types.js").ListingStatus;
+            deletedAt: Date | null;
+            description: string;
+            ownerId: string;
+            title: string;
+            price: import("@prisma/client-runtime-utils").Decimal;
             latitude: import("@prisma/client-runtime-utils").Decimal | null;
             longitude: import("@prisma/client-runtime-utils").Decimal | null;
             listingExpiresAt: Date;
-            deletedAt: Date | null;
-            createdAt: Date;
-            updatedAt: Date;
-            ownerId: string;
             animalId: string;
         })[];
         total: number;
@@ -322,29 +322,29 @@ export declare class AnimalListingService {
      * Get listing by ID with all details
      */
     static getListingById(id: string): Promise<({
-        animal: {
-            category: string;
+        owner: {
             id: string;
-            description: string | null;
-            status: import("../../../types/types.js").AnimalStatus;
+            name: string | null;
+            phone: string;
+            avatarUrl: import("@prisma/client/runtime/client").JsonValue;
+        };
+        animal: {
+            id: string;
             createdAt: Date;
             updatedAt: Date;
-            ownerId: string;
             name: string | null;
+            status: import("../../../types/types.js").AnimalStatus;
+            description: string | null;
+            category: string;
             breed: string | null;
             ageMonths: number | null;
             gender: string | null;
             weightKg: import("@prisma/client-runtime-utils").Decimal | null;
             doesGiveMilk: boolean;
             dailyMilkProdLtr: import("@prisma/client-runtime-utils").Decimal | null;
-            mainCategoryId: string;
+            ownerId: string;
             subCategoryId: string;
-        };
-        owner: {
-            id: string;
-            name: string | null;
-            phone: string;
-            avatarUrl: import("@prisma/client/runtime/client").JsonValue;
+            mainCategoryId: string;
         };
         images: {
             id: string;
@@ -355,15 +355,15 @@ export declare class AnimalListingService {
         }[];
         location: ({
             state: {
-                state: string | null;
                 id: string;
-                latitude: number | null;
-                longitude: number | null;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number | null;
+                longitude: number | null;
                 stateCode: string;
+                state: string | null;
                 country: string;
                 countryCode: string;
                 isActive: boolean;
@@ -371,12 +371,12 @@ export declare class AnimalListingService {
             };
             city: {
                 id: string;
-                latitude: number | null;
-                longitude: number | null;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number | null;
+                longitude: number | null;
                 stateCode: string;
                 stateId: string;
                 country: string;
@@ -386,12 +386,12 @@ export declare class AnimalListingService {
             };
             area: {
                 id: string;
-                latitude: number;
-                longitude: number;
-                deletedAt: Date | null;
                 createdAt: Date;
                 updatedAt: Date;
                 name: string;
+                deletedAt: Date | null;
+                latitude: number;
+                longitude: number;
                 cityId: string;
                 isActive: boolean;
                 isHiring: boolean;
@@ -409,17 +409,17 @@ export declare class AnimalListingService {
         }) | null;
     } & {
         id: string;
-        title: string;
-        description: string;
-        price: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        updatedAt: Date;
         status: import("../../../types/types.js").ListingStatus;
+        deletedAt: Date | null;
+        description: string;
+        ownerId: string;
+        title: string;
+        price: import("@prisma/client-runtime-utils").Decimal;
         latitude: import("@prisma/client-runtime-utils").Decimal | null;
         longitude: import("@prisma/client-runtime-utils").Decimal | null;
         listingExpiresAt: Date;
-        deletedAt: Date | null;
-        createdAt: Date;
-        updatedAt: Date;
-        ownerId: string;
         animalId: string;
     }) | null>;
 }

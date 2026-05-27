@@ -109,7 +109,7 @@ export const updateAnimalListing = asyncHandler(async (req, res, next) => {
 
 export const getListedAnimalsByLocation = asyncHandler(
   async (req, res, next) => {
-    const { latitude, longitude, page = "1", limit = "10" } = req.query;
+    const { latitude, longitude, page = "1", limit = "10", categoryId } = req.query;
 
     if (!latitude || !longitude) {
       return next(
@@ -131,6 +131,7 @@ export const getListedAnimalsByLocation = asyncHandler(
       lng,
       pageNumber,
       pageSize,
+      categoryId as string
     );
 
     if (!result.city) {
