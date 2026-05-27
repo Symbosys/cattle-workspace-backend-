@@ -347,4 +347,122 @@ export class AnimalListingService {
       return updatedListing;
     });
   }
+
+  /**
+   * Get active listings by nearest city
+   */
+  public static async getListingsByLocation(
+    lat: number,
+    lng: number,
+    page: number,
+    limit: number
+  ) {
+    // Fetch all cities with coordinates
+    const cities = await db.city.findMany({
+      where: {
+        latitude: { not: null },
+        longitude: { not: null },
+      },
+      select: {
+        id: true,
+        name: true,
+        stateId: true,
+        latitude: true,
+        longitude: true,
+      }
+    });
+
+    if (cities.length === 0) {
+      return { city: null, listings: [], total: 0 };
+    }
+
+    // Find nearest city
+    let nearestCity = cities[0];
+    let minDistanceSq = Infinity;
+
+    for (const city of cities) {
+      const dLat = (city.latitude as number) - lat;
+      const dLng = (city.longitude as number) - lng;
+      const distSq = dLat * dLat + dLng * dLng;
+
+      if (distSq < minDistanceSq) {
+        minDistanceSq = distSq;
+        nearestCity = city;
+      }
+    }
+
+    const skip = (page - 1) * limit;
+
+    const [listings, total] = await Promise.all([
+      db.cattleListing.findMany({
+        where: {
+          status: "ACTIVE",
+          location: {
+            cityId: nearestCity?.id || '',
+          },
+        },
+        include: {
+          animal: true,
+          location: {
+            include: {
+              state: true,
+              city: true,
+              area: true,
+            },
+          },
+          images: true,
+        },
+        skip,
+        take: limit,
+        orderBy: { createdAt: 'desc' },
+      }),
+      db.cattleListing.count({
+        where: {
+          status: "ACTIVE",
+          location: {
+            cityId: nearestCity?.id || '',
+          },
+        },
+      }),
+    ]);
+
+    return { 
+      city: {
+        ...nearestCity,
+        id: nearestCity?.id,
+        stateId: nearestCity?.stateId,
+      }, 
+      listings, 
+      total 
+    };
+  }
+
+  /**
+   * Get listing by ID with all details
+   */
+  public static async getListingById(id: string) {
+    return await db.cattleListing.findUnique({
+      where: { id },
+      include: {
+        animal: true,
+        images: true,
+        location: {
+          include: {
+            state: true,
+            city: true,
+            area: true,
+          }
+        },
+        owner: {
+          select: {
+            id: true,
+            name: true,
+            phone: true,
+            avatarUrl: true,
+          }
+        }
+      }
+    });
+  }
 }
+

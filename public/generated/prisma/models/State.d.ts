@@ -13,17 +13,15 @@ export type AggregateState = {
     _max: StateMaxAggregateOutputType | null;
 };
 export type StateAvgAggregateOutputType = {
-    id: number | null;
     latitude: number | null;
     longitude: number | null;
 };
 export type StateSumAggregateOutputType = {
-    id: bigint | null;
     latitude: number | null;
     longitude: number | null;
 };
 export type StateMinAggregateOutputType = {
-    id: bigint | null;
+    id: string | null;
     name: string | null;
     state: string | null;
     country: string | null;
@@ -38,7 +36,7 @@ export type StateMinAggregateOutputType = {
     deletedAt: Date | null;
 };
 export type StateMaxAggregateOutputType = {
-    id: bigint | null;
+    id: string | null;
     name: string | null;
     state: string | null;
     country: string | null;
@@ -69,12 +67,10 @@ export type StateCountAggregateOutputType = {
     _all: number;
 };
 export type StateAvgAggregateInputType = {
-    id?: true;
     latitude?: true;
     longitude?: true;
 };
 export type StateSumAggregateInputType = {
-    id?: true;
     latitude?: true;
     longitude?: true;
 };
@@ -201,7 +197,7 @@ export type StateGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
     _max?: StateMaxAggregateInputType;
 };
 export type StateGroupByOutputType = {
-    id: bigint;
+    id: string;
     name: string;
     state: string | null;
     country: string;
@@ -227,7 +223,7 @@ export type StateWhereInput = {
     AND?: Prisma.StateWhereInput | Prisma.StateWhereInput[];
     OR?: Prisma.StateWhereInput[];
     NOT?: Prisma.StateWhereInput | Prisma.StateWhereInput[];
-    id?: Prisma.BigIntFilter<"State"> | bigint | number;
+    id?: Prisma.StringFilter<"State"> | string;
     name?: Prisma.StringFilter<"State"> | string;
     state?: Prisma.StringNullableFilter<"State"> | string | null;
     country?: Prisma.StringFilter<"State"> | string;
@@ -261,7 +257,7 @@ export type StateOrderByWithRelationInput = {
     listingLocations?: Prisma.ListingLocationOrderByRelationAggregateInput;
 };
 export type StateWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number;
+    id?: string;
     AND?: Prisma.StateWhereInput | Prisma.StateWhereInput[];
     OR?: Prisma.StateWhereInput[];
     NOT?: Prisma.StateWhereInput | Prisma.StateWhereInput[];
@@ -304,7 +300,7 @@ export type StateScalarWhereWithAggregatesInput = {
     AND?: Prisma.StateScalarWhereWithAggregatesInput | Prisma.StateScalarWhereWithAggregatesInput[];
     OR?: Prisma.StateScalarWhereWithAggregatesInput[];
     NOT?: Prisma.StateScalarWhereWithAggregatesInput | Prisma.StateScalarWhereWithAggregatesInput[];
-    id?: Prisma.BigIntWithAggregatesFilter<"State"> | bigint | number;
+    id?: Prisma.StringWithAggregatesFilter<"State"> | string;
     name?: Prisma.StringWithAggregatesFilter<"State"> | string;
     state?: Prisma.StringNullableWithAggregatesFilter<"State"> | string | null;
     country?: Prisma.StringWithAggregatesFilter<"State"> | string;
@@ -319,7 +315,7 @@ export type StateScalarWhereWithAggregatesInput = {
     deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"State"> | Date | string | null;
 };
 export type StateCreateInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     state?: string | null;
     country?: string;
@@ -336,7 +332,7 @@ export type StateCreateInput = {
     listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutStateInput;
 };
 export type StateUncheckedCreateInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     state?: string | null;
     country?: string;
@@ -353,7 +349,7 @@ export type StateUncheckedCreateInput = {
     listingLocations?: Prisma.ListingLocationUncheckedCreateNestedManyWithoutStateInput;
 };
 export type StateUpdateInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -370,7 +366,7 @@ export type StateUpdateInput = {
     listingLocations?: Prisma.ListingLocationUpdateManyWithoutStateNestedInput;
 };
 export type StateUncheckedUpdateInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -387,7 +383,7 @@ export type StateUncheckedUpdateInput = {
     listingLocations?: Prisma.ListingLocationUncheckedUpdateManyWithoutStateNestedInput;
 };
 export type StateCreateManyInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     state?: string | null;
     country?: string;
@@ -402,7 +398,7 @@ export type StateCreateManyInput = {
     deletedAt?: Date | string | null;
 };
 export type StateUpdateManyMutationInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -417,7 +413,7 @@ export type StateUpdateManyMutationInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type StateUncheckedUpdateManyInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -451,7 +447,6 @@ export type StateCountOrderByAggregateInput = {
     deletedAt?: Prisma.SortOrder;
 };
 export type StateAvgOrderByAggregateInput = {
-    id?: Prisma.SortOrder;
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
 };
@@ -486,7 +481,6 @@ export type StateMinOrderByAggregateInput = {
     deletedAt?: Prisma.SortOrder;
 };
 export type StateSumOrderByAggregateInput = {
-    id?: Prisma.SortOrder;
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
 };
@@ -522,7 +516,7 @@ export type StateUpdateOneRequiredWithoutCitiesNestedInput = {
     update?: Prisma.XOR<Prisma.XOR<Prisma.StateUpdateToOneWithWhereWithoutCitiesInput, Prisma.StateUpdateWithoutCitiesInput>, Prisma.StateUncheckedUpdateWithoutCitiesInput>;
 };
 export type StateCreateWithoutListingLocationsInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     state?: string | null;
     country?: string;
@@ -538,7 +532,7 @@ export type StateCreateWithoutListingLocationsInput = {
     cities?: Prisma.CityCreateNestedManyWithoutStateInput;
 };
 export type StateUncheckedCreateWithoutListingLocationsInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     state?: string | null;
     country?: string;
@@ -567,7 +561,7 @@ export type StateUpdateToOneWithWhereWithoutListingLocationsInput = {
     data: Prisma.XOR<Prisma.StateUpdateWithoutListingLocationsInput, Prisma.StateUncheckedUpdateWithoutListingLocationsInput>;
 };
 export type StateUpdateWithoutListingLocationsInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -583,7 +577,7 @@ export type StateUpdateWithoutListingLocationsInput = {
     cities?: Prisma.CityUpdateManyWithoutStateNestedInput;
 };
 export type StateUncheckedUpdateWithoutListingLocationsInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -599,7 +593,7 @@ export type StateUncheckedUpdateWithoutListingLocationsInput = {
     cities?: Prisma.CityUncheckedUpdateManyWithoutStateNestedInput;
 };
 export type StateCreateWithoutCitiesInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     state?: string | null;
     country?: string;
@@ -615,7 +609,7 @@ export type StateCreateWithoutCitiesInput = {
     listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutStateInput;
 };
 export type StateUncheckedCreateWithoutCitiesInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     state?: string | null;
     country?: string;
@@ -644,7 +638,7 @@ export type StateUpdateToOneWithWhereWithoutCitiesInput = {
     data: Prisma.XOR<Prisma.StateUpdateWithoutCitiesInput, Prisma.StateUncheckedUpdateWithoutCitiesInput>;
 };
 export type StateUpdateWithoutCitiesInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -660,7 +654,7 @@ export type StateUpdateWithoutCitiesInput = {
     listingLocations?: Prisma.ListingLocationUpdateManyWithoutStateNestedInput;
 };
 export type StateUncheckedUpdateWithoutCitiesInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     country?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -785,7 +779,7 @@ export type $StatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
         listingLocations: Prisma.$ListingLocationPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
-        id: bigint;
+        id: string;
         name: string;
         state: string | null;
         country: string;
@@ -1154,7 +1148,7 @@ export interface Prisma__StateClient<T, Null = never, ExtArgs extends runtime.Ty
  * Fields of the State model
  */
 export interface StateFieldRefs {
-    readonly id: Prisma.FieldRef<"State", 'BigInt'>;
+    readonly id: Prisma.FieldRef<"State", 'String'>;
     readonly name: Prisma.FieldRef<"State", 'String'>;
     readonly state: Prisma.FieldRef<"State", 'String'>;
     readonly country: Prisma.FieldRef<"State", 'String'>;

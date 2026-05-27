@@ -13,24 +13,20 @@ export type AggregateArea = {
     _max: AreaMaxAggregateOutputType | null;
 };
 export type AreaAvgAggregateOutputType = {
-    id: number | null;
-    cityId: number | null;
     latitude: number | null;
     longitude: number | null;
     serviceRadiusKm: number | null;
     priority: number | null;
 };
 export type AreaSumAggregateOutputType = {
-    id: bigint | null;
-    cityId: bigint | null;
     latitude: number | null;
     longitude: number | null;
     serviceRadiusKm: number | null;
     priority: number | null;
 };
 export type AreaMinAggregateOutputType = {
-    id: bigint | null;
-    cityId: bigint | null;
+    id: string | null;
+    cityId: string | null;
     name: string | null;
     latitude: number | null;
     longitude: number | null;
@@ -43,8 +39,8 @@ export type AreaMinAggregateOutputType = {
     deletedAt: Date | null;
 };
 export type AreaMaxAggregateOutputType = {
-    id: bigint | null;
-    cityId: bigint | null;
+    id: string | null;
+    cityId: string | null;
     name: string | null;
     latitude: number | null;
     longitude: number | null;
@@ -72,16 +68,12 @@ export type AreaCountAggregateOutputType = {
     _all: number;
 };
 export type AreaAvgAggregateInputType = {
-    id?: true;
-    cityId?: true;
     latitude?: true;
     longitude?: true;
     serviceRadiusKm?: true;
     priority?: true;
 };
 export type AreaSumAggregateInputType = {
-    id?: true;
-    cityId?: true;
     latitude?: true;
     longitude?: true;
     serviceRadiusKm?: true;
@@ -207,8 +199,8 @@ export type AreaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
     _max?: AreaMaxAggregateInputType;
 };
 export type AreaGroupByOutputType = {
-    id: bigint;
-    cityId: bigint;
+    id: string;
+    cityId: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -232,8 +224,8 @@ export type AreaWhereInput = {
     AND?: Prisma.AreaWhereInput | Prisma.AreaWhereInput[];
     OR?: Prisma.AreaWhereInput[];
     NOT?: Prisma.AreaWhereInput | Prisma.AreaWhereInput[];
-    id?: Prisma.BigIntFilter<"Area"> | bigint | number;
-    cityId?: Prisma.BigIntFilter<"Area"> | bigint | number;
+    id?: Prisma.StringFilter<"Area"> | string;
+    cityId?: Prisma.StringFilter<"Area"> | string;
     name?: Prisma.StringFilter<"Area"> | string;
     latitude?: Prisma.FloatFilter<"Area"> | number;
     longitude?: Prisma.FloatFilter<"Area"> | number;
@@ -264,12 +256,12 @@ export type AreaOrderByWithRelationInput = {
     listingLocations?: Prisma.ListingLocationOrderByRelationAggregateInput;
 };
 export type AreaWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number;
+    id?: string;
     cityId_name?: Prisma.AreaCityIdNameCompoundUniqueInput;
     AND?: Prisma.AreaWhereInput | Prisma.AreaWhereInput[];
     OR?: Prisma.AreaWhereInput[];
     NOT?: Prisma.AreaWhereInput | Prisma.AreaWhereInput[];
-    cityId?: Prisma.BigIntFilter<"Area"> | bigint | number;
+    cityId?: Prisma.StringFilter<"Area"> | string;
     name?: Prisma.StringFilter<"Area"> | string;
     latitude?: Prisma.FloatFilter<"Area"> | number;
     longitude?: Prisma.FloatFilter<"Area"> | number;
@@ -306,8 +298,8 @@ export type AreaScalarWhereWithAggregatesInput = {
     AND?: Prisma.AreaScalarWhereWithAggregatesInput | Prisma.AreaScalarWhereWithAggregatesInput[];
     OR?: Prisma.AreaScalarWhereWithAggregatesInput[];
     NOT?: Prisma.AreaScalarWhereWithAggregatesInput | Prisma.AreaScalarWhereWithAggregatesInput[];
-    id?: Prisma.BigIntWithAggregatesFilter<"Area"> | bigint | number;
-    cityId?: Prisma.BigIntWithAggregatesFilter<"Area"> | bigint | number;
+    id?: Prisma.StringWithAggregatesFilter<"Area"> | string;
+    cityId?: Prisma.StringWithAggregatesFilter<"Area"> | string;
     name?: Prisma.StringWithAggregatesFilter<"Area"> | string;
     latitude?: Prisma.FloatWithAggregatesFilter<"Area"> | number;
     longitude?: Prisma.FloatWithAggregatesFilter<"Area"> | number;
@@ -320,7 +312,7 @@ export type AreaScalarWhereWithAggregatesInput = {
     deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Area"> | Date | string | null;
 };
 export type AreaCreateInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -335,8 +327,8 @@ export type AreaCreateInput = {
     listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutAreaInput;
 };
 export type AreaUncheckedCreateInput = {
-    id?: bigint | number;
-    cityId: bigint | number;
+    id?: string;
+    cityId: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -350,7 +342,7 @@ export type AreaUncheckedCreateInput = {
     listingLocations?: Prisma.ListingLocationUncheckedCreateNestedManyWithoutAreaInput;
 };
 export type AreaUpdateInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -365,8 +357,8 @@ export type AreaUpdateInput = {
     listingLocations?: Prisma.ListingLocationUpdateManyWithoutAreaNestedInput;
 };
 export type AreaUncheckedUpdateInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
-    cityId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    cityId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -380,8 +372,8 @@ export type AreaUncheckedUpdateInput = {
     listingLocations?: Prisma.ListingLocationUncheckedUpdateManyWithoutAreaNestedInput;
 };
 export type AreaCreateManyInput = {
-    id?: bigint | number;
-    cityId: bigint | number;
+    id?: string;
+    cityId: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -394,7 +386,7 @@ export type AreaCreateManyInput = {
     deletedAt?: Date | string | null;
 };
 export type AreaUpdateManyMutationInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -407,8 +399,8 @@ export type AreaUpdateManyMutationInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type AreaUncheckedUpdateManyInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
-    cityId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    cityId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -433,7 +425,7 @@ export type AreaOrderByRelationAggregateInput = {
     _count?: Prisma.SortOrder;
 };
 export type AreaCityIdNameCompoundUniqueInput = {
-    cityId: bigint | number;
+    cityId: string;
     name: string;
 };
 export type AreaCountOrderByAggregateInput = {
@@ -451,8 +443,6 @@ export type AreaCountOrderByAggregateInput = {
     deletedAt?: Prisma.SortOrder;
 };
 export type AreaAvgOrderByAggregateInput = {
-    id?: Prisma.SortOrder;
-    cityId?: Prisma.SortOrder;
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
     serviceRadiusKm?: Prisma.SortOrder;
@@ -487,8 +477,6 @@ export type AreaMinOrderByAggregateInput = {
     deletedAt?: Prisma.SortOrder;
 };
 export type AreaSumOrderByAggregateInput = {
-    id?: Prisma.SortOrder;
-    cityId?: Prisma.SortOrder;
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
     serviceRadiusKm?: Prisma.SortOrder;
@@ -554,7 +542,7 @@ export type FloatFieldUpdateOperationsInput = {
     divide?: number;
 };
 export type AreaCreateWithoutListingLocationsInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -568,8 +556,8 @@ export type AreaCreateWithoutListingLocationsInput = {
     city: Prisma.CityCreateNestedOneWithoutAreasInput;
 };
 export type AreaUncheckedCreateWithoutListingLocationsInput = {
-    id?: bigint | number;
-    cityId: bigint | number;
+    id?: string;
+    cityId: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -595,7 +583,7 @@ export type AreaUpdateToOneWithWhereWithoutListingLocationsInput = {
     data: Prisma.XOR<Prisma.AreaUpdateWithoutListingLocationsInput, Prisma.AreaUncheckedUpdateWithoutListingLocationsInput>;
 };
 export type AreaUpdateWithoutListingLocationsInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -609,8 +597,8 @@ export type AreaUpdateWithoutListingLocationsInput = {
     city?: Prisma.CityUpdateOneRequiredWithoutAreasNestedInput;
 };
 export type AreaUncheckedUpdateWithoutListingLocationsInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
-    cityId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    cityId?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -623,7 +611,7 @@ export type AreaUncheckedUpdateWithoutListingLocationsInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type AreaCreateWithoutCityInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -637,7 +625,7 @@ export type AreaCreateWithoutCityInput = {
     listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutAreaInput;
 };
 export type AreaUncheckedCreateWithoutCityInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -675,8 +663,8 @@ export type AreaScalarWhereInput = {
     AND?: Prisma.AreaScalarWhereInput | Prisma.AreaScalarWhereInput[];
     OR?: Prisma.AreaScalarWhereInput[];
     NOT?: Prisma.AreaScalarWhereInput | Prisma.AreaScalarWhereInput[];
-    id?: Prisma.BigIntFilter<"Area"> | bigint | number;
-    cityId?: Prisma.BigIntFilter<"Area"> | bigint | number;
+    id?: Prisma.StringFilter<"Area"> | string;
+    cityId?: Prisma.StringFilter<"Area"> | string;
     name?: Prisma.StringFilter<"Area"> | string;
     latitude?: Prisma.FloatFilter<"Area"> | number;
     longitude?: Prisma.FloatFilter<"Area"> | number;
@@ -689,7 +677,7 @@ export type AreaScalarWhereInput = {
     deletedAt?: Prisma.DateTimeNullableFilter<"Area"> | Date | string | null;
 };
 export type AreaCreateManyCityInput = {
-    id?: bigint | number;
+    id?: string;
     name: string;
     latitude: number;
     longitude: number;
@@ -702,7 +690,7 @@ export type AreaCreateManyCityInput = {
     deletedAt?: Date | string | null;
 };
 export type AreaUpdateWithoutCityInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -716,7 +704,7 @@ export type AreaUpdateWithoutCityInput = {
     listingLocations?: Prisma.ListingLocationUpdateManyWithoutAreaNestedInput;
 };
 export type AreaUncheckedUpdateWithoutCityInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -730,7 +718,7 @@ export type AreaUncheckedUpdateWithoutCityInput = {
     listingLocations?: Prisma.ListingLocationUncheckedUpdateManyWithoutAreaNestedInput;
 };
 export type AreaUncheckedUpdateManyWithoutCityInput = {
-    id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
     latitude?: Prisma.FloatFieldUpdateOperationsInput | number;
     longitude?: Prisma.FloatFieldUpdateOperationsInput | number;
@@ -846,8 +834,8 @@ export type $AreaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
         listingLocations: Prisma.$ListingLocationPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
-        id: bigint;
-        cityId: bigint;
+        id: string;
+        cityId: string;
         name: string;
         latitude: number;
         longitude: number;
@@ -1214,8 +1202,8 @@ export interface Prisma__AreaClient<T, Null = never, ExtArgs extends runtime.Typ
  * Fields of the Area model
  */
 export interface AreaFieldRefs {
-    readonly id: Prisma.FieldRef<"Area", 'BigInt'>;
-    readonly cityId: Prisma.FieldRef<"Area", 'BigInt'>;
+    readonly id: Prisma.FieldRef<"Area", 'String'>;
+    readonly cityId: Prisma.FieldRef<"Area", 'String'>;
     readonly name: Prisma.FieldRef<"Area", 'String'>;
     readonly latitude: Prisma.FieldRef<"Area", 'Float'>;
     readonly longitude: Prisma.FieldRef<"Area", 'Float'>;

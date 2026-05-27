@@ -1,6 +1,6 @@
 import { asyncHandler } from "../../../middlewares/error.middleware.js";
-import { ErrorResponse, SuccessResponse } from "../../../utils/response.util.js";
-import { createAnimalListingSchema, updateAnimalListingSchema } from "../schemas/animal-listing.schema.js";
+import { ErrorResponse, SuccessResponse, } from "../../../utils/response.util.js";
+import { createAnimalListingSchema, updateAnimalListingSchema, } from "../schemas/animal-listing.schema.js";
 import { AnimalListingService } from "../services/animal-listing.service.js";
 import { uploadMultipleToCloudinary } from "../../../config/cloudinary.js";
 export const createAnimalListing = asyncHandler(async (req, res, next) => {
@@ -55,5 +55,43 @@ export const updateAnimalListing = asyncHandler(async (req, res, next) => {
     const listing = await AnimalListingService.updateListing(req.user.id, id, validated, uploadedImages);
     // 5. Return response
     return SuccessResponse(res, "Animal listing updated successfully", listing, 200);
+});
+export const getListedAnimalsByLocation = asyncHandler(async (req, res, next) => {
+    const { latitude, longitude, page = "1", limit = "10" } = req.query;
+    if (!latitude || !longitude) {
+        return next(new ErrorResponse("Latitude and longitude are required", 400));
+    }
+    const lat = parseFloat(latitude);
+    const lng = parseFloat(longitude);
+    const pageNumber = parseInt(page, 10);
+    const pageSize = parseInt(limit, 10);
+    if (isNaN(lat) || isNaN(lng)) {
+        return next(new ErrorResponse("Invalid latitude or longitude", 400));
+    }
+    const result = await AnimalListingService.getListingsByLocation(lat, lng, pageNumber, pageSize);
+    if (!result.city) {
+        return next(new ErrorResponse("No city found near the provided location", 404));
+    }
+    return SuccessResponse(res, "Listings fetched successfully", {
+        city: result.city,
+        listings: result.listings,
+        pagination: {
+            total: result.total,
+            totalPages: Math.ceil(result.total / pageSize),
+            currentPage: pageNumber,
+            count: result.listings.length,
+        },
+    }, 200);
+});
+export const getAnimalListingById = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    if (!id) {
+        return next(new ErrorResponse("Listing ID is required", 400));
+    }
+    const listing = await AnimalListingService.getListingById(id);
+    if (!listing) {
+        return next(new ErrorResponse("Cattle listing not found", 404));
+    }
+    return SuccessResponse(res, "Listing fetched successfully", listing, 200);
 });
 //# sourceMappingURL=animal-listing.controller.js.map

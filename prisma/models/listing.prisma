@@ -54,13 +54,13 @@ model ListingLocation {
   listingId String        @unique
   listing   CattleListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
   
-  stateId   BigInt
+  stateId   String
   state     State         @relation(fields: [stateId], references: [id])
   
-  cityId    BigInt
+  cityId    String
   city      City          @relation(fields: [cityId], references: [id])
   
-  areaId    BigInt?
+  areaId    String?
   area      Area?          @relation(fields: [areaId], references: [id])
 
   createdAt DateTime      @default(now())
