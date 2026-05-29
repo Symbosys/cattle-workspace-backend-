@@ -239,6 +239,7 @@ export type CityWhereInput = {
     state?: Prisma.XOR<Prisma.StateScalarRelationFilter, Prisma.StateWhereInput>;
     areas?: Prisma.AreaListRelationFilter;
     listingLocations?: Prisma.ListingLocationListRelationFilter;
+    doctorLocations?: Prisma.DoctorLocationListRelationFilter;
 };
 export type CityOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -257,6 +258,7 @@ export type CityOrderByWithRelationInput = {
     state?: Prisma.StateOrderByWithRelationInput;
     areas?: Prisma.AreaOrderByRelationAggregateInput;
     listingLocations?: Prisma.ListingLocationOrderByRelationAggregateInput;
+    doctorLocations?: Prisma.DoctorLocationOrderByRelationAggregateInput;
 };
 export type CityWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -278,6 +280,7 @@ export type CityWhereUniqueInput = Prisma.AtLeast<{
     state?: Prisma.XOR<Prisma.StateScalarRelationFilter, Prisma.StateWhereInput>;
     areas?: Prisma.AreaListRelationFilter;
     listingLocations?: Prisma.ListingLocationListRelationFilter;
+    doctorLocations?: Prisma.DoctorLocationListRelationFilter;
 }, "id">;
 export type CityOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -333,6 +336,7 @@ export type CityCreateInput = {
     state: Prisma.StateCreateNestedOneWithoutCitiesInput;
     areas?: Prisma.AreaCreateNestedManyWithoutCityInput;
     listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutCityInput;
 };
 export type CityUncheckedCreateInput = {
     id?: string;
@@ -350,6 +354,7 @@ export type CityUncheckedCreateInput = {
     deletedAt?: Date | string | null;
     areas?: Prisma.AreaUncheckedCreateNestedManyWithoutCityInput;
     listingLocations?: Prisma.ListingLocationUncheckedCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutCityInput;
 };
 export type CityUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -367,6 +372,7 @@ export type CityUpdateInput = {
     state?: Prisma.StateUpdateOneRequiredWithoutCitiesNestedInput;
     areas?: Prisma.AreaUpdateManyWithoutCityNestedInput;
     listingLocations?: Prisma.ListingLocationUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutCityNestedInput;
 };
 export type CityUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -384,6 +390,7 @@ export type CityUncheckedUpdateInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     areas?: Prisma.AreaUncheckedUpdateManyWithoutCityNestedInput;
     listingLocations?: Prisma.ListingLocationUncheckedUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutCityNestedInput;
 };
 export type CityCreateManyInput = {
     id?: string;
@@ -494,6 +501,18 @@ export type CitySumOrderByAggregateInput = {
     latitude?: Prisma.SortOrder;
     longitude?: Prisma.SortOrder;
 };
+export type CityCreateNestedOneWithoutDoctorLocationsInput = {
+    create?: Prisma.XOR<Prisma.CityCreateWithoutDoctorLocationsInput, Prisma.CityUncheckedCreateWithoutDoctorLocationsInput>;
+    connectOrCreate?: Prisma.CityCreateOrConnectWithoutDoctorLocationsInput;
+    connect?: Prisma.CityWhereUniqueInput;
+};
+export type CityUpdateOneRequiredWithoutDoctorLocationsNestedInput = {
+    create?: Prisma.XOR<Prisma.CityCreateWithoutDoctorLocationsInput, Prisma.CityUncheckedCreateWithoutDoctorLocationsInput>;
+    connectOrCreate?: Prisma.CityCreateOrConnectWithoutDoctorLocationsInput;
+    upsert?: Prisma.CityUpsertWithoutDoctorLocationsInput;
+    connect?: Prisma.CityWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.CityUpdateToOneWithWhereWithoutDoctorLocationsInput, Prisma.CityUpdateWithoutDoctorLocationsInput>, Prisma.CityUncheckedUpdateWithoutDoctorLocationsInput>;
+};
 export type CityCreateNestedOneWithoutListingLocationsInput = {
     create?: Prisma.XOR<Prisma.CityCreateWithoutListingLocationsInput, Prisma.CityUncheckedCreateWithoutListingLocationsInput>;
     connectOrCreate?: Prisma.CityCreateOrConnectWithoutListingLocationsInput;
@@ -556,6 +575,87 @@ export type CityUpdateOneRequiredWithoutAreasNestedInput = {
     connect?: Prisma.CityWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.CityUpdateToOneWithWhereWithoutAreasInput, Prisma.CityUpdateWithoutAreasInput>, Prisma.CityUncheckedUpdateWithoutAreasInput>;
 };
+export type CityCreateWithoutDoctorLocationsInput = {
+    id?: string;
+    name: string;
+    country?: string;
+    countryCode?: string;
+    stateCode?: string;
+    latitude?: number | null;
+    longitude?: number | null;
+    isActive?: boolean;
+    isHiring?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    deletedAt?: Date | string | null;
+    state: Prisma.StateCreateNestedOneWithoutCitiesInput;
+    areas?: Prisma.AreaCreateNestedManyWithoutCityInput;
+    listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutCityInput;
+};
+export type CityUncheckedCreateWithoutDoctorLocationsInput = {
+    id?: string;
+    name: string;
+    country?: string;
+    countryCode?: string;
+    stateCode?: string;
+    stateId: string;
+    latitude?: number | null;
+    longitude?: number | null;
+    isActive?: boolean;
+    isHiring?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    deletedAt?: Date | string | null;
+    areas?: Prisma.AreaUncheckedCreateNestedManyWithoutCityInput;
+    listingLocations?: Prisma.ListingLocationUncheckedCreateNestedManyWithoutCityInput;
+};
+export type CityCreateOrConnectWithoutDoctorLocationsInput = {
+    where: Prisma.CityWhereUniqueInput;
+    create: Prisma.XOR<Prisma.CityCreateWithoutDoctorLocationsInput, Prisma.CityUncheckedCreateWithoutDoctorLocationsInput>;
+};
+export type CityUpsertWithoutDoctorLocationsInput = {
+    update: Prisma.XOR<Prisma.CityUpdateWithoutDoctorLocationsInput, Prisma.CityUncheckedUpdateWithoutDoctorLocationsInput>;
+    create: Prisma.XOR<Prisma.CityCreateWithoutDoctorLocationsInput, Prisma.CityUncheckedCreateWithoutDoctorLocationsInput>;
+    where?: Prisma.CityWhereInput;
+};
+export type CityUpdateToOneWithWhereWithoutDoctorLocationsInput = {
+    where?: Prisma.CityWhereInput;
+    data: Prisma.XOR<Prisma.CityUpdateWithoutDoctorLocationsInput, Prisma.CityUncheckedUpdateWithoutDoctorLocationsInput>;
+};
+export type CityUpdateWithoutDoctorLocationsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    country?: Prisma.StringFieldUpdateOperationsInput | string;
+    countryCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    stateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+    longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isHiring?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    state?: Prisma.StateUpdateOneRequiredWithoutCitiesNestedInput;
+    areas?: Prisma.AreaUpdateManyWithoutCityNestedInput;
+    listingLocations?: Prisma.ListingLocationUpdateManyWithoutCityNestedInput;
+};
+export type CityUncheckedUpdateWithoutDoctorLocationsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    country?: Prisma.StringFieldUpdateOperationsInput | string;
+    countryCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    stateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    stateId?: Prisma.StringFieldUpdateOperationsInput | string;
+    latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+    longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isHiring?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    areas?: Prisma.AreaUncheckedUpdateManyWithoutCityNestedInput;
+    listingLocations?: Prisma.ListingLocationUncheckedUpdateManyWithoutCityNestedInput;
+};
 export type CityCreateWithoutListingLocationsInput = {
     id?: string;
     name: string;
@@ -571,6 +671,7 @@ export type CityCreateWithoutListingLocationsInput = {
     deletedAt?: Date | string | null;
     state: Prisma.StateCreateNestedOneWithoutCitiesInput;
     areas?: Prisma.AreaCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutCityInput;
 };
 export type CityUncheckedCreateWithoutListingLocationsInput = {
     id?: string;
@@ -587,6 +688,7 @@ export type CityUncheckedCreateWithoutListingLocationsInput = {
     updatedAt?: Date | string;
     deletedAt?: Date | string | null;
     areas?: Prisma.AreaUncheckedCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutCityInput;
 };
 export type CityCreateOrConnectWithoutListingLocationsInput = {
     where: Prisma.CityWhereUniqueInput;
@@ -616,6 +718,7 @@ export type CityUpdateWithoutListingLocationsInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     state?: Prisma.StateUpdateOneRequiredWithoutCitiesNestedInput;
     areas?: Prisma.AreaUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutCityNestedInput;
 };
 export type CityUncheckedUpdateWithoutListingLocationsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -632,6 +735,7 @@ export type CityUncheckedUpdateWithoutListingLocationsInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     areas?: Prisma.AreaUncheckedUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutCityNestedInput;
 };
 export type CityCreateWithoutStateInput = {
     id?: string;
@@ -648,6 +752,7 @@ export type CityCreateWithoutStateInput = {
     deletedAt?: Date | string | null;
     areas?: Prisma.AreaCreateNestedManyWithoutCityInput;
     listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutCityInput;
 };
 export type CityUncheckedCreateWithoutStateInput = {
     id?: string;
@@ -664,6 +769,7 @@ export type CityUncheckedCreateWithoutStateInput = {
     deletedAt?: Date | string | null;
     areas?: Prisma.AreaUncheckedCreateNestedManyWithoutCityInput;
     listingLocations?: Prisma.ListingLocationUncheckedCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutCityInput;
 };
 export type CityCreateOrConnectWithoutStateInput = {
     where: Prisma.CityWhereUniqueInput;
@@ -719,6 +825,7 @@ export type CityCreateWithoutAreasInput = {
     deletedAt?: Date | string | null;
     state: Prisma.StateCreateNestedOneWithoutCitiesInput;
     listingLocations?: Prisma.ListingLocationCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutCityInput;
 };
 export type CityUncheckedCreateWithoutAreasInput = {
     id?: string;
@@ -735,6 +842,7 @@ export type CityUncheckedCreateWithoutAreasInput = {
     updatedAt?: Date | string;
     deletedAt?: Date | string | null;
     listingLocations?: Prisma.ListingLocationUncheckedCreateNestedManyWithoutCityInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutCityInput;
 };
 export type CityCreateOrConnectWithoutAreasInput = {
     where: Prisma.CityWhereUniqueInput;
@@ -764,6 +872,7 @@ export type CityUpdateWithoutAreasInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     state?: Prisma.StateUpdateOneRequiredWithoutCitiesNestedInput;
     listingLocations?: Prisma.ListingLocationUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutCityNestedInput;
 };
 export type CityUncheckedUpdateWithoutAreasInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -780,6 +889,7 @@ export type CityUncheckedUpdateWithoutAreasInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     listingLocations?: Prisma.ListingLocationUncheckedUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutCityNestedInput;
 };
 export type CityCreateManyStateInput = {
     id?: string;
@@ -810,6 +920,7 @@ export type CityUpdateWithoutStateInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     areas?: Prisma.AreaUpdateManyWithoutCityNestedInput;
     listingLocations?: Prisma.ListingLocationUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutCityNestedInput;
 };
 export type CityUncheckedUpdateWithoutStateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -826,6 +937,7 @@ export type CityUncheckedUpdateWithoutStateInput = {
     deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     areas?: Prisma.AreaUncheckedUpdateManyWithoutCityNestedInput;
     listingLocations?: Prisma.ListingLocationUncheckedUpdateManyWithoutCityNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutCityNestedInput;
 };
 export type CityUncheckedUpdateManyWithoutStateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -847,10 +959,12 @@ export type CityUncheckedUpdateManyWithoutStateInput = {
 export type CityCountOutputType = {
     areas: number;
     listingLocations: number;
+    doctorLocations: number;
 };
 export type CityCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     areas?: boolean | CityCountOutputTypeCountAreasArgs;
     listingLocations?: boolean | CityCountOutputTypeCountListingLocationsArgs;
+    doctorLocations?: boolean | CityCountOutputTypeCountDoctorLocationsArgs;
 };
 /**
  * CityCountOutputType without action
@@ -873,6 +987,12 @@ export type CityCountOutputTypeCountAreasArgs<ExtArgs extends runtime.Types.Exte
 export type CityCountOutputTypeCountListingLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.ListingLocationWhereInput;
 };
+/**
+ * CityCountOutputType without action
+ */
+export type CityCountOutputTypeCountDoctorLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DoctorLocationWhereInput;
+};
 export type CitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     name?: boolean;
@@ -890,6 +1010,7 @@ export type CitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
     state?: boolean | Prisma.StateDefaultArgs<ExtArgs>;
     areas?: boolean | Prisma.City$areasArgs<ExtArgs>;
     listingLocations?: boolean | Prisma.City$listingLocationsArgs<ExtArgs>;
+    doctorLocations?: boolean | Prisma.City$doctorLocationsArgs<ExtArgs>;
     _count?: boolean | Prisma.CityCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["city"]>;
 export type CitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -944,6 +1065,7 @@ export type CityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     state?: boolean | Prisma.StateDefaultArgs<ExtArgs>;
     areas?: boolean | Prisma.City$areasArgs<ExtArgs>;
     listingLocations?: boolean | Prisma.City$listingLocationsArgs<ExtArgs>;
+    doctorLocations?: boolean | Prisma.City$doctorLocationsArgs<ExtArgs>;
     _count?: boolean | Prisma.CityCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type CityIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -958,6 +1080,7 @@ export type $CityPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
         state: Prisma.$StatePayload<ExtArgs>;
         areas: Prisma.$AreaPayload<ExtArgs>[];
         listingLocations: Prisma.$ListingLocationPayload<ExtArgs>[];
+        doctorLocations: Prisma.$DoctorLocationPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -1305,6 +1428,7 @@ export interface Prisma__CityClient<T, Null = never, ExtArgs extends runtime.Typ
     state<T extends Prisma.StateDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StateDefaultArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     areas<T extends Prisma.City$areasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.City$areasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     listingLocations<T extends Prisma.City$listingLocationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.City$listingLocationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ListingLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    doctorLocations<T extends Prisma.City$doctorLocationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.City$doctorLocationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1771,6 +1895,29 @@ export type City$listingLocationsArgs<ExtArgs extends runtime.Types.Extensions.I
     take?: number;
     skip?: number;
     distinct?: Prisma.ListingLocationScalarFieldEnum | Prisma.ListingLocationScalarFieldEnum[];
+};
+/**
+ * City.doctorLocations
+ */
+export type City$doctorLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorLocation
+     */
+    select?: Prisma.DoctorLocationSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorLocation
+     */
+    omit?: Prisma.DoctorLocationOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorLocationInclude<ExtArgs> | null;
+    where?: Prisma.DoctorLocationWhereInput;
+    orderBy?: Prisma.DoctorLocationOrderByWithRelationInput | Prisma.DoctorLocationOrderByWithRelationInput[];
+    cursor?: Prisma.DoctorLocationWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.DoctorLocationScalarFieldEnum | Prisma.DoctorLocationScalarFieldEnum[];
 };
 /**
  * City without action

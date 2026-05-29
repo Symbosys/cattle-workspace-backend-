@@ -71,6 +71,7 @@ model State {
   @@index([name, stateCode])
   @@index([isActive])
   @@index([stateCode])
+  doctorLocations DoctorLocation[]
 }
 
 model City {
@@ -98,6 +99,7 @@ model City {
   @@index([name, stateCode])
   @@index([isActive])
   @@index([stateCode])
+  doctorLocations DoctorLocation[]
 }
 
 model Area {

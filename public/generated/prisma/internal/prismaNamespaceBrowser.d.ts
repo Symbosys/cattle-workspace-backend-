@@ -34,6 +34,7 @@ export declare const ModelName: {
     readonly BreedingRequest: "BreedingRequest";
     readonly BreederReview: "BreederReview";
     readonly DoctorProfile: "DoctorProfile";
+    readonly DoctorLocation: "DoctorLocation";
     readonly DoctorVerificationLog: "DoctorVerificationLog";
     readonly DoctorAppointment: "DoctorAppointment";
     readonly DoctorReview: "DoctorReview";
@@ -167,6 +168,17 @@ export declare const DoctorProfileScalarFieldEnum: {
     readonly updatedAt: "updatedAt";
 };
 export type DoctorProfileScalarFieldEnum = (typeof DoctorProfileScalarFieldEnum)[keyof typeof DoctorProfileScalarFieldEnum];
+export declare const DoctorLocationScalarFieldEnum: {
+    readonly id: "id";
+    readonly doctorId: "doctorId";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly stateId: "stateId";
+    readonly cityId: "cityId";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type DoctorLocationScalarFieldEnum = (typeof DoctorLocationScalarFieldEnum)[keyof typeof DoctorLocationScalarFieldEnum];
 export declare const DoctorVerificationLogScalarFieldEnum: {
     readonly id: "id";
     readonly doctorId: "doctorId";

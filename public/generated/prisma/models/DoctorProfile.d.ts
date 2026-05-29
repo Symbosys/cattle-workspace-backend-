@@ -27,7 +27,6 @@ export type DoctorProfileMinAggregateOutputType = {
     licenseNumber: string | null;
     specialization: string | null;
     experienceYears: number | null;
-    qualificationDocUrl: string | null;
     isVerified: boolean | null;
     verificationStatus: $Enums.VerificationStatus | null;
     listingStatus: $Enums.DoctorListingStatus | null;
@@ -41,7 +40,6 @@ export type DoctorProfileMaxAggregateOutputType = {
     licenseNumber: string | null;
     specialization: string | null;
     experienceYears: number | null;
-    qualificationDocUrl: string | null;
     isVerified: boolean | null;
     verificationStatus: $Enums.VerificationStatus | null;
     listingStatus: $Enums.DoctorListingStatus | null;
@@ -78,7 +76,6 @@ export type DoctorProfileMinAggregateInputType = {
     licenseNumber?: true;
     specialization?: true;
     experienceYears?: true;
-    qualificationDocUrl?: true;
     isVerified?: true;
     verificationStatus?: true;
     listingStatus?: true;
@@ -92,7 +89,6 @@ export type DoctorProfileMaxAggregateInputType = {
     licenseNumber?: true;
     specialization?: true;
     experienceYears?: true;
-    qualificationDocUrl?: true;
     isVerified?: true;
     verificationStatus?: true;
     listingStatus?: true;
@@ -194,10 +190,10 @@ export type DoctorProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 export type DoctorProfileGroupByOutputType = {
     id: string;
     userId: string;
-    licenseNumber: string;
+    licenseNumber: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl: runtime.JsonValue | null;
     isVerified: boolean;
     verificationStatus: $Enums.VerificationStatus;
     listingStatus: $Enums.DoctorListingStatus;
@@ -219,10 +215,10 @@ export type DoctorProfileWhereInput = {
     NOT?: Prisma.DoctorProfileWhereInput | Prisma.DoctorProfileWhereInput[];
     id?: Prisma.StringFilter<"DoctorProfile"> | string;
     userId?: Prisma.StringFilter<"DoctorProfile"> | string;
-    licenseNumber?: Prisma.StringFilter<"DoctorProfile"> | string;
+    licenseNumber?: Prisma.StringNullableFilter<"DoctorProfile"> | string | null;
     specialization?: Prisma.StringFilter<"DoctorProfile"> | string;
     experienceYears?: Prisma.IntFilter<"DoctorProfile"> | number;
-    qualificationDocUrl?: Prisma.StringFilter<"DoctorProfile"> | string;
+    qualificationDocUrl?: Prisma.JsonNullableFilter<"DoctorProfile">;
     isVerified?: Prisma.BoolFilter<"DoctorProfile"> | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFilter<"DoctorProfile"> | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFilter<"DoctorProfile"> | $Enums.DoctorListingStatus;
@@ -233,14 +229,15 @@ export type DoctorProfileWhereInput = {
     appointments?: Prisma.DoctorAppointmentListRelationFilter;
     verificationLogs?: Prisma.DoctorVerificationLogListRelationFilter;
     reviews?: Prisma.DoctorReviewListRelationFilter;
+    doctorLocations?: Prisma.DoctorLocationListRelationFilter;
 };
 export type DoctorProfileOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     userId?: Prisma.SortOrder;
-    licenseNumber?: Prisma.SortOrder;
+    licenseNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
     specialization?: Prisma.SortOrder;
     experienceYears?: Prisma.SortOrder;
-    qualificationDocUrl?: Prisma.SortOrder;
+    qualificationDocUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
     verificationStatus?: Prisma.SortOrder;
     listingStatus?: Prisma.SortOrder;
@@ -251,6 +248,7 @@ export type DoctorProfileOrderByWithRelationInput = {
     appointments?: Prisma.DoctorAppointmentOrderByRelationAggregateInput;
     verificationLogs?: Prisma.DoctorVerificationLogOrderByRelationAggregateInput;
     reviews?: Prisma.DoctorReviewOrderByRelationAggregateInput;
+    doctorLocations?: Prisma.DoctorLocationOrderByRelationAggregateInput;
 };
 export type DoctorProfileWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -261,7 +259,7 @@ export type DoctorProfileWhereUniqueInput = Prisma.AtLeast<{
     NOT?: Prisma.DoctorProfileWhereInput | Prisma.DoctorProfileWhereInput[];
     specialization?: Prisma.StringFilter<"DoctorProfile"> | string;
     experienceYears?: Prisma.IntFilter<"DoctorProfile"> | number;
-    qualificationDocUrl?: Prisma.StringFilter<"DoctorProfile"> | string;
+    qualificationDocUrl?: Prisma.JsonNullableFilter<"DoctorProfile">;
     isVerified?: Prisma.BoolFilter<"DoctorProfile"> | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFilter<"DoctorProfile"> | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFilter<"DoctorProfile"> | $Enums.DoctorListingStatus;
@@ -272,14 +270,15 @@ export type DoctorProfileWhereUniqueInput = Prisma.AtLeast<{
     appointments?: Prisma.DoctorAppointmentListRelationFilter;
     verificationLogs?: Prisma.DoctorVerificationLogListRelationFilter;
     reviews?: Prisma.DoctorReviewListRelationFilter;
+    doctorLocations?: Prisma.DoctorLocationListRelationFilter;
 }, "id" | "userId" | "licenseNumber">;
 export type DoctorProfileOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
     userId?: Prisma.SortOrder;
-    licenseNumber?: Prisma.SortOrder;
+    licenseNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
     specialization?: Prisma.SortOrder;
     experienceYears?: Prisma.SortOrder;
-    qualificationDocUrl?: Prisma.SortOrder;
+    qualificationDocUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
     verificationStatus?: Prisma.SortOrder;
     listingStatus?: Prisma.SortOrder;
@@ -298,10 +297,10 @@ export type DoctorProfileScalarWhereWithAggregatesInput = {
     NOT?: Prisma.DoctorProfileScalarWhereWithAggregatesInput | Prisma.DoctorProfileScalarWhereWithAggregatesInput[];
     id?: Prisma.StringWithAggregatesFilter<"DoctorProfile"> | string;
     userId?: Prisma.StringWithAggregatesFilter<"DoctorProfile"> | string;
-    licenseNumber?: Prisma.StringWithAggregatesFilter<"DoctorProfile"> | string;
+    licenseNumber?: Prisma.StringNullableWithAggregatesFilter<"DoctorProfile"> | string | null;
     specialization?: Prisma.StringWithAggregatesFilter<"DoctorProfile"> | string;
     experienceYears?: Prisma.IntWithAggregatesFilter<"DoctorProfile"> | number;
-    qualificationDocUrl?: Prisma.StringWithAggregatesFilter<"DoctorProfile"> | string;
+    qualificationDocUrl?: Prisma.JsonNullableWithAggregatesFilter<"DoctorProfile">;
     isVerified?: Prisma.BoolWithAggregatesFilter<"DoctorProfile"> | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusWithAggregatesFilter<"DoctorProfile"> | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusWithAggregatesFilter<"DoctorProfile"> | $Enums.DoctorListingStatus;
@@ -311,10 +310,10 @@ export type DoctorProfileScalarWhereWithAggregatesInput = {
 };
 export type DoctorProfileCreateInput = {
     id?: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -325,14 +324,15 @@ export type DoctorProfileCreateInput = {
     appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutDoctorInput;
     verificationLogs?: Prisma.DoctorVerificationLogCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileUncheckedCreateInput = {
     id?: string;
     userId: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -342,13 +342,14 @@ export type DoctorProfileUncheckedCreateInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutDoctorInput;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewUncheckedCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -359,14 +360,15 @@ export type DoctorProfileUpdateInput = {
     appointments?: Prisma.DoctorAppointmentUpdateManyWithoutDoctorNestedInput;
     verificationLogs?: Prisma.DoctorVerificationLogUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -376,14 +378,15 @@ export type DoctorProfileUncheckedUpdateInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutDoctorNestedInput;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUncheckedUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileCreateManyInput = {
     id?: string;
     userId: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -393,10 +396,10 @@ export type DoctorProfileCreateManyInput = {
 };
 export type DoctorProfileUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -407,10 +410,10 @@ export type DoctorProfileUpdateManyMutationInput = {
 export type DoctorProfileUncheckedUpdateManyInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -442,7 +445,6 @@ export type DoctorProfileMaxOrderByAggregateInput = {
     licenseNumber?: Prisma.SortOrder;
     specialization?: Prisma.SortOrder;
     experienceYears?: Prisma.SortOrder;
-    qualificationDocUrl?: Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
     verificationStatus?: Prisma.SortOrder;
     listingStatus?: Prisma.SortOrder;
@@ -456,7 +458,6 @@ export type DoctorProfileMinOrderByAggregateInput = {
     licenseNumber?: Prisma.SortOrder;
     specialization?: Prisma.SortOrder;
     experienceYears?: Prisma.SortOrder;
-    qualificationDocUrl?: Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
     verificationStatus?: Prisma.SortOrder;
     listingStatus?: Prisma.SortOrder;
@@ -481,6 +482,18 @@ export type EnumVerificationStatusFieldUpdateOperationsInput = {
 };
 export type EnumDoctorListingStatusFieldUpdateOperationsInput = {
     set?: $Enums.DoctorListingStatus;
+};
+export type DoctorProfileCreateNestedOneWithoutDoctorLocationsInput = {
+    create?: Prisma.XOR<Prisma.DoctorProfileCreateWithoutDoctorLocationsInput, Prisma.DoctorProfileUncheckedCreateWithoutDoctorLocationsInput>;
+    connectOrCreate?: Prisma.DoctorProfileCreateOrConnectWithoutDoctorLocationsInput;
+    connect?: Prisma.DoctorProfileWhereUniqueInput;
+};
+export type DoctorProfileUpdateOneRequiredWithoutDoctorLocationsNestedInput = {
+    create?: Prisma.XOR<Prisma.DoctorProfileCreateWithoutDoctorLocationsInput, Prisma.DoctorProfileUncheckedCreateWithoutDoctorLocationsInput>;
+    connectOrCreate?: Prisma.DoctorProfileCreateOrConnectWithoutDoctorLocationsInput;
+    upsert?: Prisma.DoctorProfileUpsertWithoutDoctorLocationsInput;
+    connect?: Prisma.DoctorProfileWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.DoctorProfileUpdateToOneWithWhereWithoutDoctorLocationsInput, Prisma.DoctorProfileUpdateWithoutDoctorLocationsInput>, Prisma.DoctorProfileUncheckedUpdateWithoutDoctorLocationsInput>;
 };
 export type DoctorProfileCreateNestedOneWithoutVerificationLogsInput = {
     create?: Prisma.XOR<Prisma.DoctorProfileCreateWithoutVerificationLogsInput, Prisma.DoctorProfileUncheckedCreateWithoutVerificationLogsInput>;
@@ -546,12 +559,93 @@ export type DoctorProfileUncheckedUpdateOneWithoutUserNestedInput = {
     connect?: Prisma.DoctorProfileWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.DoctorProfileUpdateToOneWithWhereWithoutUserInput, Prisma.DoctorProfileUpdateWithoutUserInput>, Prisma.DoctorProfileUncheckedUpdateWithoutUserInput>;
 };
-export type DoctorProfileCreateWithoutVerificationLogsInput = {
+export type DoctorProfileCreateWithoutDoctorLocationsInput = {
     id?: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerified?: boolean;
+    verificationStatus?: $Enums.VerificationStatus;
+    listingStatus?: $Enums.DoctorListingStatus;
+    consultationFee: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutDoctorProfileInput;
+    appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutDoctorInput;
+    verificationLogs?: Prisma.DoctorVerificationLogCreateNestedManyWithoutDoctorInput;
+    reviews?: Prisma.DoctorReviewCreateNestedManyWithoutDoctorInput;
+};
+export type DoctorProfileUncheckedCreateWithoutDoctorLocationsInput = {
+    id?: string;
+    userId: string;
+    licenseNumber?: string | null;
+    specialization: string;
+    experienceYears: number;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerified?: boolean;
+    verificationStatus?: $Enums.VerificationStatus;
+    listingStatus?: $Enums.DoctorListingStatus;
+    consultationFee: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutDoctorInput;
+    verificationLogs?: Prisma.DoctorVerificationLogUncheckedCreateNestedManyWithoutDoctorInput;
+    reviews?: Prisma.DoctorReviewUncheckedCreateNestedManyWithoutDoctorInput;
+};
+export type DoctorProfileCreateOrConnectWithoutDoctorLocationsInput = {
+    where: Prisma.DoctorProfileWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DoctorProfileCreateWithoutDoctorLocationsInput, Prisma.DoctorProfileUncheckedCreateWithoutDoctorLocationsInput>;
+};
+export type DoctorProfileUpsertWithoutDoctorLocationsInput = {
+    update: Prisma.XOR<Prisma.DoctorProfileUpdateWithoutDoctorLocationsInput, Prisma.DoctorProfileUncheckedUpdateWithoutDoctorLocationsInput>;
+    create: Prisma.XOR<Prisma.DoctorProfileCreateWithoutDoctorLocationsInput, Prisma.DoctorProfileUncheckedCreateWithoutDoctorLocationsInput>;
+    where?: Prisma.DoctorProfileWhereInput;
+};
+export type DoctorProfileUpdateToOneWithWhereWithoutDoctorLocationsInput = {
+    where?: Prisma.DoctorProfileWhereInput;
+    data: Prisma.XOR<Prisma.DoctorProfileUpdateWithoutDoctorLocationsInput, Prisma.DoctorProfileUncheckedUpdateWithoutDoctorLocationsInput>;
+};
+export type DoctorProfileUpdateWithoutDoctorLocationsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    specialization?: Prisma.StringFieldUpdateOperationsInput | string;
+    experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
+    listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
+    consultationFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutDoctorProfileNestedInput;
+    appointments?: Prisma.DoctorAppointmentUpdateManyWithoutDoctorNestedInput;
+    verificationLogs?: Prisma.DoctorVerificationLogUpdateManyWithoutDoctorNestedInput;
+    reviews?: Prisma.DoctorReviewUpdateManyWithoutDoctorNestedInput;
+};
+export type DoctorProfileUncheckedUpdateWithoutDoctorLocationsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    specialization?: Prisma.StringFieldUpdateOperationsInput | string;
+    experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
+    listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
+    consultationFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutDoctorNestedInput;
+    verificationLogs?: Prisma.DoctorVerificationLogUncheckedUpdateManyWithoutDoctorNestedInput;
+    reviews?: Prisma.DoctorReviewUncheckedUpdateManyWithoutDoctorNestedInput;
+};
+export type DoctorProfileCreateWithoutVerificationLogsInput = {
+    id?: string;
+    licenseNumber?: string | null;
+    specialization: string;
+    experienceYears: number;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -561,14 +655,15 @@ export type DoctorProfileCreateWithoutVerificationLogsInput = {
     user: Prisma.UserCreateNestedOneWithoutDoctorProfileInput;
     appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileUncheckedCreateWithoutVerificationLogsInput = {
     id?: string;
     userId: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -577,6 +672,7 @@ export type DoctorProfileUncheckedCreateWithoutVerificationLogsInput = {
     updatedAt?: Date | string;
     appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewUncheckedCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileCreateOrConnectWithoutVerificationLogsInput = {
     where: Prisma.DoctorProfileWhereUniqueInput;
@@ -593,10 +689,10 @@ export type DoctorProfileUpdateToOneWithWhereWithoutVerificationLogsInput = {
 };
 export type DoctorProfileUpdateWithoutVerificationLogsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -606,14 +702,15 @@ export type DoctorProfileUpdateWithoutVerificationLogsInput = {
     user?: Prisma.UserUpdateOneRequiredWithoutDoctorProfileNestedInput;
     appointments?: Prisma.DoctorAppointmentUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileUncheckedUpdateWithoutVerificationLogsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -622,13 +719,14 @@ export type DoctorProfileUncheckedUpdateWithoutVerificationLogsInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUncheckedUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileCreateWithoutAppointmentsInput = {
     id?: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -638,14 +736,15 @@ export type DoctorProfileCreateWithoutAppointmentsInput = {
     user: Prisma.UserCreateNestedOneWithoutDoctorProfileInput;
     verificationLogs?: Prisma.DoctorVerificationLogCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileUncheckedCreateWithoutAppointmentsInput = {
     id?: string;
     userId: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -654,6 +753,7 @@ export type DoctorProfileUncheckedCreateWithoutAppointmentsInput = {
     updatedAt?: Date | string;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewUncheckedCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileCreateOrConnectWithoutAppointmentsInput = {
     where: Prisma.DoctorProfileWhereUniqueInput;
@@ -670,10 +770,10 @@ export type DoctorProfileUpdateToOneWithWhereWithoutAppointmentsInput = {
 };
 export type DoctorProfileUpdateWithoutAppointmentsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -683,14 +783,15 @@ export type DoctorProfileUpdateWithoutAppointmentsInput = {
     user?: Prisma.UserUpdateOneRequiredWithoutDoctorProfileNestedInput;
     verificationLogs?: Prisma.DoctorVerificationLogUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileUncheckedUpdateWithoutAppointmentsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -699,13 +800,14 @@ export type DoctorProfileUncheckedUpdateWithoutAppointmentsInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUncheckedUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileCreateWithoutReviewsInput = {
     id?: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -715,14 +817,15 @@ export type DoctorProfileCreateWithoutReviewsInput = {
     user: Prisma.UserCreateNestedOneWithoutDoctorProfileInput;
     appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutDoctorInput;
     verificationLogs?: Prisma.DoctorVerificationLogCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileUncheckedCreateWithoutReviewsInput = {
     id?: string;
     userId: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -731,6 +834,7 @@ export type DoctorProfileUncheckedCreateWithoutReviewsInput = {
     updatedAt?: Date | string;
     appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutDoctorInput;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileCreateOrConnectWithoutReviewsInput = {
     where: Prisma.DoctorProfileWhereUniqueInput;
@@ -747,10 +851,10 @@ export type DoctorProfileUpdateToOneWithWhereWithoutReviewsInput = {
 };
 export type DoctorProfileUpdateWithoutReviewsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -760,14 +864,15 @@ export type DoctorProfileUpdateWithoutReviewsInput = {
     user?: Prisma.UserUpdateOneRequiredWithoutDoctorProfileNestedInput;
     appointments?: Prisma.DoctorAppointmentUpdateManyWithoutDoctorNestedInput;
     verificationLogs?: Prisma.DoctorVerificationLogUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileUncheckedUpdateWithoutReviewsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -776,13 +881,14 @@ export type DoctorProfileUncheckedUpdateWithoutReviewsInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutDoctorNestedInput;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileCreateWithoutUserInput = {
     id?: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -792,13 +898,14 @@ export type DoctorProfileCreateWithoutUserInput = {
     appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutDoctorInput;
     verificationLogs?: Prisma.DoctorVerificationLogCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileUncheckedCreateWithoutUserInput = {
     id?: string;
-    licenseNumber: string;
+    licenseNumber?: string | null;
     specialization: string;
     experienceYears: number;
-    qualificationDocUrl: string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: boolean;
     verificationStatus?: $Enums.VerificationStatus;
     listingStatus?: $Enums.DoctorListingStatus;
@@ -808,6 +915,7 @@ export type DoctorProfileUncheckedCreateWithoutUserInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutDoctorInput;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedCreateNestedManyWithoutDoctorInput;
     reviews?: Prisma.DoctorReviewUncheckedCreateNestedManyWithoutDoctorInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedCreateNestedManyWithoutDoctorInput;
 };
 export type DoctorProfileCreateOrConnectWithoutUserInput = {
     where: Prisma.DoctorProfileWhereUniqueInput;
@@ -824,10 +932,10 @@ export type DoctorProfileUpdateToOneWithWhereWithoutUserInput = {
 };
 export type DoctorProfileUpdateWithoutUserInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -837,13 +945,14 @@ export type DoctorProfileUpdateWithoutUserInput = {
     appointments?: Prisma.DoctorAppointmentUpdateManyWithoutDoctorNestedInput;
     verificationLogs?: Prisma.DoctorVerificationLogUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUpdateManyWithoutDoctorNestedInput;
 };
 export type DoctorProfileUncheckedUpdateWithoutUserInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    licenseNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     specialization?: Prisma.StringFieldUpdateOperationsInput | string;
     experienceYears?: Prisma.IntFieldUpdateOperationsInput | number;
-    qualificationDocUrl?: Prisma.StringFieldUpdateOperationsInput | string;
+    qualificationDocUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus;
     listingStatus?: Prisma.EnumDoctorListingStatusFieldUpdateOperationsInput | $Enums.DoctorListingStatus;
@@ -853,6 +962,7 @@ export type DoctorProfileUncheckedUpdateWithoutUserInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutDoctorNestedInput;
     verificationLogs?: Prisma.DoctorVerificationLogUncheckedUpdateManyWithoutDoctorNestedInput;
     reviews?: Prisma.DoctorReviewUncheckedUpdateManyWithoutDoctorNestedInput;
+    doctorLocations?: Prisma.DoctorLocationUncheckedUpdateManyWithoutDoctorNestedInput;
 };
 /**
  * Count Type DoctorProfileCountOutputType
@@ -861,11 +971,13 @@ export type DoctorProfileCountOutputType = {
     appointments: number;
     verificationLogs: number;
     reviews: number;
+    doctorLocations: number;
 };
 export type DoctorProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     appointments?: boolean | DoctorProfileCountOutputTypeCountAppointmentsArgs;
     verificationLogs?: boolean | DoctorProfileCountOutputTypeCountVerificationLogsArgs;
     reviews?: boolean | DoctorProfileCountOutputTypeCountReviewsArgs;
+    doctorLocations?: boolean | DoctorProfileCountOutputTypeCountDoctorLocationsArgs;
 };
 /**
  * DoctorProfileCountOutputType without action
@@ -894,6 +1006,12 @@ export type DoctorProfileCountOutputTypeCountVerificationLogsArgs<ExtArgs extend
 export type DoctorProfileCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.DoctorReviewWhereInput;
 };
+/**
+ * DoctorProfileCountOutputType without action
+ */
+export type DoctorProfileCountOutputTypeCountDoctorLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DoctorLocationWhereInput;
+};
 export type DoctorProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     userId?: boolean;
@@ -911,6 +1029,7 @@ export type DoctorProfileSelect<ExtArgs extends runtime.Types.Extensions.Interna
     appointments?: boolean | Prisma.DoctorProfile$appointmentsArgs<ExtArgs>;
     verificationLogs?: boolean | Prisma.DoctorProfile$verificationLogsArgs<ExtArgs>;
     reviews?: boolean | Prisma.DoctorProfile$reviewsArgs<ExtArgs>;
+    doctorLocations?: boolean | Prisma.DoctorProfile$doctorLocationsArgs<ExtArgs>;
     _count?: boolean | Prisma.DoctorProfileCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["doctorProfile"]>;
 export type DoctorProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -963,6 +1082,7 @@ export type DoctorProfileInclude<ExtArgs extends runtime.Types.Extensions.Intern
     appointments?: boolean | Prisma.DoctorProfile$appointmentsArgs<ExtArgs>;
     verificationLogs?: boolean | Prisma.DoctorProfile$verificationLogsArgs<ExtArgs>;
     reviews?: boolean | Prisma.DoctorProfile$reviewsArgs<ExtArgs>;
+    doctorLocations?: boolean | Prisma.DoctorProfile$doctorLocationsArgs<ExtArgs>;
     _count?: boolean | Prisma.DoctorProfileCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type DoctorProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -978,14 +1098,15 @@ export type $DoctorProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
         appointments: Prisma.$DoctorAppointmentPayload<ExtArgs>[];
         verificationLogs: Prisma.$DoctorVerificationLogPayload<ExtArgs>[];
         reviews: Prisma.$DoctorReviewPayload<ExtArgs>[];
+        doctorLocations: Prisma.$DoctorLocationPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
         userId: string;
-        licenseNumber: string;
+        licenseNumber: string | null;
         specialization: string;
         experienceYears: number;
-        qualificationDocUrl: string;
+        qualificationDocUrl: runtime.JsonValue | null;
         isVerified: boolean;
         verificationStatus: $Enums.VerificationStatus;
         listingStatus: $Enums.DoctorListingStatus;
@@ -1325,6 +1446,7 @@ export interface Prisma__DoctorProfileClient<T, Null = never, ExtArgs extends ru
     appointments<T extends Prisma.DoctorProfile$appointmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorProfile$appointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorAppointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     verificationLogs<T extends Prisma.DoctorProfile$verificationLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorProfile$verificationLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorVerificationLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     reviews<T extends Prisma.DoctorProfile$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorProfile$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    doctorLocations<T extends Prisma.DoctorProfile$doctorLocationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorProfile$doctorLocationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1355,7 +1477,7 @@ export interface DoctorProfileFieldRefs {
     readonly licenseNumber: Prisma.FieldRef<"DoctorProfile", 'String'>;
     readonly specialization: Prisma.FieldRef<"DoctorProfile", 'String'>;
     readonly experienceYears: Prisma.FieldRef<"DoctorProfile", 'Int'>;
-    readonly qualificationDocUrl: Prisma.FieldRef<"DoctorProfile", 'String'>;
+    readonly qualificationDocUrl: Prisma.FieldRef<"DoctorProfile", 'Json'>;
     readonly isVerified: Prisma.FieldRef<"DoctorProfile", 'Boolean'>;
     readonly verificationStatus: Prisma.FieldRef<"DoctorProfile", 'VerificationStatus'>;
     readonly listingStatus: Prisma.FieldRef<"DoctorProfile", 'DoctorListingStatus'>;
@@ -1813,6 +1935,29 @@ export type DoctorProfile$reviewsArgs<ExtArgs extends runtime.Types.Extensions.I
     take?: number;
     skip?: number;
     distinct?: Prisma.DoctorReviewScalarFieldEnum | Prisma.DoctorReviewScalarFieldEnum[];
+};
+/**
+ * DoctorProfile.doctorLocations
+ */
+export type DoctorProfile$doctorLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorLocation
+     */
+    select?: Prisma.DoctorLocationSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DoctorLocation
+     */
+    omit?: Prisma.DoctorLocationOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DoctorLocationInclude<ExtArgs> | null;
+    where?: Prisma.DoctorLocationWhereInput;
+    orderBy?: Prisma.DoctorLocationOrderByWithRelationInput | Prisma.DoctorLocationOrderByWithRelationInput[];
+    cursor?: Prisma.DoctorLocationWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.DoctorLocationScalarFieldEnum | Prisma.DoctorLocationScalarFieldEnum[];
 };
 /**
  * DoctorProfile without action

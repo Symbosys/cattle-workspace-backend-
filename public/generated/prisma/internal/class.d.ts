@@ -206,6 +206,17 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
         omit: OmitOpts;
     }>;
     /**
+     * `prisma.doctorLocation`: Exposes CRUD operations for the **DoctorLocation** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more DoctorLocations
+      * const doctorLocations = await prisma.doctorLocation.findMany()
+      * ```
+      */
+    get doctorLocation(): Prisma.DoctorLocationDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
      * `prisma.doctorVerificationLog`: Exposes CRUD operations for the **DoctorVerificationLog** model.
       * Example usage:
       * ```ts

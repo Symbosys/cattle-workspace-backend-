@@ -20,10 +20,10 @@ enum AppointmentStatus {
 model DoctorProfile {
   id                  String              @id @default(uuid())
   userId              String              @unique
-  licenseNumber       String              @unique
+  licenseNumber       String?             @unique
   specialization      String
   experienceYears     Int
-  qualificationDocUrl String
+  qualificationDocUrl Json?
   isVerified          Boolean             @default(false)
   verificationStatus  VerificationStatus  @default(PENDING)
   listingStatus       DoctorListingStatus @default(INACTIVE)
@@ -39,6 +39,25 @@ model DoctorProfile {
   reviews          DoctorReview[]
 
   @@index([listingStatus, isVerified])
+  doctorLocations DoctorLocation[]
+}
+
+model DoctorLocation {
+  id        String        @id @default(uuid())
+  doctorId  String
+  doctor    DoctorProfile @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  
+  latitude  Decimal?  @db.Decimal(10, 8)
+  longitude Decimal?  @db.Decimal(11, 8)
+
+  stateId   String
+  state     State         @relation(fields: [stateId], references: [id])
+  
+  cityId    String
+  city      City          @relation(fields: [cityId], references: [id])
+  
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
 }
 
 model DoctorVerificationLog {

@@ -59,6 +59,7 @@ export const ModelName = {
   BreedingRequest: 'BreedingRequest',
   BreederReview: 'BreederReview',
   DoctorProfile: 'DoctorProfile',
+  DoctorLocation: 'DoctorLocation',
   DoctorVerificationLog: 'DoctorVerificationLog',
   DoctorAppointment: 'DoctorAppointment',
   DoctorReview: 'DoctorReview',
@@ -223,6 +224,20 @@ export const DoctorProfileScalarFieldEnum = {
 } as const
 
 export type DoctorProfileScalarFieldEnum = (typeof DoctorProfileScalarFieldEnum)[keyof typeof DoctorProfileScalarFieldEnum]
+
+
+export const DoctorLocationScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  stateId: 'stateId',
+  cityId: 'cityId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DoctorLocationScalarFieldEnum = (typeof DoctorLocationScalarFieldEnum)[keyof typeof DoctorLocationScalarFieldEnum]
 
 
 export const DoctorVerificationLogScalarFieldEnum = {

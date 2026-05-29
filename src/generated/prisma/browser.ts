@@ -58,6 +58,11 @@ export type BreederReview = Prisma.BreederReviewModel
  */
 export type DoctorProfile = Prisma.DoctorProfileModel
 /**
+ * Model DoctorLocation
+ * 
+ */
+export type DoctorLocation = Prisma.DoctorLocationModel
+/**
  * Model DoctorVerificationLog
  * 
  */

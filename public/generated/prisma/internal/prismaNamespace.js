@@ -76,6 +76,7 @@ export const ModelName = {
     BreedingRequest: 'BreedingRequest',
     BreederReview: 'BreederReview',
     DoctorProfile: 'DoctorProfile',
+    DoctorLocation: 'DoctorLocation',
     DoctorVerificationLog: 'DoctorVerificationLog',
     DoctorAppointment: 'DoctorAppointment',
     DoctorReview: 'DoctorReview',
@@ -199,6 +200,16 @@ export const DoctorProfileScalarFieldEnum = {
     verificationStatus: 'verificationStatus',
     listingStatus: 'listingStatus',
     consultationFee: 'consultationFee',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const DoctorLocationScalarFieldEnum = {
+    id: 'id',
+    doctorId: 'doctorId',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    stateId: 'stateId',
+    cityId: 'cityId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };

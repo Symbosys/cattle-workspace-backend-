@@ -6,6 +6,7 @@ export type * from './models/BreederProfile.js';
 export type * from './models/BreedingRequest.js';
 export type * from './models/BreederReview.js';
 export type * from './models/DoctorProfile.js';
+export type * from './models/DoctorLocation.js';
 export type * from './models/DoctorVerificationLog.js';
 export type * from './models/DoctorAppointment.js';
 export type * from './models/DoctorReview.js';

@@ -6,6 +6,8 @@ import rateLimit from "express-rate-limit";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import userRouter from "./modules/user/routes/index.js";
 import animalRouter from "./modules/animal/routes/index.js";
+import doctorRouter from "./modules/doctor/routes/index.js";
+
 
 const app = express();
 
@@ -39,6 +41,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/animal", animalRouter);
+app.use("/api/v1/doctor", doctorRouter);
 
 app.use(errorMiddleware);
 

@@ -239,6 +239,7 @@ export declare const ModelName: {
     readonly BreedingRequest: "BreedingRequest";
     readonly BreederReview: "BreederReview";
     readonly DoctorProfile: "DoctorProfile";
+    readonly DoctorLocation: "DoctorLocation";
     readonly DoctorVerificationLog: "DoctorVerificationLog";
     readonly DoctorAppointment: "DoctorAppointment";
     readonly DoctorReview: "DoctorReview";
@@ -277,7 +278,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "animal" | "vaccinationRecord" | "category" | "subCategory" | "breederProfile" | "breedingRequest" | "breederReview" | "doctorProfile" | "doctorVerificationLog" | "doctorAppointment" | "doctorReview" | "forumQuestion" | "forumAnswer" | "questionVote" | "answerVote" | "forumReport" | "cattleListing" | "listingImage" | "listingLocation" | "brandProfile" | "marketplaceProduct" | "productReview" | "cart" | "cartItem" | "marketplaceOrder" | "marketplaceOrderItem" | "subscriptionPlan" | "subscription" | "platformLedger" | "user" | "state" | "city" | "area" | "otpCode";
+        modelProps: "animal" | "vaccinationRecord" | "category" | "subCategory" | "breederProfile" | "breedingRequest" | "breederReview" | "doctorProfile" | "doctorLocation" | "doctorVerificationLog" | "doctorAppointment" | "doctorReview" | "forumQuestion" | "forumAnswer" | "questionVote" | "answerVote" | "forumReport" | "cattleListing" | "listingImage" | "listingLocation" | "brandProfile" | "marketplaceProduct" | "productReview" | "cart" | "cartItem" | "marketplaceOrder" | "marketplaceOrderItem" | "subscriptionPlan" | "subscription" | "platformLedger" | "user" | "state" | "city" | "area" | "otpCode";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -870,6 +871,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 count: {
                     args: Prisma.DoctorProfileCountArgs<ExtArgs>;
                     result: runtime.Types.Utils.Optional<Prisma.DoctorProfileCountAggregateOutputType> | number;
+                };
+            };
+        };
+        DoctorLocation: {
+            payload: Prisma.$DoctorLocationPayload<ExtArgs>;
+            fields: Prisma.DoctorLocationFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.DoctorLocationFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.DoctorLocationFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>;
+                };
+                findFirst: {
+                    args: Prisma.DoctorLocationFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.DoctorLocationFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>;
+                };
+                findMany: {
+                    args: Prisma.DoctorLocationFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>[];
+                };
+                create: {
+                    args: Prisma.DoctorLocationCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>;
+                };
+                createMany: {
+                    args: Prisma.DoctorLocationCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.DoctorLocationCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>[];
+                };
+                delete: {
+                    args: Prisma.DoctorLocationDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>;
+                };
+                update: {
+                    args: Prisma.DoctorLocationUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.DoctorLocationDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.DoctorLocationUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.DoctorLocationUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>[];
+                };
+                upsert: {
+                    args: Prisma.DoctorLocationUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$DoctorLocationPayload>;
+                };
+                aggregate: {
+                    args: Prisma.DoctorLocationAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateDoctorLocation>;
+                };
+                groupBy: {
+                    args: Prisma.DoctorLocationGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.DoctorLocationGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.DoctorLocationCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.DoctorLocationCountAggregateOutputType> | number;
                 };
             };
         };
@@ -2929,6 +3004,17 @@ export declare const DoctorProfileScalarFieldEnum: {
     readonly updatedAt: "updatedAt";
 };
 export type DoctorProfileScalarFieldEnum = (typeof DoctorProfileScalarFieldEnum)[keyof typeof DoctorProfileScalarFieldEnum];
+export declare const DoctorLocationScalarFieldEnum: {
+    readonly id: "id";
+    readonly doctorId: "doctorId";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly stateId: "stateId";
+    readonly cityId: "cityId";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type DoctorLocationScalarFieldEnum = (typeof DoctorLocationScalarFieldEnum)[keyof typeof DoctorLocationScalarFieldEnum];
 export declare const DoctorVerificationLogScalarFieldEnum: {
     readonly id: "id";
     readonly doctorId: "doctorId";
@@ -3532,6 +3618,7 @@ export type GlobalOmitConfig = {
     breedingRequest?: Prisma.BreedingRequestOmit;
     breederReview?: Prisma.BreederReviewOmit;
     doctorProfile?: Prisma.DoctorProfileOmit;
+    doctorLocation?: Prisma.DoctorLocationOmit;
     doctorVerificationLog?: Prisma.DoctorVerificationLogOmit;
     doctorAppointment?: Prisma.DoctorAppointmentOmit;
     doctorReview?: Prisma.DoctorReviewOmit;
