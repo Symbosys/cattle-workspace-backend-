@@ -215,11 +215,11 @@ export declare class AnimalListingService {
         total: number;
     } | {
         city: {
-            id: string | undefined;
-            stateId: string | undefined;
-            name?: string;
-            latitude?: number | null;
-            longitude?: number | null;
+            id: string;
+            stateId: string;
+            name: string;
+            latitude: number | null;
+            longitude: number | null;
         };
         listings: ({
             animal: {

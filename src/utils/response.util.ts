@@ -28,6 +28,8 @@ export class ErrorResponse extends Error {
       return obj.toISOString(); // ✅ serialize Date properly
     } else if (typeof obj === "bigint") {
       return obj.toString(); // ✅ BigInt -> string
+    } else if (obj && typeof obj === "object" && (obj.constructor?.name === "Decimal" || (typeof obj.toFixed === "function" && typeof obj.toNumber === "function"))) {
+      return Number(obj.toString()); // ✅ Decimal -> standard number
     } else if (Array.isArray(obj)) {
       return obj.map(normalizeBigInt);
     } else if (obj && typeof obj === "object") {

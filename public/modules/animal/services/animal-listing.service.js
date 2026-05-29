@@ -328,17 +328,20 @@ export class AnimalListingService {
         if (cities.length === 0) {
             return { city: null, listings: [], total: 0 };
         }
-        // Find nearest city
-        let nearestCity = cities[0];
-        let minDistanceSq = Infinity;
+        // Find nearest city using Haversine formula
+        let nearestCity = null;
+        let minDistance = Infinity;
         for (const city of cities) {
-            const dLat = city.latitude - lat;
-            const dLng = city.longitude - lng;
-            const distSq = dLat * dLat + dLng * dLng;
-            if (distSq < minDistanceSq) {
-                minDistanceSq = distSq;
+            const distance = getHaversineDistance(lat, lng, city.latitude, city.longitude);
+            if (distance < minDistance) {
+                minDistance = distance;
                 nearestCity = city;
             }
+        }
+        // If the nearest city is too far (e.g. more than 50 km), we assume there are no listings in that city
+        const DISTANCE_THRESHOLD_KM = 50;
+        if (!nearestCity || minDistance > DISTANCE_THRESHOLD_KM) {
+            return { city: null, listings: [], total: 0 };
         }
         const skip = (page - 1) * limit;
         const [listings, total] = await Promise.all([
@@ -346,7 +349,7 @@ export class AnimalListingService {
                 where: {
                     status: "ACTIVE",
                     location: {
-                        cityId: nearestCity?.id || '',
+                        cityId: nearestCity.id,
                     },
                     ...(categoryId ? { animal: { mainCategoryId: categoryId } } : {}),
                 },
@@ -369,7 +372,7 @@ export class AnimalListingService {
                 where: {
                     status: "ACTIVE",
                     location: {
-                        cityId: nearestCity?.id || '',
+                        cityId: nearestCity.id,
                     },
                     ...(categoryId ? { animal: { mainCategoryId: categoryId } } : {}),
                 },
@@ -378,8 +381,8 @@ export class AnimalListingService {
         return {
             city: {
                 ...nearestCity,
-                id: nearestCity?.id,
-                stateId: nearestCity?.stateId,
+                id: nearestCity.id,
+                stateId: nearestCity.stateId,
             },
             listings,
             total
@@ -412,5 +415,15 @@ export class AnimalListingService {
             }
         });
     }
+}
+function getHaversineDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
 }
 //# sourceMappingURL=animal-listing.service.js.map
