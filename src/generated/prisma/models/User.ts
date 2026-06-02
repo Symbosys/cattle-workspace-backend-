@@ -242,6 +242,9 @@ export type UserWhereInput = {
   subscriptions?: Prisma.SubscriptionListRelationFilter
   ledgerEntries?: Prisma.PlatformLedgerListRelationFilter
   vaccinationRecords?: Prisma.VaccinationRecordListRelationFilter
+  reviews?: Prisma.ProductReviewListRelationFilter
+  cart?: Prisma.XOR<Prisma.CartNullableScalarRelationFilter, Prisma.CartWhereInput> | null
+  addresses?: Prisma.UserAddressListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -272,6 +275,9 @@ export type UserOrderByWithRelationInput = {
   subscriptions?: Prisma.SubscriptionOrderByRelationAggregateInput
   ledgerEntries?: Prisma.PlatformLedgerOrderByRelationAggregateInput
   vaccinationRecords?: Prisma.VaccinationRecordOrderByRelationAggregateInput
+  reviews?: Prisma.ProductReviewOrderByRelationAggregateInput
+  cart?: Prisma.CartOrderByWithRelationInput
+  addresses?: Prisma.UserAddressOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -305,6 +311,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   subscriptions?: Prisma.SubscriptionListRelationFilter
   ledgerEntries?: Prisma.PlatformLedgerListRelationFilter
   vaccinationRecords?: Prisma.VaccinationRecordListRelationFilter
+  reviews?: Prisma.ProductReviewListRelationFilter
+  cart?: Prisma.XOR<Prisma.CartNullableScalarRelationFilter, Prisma.CartWhereInput> | null
+  addresses?: Prisma.UserAddressListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -369,6 +378,9 @@ export type UserCreateInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -399,6 +411,9 @@ export type UserUncheckedCreateInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -429,6 +444,9 @@ export type UserUpdateInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -459,6 +477,9 @@ export type UserUncheckedUpdateInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -753,6 +774,34 @@ export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOrdersInput, Prisma.UserUpdateWithoutOrdersInput>, Prisma.UserUncheckedUpdateWithoutOrdersInput>
 }
 
+export type UserCreateNestedOneWithoutReviewsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReviewsInput, Prisma.UserUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReviewsInput, Prisma.UserUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewsInput
+  upsert?: Prisma.UserUpsertWithoutReviewsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReviewsInput, Prisma.UserUpdateWithoutReviewsInput>, Prisma.UserUncheckedUpdateWithoutReviewsInput>
+}
+
+export type UserCreateNestedOneWithoutCartInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCartInput, Prisma.UserUncheckedCreateWithoutCartInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCartInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCartNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCartInput, Prisma.UserUncheckedCreateWithoutCartInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCartInput
+  upsert?: Prisma.UserUpsertWithoutCartInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCartInput, Prisma.UserUpdateWithoutCartInput>, Prisma.UserUncheckedUpdateWithoutCartInput>
+}
+
 export type UserCreateNestedOneWithoutSubscriptionsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutSubscriptionsInput, Prisma.UserUncheckedCreateWithoutSubscriptionsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutSubscriptionsInput
@@ -789,6 +838,20 @@ export type EnumUserStatusFieldUpdateOperationsInput = {
   set?: $Enums.UserStatus
 }
 
+export type UserCreateNestedOneWithoutAddressesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddressesInput, Prisma.UserUncheckedCreateWithoutAddressesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddressesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAddressesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAddressesInput, Prisma.UserUncheckedCreateWithoutAddressesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAddressesInput
+  upsert?: Prisma.UserUpsertWithoutAddressesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAddressesInput, Prisma.UserUpdateWithoutAddressesInput>, Prisma.UserUncheckedUpdateWithoutAddressesInput>
+}
+
 export type UserCreateWithoutAnimalsInput = {
   id?: string
   email?: string | null
@@ -816,6 +879,9 @@ export type UserCreateWithoutAnimalsInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAnimalsInput = {
@@ -845,6 +911,9 @@ export type UserUncheckedCreateWithoutAnimalsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAnimalsInput = {
@@ -890,6 +959,9 @@ export type UserUpdateWithoutAnimalsInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnimalsInput = {
@@ -919,6 +991,9 @@ export type UserUncheckedUpdateWithoutAnimalsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutVaccinationRecordsInput = {
@@ -948,6 +1023,9 @@ export type UserCreateWithoutVaccinationRecordsInput = {
   reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutVaccinationRecordsInput = {
@@ -977,6 +1055,9 @@ export type UserUncheckedCreateWithoutVaccinationRecordsInput = {
   reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutVaccinationRecordsInput = {
@@ -1022,6 +1103,9 @@ export type UserUpdateWithoutVaccinationRecordsInput = {
   reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVaccinationRecordsInput = {
@@ -1051,6 +1135,9 @@ export type UserUncheckedUpdateWithoutVaccinationRecordsInput = {
   reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBreederProfileInput = {
@@ -1080,6 +1167,9 @@ export type UserCreateWithoutBreederProfileInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBreederProfileInput = {
@@ -1109,6 +1199,9 @@ export type UserUncheckedCreateWithoutBreederProfileInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBreederProfileInput = {
@@ -1154,6 +1247,9 @@ export type UserUpdateWithoutBreederProfileInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBreederProfileInput = {
@@ -1183,6 +1279,9 @@ export type UserUncheckedUpdateWithoutBreederProfileInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDoctorProfileInput = {
@@ -1212,6 +1311,9 @@ export type UserCreateWithoutDoctorProfileInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDoctorProfileInput = {
@@ -1241,6 +1343,9 @@ export type UserUncheckedCreateWithoutDoctorProfileInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDoctorProfileInput = {
@@ -1286,6 +1391,9 @@ export type UserUpdateWithoutDoctorProfileInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDoctorProfileInput = {
@@ -1315,6 +1423,9 @@ export type UserUncheckedUpdateWithoutDoctorProfileInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAppointmentsInput = {
@@ -1344,6 +1455,9 @@ export type UserCreateWithoutAppointmentsInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAppointmentsInput = {
@@ -1373,6 +1487,9 @@ export type UserUncheckedCreateWithoutAppointmentsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAppointmentsInput = {
@@ -1418,6 +1535,9 @@ export type UserUpdateWithoutAppointmentsInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAppointmentsInput = {
@@ -1447,6 +1567,9 @@ export type UserUncheckedUpdateWithoutAppointmentsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutQuestionsInput = {
@@ -1476,6 +1599,9 @@ export type UserCreateWithoutQuestionsInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutQuestionsInput = {
@@ -1505,6 +1631,9 @@ export type UserUncheckedCreateWithoutQuestionsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutQuestionsInput = {
@@ -1550,6 +1679,9 @@ export type UserUpdateWithoutQuestionsInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutQuestionsInput = {
@@ -1579,6 +1711,9 @@ export type UserUncheckedUpdateWithoutQuestionsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAnswersInput = {
@@ -1608,6 +1743,9 @@ export type UserCreateWithoutAnswersInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAnswersInput = {
@@ -1637,6 +1775,9 @@ export type UserUncheckedCreateWithoutAnswersInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAnswersInput = {
@@ -1682,6 +1823,9 @@ export type UserUpdateWithoutAnswersInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnswersInput = {
@@ -1711,6 +1855,9 @@ export type UserUncheckedUpdateWithoutAnswersInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutQuestionVotesInput = {
@@ -1740,6 +1887,9 @@ export type UserCreateWithoutQuestionVotesInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutQuestionVotesInput = {
@@ -1769,6 +1919,9 @@ export type UserUncheckedCreateWithoutQuestionVotesInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutQuestionVotesInput = {
@@ -1814,6 +1967,9 @@ export type UserUpdateWithoutQuestionVotesInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutQuestionVotesInput = {
@@ -1843,6 +1999,9 @@ export type UserUncheckedUpdateWithoutQuestionVotesInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAnswerVotesInput = {
@@ -1872,6 +2031,9 @@ export type UserCreateWithoutAnswerVotesInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAnswerVotesInput = {
@@ -1901,6 +2063,9 @@ export type UserUncheckedCreateWithoutAnswerVotesInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAnswerVotesInput = {
@@ -1946,6 +2111,9 @@ export type UserUpdateWithoutAnswerVotesInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnswerVotesInput = {
@@ -1975,6 +2143,9 @@ export type UserUncheckedUpdateWithoutAnswerVotesInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsFiledInput = {
@@ -2004,6 +2175,9 @@ export type UserCreateWithoutReportsFiledInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsFiledInput = {
@@ -2033,6 +2207,9 @@ export type UserUncheckedCreateWithoutReportsFiledInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsFiledInput = {
@@ -2067,6 +2244,9 @@ export type UserCreateWithoutReportsReviewedInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsReviewedInput = {
@@ -2096,6 +2276,9 @@ export type UserUncheckedCreateWithoutReportsReviewedInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsReviewedInput = {
@@ -2141,6 +2324,9 @@ export type UserUpdateWithoutReportsFiledInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsFiledInput = {
@@ -2170,6 +2356,9 @@ export type UserUncheckedUpdateWithoutReportsFiledInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutReportsReviewedInput = {
@@ -2210,6 +2399,9 @@ export type UserUpdateWithoutReportsReviewedInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsReviewedInput = {
@@ -2239,6 +2431,9 @@ export type UserUncheckedUpdateWithoutReportsReviewedInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutListingsInput = {
@@ -2268,6 +2463,9 @@ export type UserCreateWithoutListingsInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutListingsInput = {
@@ -2297,6 +2495,9 @@ export type UserUncheckedCreateWithoutListingsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutListingsInput = {
@@ -2342,6 +2543,9 @@ export type UserUpdateWithoutListingsInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutListingsInput = {
@@ -2371,6 +2575,9 @@ export type UserUncheckedUpdateWithoutListingsInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBrandProfileInput = {
@@ -2400,6 +2607,9 @@ export type UserCreateWithoutBrandProfileInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBrandProfileInput = {
@@ -2429,6 +2639,9 @@ export type UserUncheckedCreateWithoutBrandProfileInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBrandProfileInput = {
@@ -2474,6 +2687,9 @@ export type UserUpdateWithoutBrandProfileInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBrandProfileInput = {
@@ -2503,6 +2719,9 @@ export type UserUncheckedUpdateWithoutBrandProfileInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOrdersInput = {
@@ -2532,6 +2751,9 @@ export type UserCreateWithoutOrdersInput = {
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrdersInput = {
@@ -2561,6 +2783,9 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrdersInput = {
@@ -2606,6 +2831,9 @@ export type UserUpdateWithoutOrdersInput = {
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrdersInput = {
@@ -2635,6 +2863,297 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutReviewsInput = {
+  id?: string
+  email?: string | null
+  name?: string | null
+  phone: string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalCreateNestedManyWithoutOwnerInput
+  listings?: Prisma.CattleListingCreateNestedManyWithoutOwnerInput
+  doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  breederProfile?: Prisma.BreederProfileCreateNestedOneWithoutUserInput
+  brandProfile?: Prisma.BrandProfileCreateNestedOneWithoutUserInput
+  appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput
+  orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput
+  questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput
+  answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput
+  questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput
+  answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput
+  reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput
+  reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
+  ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
+  vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutReviewsInput = {
+  id?: string
+  email?: string | null
+  name?: string | null
+  phone: string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalUncheckedCreateNestedManyWithoutOwnerInput
+  listings?: Prisma.CattleListingUncheckedCreateNestedManyWithoutOwnerInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  breederProfile?: Prisma.BreederProfileUncheckedCreateNestedOneWithoutUserInput
+  brandProfile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutUserInput
+  appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput
+  orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput
+  questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput
+  answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput
+  questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput
+  answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput
+  reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput
+  reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
+  ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
+  vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutReviewsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReviewsInput, Prisma.UserUncheckedCreateWithoutReviewsInput>
+}
+
+export type UserUpsertWithoutReviewsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReviewsInput, Prisma.UserUncheckedUpdateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReviewsInput, Prisma.UserUncheckedCreateWithoutReviewsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReviewsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReviewsInput, Prisma.UserUncheckedUpdateWithoutReviewsInput>
+}
+
+export type UserUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUpdateManyWithoutOwnerNestedInput
+  listings?: Prisma.CattleListingUpdateManyWithoutOwnerNestedInput
+  doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  breederProfile?: Prisma.BreederProfileUpdateOneWithoutUserNestedInput
+  brandProfile?: Prisma.BrandProfileUpdateOneWithoutUserNestedInput
+  appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput
+  orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput
+  questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput
+  answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput
+  questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput
+  answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput
+  reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput
+  reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
+  ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
+  vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUncheckedUpdateManyWithoutOwnerNestedInput
+  listings?: Prisma.CattleListingUncheckedUpdateManyWithoutOwnerNestedInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  breederProfile?: Prisma.BreederProfileUncheckedUpdateOneWithoutUserNestedInput
+  brandProfile?: Prisma.BrandProfileUncheckedUpdateOneWithoutUserNestedInput
+  appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput
+  orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput
+  questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput
+  answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput
+  questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput
+  answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput
+  reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput
+  reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
+  ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
+  vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCartInput = {
+  id?: string
+  email?: string | null
+  name?: string | null
+  phone: string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalCreateNestedManyWithoutOwnerInput
+  listings?: Prisma.CattleListingCreateNestedManyWithoutOwnerInput
+  doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  breederProfile?: Prisma.BreederProfileCreateNestedOneWithoutUserInput
+  brandProfile?: Prisma.BrandProfileCreateNestedOneWithoutUserInput
+  appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput
+  orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput
+  questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput
+  answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput
+  questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput
+  answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput
+  reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput
+  reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
+  ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
+  vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCartInput = {
+  id?: string
+  email?: string | null
+  name?: string | null
+  phone: string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalUncheckedCreateNestedManyWithoutOwnerInput
+  listings?: Prisma.CattleListingUncheckedCreateNestedManyWithoutOwnerInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  breederProfile?: Prisma.BreederProfileUncheckedCreateNestedOneWithoutUserInput
+  brandProfile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutUserInput
+  appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput
+  orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput
+  questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput
+  answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput
+  questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput
+  answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput
+  reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput
+  reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
+  ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
+  vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCartInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCartInput, Prisma.UserUncheckedCreateWithoutCartInput>
+}
+
+export type UserUpsertWithoutCartInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCartInput, Prisma.UserUncheckedUpdateWithoutCartInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCartInput, Prisma.UserUncheckedCreateWithoutCartInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCartInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCartInput, Prisma.UserUncheckedUpdateWithoutCartInput>
+}
+
+export type UserUpdateWithoutCartInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUpdateManyWithoutOwnerNestedInput
+  listings?: Prisma.CattleListingUpdateManyWithoutOwnerNestedInput
+  doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  breederProfile?: Prisma.BreederProfileUpdateOneWithoutUserNestedInput
+  brandProfile?: Prisma.BrandProfileUpdateOneWithoutUserNestedInput
+  appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput
+  orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput
+  questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput
+  answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput
+  questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput
+  answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput
+  reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput
+  reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
+  ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
+  vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCartInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUncheckedUpdateManyWithoutOwnerNestedInput
+  listings?: Prisma.CattleListingUncheckedUpdateManyWithoutOwnerNestedInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  breederProfile?: Prisma.BreederProfileUncheckedUpdateOneWithoutUserNestedInput
+  brandProfile?: Prisma.BrandProfileUncheckedUpdateOneWithoutUserNestedInput
+  appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput
+  orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput
+  questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput
+  answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput
+  questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput
+  answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput
+  reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput
+  reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
+  ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
+  vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSubscriptionsInput = {
@@ -2664,6 +3183,9 @@ export type UserCreateWithoutSubscriptionsInput = {
   reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput
   ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSubscriptionsInput = {
@@ -2693,6 +3215,9 @@ export type UserUncheckedCreateWithoutSubscriptionsInput = {
   reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSubscriptionsInput = {
@@ -2738,6 +3263,9 @@ export type UserUpdateWithoutSubscriptionsInput = {
   reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSubscriptionsInput = {
@@ -2767,6 +3295,9 @@ export type UserUncheckedUpdateWithoutSubscriptionsInput = {
   reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput
   ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLedgerEntriesInput = {
@@ -2796,6 +3327,9 @@ export type UserCreateWithoutLedgerEntriesInput = {
   reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLedgerEntriesInput = {
@@ -2825,6 +3359,9 @@ export type UserUncheckedCreateWithoutLedgerEntriesInput = {
   reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLedgerEntriesInput = {
@@ -2870,6 +3407,9 @@ export type UserUpdateWithoutLedgerEntriesInput = {
   reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLedgerEntriesInput = {
@@ -2899,6 +3439,153 @@ export type UserUncheckedUpdateWithoutLedgerEntriesInput = {
   reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
   vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutAddressesInput = {
+  id?: string
+  email?: string | null
+  name?: string | null
+  phone: string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalCreateNestedManyWithoutOwnerInput
+  listings?: Prisma.CattleListingCreateNestedManyWithoutOwnerInput
+  doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  breederProfile?: Prisma.BreederProfileCreateNestedOneWithoutUserInput
+  brandProfile?: Prisma.BrandProfileCreateNestedOneWithoutUserInput
+  appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput
+  orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput
+  questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput
+  answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput
+  questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput
+  answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput
+  reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput
+  reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
+  ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput
+  vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAddressesInput = {
+  id?: string
+  email?: string | null
+  name?: string | null
+  phone: string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalUncheckedCreateNestedManyWithoutOwnerInput
+  listings?: Prisma.CattleListingUncheckedCreateNestedManyWithoutOwnerInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  breederProfile?: Prisma.BreederProfileUncheckedCreateNestedOneWithoutUserInput
+  brandProfile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutUserInput
+  appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput
+  orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput
+  questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput
+  answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput
+  questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput
+  answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput
+  reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput
+  reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
+  ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput
+  vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput
+  reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAddressesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddressesInput, Prisma.UserUncheckedCreateWithoutAddressesInput>
+}
+
+export type UserUpsertWithoutAddressesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAddressesInput, Prisma.UserUncheckedUpdateWithoutAddressesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAddressesInput, Prisma.UserUncheckedCreateWithoutAddressesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAddressesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAddressesInput, Prisma.UserUncheckedUpdateWithoutAddressesInput>
+}
+
+export type UserUpdateWithoutAddressesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUpdateManyWithoutOwnerNestedInput
+  listings?: Prisma.CattleListingUpdateManyWithoutOwnerNestedInput
+  doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  breederProfile?: Prisma.BreederProfileUpdateOneWithoutUserNestedInput
+  brandProfile?: Prisma.BrandProfileUpdateOneWithoutUserNestedInput
+  appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput
+  orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput
+  questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput
+  answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput
+  questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput
+  answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput
+  reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput
+  reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
+  ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput
+  vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAddressesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalUncheckedUpdateManyWithoutOwnerNestedInput
+  listings?: Prisma.CattleListingUncheckedUpdateManyWithoutOwnerNestedInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  breederProfile?: Prisma.BreederProfileUncheckedUpdateOneWithoutUserNestedInput
+  brandProfile?: Prisma.BrandProfileUncheckedUpdateOneWithoutUserNestedInput
+  appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput
+  orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput
+  questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput
+  answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput
+  questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput
+  answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput
+  reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput
+  reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
+  ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput
+  vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput
+  reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -2920,6 +3607,8 @@ export type UserCountOutputType = {
   subscriptions: number
   ledgerEntries: number
   vaccinationRecords: number
+  reviews: number
+  addresses: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2936,6 +3625,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   subscriptions?: boolean | UserCountOutputTypeCountSubscriptionsArgs
   ledgerEntries?: boolean | UserCountOutputTypeCountLedgerEntriesArgs
   vaccinationRecords?: boolean | UserCountOutputTypeCountVaccinationRecordsArgs
+  reviews?: boolean | UserCountOutputTypeCountReviewsArgs
+  addresses?: boolean | UserCountOutputTypeCountAddressesArgs
 }
 
 /**
@@ -3039,6 +3730,20 @@ export type UserCountOutputTypeCountVaccinationRecordsArgs<ExtArgs extends runti
   where?: Prisma.VaccinationRecordWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductReviewWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAddressesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserAddressWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3068,6 +3773,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   subscriptions?: boolean | Prisma.User$subscriptionsArgs<ExtArgs>
   ledgerEntries?: boolean | Prisma.User$ledgerEntriesArgs<ExtArgs>
   vaccinationRecords?: boolean | Prisma.User$vaccinationRecordsArgs<ExtArgs>
+  reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
+  cart?: boolean | Prisma.User$cartArgs<ExtArgs>
+  addresses?: boolean | Prisma.User$addressesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3131,6 +3839,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   subscriptions?: boolean | Prisma.User$subscriptionsArgs<ExtArgs>
   ledgerEntries?: boolean | Prisma.User$ledgerEntriesArgs<ExtArgs>
   vaccinationRecords?: boolean | Prisma.User$vaccinationRecordsArgs<ExtArgs>
+  reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
+  cart?: boolean | Prisma.User$cartArgs<ExtArgs>
+  addresses?: boolean | Prisma.User$addressesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3155,6 +3866,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[]
     ledgerEntries: Prisma.$PlatformLedgerPayload<ExtArgs>[]
     vaccinationRecords: Prisma.$VaccinationRecordPayload<ExtArgs>[]
+    reviews: Prisma.$ProductReviewPayload<ExtArgs>[]
+    cart: Prisma.$CartPayload<ExtArgs> | null
+    addresses: Prisma.$UserAddressPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3578,6 +4292,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   subscriptions<T extends Prisma.User$subscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ledgerEntries<T extends Prisma.User$ledgerEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ledgerEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlatformLedgerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   vaccinationRecords<T extends Prisma.User$vaccinationRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$vaccinationRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VaccinationRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviews<T extends Prisma.User$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cart<T extends Prisma.User$cartArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$cartArgs<ExtArgs>>): Prisma.Prisma__CartClient<runtime.Types.Result.GetResult<Prisma.$CartPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  addresses<T extends Prisma.User$addressesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$addressesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserAddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4377,6 +5094,73 @@ export type User$vaccinationRecordsArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.VaccinationRecordScalarFieldEnum | Prisma.VaccinationRecordScalarFieldEnum[]
+}
+
+/**
+ * User.reviews
+ */
+export type User$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProductReview
+   */
+  select?: Prisma.ProductReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProductReview
+   */
+  omit?: Prisma.ProductReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductReviewInclude<ExtArgs> | null
+  where?: Prisma.ProductReviewWhereInput
+  orderBy?: Prisma.ProductReviewOrderByWithRelationInput | Prisma.ProductReviewOrderByWithRelationInput[]
+  cursor?: Prisma.ProductReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductReviewScalarFieldEnum | Prisma.ProductReviewScalarFieldEnum[]
+}
+
+/**
+ * User.cart
+ */
+export type User$cartArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Cart
+   */
+  select?: Prisma.CartSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Cart
+   */
+  omit?: Prisma.CartOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CartInclude<ExtArgs> | null
+  where?: Prisma.CartWhereInput
+}
+
+/**
+ * User.addresses
+ */
+export type User$addressesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserAddress
+   */
+  select?: Prisma.UserAddressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserAddress
+   */
+  omit?: Prisma.UserAddressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserAddressInclude<ExtArgs> | null
+  where?: Prisma.UserAddressWhereInput
+  orderBy?: Prisma.UserAddressOrderByWithRelationInput | Prisma.UserAddressOrderByWithRelationInput[]
+  cursor?: Prisma.UserAddressWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserAddressScalarFieldEnum | Prisma.UserAddressScalarFieldEnum[]
 }
 
 /**

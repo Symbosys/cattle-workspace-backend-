@@ -50,8 +50,16 @@ export declare const OrderStatus: {
     readonly SHIPPED: "SHIPPED";
     readonly DELIVERED: "DELIVERED";
     readonly CANCELLED: "CANCELLED";
+    readonly RETURNED: "RETURNED";
 };
 export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];
+export declare const PaymentStatus: {
+    readonly PENDING: "PENDING";
+    readonly PAID: "PAID";
+    readonly FAILED: "FAILED";
+    readonly REFUNDED: "REFUNDED";
+};
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus];
 export declare const PlanType: {
     readonly CATTLE_LISTING: "CATTLE_LISTING";
     readonly DOCTOR_LISTING: "DOCTOR_LISTING";

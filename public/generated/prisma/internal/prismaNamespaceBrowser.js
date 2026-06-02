@@ -60,12 +60,15 @@ export const ModelName = {
     ListingImage: 'ListingImage',
     ListingLocation: 'ListingLocation',
     BrandProfile: 'BrandProfile',
+    BrandLocation: 'BrandLocation',
+    MarketplaceCategory: 'MarketplaceCategory',
     MarketplaceProduct: 'MarketplaceProduct',
+    ProductVariant: 'ProductVariant',
+    MarketplaceOrder: 'MarketplaceOrder',
+    MarketplaceOrderItem: 'MarketplaceOrderItem',
     ProductReview: 'ProductReview',
     Cart: 'Cart',
     CartItem: 'CartItem',
-    MarketplaceOrder: 'MarketplaceOrder',
-    MarketplaceOrderItem: 'MarketplaceOrderItem',
     SubscriptionPlan: 'SubscriptionPlan',
     Subscription: 'Subscription',
     PlatformLedger: 'PlatformLedger',
@@ -73,7 +76,8 @@ export const ModelName = {
     State: 'State',
     City: 'City',
     Area: 'Area',
-    OtpCode: 'OtpCode'
+    OtpCode: 'OtpCode',
+    UserAddress: 'UserAddress'
 };
 /*
  * Enums
@@ -291,25 +295,98 @@ export const BrandProfileScalarFieldEnum = {
     id: 'id',
     userId: 'userId',
     brandName: 'brandName',
+    slug: 'slug',
     description: 'description',
     logoUrl: 'logoUrl',
+    bannerUrl: 'bannerUrl',
+    contactEmail: 'contactEmail',
+    contactPhone: 'contactPhone',
+    address: 'address',
+    gstNumber: 'gstNumber',
     isVerified: 'isVerified',
-    commissionRate: 'commissionRate',
+    isActive: 'isActive',
+    rating: 'rating',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const BrandLocationScalarFieldEnum = {
+    id: 'id',
+    brandId: 'brandId',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    stateId: 'stateId',
+    cityId: 'cityId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const MarketplaceCategoryScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    brandId: 'brandId',
+    description: 'description',
+    parentId: 'parentId',
+    isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
 export const MarketplaceProductScalarFieldEnum = {
     id: 'id',
     brandId: 'brandId',
+    categoryId: 'categoryId',
     title: 'title',
+    slug: 'slug',
     description: 'description',
-    category: 'category',
-    price: 'price',
-    stock: 'stock',
-    imageUrl: 'imageUrl',
     status: 'status',
+    metaTitle: 'metaTitle',
+    metaDescription: 'metaDescription',
+    images: 'images',
+    attributes: 'attributes',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
+};
+export const ProductVariantScalarFieldEnum = {
+    id: 'id',
+    productId: 'productId',
+    sku: 'sku',
+    title: 'title',
+    price: 'price',
+    compareAtPrice: 'compareAtPrice',
+    stock: 'stock',
+    imageUrl: 'imageUrl',
+    isActive: 'isActive',
+    isDefault: 'isDefault',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const MarketplaceOrderScalarFieldEnum = {
+    id: 'id',
+    buyerId: 'buyerId',
+    subTotal: 'subTotal',
+    discountAmount: 'discountAmount',
+    shippingAmount: 'shippingAmount',
+    taxAmount: 'taxAmount',
+    totalAmount: 'totalAmount',
+    paymentStatus: 'paymentStatus',
+    paymentIntentId: 'paymentIntentId',
+    shippingAddressId: 'shippingAddressId',
+    billingAddressId: 'billingAddressId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const MarketplaceOrderItemScalarFieldEnum = {
+    id: 'id',
+    orderId: 'orderId',
+    variantId: 'variantId',
+    brandId: 'brandId',
+    quantity: 'quantity',
+    price: 'price',
+    taxAmount: 'taxAmount',
+    discountAmount: 'discountAmount',
+    status: 'status',
+    trackingNumber: 'trackingNumber',
+    carrier: 'carrier',
+    shippedAt: 'shippedAt',
+    deliveredAt: 'deliveredAt'
 };
 export const ProductReviewScalarFieldEnum = {
     id: 'id',
@@ -317,39 +394,26 @@ export const ProductReviewScalarFieldEnum = {
     userId: 'userId',
     rating: 'rating',
     comment: 'comment',
+    images: 'images',
+    isVerifiedPurchase: 'isVerifiedPurchase',
+    sellerReply: 'sellerReply',
     createdAt: 'createdAt'
 };
 export const CartScalarFieldEnum = {
     id: 'id',
     userId: 'userId',
+    subTotal: 'subTotal',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
 export const CartItemScalarFieldEnum = {
     id: 'id',
     cartId: 'cartId',
-    productId: 'productId',
-    quantity: 'quantity'
-};
-export const MarketplaceOrderScalarFieldEnum = {
-    id: 'id',
-    buyerId: 'buyerId',
-    totalAmount: 'totalAmount',
-    commissionAmount: 'commissionAmount',
-    status: 'status',
-    paymentIntentId: 'paymentIntentId',
-    shippingAddress: 'shippingAddress',
-    trackingNumber: 'trackingNumber',
-    carrier: 'carrier',
+    variantId: 'variantId',
+    quantity: 'quantity',
+    total: 'total',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
-};
-export const MarketplaceOrderItemScalarFieldEnum = {
-    id: 'id',
-    orderId: 'orderId',
-    productId: 'productId',
-    quantity: 'quantity',
-    price: 'price'
 };
 export const SubscriptionPlanScalarFieldEnum = {
     id: 'id',
@@ -448,6 +512,24 @@ export const OtpCodeScalarFieldEnum = {
     attempts: 'attempts',
     lastAttemptedAt: 'lastAttemptedAt',
     isUsed: 'isUsed',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const UserAddressScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    name: 'name',
+    recipientName: 'recipientName',
+    phone: 'phone',
+    streetAddress: 'streetAddress',
+    apartment: 'apartment',
+    city: 'city',
+    state: 'state',
+    country: 'country',
+    postalCode: 'postalCode',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    isDefault: 'isDefault',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };

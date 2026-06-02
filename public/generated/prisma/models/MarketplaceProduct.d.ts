@@ -8,99 +8,89 @@ import type * as Prisma from "../internal/prismaNamespace.js";
 export type MarketplaceProductModel = runtime.Types.Result.DefaultSelection<Prisma.$MarketplaceProductPayload>;
 export type AggregateMarketplaceProduct = {
     _count: MarketplaceProductCountAggregateOutputType | null;
-    _avg: MarketplaceProductAvgAggregateOutputType | null;
-    _sum: MarketplaceProductSumAggregateOutputType | null;
     _min: MarketplaceProductMinAggregateOutputType | null;
     _max: MarketplaceProductMaxAggregateOutputType | null;
-};
-export type MarketplaceProductAvgAggregateOutputType = {
-    price: runtime.Decimal | null;
-    stock: number | null;
-};
-export type MarketplaceProductSumAggregateOutputType = {
-    price: runtime.Decimal | null;
-    stock: number | null;
 };
 export type MarketplaceProductMinAggregateOutputType = {
     id: string | null;
     brandId: string | null;
+    categoryId: string | null;
     title: string | null;
+    slug: string | null;
     description: string | null;
-    category: string | null;
-    price: runtime.Decimal | null;
-    stock: number | null;
     status: $Enums.ProductStatus | null;
+    metaTitle: string | null;
+    metaDescription: string | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
 export type MarketplaceProductMaxAggregateOutputType = {
     id: string | null;
     brandId: string | null;
+    categoryId: string | null;
     title: string | null;
+    slug: string | null;
     description: string | null;
-    category: string | null;
-    price: runtime.Decimal | null;
-    stock: number | null;
     status: $Enums.ProductStatus | null;
+    metaTitle: string | null;
+    metaDescription: string | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
 export type MarketplaceProductCountAggregateOutputType = {
     id: number;
     brandId: number;
+    categoryId: number;
     title: number;
+    slug: number;
     description: number;
-    category: number;
-    price: number;
-    stock: number;
-    imageUrl: number;
     status: number;
+    metaTitle: number;
+    metaDescription: number;
+    images: number;
+    attributes: number;
     createdAt: number;
     updatedAt: number;
     _all: number;
 };
-export type MarketplaceProductAvgAggregateInputType = {
-    price?: true;
-    stock?: true;
-};
-export type MarketplaceProductSumAggregateInputType = {
-    price?: true;
-    stock?: true;
-};
 export type MarketplaceProductMinAggregateInputType = {
     id?: true;
     brandId?: true;
+    categoryId?: true;
     title?: true;
+    slug?: true;
     description?: true;
-    category?: true;
-    price?: true;
-    stock?: true;
     status?: true;
+    metaTitle?: true;
+    metaDescription?: true;
     createdAt?: true;
     updatedAt?: true;
 };
 export type MarketplaceProductMaxAggregateInputType = {
     id?: true;
     brandId?: true;
+    categoryId?: true;
     title?: true;
+    slug?: true;
     description?: true;
-    category?: true;
-    price?: true;
-    stock?: true;
     status?: true;
+    metaTitle?: true;
+    metaDescription?: true;
     createdAt?: true;
     updatedAt?: true;
 };
 export type MarketplaceProductCountAggregateInputType = {
     id?: true;
     brandId?: true;
+    categoryId?: true;
     title?: true;
+    slug?: true;
     description?: true;
-    category?: true;
-    price?: true;
-    stock?: true;
-    imageUrl?: true;
     status?: true;
+    metaTitle?: true;
+    metaDescription?: true;
+    images?: true;
+    attributes?: true;
     createdAt?: true;
     updatedAt?: true;
     _all?: true;
@@ -143,18 +133,6 @@ export type MarketplaceProductAggregateArgs<ExtArgs extends runtime.Types.Extens
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
-     * Select which fields to average
-    **/
-    _avg?: MarketplaceProductAvgAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to sum
-    **/
-    _sum?: MarketplaceProductSumAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
      * Select which fields to find the minimum value
     **/
     _min?: MarketplaceProductMinAggregateInputType;
@@ -176,26 +154,24 @@ export type MarketplaceProductGroupByArgs<ExtArgs extends runtime.Types.Extensio
     take?: number;
     skip?: number;
     _count?: MarketplaceProductCountAggregateInputType | true;
-    _avg?: MarketplaceProductAvgAggregateInputType;
-    _sum?: MarketplaceProductSumAggregateInputType;
     _min?: MarketplaceProductMinAggregateInputType;
     _max?: MarketplaceProductMaxAggregateInputType;
 };
 export type MarketplaceProductGroupByOutputType = {
     id: string;
     brandId: string;
+    categoryId: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal;
-    stock: number;
-    imageUrl: string[];
     status: $Enums.ProductStatus;
+    metaTitle: string | null;
+    metaDescription: string | null;
+    images: runtime.JsonValue | null;
+    attributes: runtime.JsonValue | null;
     createdAt: Date;
     updatedAt: Date;
     _count: MarketplaceProductCountAggregateOutputType | null;
-    _avg: MarketplaceProductAvgAggregateOutputType | null;
-    _sum: MarketplaceProductSumAggregateOutputType | null;
     _min: MarketplaceProductMinAggregateOutputType | null;
     _max: MarketplaceProductMaxAggregateOutputType | null;
 };
@@ -208,74 +184,80 @@ export type MarketplaceProductWhereInput = {
     NOT?: Prisma.MarketplaceProductWhereInput | Prisma.MarketplaceProductWhereInput[];
     id?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     brandId?: Prisma.StringFilter<"MarketplaceProduct"> | string;
+    categoryId?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     title?: Prisma.StringFilter<"MarketplaceProduct"> | string;
+    slug?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     description?: Prisma.StringFilter<"MarketplaceProduct"> | string;
-    category?: Prisma.StringFilter<"MarketplaceProduct"> | string;
-    price?: Prisma.DecimalFilter<"MarketplaceProduct"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFilter<"MarketplaceProduct"> | number;
-    imageUrl?: Prisma.StringNullableListFilter<"MarketplaceProduct">;
     status?: Prisma.EnumProductStatusFilter<"MarketplaceProduct"> | $Enums.ProductStatus;
+    metaTitle?: Prisma.StringNullableFilter<"MarketplaceProduct"> | string | null;
+    metaDescription?: Prisma.StringNullableFilter<"MarketplaceProduct"> | string | null;
+    images?: Prisma.JsonNullableFilter<"MarketplaceProduct">;
+    attributes?: Prisma.JsonNullableFilter<"MarketplaceProduct">;
     createdAt?: Prisma.DateTimeFilter<"MarketplaceProduct"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"MarketplaceProduct"> | Date | string;
     brand?: Prisma.XOR<Prisma.BrandProfileScalarRelationFilter, Prisma.BrandProfileWhereInput>;
-    orderItems?: Prisma.MarketplaceOrderItemListRelationFilter;
+    category?: Prisma.XOR<Prisma.MarketplaceCategoryScalarRelationFilter, Prisma.MarketplaceCategoryWhereInput>;
+    variants?: Prisma.ProductVariantListRelationFilter;
     reviews?: Prisma.ProductReviewListRelationFilter;
-    cartItems?: Prisma.CartItemListRelationFilter;
 };
 export type MarketplaceProductOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     brandId?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
     title?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
-    category?: Prisma.SortOrder;
-    price?: Prisma.SortOrder;
-    stock?: Prisma.SortOrder;
-    imageUrl?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
+    metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder;
+    metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder;
+    images?: Prisma.SortOrderInput | Prisma.SortOrder;
+    attributes?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     brand?: Prisma.BrandProfileOrderByWithRelationInput;
-    orderItems?: Prisma.MarketplaceOrderItemOrderByRelationAggregateInput;
+    category?: Prisma.MarketplaceCategoryOrderByWithRelationInput;
+    variants?: Prisma.ProductVariantOrderByRelationAggregateInput;
     reviews?: Prisma.ProductReviewOrderByRelationAggregateInput;
-    cartItems?: Prisma.CartItemOrderByRelationAggregateInput;
 };
 export type MarketplaceProductWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
+    slug?: string;
     AND?: Prisma.MarketplaceProductWhereInput | Prisma.MarketplaceProductWhereInput[];
     OR?: Prisma.MarketplaceProductWhereInput[];
     NOT?: Prisma.MarketplaceProductWhereInput | Prisma.MarketplaceProductWhereInput[];
     brandId?: Prisma.StringFilter<"MarketplaceProduct"> | string;
+    categoryId?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     title?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     description?: Prisma.StringFilter<"MarketplaceProduct"> | string;
-    category?: Prisma.StringFilter<"MarketplaceProduct"> | string;
-    price?: Prisma.DecimalFilter<"MarketplaceProduct"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFilter<"MarketplaceProduct"> | number;
-    imageUrl?: Prisma.StringNullableListFilter<"MarketplaceProduct">;
     status?: Prisma.EnumProductStatusFilter<"MarketplaceProduct"> | $Enums.ProductStatus;
+    metaTitle?: Prisma.StringNullableFilter<"MarketplaceProduct"> | string | null;
+    metaDescription?: Prisma.StringNullableFilter<"MarketplaceProduct"> | string | null;
+    images?: Prisma.JsonNullableFilter<"MarketplaceProduct">;
+    attributes?: Prisma.JsonNullableFilter<"MarketplaceProduct">;
     createdAt?: Prisma.DateTimeFilter<"MarketplaceProduct"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"MarketplaceProduct"> | Date | string;
     brand?: Prisma.XOR<Prisma.BrandProfileScalarRelationFilter, Prisma.BrandProfileWhereInput>;
-    orderItems?: Prisma.MarketplaceOrderItemListRelationFilter;
+    category?: Prisma.XOR<Prisma.MarketplaceCategoryScalarRelationFilter, Prisma.MarketplaceCategoryWhereInput>;
+    variants?: Prisma.ProductVariantListRelationFilter;
     reviews?: Prisma.ProductReviewListRelationFilter;
-    cartItems?: Prisma.CartItemListRelationFilter;
-}, "id">;
+}, "id" | "slug">;
 export type MarketplaceProductOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
     brandId?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
     title?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
-    category?: Prisma.SortOrder;
-    price?: Prisma.SortOrder;
-    stock?: Prisma.SortOrder;
-    imageUrl?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
+    metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder;
+    metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder;
+    images?: Prisma.SortOrderInput | Prisma.SortOrder;
+    attributes?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     _count?: Prisma.MarketplaceProductCountOrderByAggregateInput;
-    _avg?: Prisma.MarketplaceProductAvgOrderByAggregateInput;
     _max?: Prisma.MarketplaceProductMaxOrderByAggregateInput;
     _min?: Prisma.MarketplaceProductMinOrderByAggregateInput;
-    _sum?: Prisma.MarketplaceProductSumOrderByAggregateInput;
 };
 export type MarketplaceProductScalarWhereWithAggregatesInput = {
     AND?: Prisma.MarketplaceProductScalarWhereWithAggregatesInput | Prisma.MarketplaceProductScalarWhereWithAggregatesInput[];
@@ -283,115 +265,126 @@ export type MarketplaceProductScalarWhereWithAggregatesInput = {
     NOT?: Prisma.MarketplaceProductScalarWhereWithAggregatesInput | Prisma.MarketplaceProductScalarWhereWithAggregatesInput[];
     id?: Prisma.StringWithAggregatesFilter<"MarketplaceProduct"> | string;
     brandId?: Prisma.StringWithAggregatesFilter<"MarketplaceProduct"> | string;
+    categoryId?: Prisma.StringWithAggregatesFilter<"MarketplaceProduct"> | string;
     title?: Prisma.StringWithAggregatesFilter<"MarketplaceProduct"> | string;
+    slug?: Prisma.StringWithAggregatesFilter<"MarketplaceProduct"> | string;
     description?: Prisma.StringWithAggregatesFilter<"MarketplaceProduct"> | string;
-    category?: Prisma.StringWithAggregatesFilter<"MarketplaceProduct"> | string;
-    price?: Prisma.DecimalWithAggregatesFilter<"MarketplaceProduct"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntWithAggregatesFilter<"MarketplaceProduct"> | number;
-    imageUrl?: Prisma.StringNullableListFilter<"MarketplaceProduct">;
     status?: Prisma.EnumProductStatusWithAggregatesFilter<"MarketplaceProduct"> | $Enums.ProductStatus;
+    metaTitle?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceProduct"> | string | null;
+    metaDescription?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceProduct"> | string | null;
+    images?: Prisma.JsonNullableWithAggregatesFilter<"MarketplaceProduct">;
+    attributes?: Prisma.JsonNullableWithAggregatesFilter<"MarketplaceProduct">;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"MarketplaceProduct"> | Date | string;
     updatedAt?: Prisma.DateTimeWithAggregatesFilter<"MarketplaceProduct"> | Date | string;
 };
 export type MarketplaceProductCreateInput = {
     id?: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     brand: Prisma.BrandProfileCreateNestedOneWithoutProductsInput;
-    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutProductInput;
+    category: Prisma.MarketplaceCategoryCreateNestedOneWithoutProductsInput;
+    variants?: Prisma.ProductVariantCreateNestedManyWithoutProductInput;
     reviews?: Prisma.ProductReviewCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemCreateNestedManyWithoutProductInput;
 };
 export type MarketplaceProductUncheckedCreateInput = {
     id?: string;
     brandId: string;
+    categoryId: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutProductInput;
+    variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutProductInput;
     reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutProductInput;
 };
 export type MarketplaceProductUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     brand?: Prisma.BrandProfileUpdateOneRequiredWithoutProductsNestedInput;
-    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutProductNestedInput;
+    category?: Prisma.MarketplaceCategoryUpdateOneRequiredWithoutProductsNestedInput;
+    variants?: Prisma.ProductVariantUpdateManyWithoutProductNestedInput;
     reviews?: Prisma.ProductReviewUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUpdateManyWithoutProductNestedInput;
 };
 export type MarketplaceProductUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    categoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutProductNestedInput;
+    variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutProductNestedInput;
     reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutProductNestedInput;
 };
 export type MarketplaceProductCreateManyInput = {
     id?: string;
     brandId: string;
+    categoryId: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 };
 export type MarketplaceProductUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type MarketplaceProductUncheckedUpdateManyInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    categoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -406,47 +399,43 @@ export type MarketplaceProductOrderByRelationAggregateInput = {
 export type MarketplaceProductCountOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     brandId?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
     title?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
-    category?: Prisma.SortOrder;
-    price?: Prisma.SortOrder;
-    stock?: Prisma.SortOrder;
-    imageUrl?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
+    metaTitle?: Prisma.SortOrder;
+    metaDescription?: Prisma.SortOrder;
+    images?: Prisma.SortOrder;
+    attributes?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
-};
-export type MarketplaceProductAvgOrderByAggregateInput = {
-    price?: Prisma.SortOrder;
-    stock?: Prisma.SortOrder;
 };
 export type MarketplaceProductMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     brandId?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
     title?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
-    category?: Prisma.SortOrder;
-    price?: Prisma.SortOrder;
-    stock?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
+    metaTitle?: Prisma.SortOrder;
+    metaDescription?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
 export type MarketplaceProductMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     brandId?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
     title?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
-    category?: Prisma.SortOrder;
-    price?: Prisma.SortOrder;
-    stock?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
+    metaTitle?: Prisma.SortOrder;
+    metaDescription?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
-};
-export type MarketplaceProductSumOrderByAggregateInput = {
-    price?: Prisma.SortOrder;
-    stock?: Prisma.SortOrder;
 };
 export type MarketplaceProductScalarRelationFilter = {
     is?: Prisma.MarketplaceProductWhereInput;
@@ -490,15 +479,58 @@ export type MarketplaceProductUncheckedUpdateManyWithoutBrandNestedInput = {
     updateMany?: Prisma.MarketplaceProductUpdateManyWithWhereWithoutBrandInput | Prisma.MarketplaceProductUpdateManyWithWhereWithoutBrandInput[];
     deleteMany?: Prisma.MarketplaceProductScalarWhereInput | Prisma.MarketplaceProductScalarWhereInput[];
 };
-export type MarketplaceProductCreateimageUrlInput = {
-    set: string[];
+export type MarketplaceProductCreateNestedManyWithoutCategoryInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput> | Prisma.MarketplaceProductCreateWithoutCategoryInput[] | Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput | Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput[];
+    createMany?: Prisma.MarketplaceProductCreateManyCategoryInputEnvelope;
+    connect?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
 };
-export type MarketplaceProductUpdateimageUrlInput = {
-    set?: string[];
-    push?: string | string[];
+export type MarketplaceProductUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput> | Prisma.MarketplaceProductCreateWithoutCategoryInput[] | Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput | Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput[];
+    createMany?: Prisma.MarketplaceProductCreateManyCategoryInputEnvelope;
+    connect?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+};
+export type MarketplaceProductUpdateManyWithoutCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput> | Prisma.MarketplaceProductCreateWithoutCategoryInput[] | Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput | Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput[];
+    upsert?: Prisma.MarketplaceProductUpsertWithWhereUniqueWithoutCategoryInput | Prisma.MarketplaceProductUpsertWithWhereUniqueWithoutCategoryInput[];
+    createMany?: Prisma.MarketplaceProductCreateManyCategoryInputEnvelope;
+    set?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    disconnect?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    delete?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    connect?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    update?: Prisma.MarketplaceProductUpdateWithWhereUniqueWithoutCategoryInput | Prisma.MarketplaceProductUpdateWithWhereUniqueWithoutCategoryInput[];
+    updateMany?: Prisma.MarketplaceProductUpdateManyWithWhereWithoutCategoryInput | Prisma.MarketplaceProductUpdateManyWithWhereWithoutCategoryInput[];
+    deleteMany?: Prisma.MarketplaceProductScalarWhereInput | Prisma.MarketplaceProductScalarWhereInput[];
+};
+export type MarketplaceProductUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput> | Prisma.MarketplaceProductCreateWithoutCategoryInput[] | Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput | Prisma.MarketplaceProductCreateOrConnectWithoutCategoryInput[];
+    upsert?: Prisma.MarketplaceProductUpsertWithWhereUniqueWithoutCategoryInput | Prisma.MarketplaceProductUpsertWithWhereUniqueWithoutCategoryInput[];
+    createMany?: Prisma.MarketplaceProductCreateManyCategoryInputEnvelope;
+    set?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    disconnect?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    delete?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    connect?: Prisma.MarketplaceProductWhereUniqueInput | Prisma.MarketplaceProductWhereUniqueInput[];
+    update?: Prisma.MarketplaceProductUpdateWithWhereUniqueWithoutCategoryInput | Prisma.MarketplaceProductUpdateWithWhereUniqueWithoutCategoryInput[];
+    updateMany?: Prisma.MarketplaceProductUpdateManyWithWhereWithoutCategoryInput | Prisma.MarketplaceProductUpdateManyWithWhereWithoutCategoryInput[];
+    deleteMany?: Prisma.MarketplaceProductScalarWhereInput | Prisma.MarketplaceProductScalarWhereInput[];
 };
 export type EnumProductStatusFieldUpdateOperationsInput = {
     set?: $Enums.ProductStatus;
+};
+export type MarketplaceProductCreateNestedOneWithoutVariantsInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutVariantsInput, Prisma.MarketplaceProductUncheckedCreateWithoutVariantsInput>;
+    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutVariantsInput;
+    connect?: Prisma.MarketplaceProductWhereUniqueInput;
+};
+export type MarketplaceProductUpdateOneRequiredWithoutVariantsNestedInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutVariantsInput, Prisma.MarketplaceProductUncheckedCreateWithoutVariantsInput>;
+    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutVariantsInput;
+    upsert?: Prisma.MarketplaceProductUpsertWithoutVariantsInput;
+    connect?: Prisma.MarketplaceProductWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.MarketplaceProductUpdateToOneWithWhereWithoutVariantsInput, Prisma.MarketplaceProductUpdateWithoutVariantsInput>, Prisma.MarketplaceProductUncheckedUpdateWithoutVariantsInput>;
 };
 export type MarketplaceProductCreateNestedOneWithoutReviewsInput = {
     create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutReviewsInput, Prisma.MarketplaceProductUncheckedCreateWithoutReviewsInput>;
@@ -512,59 +544,37 @@ export type MarketplaceProductUpdateOneRequiredWithoutReviewsNestedInput = {
     connect?: Prisma.MarketplaceProductWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.MarketplaceProductUpdateToOneWithWhereWithoutReviewsInput, Prisma.MarketplaceProductUpdateWithoutReviewsInput>, Prisma.MarketplaceProductUncheckedUpdateWithoutReviewsInput>;
 };
-export type MarketplaceProductCreateNestedOneWithoutCartItemsInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCartItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutCartItemsInput>;
-    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutCartItemsInput;
-    connect?: Prisma.MarketplaceProductWhereUniqueInput;
-};
-export type MarketplaceProductUpdateOneRequiredWithoutCartItemsNestedInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCartItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutCartItemsInput>;
-    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutCartItemsInput;
-    upsert?: Prisma.MarketplaceProductUpsertWithoutCartItemsInput;
-    connect?: Prisma.MarketplaceProductWhereUniqueInput;
-    update?: Prisma.XOR<Prisma.XOR<Prisma.MarketplaceProductUpdateToOneWithWhereWithoutCartItemsInput, Prisma.MarketplaceProductUpdateWithoutCartItemsInput>, Prisma.MarketplaceProductUncheckedUpdateWithoutCartItemsInput>;
-};
-export type MarketplaceProductCreateNestedOneWithoutOrderItemsInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutOrderItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutOrderItemsInput>;
-    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutOrderItemsInput;
-    connect?: Prisma.MarketplaceProductWhereUniqueInput;
-};
-export type MarketplaceProductUpdateOneRequiredWithoutOrderItemsNestedInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutOrderItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutOrderItemsInput>;
-    connectOrCreate?: Prisma.MarketplaceProductCreateOrConnectWithoutOrderItemsInput;
-    upsert?: Prisma.MarketplaceProductUpsertWithoutOrderItemsInput;
-    connect?: Prisma.MarketplaceProductWhereUniqueInput;
-    update?: Prisma.XOR<Prisma.XOR<Prisma.MarketplaceProductUpdateToOneWithWhereWithoutOrderItemsInput, Prisma.MarketplaceProductUpdateWithoutOrderItemsInput>, Prisma.MarketplaceProductUncheckedUpdateWithoutOrderItemsInput>;
-};
 export type MarketplaceProductCreateWithoutBrandInput = {
     id?: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutProductInput;
+    category: Prisma.MarketplaceCategoryCreateNestedOneWithoutProductsInput;
+    variants?: Prisma.ProductVariantCreateNestedManyWithoutProductInput;
     reviews?: Prisma.ProductReviewCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemCreateNestedManyWithoutProductInput;
 };
 export type MarketplaceProductUncheckedCreateWithoutBrandInput = {
     id?: string;
+    categoryId: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutProductInput;
+    variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutProductInput;
     reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutProductInput;
 };
 export type MarketplaceProductCreateOrConnectWithoutBrandInput = {
     where: Prisma.MarketplaceProductWhereUniqueInput;
@@ -593,45 +603,179 @@ export type MarketplaceProductScalarWhereInput = {
     NOT?: Prisma.MarketplaceProductScalarWhereInput | Prisma.MarketplaceProductScalarWhereInput[];
     id?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     brandId?: Prisma.StringFilter<"MarketplaceProduct"> | string;
+    categoryId?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     title?: Prisma.StringFilter<"MarketplaceProduct"> | string;
+    slug?: Prisma.StringFilter<"MarketplaceProduct"> | string;
     description?: Prisma.StringFilter<"MarketplaceProduct"> | string;
-    category?: Prisma.StringFilter<"MarketplaceProduct"> | string;
-    price?: Prisma.DecimalFilter<"MarketplaceProduct"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFilter<"MarketplaceProduct"> | number;
-    imageUrl?: Prisma.StringNullableListFilter<"MarketplaceProduct">;
     status?: Prisma.EnumProductStatusFilter<"MarketplaceProduct"> | $Enums.ProductStatus;
+    metaTitle?: Prisma.StringNullableFilter<"MarketplaceProduct"> | string | null;
+    metaDescription?: Prisma.StringNullableFilter<"MarketplaceProduct"> | string | null;
+    images?: Prisma.JsonNullableFilter<"MarketplaceProduct">;
+    attributes?: Prisma.JsonNullableFilter<"MarketplaceProduct">;
     createdAt?: Prisma.DateTimeFilter<"MarketplaceProduct"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"MarketplaceProduct"> | Date | string;
+};
+export type MarketplaceProductCreateWithoutCategoryInput = {
+    id?: string;
+    title: string;
+    slug: string;
+    description: string;
+    status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    brand: Prisma.BrandProfileCreateNestedOneWithoutProductsInput;
+    variants?: Prisma.ProductVariantCreateNestedManyWithoutProductInput;
+    reviews?: Prisma.ProductReviewCreateNestedManyWithoutProductInput;
+};
+export type MarketplaceProductUncheckedCreateWithoutCategoryInput = {
+    id?: string;
+    brandId: string;
+    title: string;
+    slug: string;
+    description: string;
+    status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutProductInput;
+    reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutProductInput;
+};
+export type MarketplaceProductCreateOrConnectWithoutCategoryInput = {
+    where: Prisma.MarketplaceProductWhereUniqueInput;
+    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput>;
+};
+export type MarketplaceProductCreateManyCategoryInputEnvelope = {
+    data: Prisma.MarketplaceProductCreateManyCategoryInput | Prisma.MarketplaceProductCreateManyCategoryInput[];
+    skipDuplicates?: boolean;
+};
+export type MarketplaceProductUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: Prisma.MarketplaceProductWhereUniqueInput;
+    update: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedUpdateWithoutCategoryInput>;
+    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedCreateWithoutCategoryInput>;
+};
+export type MarketplaceProductUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: Prisma.MarketplaceProductWhereUniqueInput;
+    data: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutCategoryInput, Prisma.MarketplaceProductUncheckedUpdateWithoutCategoryInput>;
+};
+export type MarketplaceProductUpdateManyWithWhereWithoutCategoryInput = {
+    where: Prisma.MarketplaceProductScalarWhereInput;
+    data: Prisma.XOR<Prisma.MarketplaceProductUpdateManyMutationInput, Prisma.MarketplaceProductUncheckedUpdateManyWithoutCategoryInput>;
+};
+export type MarketplaceProductCreateWithoutVariantsInput = {
+    id?: string;
+    title: string;
+    slug: string;
+    description: string;
+    status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    brand: Prisma.BrandProfileCreateNestedOneWithoutProductsInput;
+    category: Prisma.MarketplaceCategoryCreateNestedOneWithoutProductsInput;
+    reviews?: Prisma.ProductReviewCreateNestedManyWithoutProductInput;
+};
+export type MarketplaceProductUncheckedCreateWithoutVariantsInput = {
+    id?: string;
+    brandId: string;
+    categoryId: string;
+    title: string;
+    slug: string;
+    description: string;
+    status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutProductInput;
+};
+export type MarketplaceProductCreateOrConnectWithoutVariantsInput = {
+    where: Prisma.MarketplaceProductWhereUniqueInput;
+    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutVariantsInput, Prisma.MarketplaceProductUncheckedCreateWithoutVariantsInput>;
+};
+export type MarketplaceProductUpsertWithoutVariantsInput = {
+    update: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutVariantsInput, Prisma.MarketplaceProductUncheckedUpdateWithoutVariantsInput>;
+    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutVariantsInput, Prisma.MarketplaceProductUncheckedCreateWithoutVariantsInput>;
+    where?: Prisma.MarketplaceProductWhereInput;
+};
+export type MarketplaceProductUpdateToOneWithWhereWithoutVariantsInput = {
+    where?: Prisma.MarketplaceProductWhereInput;
+    data: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutVariantsInput, Prisma.MarketplaceProductUncheckedUpdateWithoutVariantsInput>;
+};
+export type MarketplaceProductUpdateWithoutVariantsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    brand?: Prisma.BrandProfileUpdateOneRequiredWithoutProductsNestedInput;
+    category?: Prisma.MarketplaceCategoryUpdateOneRequiredWithoutProductsNestedInput;
+    reviews?: Prisma.ProductReviewUpdateManyWithoutProductNestedInput;
+};
+export type MarketplaceProductUncheckedUpdateWithoutVariantsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    categoryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutProductNestedInput;
 };
 export type MarketplaceProductCreateWithoutReviewsInput = {
     id?: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     brand: Prisma.BrandProfileCreateNestedOneWithoutProductsInput;
-    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemCreateNestedManyWithoutProductInput;
+    category: Prisma.MarketplaceCategoryCreateNestedOneWithoutProductsInput;
+    variants?: Prisma.ProductVariantCreateNestedManyWithoutProductInput;
 };
 export type MarketplaceProductUncheckedCreateWithoutReviewsInput = {
     id?: string;
     brandId: string;
+    categoryId: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutProductInput;
+    variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutProductInput;
 };
 export type MarketplaceProductCreateOrConnectWithoutReviewsInput = {
     where: Prisma.MarketplaceProductWhereUniqueInput;
@@ -649,230 +793,152 @@ export type MarketplaceProductUpdateToOneWithWhereWithoutReviewsInput = {
 export type MarketplaceProductUpdateWithoutReviewsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     brand?: Prisma.BrandProfileUpdateOneRequiredWithoutProductsNestedInput;
-    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUpdateManyWithoutProductNestedInput;
+    category?: Prisma.MarketplaceCategoryUpdateOneRequiredWithoutProductsNestedInput;
+    variants?: Prisma.ProductVariantUpdateManyWithoutProductNestedInput;
 };
 export type MarketplaceProductUncheckedUpdateWithoutReviewsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    categoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutProductNestedInput;
-};
-export type MarketplaceProductCreateWithoutCartItemsInput = {
-    id?: string;
-    title: string;
-    description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
-    status?: $Enums.ProductStatus;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    brand: Prisma.BrandProfileCreateNestedOneWithoutProductsInput;
-    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutProductInput;
-    reviews?: Prisma.ProductReviewCreateNestedManyWithoutProductInput;
-};
-export type MarketplaceProductUncheckedCreateWithoutCartItemsInput = {
-    id?: string;
-    brandId: string;
-    title: string;
-    description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
-    status?: $Enums.ProductStatus;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutProductInput;
-    reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutProductInput;
-};
-export type MarketplaceProductCreateOrConnectWithoutCartItemsInput = {
-    where: Prisma.MarketplaceProductWhereUniqueInput;
-    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCartItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutCartItemsInput>;
-};
-export type MarketplaceProductUpsertWithoutCartItemsInput = {
-    update: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutCartItemsInput, Prisma.MarketplaceProductUncheckedUpdateWithoutCartItemsInput>;
-    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutCartItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutCartItemsInput>;
-    where?: Prisma.MarketplaceProductWhereInput;
-};
-export type MarketplaceProductUpdateToOneWithWhereWithoutCartItemsInput = {
-    where?: Prisma.MarketplaceProductWhereInput;
-    data: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutCartItemsInput, Prisma.MarketplaceProductUncheckedUpdateWithoutCartItemsInput>;
-};
-export type MarketplaceProductUpdateWithoutCartItemsInput = {
-    id?: Prisma.StringFieldUpdateOperationsInput | string;
-    title?: Prisma.StringFieldUpdateOperationsInput | string;
-    description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
-    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    brand?: Prisma.BrandProfileUpdateOneRequiredWithoutProductsNestedInput;
-    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutProductNestedInput;
-    reviews?: Prisma.ProductReviewUpdateManyWithoutProductNestedInput;
-};
-export type MarketplaceProductUncheckedUpdateWithoutCartItemsInput = {
-    id?: Prisma.StringFieldUpdateOperationsInput | string;
-    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
-    title?: Prisma.StringFieldUpdateOperationsInput | string;
-    description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
-    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutProductNestedInput;
-    reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutProductNestedInput;
-};
-export type MarketplaceProductCreateWithoutOrderItemsInput = {
-    id?: string;
-    title: string;
-    description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
-    status?: $Enums.ProductStatus;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    brand: Prisma.BrandProfileCreateNestedOneWithoutProductsInput;
-    reviews?: Prisma.ProductReviewCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemCreateNestedManyWithoutProductInput;
-};
-export type MarketplaceProductUncheckedCreateWithoutOrderItemsInput = {
-    id?: string;
-    brandId: string;
-    title: string;
-    description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
-    status?: $Enums.ProductStatus;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutProductInput;
-    cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutProductInput;
-};
-export type MarketplaceProductCreateOrConnectWithoutOrderItemsInput = {
-    where: Prisma.MarketplaceProductWhereUniqueInput;
-    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutOrderItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutOrderItemsInput>;
-};
-export type MarketplaceProductUpsertWithoutOrderItemsInput = {
-    update: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutOrderItemsInput, Prisma.MarketplaceProductUncheckedUpdateWithoutOrderItemsInput>;
-    create: Prisma.XOR<Prisma.MarketplaceProductCreateWithoutOrderItemsInput, Prisma.MarketplaceProductUncheckedCreateWithoutOrderItemsInput>;
-    where?: Prisma.MarketplaceProductWhereInput;
-};
-export type MarketplaceProductUpdateToOneWithWhereWithoutOrderItemsInput = {
-    where?: Prisma.MarketplaceProductWhereInput;
-    data: Prisma.XOR<Prisma.MarketplaceProductUpdateWithoutOrderItemsInput, Prisma.MarketplaceProductUncheckedUpdateWithoutOrderItemsInput>;
-};
-export type MarketplaceProductUpdateWithoutOrderItemsInput = {
-    id?: Prisma.StringFieldUpdateOperationsInput | string;
-    title?: Prisma.StringFieldUpdateOperationsInput | string;
-    description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
-    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    brand?: Prisma.BrandProfileUpdateOneRequiredWithoutProductsNestedInput;
-    reviews?: Prisma.ProductReviewUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUpdateManyWithoutProductNestedInput;
-};
-export type MarketplaceProductUncheckedUpdateWithoutOrderItemsInput = {
-    id?: Prisma.StringFieldUpdateOperationsInput | string;
-    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
-    title?: Prisma.StringFieldUpdateOperationsInput | string;
-    description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
-    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutProductNestedInput;
+    variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutProductNestedInput;
 };
 export type MarketplaceProductCreateManyBrandInput = {
     id?: string;
+    categoryId: string;
     title: string;
+    slug: string;
     description: string;
-    category: string;
-    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: number;
-    imageUrl?: Prisma.MarketplaceProductCreateimageUrlInput | string[];
     status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 };
 export type MarketplaceProductUpdateWithoutBrandInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutProductNestedInput;
+    category?: Prisma.MarketplaceCategoryUpdateOneRequiredWithoutProductsNestedInput;
+    variants?: Prisma.ProductVariantUpdateManyWithoutProductNestedInput;
     reviews?: Prisma.ProductReviewUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUpdateManyWithoutProductNestedInput;
 };
 export type MarketplaceProductUncheckedUpdateWithoutBrandInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    categoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutProductNestedInput;
+    variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutProductNestedInput;
     reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutProductNestedInput;
-    cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutProductNestedInput;
 };
 export type MarketplaceProductUncheckedUpdateManyWithoutBrandInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    categoryId?: Prisma.StringFieldUpdateOperationsInput | string;
     title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.StringFieldUpdateOperationsInput | string;
-    category?: Prisma.StringFieldUpdateOperationsInput | string;
-    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    stock?: Prisma.IntFieldUpdateOperationsInput | number;
-    imageUrl?: Prisma.MarketplaceProductUpdateimageUrlInput | string[];
     status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type MarketplaceProductCreateManyCategoryInput = {
+    id?: string;
+    brandId: string;
+    title: string;
+    slug: string;
+    description: string;
+    status?: $Enums.ProductStatus;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type MarketplaceProductUpdateWithoutCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    brand?: Prisma.BrandProfileUpdateOneRequiredWithoutProductsNestedInput;
+    variants?: Prisma.ProductVariantUpdateManyWithoutProductNestedInput;
+    reviews?: Prisma.ProductReviewUpdateManyWithoutProductNestedInput;
+};
+export type MarketplaceProductUncheckedUpdateWithoutCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutProductNestedInput;
+    reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutProductNestedInput;
+};
+export type MarketplaceProductUncheckedUpdateManyWithoutCategoryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus;
+    metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    attributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -880,14 +946,12 @@ export type MarketplaceProductUncheckedUpdateManyWithoutBrandInput = {
  * Count Type MarketplaceProductCountOutputType
  */
 export type MarketplaceProductCountOutputType = {
-    orderItems: number;
+    variants: number;
     reviews: number;
-    cartItems: number;
 };
 export type MarketplaceProductCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    orderItems?: boolean | MarketplaceProductCountOutputTypeCountOrderItemsArgs;
+    variants?: boolean | MarketplaceProductCountOutputTypeCountVariantsArgs;
     reviews?: boolean | MarketplaceProductCountOutputTypeCountReviewsArgs;
-    cartItems?: boolean | MarketplaceProductCountOutputTypeCountCartItemsArgs;
 };
 /**
  * MarketplaceProductCountOutputType without action
@@ -901,8 +965,8 @@ export type MarketplaceProductCountOutputTypeDefaultArgs<ExtArgs extends runtime
 /**
  * MarketplaceProductCountOutputType without action
  */
-export type MarketplaceProductCountOutputTypeCountOrderItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.MarketplaceOrderItemWhereInput;
+export type MarketplaceProductCountOutputTypeCountVariantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ProductVariantWhereInput;
 };
 /**
  * MarketplaceProductCountOutputType without action
@@ -910,103 +974,111 @@ export type MarketplaceProductCountOutputTypeCountOrderItemsArgs<ExtArgs extends
 export type MarketplaceProductCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.ProductReviewWhereInput;
 };
-/**
- * MarketplaceProductCountOutputType without action
- */
-export type MarketplaceProductCountOutputTypeCountCartItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.CartItemWhereInput;
-};
 export type MarketplaceProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     brandId?: boolean;
+    categoryId?: boolean;
     title?: boolean;
+    slug?: boolean;
     description?: boolean;
-    category?: boolean;
-    price?: boolean;
-    stock?: boolean;
-    imageUrl?: boolean;
     status?: boolean;
+    metaTitle?: boolean;
+    metaDescription?: boolean;
+    images?: boolean;
+    attributes?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
-    orderItems?: boolean | Prisma.MarketplaceProduct$orderItemsArgs<ExtArgs>;
+    category?: boolean | Prisma.MarketplaceCategoryDefaultArgs<ExtArgs>;
+    variants?: boolean | Prisma.MarketplaceProduct$variantsArgs<ExtArgs>;
     reviews?: boolean | Prisma.MarketplaceProduct$reviewsArgs<ExtArgs>;
-    cartItems?: boolean | Prisma.MarketplaceProduct$cartItemsArgs<ExtArgs>;
     _count?: boolean | Prisma.MarketplaceProductCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["marketplaceProduct"]>;
 export type MarketplaceProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     brandId?: boolean;
+    categoryId?: boolean;
     title?: boolean;
+    slug?: boolean;
     description?: boolean;
-    category?: boolean;
-    price?: boolean;
-    stock?: boolean;
-    imageUrl?: boolean;
     status?: boolean;
+    metaTitle?: boolean;
+    metaDescription?: boolean;
+    images?: boolean;
+    attributes?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
+    category?: boolean | Prisma.MarketplaceCategoryDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["marketplaceProduct"]>;
 export type MarketplaceProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     brandId?: boolean;
+    categoryId?: boolean;
     title?: boolean;
+    slug?: boolean;
     description?: boolean;
-    category?: boolean;
-    price?: boolean;
-    stock?: boolean;
-    imageUrl?: boolean;
     status?: boolean;
+    metaTitle?: boolean;
+    metaDescription?: boolean;
+    images?: boolean;
+    attributes?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
+    category?: boolean | Prisma.MarketplaceCategoryDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["marketplaceProduct"]>;
 export type MarketplaceProductSelectScalar = {
     id?: boolean;
     brandId?: boolean;
+    categoryId?: boolean;
     title?: boolean;
+    slug?: boolean;
     description?: boolean;
-    category?: boolean;
-    price?: boolean;
-    stock?: boolean;
-    imageUrl?: boolean;
     status?: boolean;
+    metaTitle?: boolean;
+    metaDescription?: boolean;
+    images?: boolean;
+    attributes?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
 };
-export type MarketplaceProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "title" | "description" | "category" | "price" | "stock" | "imageUrl" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["marketplaceProduct"]>;
+export type MarketplaceProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "categoryId" | "title" | "slug" | "description" | "status" | "metaTitle" | "metaDescription" | "images" | "attributes" | "createdAt" | "updatedAt", ExtArgs["result"]["marketplaceProduct"]>;
 export type MarketplaceProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
-    orderItems?: boolean | Prisma.MarketplaceProduct$orderItemsArgs<ExtArgs>;
+    category?: boolean | Prisma.MarketplaceCategoryDefaultArgs<ExtArgs>;
+    variants?: boolean | Prisma.MarketplaceProduct$variantsArgs<ExtArgs>;
     reviews?: boolean | Prisma.MarketplaceProduct$reviewsArgs<ExtArgs>;
-    cartItems?: boolean | Prisma.MarketplaceProduct$cartItemsArgs<ExtArgs>;
     _count?: boolean | Prisma.MarketplaceProductCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type MarketplaceProductIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
+    category?: boolean | Prisma.MarketplaceCategoryDefaultArgs<ExtArgs>;
 };
 export type MarketplaceProductIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
+    category?: boolean | Prisma.MarketplaceCategoryDefaultArgs<ExtArgs>;
 };
 export type $MarketplaceProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "MarketplaceProduct";
     objects: {
         brand: Prisma.$BrandProfilePayload<ExtArgs>;
-        orderItems: Prisma.$MarketplaceOrderItemPayload<ExtArgs>[];
+        category: Prisma.$MarketplaceCategoryPayload<ExtArgs>;
+        variants: Prisma.$ProductVariantPayload<ExtArgs>[];
         reviews: Prisma.$ProductReviewPayload<ExtArgs>[];
-        cartItems: Prisma.$CartItemPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
         brandId: string;
+        categoryId: string;
         title: string;
+        slug: string;
         description: string;
-        category: string;
-        price: runtime.Decimal;
-        stock: number;
-        imageUrl: string[];
         status: $Enums.ProductStatus;
+        metaTitle: string | null;
+        metaDescription: string | null;
+        images: runtime.JsonValue | null;
+        attributes: runtime.JsonValue | null;
         createdAt: Date;
         updatedAt: Date;
     }, ExtArgs["result"]["marketplaceProduct"]>;
@@ -1339,9 +1411,9 @@ export interface MarketplaceProductDelegate<ExtArgs extends runtime.Types.Extens
 export interface Prisma__MarketplaceProductClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
     brand<T extends Prisma.BrandProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandProfileClient<runtime.Types.Result.GetResult<Prisma.$BrandProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
-    orderItems<T extends Prisma.MarketplaceProduct$orderItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceProduct$orderItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketplaceOrderItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    category<T extends Prisma.MarketplaceCategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceCategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__MarketplaceCategoryClient<runtime.Types.Result.GetResult<Prisma.$MarketplaceCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    variants<T extends Prisma.MarketplaceProduct$variantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceProduct$variantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     reviews<T extends Prisma.MarketplaceProduct$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceProduct$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    cartItems<T extends Prisma.MarketplaceProduct$cartItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceProduct$cartItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CartItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1369,13 +1441,15 @@ export interface Prisma__MarketplaceProductClient<T, Null = never, ExtArgs exten
 export interface MarketplaceProductFieldRefs {
     readonly id: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
     readonly brandId: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
+    readonly categoryId: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
     readonly title: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
+    readonly slug: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
     readonly description: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
-    readonly category: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
-    readonly price: Prisma.FieldRef<"MarketplaceProduct", 'Decimal'>;
-    readonly stock: Prisma.FieldRef<"MarketplaceProduct", 'Int'>;
-    readonly imageUrl: Prisma.FieldRef<"MarketplaceProduct", 'String[]'>;
     readonly status: Prisma.FieldRef<"MarketplaceProduct", 'ProductStatus'>;
+    readonly metaTitle: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
+    readonly metaDescription: Prisma.FieldRef<"MarketplaceProduct", 'String'>;
+    readonly images: Prisma.FieldRef<"MarketplaceProduct", 'Json'>;
+    readonly attributes: Prisma.FieldRef<"MarketplaceProduct", 'Json'>;
     readonly createdAt: Prisma.FieldRef<"MarketplaceProduct", 'DateTime'>;
     readonly updatedAt: Prisma.FieldRef<"MarketplaceProduct", 'DateTime'>;
 }
@@ -1762,27 +1836,27 @@ export type MarketplaceProductDeleteManyArgs<ExtArgs extends runtime.Types.Exten
     limit?: number;
 };
 /**
- * MarketplaceProduct.orderItems
+ * MarketplaceProduct.variants
  */
-export type MarketplaceProduct$orderItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type MarketplaceProduct$variantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MarketplaceOrderItem
+     * Select specific fields to fetch from the ProductVariant
      */
-    select?: Prisma.MarketplaceOrderItemSelect<ExtArgs> | null;
+    select?: Prisma.ProductVariantSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the MarketplaceOrderItem
+     * Omit specific fields from the ProductVariant
      */
-    omit?: Prisma.MarketplaceOrderItemOmit<ExtArgs> | null;
+    omit?: Prisma.ProductVariantOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Prisma.MarketplaceOrderItemInclude<ExtArgs> | null;
-    where?: Prisma.MarketplaceOrderItemWhereInput;
-    orderBy?: Prisma.MarketplaceOrderItemOrderByWithRelationInput | Prisma.MarketplaceOrderItemOrderByWithRelationInput[];
-    cursor?: Prisma.MarketplaceOrderItemWhereUniqueInput;
+    include?: Prisma.ProductVariantInclude<ExtArgs> | null;
+    where?: Prisma.ProductVariantWhereInput;
+    orderBy?: Prisma.ProductVariantOrderByWithRelationInput | Prisma.ProductVariantOrderByWithRelationInput[];
+    cursor?: Prisma.ProductVariantWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.MarketplaceOrderItemScalarFieldEnum | Prisma.MarketplaceOrderItemScalarFieldEnum[];
+    distinct?: Prisma.ProductVariantScalarFieldEnum | Prisma.ProductVariantScalarFieldEnum[];
 };
 /**
  * MarketplaceProduct.reviews
@@ -1806,29 +1880,6 @@ export type MarketplaceProduct$reviewsArgs<ExtArgs extends runtime.Types.Extensi
     take?: number;
     skip?: number;
     distinct?: Prisma.ProductReviewScalarFieldEnum | Prisma.ProductReviewScalarFieldEnum[];
-};
-/**
- * MarketplaceProduct.cartItems
- */
-export type MarketplaceProduct$cartItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CartItem
-     */
-    select?: Prisma.CartItemSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the CartItem
-     */
-    omit?: Prisma.CartItemOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Prisma.CartItemInclude<ExtArgs> | null;
-    where?: Prisma.CartItemWhereInput;
-    orderBy?: Prisma.CartItemOrderByWithRelationInput | Prisma.CartItemOrderByWithRelationInput[];
-    cursor?: Prisma.CartItemWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: Prisma.CartItemScalarFieldEnum | Prisma.CartItemScalarFieldEnum[];
 };
 /**
  * MarketplaceProduct without action

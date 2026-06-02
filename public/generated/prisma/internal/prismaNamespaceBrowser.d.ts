@@ -47,12 +47,15 @@ export declare const ModelName: {
     readonly ListingImage: "ListingImage";
     readonly ListingLocation: "ListingLocation";
     readonly BrandProfile: "BrandProfile";
+    readonly BrandLocation: "BrandLocation";
+    readonly MarketplaceCategory: "MarketplaceCategory";
     readonly MarketplaceProduct: "MarketplaceProduct";
+    readonly ProductVariant: "ProductVariant";
+    readonly MarketplaceOrder: "MarketplaceOrder";
+    readonly MarketplaceOrderItem: "MarketplaceOrderItem";
     readonly ProductReview: "ProductReview";
     readonly Cart: "Cart";
     readonly CartItem: "CartItem";
-    readonly MarketplaceOrder: "MarketplaceOrder";
-    readonly MarketplaceOrderItem: "MarketplaceOrderItem";
     readonly SubscriptionPlan: "SubscriptionPlan";
     readonly Subscription: "Subscription";
     readonly PlatformLedger: "PlatformLedger";
@@ -61,6 +64,7 @@ export declare const ModelName: {
     readonly City: "City";
     readonly Area: "Area";
     readonly OtpCode: "OtpCode";
+    readonly UserAddress: "UserAddress";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -297,61 +301,86 @@ export declare const BrandProfileScalarFieldEnum: {
     readonly id: "id";
     readonly userId: "userId";
     readonly brandName: "brandName";
+    readonly slug: "slug";
     readonly description: "description";
     readonly logoUrl: "logoUrl";
+    readonly bannerUrl: "bannerUrl";
+    readonly contactEmail: "contactEmail";
+    readonly contactPhone: "contactPhone";
+    readonly address: "address";
+    readonly gstNumber: "gstNumber";
     readonly isVerified: "isVerified";
-    readonly commissionRate: "commissionRate";
+    readonly isActive: "isActive";
+    readonly rating: "rating";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
 export type BrandProfileScalarFieldEnum = (typeof BrandProfileScalarFieldEnum)[keyof typeof BrandProfileScalarFieldEnum];
+export declare const BrandLocationScalarFieldEnum: {
+    readonly id: "id";
+    readonly brandId: "brandId";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly stateId: "stateId";
+    readonly cityId: "cityId";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type BrandLocationScalarFieldEnum = (typeof BrandLocationScalarFieldEnum)[keyof typeof BrandLocationScalarFieldEnum];
+export declare const MarketplaceCategoryScalarFieldEnum: {
+    readonly id: "id";
+    readonly name: "name";
+    readonly brandId: "brandId";
+    readonly description: "description";
+    readonly parentId: "parentId";
+    readonly isActive: "isActive";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type MarketplaceCategoryScalarFieldEnum = (typeof MarketplaceCategoryScalarFieldEnum)[keyof typeof MarketplaceCategoryScalarFieldEnum];
 export declare const MarketplaceProductScalarFieldEnum: {
     readonly id: "id";
     readonly brandId: "brandId";
+    readonly categoryId: "categoryId";
     readonly title: "title";
+    readonly slug: "slug";
     readonly description: "description";
-    readonly category: "category";
-    readonly price: "price";
-    readonly stock: "stock";
-    readonly imageUrl: "imageUrl";
     readonly status: "status";
+    readonly metaTitle: "metaTitle";
+    readonly metaDescription: "metaDescription";
+    readonly images: "images";
+    readonly attributes: "attributes";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
 export type MarketplaceProductScalarFieldEnum = (typeof MarketplaceProductScalarFieldEnum)[keyof typeof MarketplaceProductScalarFieldEnum];
-export declare const ProductReviewScalarFieldEnum: {
+export declare const ProductVariantScalarFieldEnum: {
     readonly id: "id";
     readonly productId: "productId";
-    readonly userId: "userId";
-    readonly rating: "rating";
-    readonly comment: "comment";
-    readonly createdAt: "createdAt";
-};
-export type ProductReviewScalarFieldEnum = (typeof ProductReviewScalarFieldEnum)[keyof typeof ProductReviewScalarFieldEnum];
-export declare const CartScalarFieldEnum: {
-    readonly id: "id";
-    readonly userId: "userId";
+    readonly sku: "sku";
+    readonly title: "title";
+    readonly price: "price";
+    readonly compareAtPrice: "compareAtPrice";
+    readonly stock: "stock";
+    readonly imageUrl: "imageUrl";
+    readonly isActive: "isActive";
+    readonly isDefault: "isDefault";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
-export type CartScalarFieldEnum = (typeof CartScalarFieldEnum)[keyof typeof CartScalarFieldEnum];
-export declare const CartItemScalarFieldEnum: {
-    readonly id: "id";
-    readonly cartId: "cartId";
-    readonly productId: "productId";
-    readonly quantity: "quantity";
-};
-export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typeof CartItemScalarFieldEnum];
+export type ProductVariantScalarFieldEnum = (typeof ProductVariantScalarFieldEnum)[keyof typeof ProductVariantScalarFieldEnum];
 export declare const MarketplaceOrderScalarFieldEnum: {
     readonly id: "id";
     readonly buyerId: "buyerId";
+    readonly subTotal: "subTotal";
+    readonly discountAmount: "discountAmount";
+    readonly shippingAmount: "shippingAmount";
+    readonly taxAmount: "taxAmount";
     readonly totalAmount: "totalAmount";
-    readonly commissionAmount: "commissionAmount";
-    readonly status: "status";
+    readonly paymentStatus: "paymentStatus";
     readonly paymentIntentId: "paymentIntentId";
-    readonly shippingAddress: "shippingAddress";
-    readonly trackingNumber: "trackingNumber";
-    readonly carrier: "carrier";
+    readonly shippingAddressId: "shippingAddressId";
+    readonly billingAddressId: "billingAddressId";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
@@ -359,11 +388,49 @@ export type MarketplaceOrderScalarFieldEnum = (typeof MarketplaceOrderScalarFiel
 export declare const MarketplaceOrderItemScalarFieldEnum: {
     readonly id: "id";
     readonly orderId: "orderId";
-    readonly productId: "productId";
+    readonly variantId: "variantId";
+    readonly brandId: "brandId";
     readonly quantity: "quantity";
     readonly price: "price";
+    readonly taxAmount: "taxAmount";
+    readonly discountAmount: "discountAmount";
+    readonly status: "status";
+    readonly trackingNumber: "trackingNumber";
+    readonly carrier: "carrier";
+    readonly shippedAt: "shippedAt";
+    readonly deliveredAt: "deliveredAt";
 };
 export type MarketplaceOrderItemScalarFieldEnum = (typeof MarketplaceOrderItemScalarFieldEnum)[keyof typeof MarketplaceOrderItemScalarFieldEnum];
+export declare const ProductReviewScalarFieldEnum: {
+    readonly id: "id";
+    readonly productId: "productId";
+    readonly userId: "userId";
+    readonly rating: "rating";
+    readonly comment: "comment";
+    readonly images: "images";
+    readonly isVerifiedPurchase: "isVerifiedPurchase";
+    readonly sellerReply: "sellerReply";
+    readonly createdAt: "createdAt";
+};
+export type ProductReviewScalarFieldEnum = (typeof ProductReviewScalarFieldEnum)[keyof typeof ProductReviewScalarFieldEnum];
+export declare const CartScalarFieldEnum: {
+    readonly id: "id";
+    readonly userId: "userId";
+    readonly subTotal: "subTotal";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type CartScalarFieldEnum = (typeof CartScalarFieldEnum)[keyof typeof CartScalarFieldEnum];
+export declare const CartItemScalarFieldEnum: {
+    readonly id: "id";
+    readonly cartId: "cartId";
+    readonly variantId: "variantId";
+    readonly quantity: "quantity";
+    readonly total: "total";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typeof CartItemScalarFieldEnum];
 export declare const SubscriptionPlanScalarFieldEnum: {
     readonly id: "id";
     readonly name: "name";
@@ -472,6 +539,25 @@ export declare const OtpCodeScalarFieldEnum: {
     readonly updatedAt: "updatedAt";
 };
 export type OtpCodeScalarFieldEnum = (typeof OtpCodeScalarFieldEnum)[keyof typeof OtpCodeScalarFieldEnum];
+export declare const UserAddressScalarFieldEnum: {
+    readonly id: "id";
+    readonly userId: "userId";
+    readonly name: "name";
+    readonly recipientName: "recipientName";
+    readonly phone: "phone";
+    readonly streetAddress: "streetAddress";
+    readonly apartment: "apartment";
+    readonly city: "city";
+    readonly state: "state";
+    readonly country: "country";
+    readonly postalCode: "postalCode";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly isDefault: "isDefault";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type UserAddressScalarFieldEnum = (typeof UserAddressScalarFieldEnum)[keyof typeof UserAddressScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

@@ -1,4 +1,5 @@
 import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
 import type * as Prisma from "../internal/prismaNamespace.js";
 /**
  * Model MarketplaceOrderItem
@@ -15,61 +16,117 @@ export type AggregateMarketplaceOrderItem = {
 export type MarketplaceOrderItemAvgAggregateOutputType = {
     quantity: number | null;
     price: runtime.Decimal | null;
+    taxAmount: runtime.Decimal | null;
+    discountAmount: runtime.Decimal | null;
 };
 export type MarketplaceOrderItemSumAggregateOutputType = {
     quantity: number | null;
     price: runtime.Decimal | null;
+    taxAmount: runtime.Decimal | null;
+    discountAmount: runtime.Decimal | null;
 };
 export type MarketplaceOrderItemMinAggregateOutputType = {
     id: string | null;
     orderId: string | null;
-    productId: string | null;
+    variantId: string | null;
+    brandId: string | null;
     quantity: number | null;
     price: runtime.Decimal | null;
+    taxAmount: runtime.Decimal | null;
+    discountAmount: runtime.Decimal | null;
+    status: $Enums.OrderStatus | null;
+    trackingNumber: string | null;
+    carrier: string | null;
+    shippedAt: Date | null;
+    deliveredAt: Date | null;
 };
 export type MarketplaceOrderItemMaxAggregateOutputType = {
     id: string | null;
     orderId: string | null;
-    productId: string | null;
+    variantId: string | null;
+    brandId: string | null;
     quantity: number | null;
     price: runtime.Decimal | null;
+    taxAmount: runtime.Decimal | null;
+    discountAmount: runtime.Decimal | null;
+    status: $Enums.OrderStatus | null;
+    trackingNumber: string | null;
+    carrier: string | null;
+    shippedAt: Date | null;
+    deliveredAt: Date | null;
 };
 export type MarketplaceOrderItemCountAggregateOutputType = {
     id: number;
     orderId: number;
-    productId: number;
+    variantId: number;
+    brandId: number;
     quantity: number;
     price: number;
+    taxAmount: number;
+    discountAmount: number;
+    status: number;
+    trackingNumber: number;
+    carrier: number;
+    shippedAt: number;
+    deliveredAt: number;
     _all: number;
 };
 export type MarketplaceOrderItemAvgAggregateInputType = {
     quantity?: true;
     price?: true;
+    taxAmount?: true;
+    discountAmount?: true;
 };
 export type MarketplaceOrderItemSumAggregateInputType = {
     quantity?: true;
     price?: true;
+    taxAmount?: true;
+    discountAmount?: true;
 };
 export type MarketplaceOrderItemMinAggregateInputType = {
     id?: true;
     orderId?: true;
-    productId?: true;
+    variantId?: true;
+    brandId?: true;
     quantity?: true;
     price?: true;
+    taxAmount?: true;
+    discountAmount?: true;
+    status?: true;
+    trackingNumber?: true;
+    carrier?: true;
+    shippedAt?: true;
+    deliveredAt?: true;
 };
 export type MarketplaceOrderItemMaxAggregateInputType = {
     id?: true;
     orderId?: true;
-    productId?: true;
+    variantId?: true;
+    brandId?: true;
     quantity?: true;
     price?: true;
+    taxAmount?: true;
+    discountAmount?: true;
+    status?: true;
+    trackingNumber?: true;
+    carrier?: true;
+    shippedAt?: true;
+    deliveredAt?: true;
 };
 export type MarketplaceOrderItemCountAggregateInputType = {
     id?: true;
     orderId?: true;
-    productId?: true;
+    variantId?: true;
+    brandId?: true;
     quantity?: true;
     price?: true;
+    taxAmount?: true;
+    discountAmount?: true;
+    status?: true;
+    trackingNumber?: true;
+    carrier?: true;
+    shippedAt?: true;
+    deliveredAt?: true;
     _all?: true;
 };
 export type MarketplaceOrderItemAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -151,9 +208,17 @@ export type MarketplaceOrderItemGroupByArgs<ExtArgs extends runtime.Types.Extens
 export type MarketplaceOrderItemGroupByOutputType = {
     id: string;
     orderId: string;
-    productId: string;
+    variantId: string;
+    brandId: string;
     quantity: number;
     price: runtime.Decimal;
+    taxAmount: runtime.Decimal;
+    discountAmount: runtime.Decimal;
+    status: $Enums.OrderStatus;
+    trackingNumber: string | null;
+    carrier: string | null;
+    shippedAt: Date | null;
+    deliveredAt: Date | null;
     _count: MarketplaceOrderItemCountAggregateOutputType | null;
     _avg: MarketplaceOrderItemAvgAggregateOutputType | null;
     _sum: MarketplaceOrderItemSumAggregateOutputType | null;
@@ -169,20 +234,38 @@ export type MarketplaceOrderItemWhereInput = {
     NOT?: Prisma.MarketplaceOrderItemWhereInput | Prisma.MarketplaceOrderItemWhereInput[];
     id?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
     orderId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
-    productId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
+    variantId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
+    brandId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
     quantity?: Prisma.IntFilter<"MarketplaceOrderItem"> | number;
     price?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFilter<"MarketplaceOrderItem"> | $Enums.OrderStatus;
+    trackingNumber?: Prisma.StringNullableFilter<"MarketplaceOrderItem"> | string | null;
+    carrier?: Prisma.StringNullableFilter<"MarketplaceOrderItem"> | string | null;
+    shippedAt?: Prisma.DateTimeNullableFilter<"MarketplaceOrderItem"> | Date | string | null;
+    deliveredAt?: Prisma.DateTimeNullableFilter<"MarketplaceOrderItem"> | Date | string | null;
     order?: Prisma.XOR<Prisma.MarketplaceOrderScalarRelationFilter, Prisma.MarketplaceOrderWhereInput>;
-    product?: Prisma.XOR<Prisma.MarketplaceProductScalarRelationFilter, Prisma.MarketplaceProductWhereInput>;
+    variant?: Prisma.XOR<Prisma.ProductVariantScalarRelationFilter, Prisma.ProductVariantWhereInput>;
+    brand?: Prisma.XOR<Prisma.BrandProfileScalarRelationFilter, Prisma.BrandProfileWhereInput>;
 };
 export type MarketplaceOrderItemOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     orderId?: Prisma.SortOrder;
-    productId?: Prisma.SortOrder;
+    variantId?: Prisma.SortOrder;
+    brandId?: Prisma.SortOrder;
     quantity?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
+    taxAmount?: Prisma.SortOrder;
+    discountAmount?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    trackingNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
+    carrier?: Prisma.SortOrderInput | Prisma.SortOrder;
+    shippedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+    deliveredAt?: Prisma.SortOrderInput | Prisma.SortOrder;
     order?: Prisma.MarketplaceOrderOrderByWithRelationInput;
-    product?: Prisma.MarketplaceProductOrderByWithRelationInput;
+    variant?: Prisma.ProductVariantOrderByWithRelationInput;
+    brand?: Prisma.BrandProfileOrderByWithRelationInput;
 };
 export type MarketplaceOrderItemWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -190,18 +273,35 @@ export type MarketplaceOrderItemWhereUniqueInput = Prisma.AtLeast<{
     OR?: Prisma.MarketplaceOrderItemWhereInput[];
     NOT?: Prisma.MarketplaceOrderItemWhereInput | Prisma.MarketplaceOrderItemWhereInput[];
     orderId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
-    productId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
+    variantId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
+    brandId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
     quantity?: Prisma.IntFilter<"MarketplaceOrderItem"> | number;
     price?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFilter<"MarketplaceOrderItem"> | $Enums.OrderStatus;
+    trackingNumber?: Prisma.StringNullableFilter<"MarketplaceOrderItem"> | string | null;
+    carrier?: Prisma.StringNullableFilter<"MarketplaceOrderItem"> | string | null;
+    shippedAt?: Prisma.DateTimeNullableFilter<"MarketplaceOrderItem"> | Date | string | null;
+    deliveredAt?: Prisma.DateTimeNullableFilter<"MarketplaceOrderItem"> | Date | string | null;
     order?: Prisma.XOR<Prisma.MarketplaceOrderScalarRelationFilter, Prisma.MarketplaceOrderWhereInput>;
-    product?: Prisma.XOR<Prisma.MarketplaceProductScalarRelationFilter, Prisma.MarketplaceProductWhereInput>;
+    variant?: Prisma.XOR<Prisma.ProductVariantScalarRelationFilter, Prisma.ProductVariantWhereInput>;
+    brand?: Prisma.XOR<Prisma.BrandProfileScalarRelationFilter, Prisma.BrandProfileWhereInput>;
 }, "id">;
 export type MarketplaceOrderItemOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
     orderId?: Prisma.SortOrder;
-    productId?: Prisma.SortOrder;
+    variantId?: Prisma.SortOrder;
+    brandId?: Prisma.SortOrder;
     quantity?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
+    taxAmount?: Prisma.SortOrder;
+    discountAmount?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    trackingNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
+    carrier?: Prisma.SortOrderInput | Prisma.SortOrder;
+    shippedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+    deliveredAt?: Prisma.SortOrderInput | Prisma.SortOrder;
     _count?: Prisma.MarketplaceOrderItemCountOrderByAggregateInput;
     _avg?: Prisma.MarketplaceOrderItemAvgOrderByAggregateInput;
     _max?: Prisma.MarketplaceOrderItemMaxOrderByAggregateInput;
@@ -214,56 +314,119 @@ export type MarketplaceOrderItemScalarWhereWithAggregatesInput = {
     NOT?: Prisma.MarketplaceOrderItemScalarWhereWithAggregatesInput | Prisma.MarketplaceOrderItemScalarWhereWithAggregatesInput[];
     id?: Prisma.StringWithAggregatesFilter<"MarketplaceOrderItem"> | string;
     orderId?: Prisma.StringWithAggregatesFilter<"MarketplaceOrderItem"> | string;
-    productId?: Prisma.StringWithAggregatesFilter<"MarketplaceOrderItem"> | string;
+    variantId?: Prisma.StringWithAggregatesFilter<"MarketplaceOrderItem"> | string;
+    brandId?: Prisma.StringWithAggregatesFilter<"MarketplaceOrderItem"> | string;
     quantity?: Prisma.IntWithAggregatesFilter<"MarketplaceOrderItem"> | number;
     price?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusWithAggregatesFilter<"MarketplaceOrderItem"> | $Enums.OrderStatus;
+    trackingNumber?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceOrderItem"> | string | null;
+    carrier?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceOrderItem"> | string | null;
+    shippedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"MarketplaceOrderItem"> | Date | string | null;
+    deliveredAt?: Prisma.DateTimeNullableWithAggregatesFilter<"MarketplaceOrderItem"> | Date | string | null;
 };
 export type MarketplaceOrderItemCreateInput = {
     id?: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
     order: Prisma.MarketplaceOrderCreateNestedOneWithoutItemsInput;
-    product: Prisma.MarketplaceProductCreateNestedOneWithoutOrderItemsInput;
+    variant: Prisma.ProductVariantCreateNestedOneWithoutOrderItemsInput;
+    brand: Prisma.BrandProfileCreateNestedOneWithoutOrderItemsInput;
 };
 export type MarketplaceOrderItemUncheckedCreateInput = {
     id?: string;
     orderId: string;
-    productId: string;
+    variantId: string;
+    brandId: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
 };
 export type MarketplaceOrderItemUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     order?: Prisma.MarketplaceOrderUpdateOneRequiredWithoutItemsNestedInput;
-    product?: Prisma.MarketplaceProductUpdateOneRequiredWithoutOrderItemsNestedInput;
+    variant?: Prisma.ProductVariantUpdateOneRequiredWithoutOrderItemsNestedInput;
+    brand?: Prisma.BrandProfileUpdateOneRequiredWithoutOrderItemsNestedInput;
 };
 export type MarketplaceOrderItemUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     orderId?: Prisma.StringFieldUpdateOperationsInput | string;
-    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    variantId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type MarketplaceOrderItemCreateManyInput = {
     id?: string;
     orderId: string;
-    productId: string;
+    variantId: string;
+    brandId: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
 };
 export type MarketplaceOrderItemUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type MarketplaceOrderItemUncheckedUpdateManyInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     orderId?: Prisma.StringFieldUpdateOperationsInput | string;
-    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    variantId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type MarketplaceOrderItemListRelationFilter = {
     every?: Prisma.MarketplaceOrderItemWhereInput;
@@ -276,68 +439,134 @@ export type MarketplaceOrderItemOrderByRelationAggregateInput = {
 export type MarketplaceOrderItemCountOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     orderId?: Prisma.SortOrder;
-    productId?: Prisma.SortOrder;
+    variantId?: Prisma.SortOrder;
+    brandId?: Prisma.SortOrder;
     quantity?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
+    taxAmount?: Prisma.SortOrder;
+    discountAmount?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    trackingNumber?: Prisma.SortOrder;
+    carrier?: Prisma.SortOrder;
+    shippedAt?: Prisma.SortOrder;
+    deliveredAt?: Prisma.SortOrder;
 };
 export type MarketplaceOrderItemAvgOrderByAggregateInput = {
     quantity?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
+    taxAmount?: Prisma.SortOrder;
+    discountAmount?: Prisma.SortOrder;
 };
 export type MarketplaceOrderItemMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     orderId?: Prisma.SortOrder;
-    productId?: Prisma.SortOrder;
+    variantId?: Prisma.SortOrder;
+    brandId?: Prisma.SortOrder;
     quantity?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
+    taxAmount?: Prisma.SortOrder;
+    discountAmount?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    trackingNumber?: Prisma.SortOrder;
+    carrier?: Prisma.SortOrder;
+    shippedAt?: Prisma.SortOrder;
+    deliveredAt?: Prisma.SortOrder;
 };
 export type MarketplaceOrderItemMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     orderId?: Prisma.SortOrder;
-    productId?: Prisma.SortOrder;
+    variantId?: Prisma.SortOrder;
+    brandId?: Prisma.SortOrder;
     quantity?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
+    taxAmount?: Prisma.SortOrder;
+    discountAmount?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    trackingNumber?: Prisma.SortOrder;
+    carrier?: Prisma.SortOrder;
+    shippedAt?: Prisma.SortOrder;
+    deliveredAt?: Prisma.SortOrder;
 };
 export type MarketplaceOrderItemSumOrderByAggregateInput = {
     quantity?: Prisma.SortOrder;
     price?: Prisma.SortOrder;
+    taxAmount?: Prisma.SortOrder;
+    discountAmount?: Prisma.SortOrder;
 };
-export type MarketplaceOrderItemCreateNestedManyWithoutProductInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput> | Prisma.MarketplaceOrderItemCreateWithoutProductInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput[];
-    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput[];
-    createMany?: Prisma.MarketplaceOrderItemCreateManyProductInputEnvelope;
+export type MarketplaceOrderItemCreateNestedManyWithoutBrandInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput> | Prisma.MarketplaceOrderItemCreateWithoutBrandInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyBrandInputEnvelope;
     connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
 };
-export type MarketplaceOrderItemUncheckedCreateNestedManyWithoutProductInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput> | Prisma.MarketplaceOrderItemCreateWithoutProductInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput[];
-    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput[];
-    createMany?: Prisma.MarketplaceOrderItemCreateManyProductInputEnvelope;
+export type MarketplaceOrderItemUncheckedCreateNestedManyWithoutBrandInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput> | Prisma.MarketplaceOrderItemCreateWithoutBrandInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyBrandInputEnvelope;
     connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
 };
-export type MarketplaceOrderItemUpdateManyWithoutProductNestedInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput> | Prisma.MarketplaceOrderItemCreateWithoutProductInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput[];
-    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput[];
-    upsert?: Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutProductInput | Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutProductInput[];
-    createMany?: Prisma.MarketplaceOrderItemCreateManyProductInputEnvelope;
+export type MarketplaceOrderItemUpdateManyWithoutBrandNestedInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput> | Prisma.MarketplaceOrderItemCreateWithoutBrandInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput[];
+    upsert?: Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutBrandInput | Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutBrandInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyBrandInputEnvelope;
     set?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
     disconnect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
     delete?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
     connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
-    update?: Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutProductInput | Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutProductInput[];
-    updateMany?: Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutProductInput | Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutProductInput[];
+    update?: Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutBrandInput | Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutBrandInput[];
+    updateMany?: Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutBrandInput | Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutBrandInput[];
     deleteMany?: Prisma.MarketplaceOrderItemScalarWhereInput | Prisma.MarketplaceOrderItemScalarWhereInput[];
 };
-export type MarketplaceOrderItemUncheckedUpdateManyWithoutProductNestedInput = {
-    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput> | Prisma.MarketplaceOrderItemCreateWithoutProductInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput[];
-    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutProductInput[];
-    upsert?: Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutProductInput | Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutProductInput[];
-    createMany?: Prisma.MarketplaceOrderItemCreateManyProductInputEnvelope;
+export type MarketplaceOrderItemUncheckedUpdateManyWithoutBrandNestedInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput> | Prisma.MarketplaceOrderItemCreateWithoutBrandInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutBrandInput[];
+    upsert?: Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutBrandInput | Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutBrandInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyBrandInputEnvelope;
     set?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
     disconnect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
     delete?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
     connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
-    update?: Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutProductInput | Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutProductInput[];
-    updateMany?: Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutProductInput | Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutProductInput[];
+    update?: Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutBrandInput | Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutBrandInput[];
+    updateMany?: Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutBrandInput | Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutBrandInput[];
+    deleteMany?: Prisma.MarketplaceOrderItemScalarWhereInput | Prisma.MarketplaceOrderItemScalarWhereInput[];
+};
+export type MarketplaceOrderItemCreateNestedManyWithoutVariantInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput> | Prisma.MarketplaceOrderItemCreateWithoutVariantInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyVariantInputEnvelope;
+    connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+};
+export type MarketplaceOrderItemUncheckedCreateNestedManyWithoutVariantInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput> | Prisma.MarketplaceOrderItemCreateWithoutVariantInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyVariantInputEnvelope;
+    connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+};
+export type MarketplaceOrderItemUpdateManyWithoutVariantNestedInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput> | Prisma.MarketplaceOrderItemCreateWithoutVariantInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput[];
+    upsert?: Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutVariantInput | Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutVariantInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyVariantInputEnvelope;
+    set?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    disconnect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    delete?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    update?: Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutVariantInput | Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutVariantInput[];
+    updateMany?: Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutVariantInput | Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutVariantInput[];
+    deleteMany?: Prisma.MarketplaceOrderItemScalarWhereInput | Prisma.MarketplaceOrderItemScalarWhereInput[];
+};
+export type MarketplaceOrderItemUncheckedUpdateManyWithoutVariantNestedInput = {
+    create?: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput> | Prisma.MarketplaceOrderItemCreateWithoutVariantInput[] | Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput[];
+    connectOrCreate?: Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput | Prisma.MarketplaceOrderItemCreateOrConnectWithoutVariantInput[];
+    upsert?: Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutVariantInput | Prisma.MarketplaceOrderItemUpsertWithWhereUniqueWithoutVariantInput[];
+    createMany?: Prisma.MarketplaceOrderItemCreateManyVariantInputEnvelope;
+    set?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    disconnect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    delete?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    connect?: Prisma.MarketplaceOrderItemWhereUniqueInput | Prisma.MarketplaceOrderItemWhereUniqueInput[];
+    update?: Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutVariantInput | Prisma.MarketplaceOrderItemUpdateWithWhereUniqueWithoutVariantInput[];
+    updateMany?: Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutVariantInput | Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutVariantInput[];
     deleteMany?: Prisma.MarketplaceOrderItemScalarWhereInput | Prisma.MarketplaceOrderItemScalarWhereInput[];
 };
 export type MarketplaceOrderItemCreateNestedManyWithoutOrderInput = {
@@ -378,38 +607,57 @@ export type MarketplaceOrderItemUncheckedUpdateManyWithoutOrderNestedInput = {
     updateMany?: Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutOrderInput | Prisma.MarketplaceOrderItemUpdateManyWithWhereWithoutOrderInput[];
     deleteMany?: Prisma.MarketplaceOrderItemScalarWhereInput | Prisma.MarketplaceOrderItemScalarWhereInput[];
 };
-export type MarketplaceOrderItemCreateWithoutProductInput = {
+export type EnumOrderStatusFieldUpdateOperationsInput = {
+    set?: $Enums.OrderStatus;
+};
+export type MarketplaceOrderItemCreateWithoutBrandInput = {
     id?: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
     order: Prisma.MarketplaceOrderCreateNestedOneWithoutItemsInput;
+    variant: Prisma.ProductVariantCreateNestedOneWithoutOrderItemsInput;
 };
-export type MarketplaceOrderItemUncheckedCreateWithoutProductInput = {
+export type MarketplaceOrderItemUncheckedCreateWithoutBrandInput = {
     id?: string;
     orderId: string;
+    variantId: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
 };
-export type MarketplaceOrderItemCreateOrConnectWithoutProductInput = {
+export type MarketplaceOrderItemCreateOrConnectWithoutBrandInput = {
     where: Prisma.MarketplaceOrderItemWhereUniqueInput;
-    create: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput>;
+    create: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput>;
 };
-export type MarketplaceOrderItemCreateManyProductInputEnvelope = {
-    data: Prisma.MarketplaceOrderItemCreateManyProductInput | Prisma.MarketplaceOrderItemCreateManyProductInput[];
+export type MarketplaceOrderItemCreateManyBrandInputEnvelope = {
+    data: Prisma.MarketplaceOrderItemCreateManyBrandInput | Prisma.MarketplaceOrderItemCreateManyBrandInput[];
     skipDuplicates?: boolean;
 };
-export type MarketplaceOrderItemUpsertWithWhereUniqueWithoutProductInput = {
+export type MarketplaceOrderItemUpsertWithWhereUniqueWithoutBrandInput = {
     where: Prisma.MarketplaceOrderItemWhereUniqueInput;
-    update: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedUpdateWithoutProductInput>;
-    create: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutProductInput>;
+    update: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedUpdateWithoutBrandInput>;
+    create: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutBrandInput>;
 };
-export type MarketplaceOrderItemUpdateWithWhereUniqueWithoutProductInput = {
+export type MarketplaceOrderItemUpdateWithWhereUniqueWithoutBrandInput = {
     where: Prisma.MarketplaceOrderItemWhereUniqueInput;
-    data: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateWithoutProductInput, Prisma.MarketplaceOrderItemUncheckedUpdateWithoutProductInput>;
+    data: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateWithoutBrandInput, Prisma.MarketplaceOrderItemUncheckedUpdateWithoutBrandInput>;
 };
-export type MarketplaceOrderItemUpdateManyWithWhereWithoutProductInput = {
+export type MarketplaceOrderItemUpdateManyWithWhereWithoutBrandInput = {
     where: Prisma.MarketplaceOrderItemScalarWhereInput;
-    data: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateManyMutationInput, Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutProductInput>;
+    data: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateManyMutationInput, Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutBrandInput>;
 };
 export type MarketplaceOrderItemScalarWhereInput = {
     AND?: Prisma.MarketplaceOrderItemScalarWhereInput | Prisma.MarketplaceOrderItemScalarWhereInput[];
@@ -417,21 +665,94 @@ export type MarketplaceOrderItemScalarWhereInput = {
     NOT?: Prisma.MarketplaceOrderItemScalarWhereInput | Prisma.MarketplaceOrderItemScalarWhereInput[];
     id?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
     orderId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
-    productId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
+    variantId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
+    brandId?: Prisma.StringFilter<"MarketplaceOrderItem"> | string;
     quantity?: Prisma.IntFilter<"MarketplaceOrderItem"> | number;
     price?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFilter<"MarketplaceOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFilter<"MarketplaceOrderItem"> | $Enums.OrderStatus;
+    trackingNumber?: Prisma.StringNullableFilter<"MarketplaceOrderItem"> | string | null;
+    carrier?: Prisma.StringNullableFilter<"MarketplaceOrderItem"> | string | null;
+    shippedAt?: Prisma.DateTimeNullableFilter<"MarketplaceOrderItem"> | Date | string | null;
+    deliveredAt?: Prisma.DateTimeNullableFilter<"MarketplaceOrderItem"> | Date | string | null;
+};
+export type MarketplaceOrderItemCreateWithoutVariantInput = {
+    id?: string;
+    quantity: number;
+    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
+    order: Prisma.MarketplaceOrderCreateNestedOneWithoutItemsInput;
+    brand: Prisma.BrandProfileCreateNestedOneWithoutOrderItemsInput;
+};
+export type MarketplaceOrderItemUncheckedCreateWithoutVariantInput = {
+    id?: string;
+    orderId: string;
+    brandId: string;
+    quantity: number;
+    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
+};
+export type MarketplaceOrderItemCreateOrConnectWithoutVariantInput = {
+    where: Prisma.MarketplaceOrderItemWhereUniqueInput;
+    create: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput>;
+};
+export type MarketplaceOrderItemCreateManyVariantInputEnvelope = {
+    data: Prisma.MarketplaceOrderItemCreateManyVariantInput | Prisma.MarketplaceOrderItemCreateManyVariantInput[];
+    skipDuplicates?: boolean;
+};
+export type MarketplaceOrderItemUpsertWithWhereUniqueWithoutVariantInput = {
+    where: Prisma.MarketplaceOrderItemWhereUniqueInput;
+    update: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedUpdateWithoutVariantInput>;
+    create: Prisma.XOR<Prisma.MarketplaceOrderItemCreateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedCreateWithoutVariantInput>;
+};
+export type MarketplaceOrderItemUpdateWithWhereUniqueWithoutVariantInput = {
+    where: Prisma.MarketplaceOrderItemWhereUniqueInput;
+    data: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateWithoutVariantInput, Prisma.MarketplaceOrderItemUncheckedUpdateWithoutVariantInput>;
+};
+export type MarketplaceOrderItemUpdateManyWithWhereWithoutVariantInput = {
+    where: Prisma.MarketplaceOrderItemScalarWhereInput;
+    data: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateManyMutationInput, Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutVariantInput>;
 };
 export type MarketplaceOrderItemCreateWithoutOrderInput = {
     id?: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    product: Prisma.MarketplaceProductCreateNestedOneWithoutOrderItemsInput;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
+    variant: Prisma.ProductVariantCreateNestedOneWithoutOrderItemsInput;
+    brand: Prisma.BrandProfileCreateNestedOneWithoutOrderItemsInput;
 };
 export type MarketplaceOrderItemUncheckedCreateWithoutOrderInput = {
     id?: string;
-    productId: string;
+    variantId: string;
+    brandId: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
 };
 export type MarketplaceOrderItemCreateOrConnectWithoutOrderInput = {
     where: Prisma.MarketplaceOrderItemWhereUniqueInput;
@@ -454,113 +775,280 @@ export type MarketplaceOrderItemUpdateManyWithWhereWithoutOrderInput = {
     where: Prisma.MarketplaceOrderItemScalarWhereInput;
     data: Prisma.XOR<Prisma.MarketplaceOrderItemUpdateManyMutationInput, Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutOrderInput>;
 };
-export type MarketplaceOrderItemCreateManyProductInput = {
+export type MarketplaceOrderItemCreateManyBrandInput = {
     id?: string;
     orderId: string;
+    variantId: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
 };
-export type MarketplaceOrderItemUpdateWithoutProductInput = {
+export type MarketplaceOrderItemUpdateWithoutBrandInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     order?: Prisma.MarketplaceOrderUpdateOneRequiredWithoutItemsNestedInput;
+    variant?: Prisma.ProductVariantUpdateOneRequiredWithoutOrderItemsNestedInput;
 };
-export type MarketplaceOrderItemUncheckedUpdateWithoutProductInput = {
+export type MarketplaceOrderItemUncheckedUpdateWithoutBrandInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     orderId?: Prisma.StringFieldUpdateOperationsInput | string;
+    variantId?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
-export type MarketplaceOrderItemUncheckedUpdateManyWithoutProductInput = {
+export type MarketplaceOrderItemUncheckedUpdateManyWithoutBrandInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     orderId?: Prisma.StringFieldUpdateOperationsInput | string;
+    variantId?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+};
+export type MarketplaceOrderItemCreateManyVariantInput = {
+    id?: string;
+    orderId: string;
+    brandId: string;
+    quantity: number;
+    price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
+};
+export type MarketplaceOrderItemUpdateWithoutVariantInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    quantity?: Prisma.IntFieldUpdateOperationsInput | number;
+    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    order?: Prisma.MarketplaceOrderUpdateOneRequiredWithoutItemsNestedInput;
+    brand?: Prisma.BrandProfileUpdateOneRequiredWithoutOrderItemsNestedInput;
+};
+export type MarketplaceOrderItemUncheckedUpdateWithoutVariantInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    orderId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    quantity?: Prisma.IntFieldUpdateOperationsInput | number;
+    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+};
+export type MarketplaceOrderItemUncheckedUpdateManyWithoutVariantInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    orderId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
+    quantity?: Prisma.IntFieldUpdateOperationsInput | number;
+    price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type MarketplaceOrderItemCreateManyOrderInput = {
     id?: string;
-    productId: string;
+    variantId: string;
+    brandId: string;
     quantity: number;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: $Enums.OrderStatus;
+    trackingNumber?: string | null;
+    carrier?: string | null;
+    shippedAt?: Date | string | null;
+    deliveredAt?: Date | string | null;
 };
 export type MarketplaceOrderItemUpdateWithoutOrderInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    product?: Prisma.MarketplaceProductUpdateOneRequiredWithoutOrderItemsNestedInput;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    variant?: Prisma.ProductVariantUpdateOneRequiredWithoutOrderItemsNestedInput;
+    brand?: Prisma.BrandProfileUpdateOneRequiredWithoutOrderItemsNestedInput;
 };
 export type MarketplaceOrderItemUncheckedUpdateWithoutOrderInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    variantId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type MarketplaceOrderItemUncheckedUpdateManyWithoutOrderInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    variantId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandId?: Prisma.StringFieldUpdateOperationsInput | string;
     quantity?: Prisma.IntFieldUpdateOperationsInput | number;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus;
+    trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    shippedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deliveredAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
 };
 export type MarketplaceOrderItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     orderId?: boolean;
-    productId?: boolean;
+    variantId?: boolean;
+    brandId?: boolean;
     quantity?: boolean;
     price?: boolean;
+    taxAmount?: boolean;
+    discountAmount?: boolean;
+    status?: boolean;
+    trackingNumber?: boolean;
+    carrier?: boolean;
+    shippedAt?: boolean;
+    deliveredAt?: boolean;
     order?: boolean | Prisma.MarketplaceOrderDefaultArgs<ExtArgs>;
-    product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    variant?: boolean | Prisma.ProductVariantDefaultArgs<ExtArgs>;
+    brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["marketplaceOrderItem"]>;
 export type MarketplaceOrderItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     orderId?: boolean;
-    productId?: boolean;
+    variantId?: boolean;
+    brandId?: boolean;
     quantity?: boolean;
     price?: boolean;
+    taxAmount?: boolean;
+    discountAmount?: boolean;
+    status?: boolean;
+    trackingNumber?: boolean;
+    carrier?: boolean;
+    shippedAt?: boolean;
+    deliveredAt?: boolean;
     order?: boolean | Prisma.MarketplaceOrderDefaultArgs<ExtArgs>;
-    product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    variant?: boolean | Prisma.ProductVariantDefaultArgs<ExtArgs>;
+    brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["marketplaceOrderItem"]>;
 export type MarketplaceOrderItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     orderId?: boolean;
-    productId?: boolean;
+    variantId?: boolean;
+    brandId?: boolean;
     quantity?: boolean;
     price?: boolean;
+    taxAmount?: boolean;
+    discountAmount?: boolean;
+    status?: boolean;
+    trackingNumber?: boolean;
+    carrier?: boolean;
+    shippedAt?: boolean;
+    deliveredAt?: boolean;
     order?: boolean | Prisma.MarketplaceOrderDefaultArgs<ExtArgs>;
-    product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    variant?: boolean | Prisma.ProductVariantDefaultArgs<ExtArgs>;
+    brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["marketplaceOrderItem"]>;
 export type MarketplaceOrderItemSelectScalar = {
     id?: boolean;
     orderId?: boolean;
-    productId?: boolean;
+    variantId?: boolean;
+    brandId?: boolean;
     quantity?: boolean;
     price?: boolean;
+    taxAmount?: boolean;
+    discountAmount?: boolean;
+    status?: boolean;
+    trackingNumber?: boolean;
+    carrier?: boolean;
+    shippedAt?: boolean;
+    deliveredAt?: boolean;
 };
-export type MarketplaceOrderItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "orderId" | "productId" | "quantity" | "price", ExtArgs["result"]["marketplaceOrderItem"]>;
+export type MarketplaceOrderItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "orderId" | "variantId" | "brandId" | "quantity" | "price" | "taxAmount" | "discountAmount" | "status" | "trackingNumber" | "carrier" | "shippedAt" | "deliveredAt", ExtArgs["result"]["marketplaceOrderItem"]>;
 export type MarketplaceOrderItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     order?: boolean | Prisma.MarketplaceOrderDefaultArgs<ExtArgs>;
-    product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    variant?: boolean | Prisma.ProductVariantDefaultArgs<ExtArgs>;
+    brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
 };
 export type MarketplaceOrderItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     order?: boolean | Prisma.MarketplaceOrderDefaultArgs<ExtArgs>;
-    product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    variant?: boolean | Prisma.ProductVariantDefaultArgs<ExtArgs>;
+    brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
 };
 export type MarketplaceOrderItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     order?: boolean | Prisma.MarketplaceOrderDefaultArgs<ExtArgs>;
-    product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    variant?: boolean | Prisma.ProductVariantDefaultArgs<ExtArgs>;
+    brand?: boolean | Prisma.BrandProfileDefaultArgs<ExtArgs>;
 };
 export type $MarketplaceOrderItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "MarketplaceOrderItem";
     objects: {
         order: Prisma.$MarketplaceOrderPayload<ExtArgs>;
-        product: Prisma.$MarketplaceProductPayload<ExtArgs>;
+        variant: Prisma.$ProductVariantPayload<ExtArgs>;
+        brand: Prisma.$BrandProfilePayload<ExtArgs>;
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
         orderId: string;
-        productId: string;
+        variantId: string;
+        brandId: string;
         quantity: number;
         price: runtime.Decimal;
+        taxAmount: runtime.Decimal;
+        discountAmount: runtime.Decimal;
+        status: $Enums.OrderStatus;
+        trackingNumber: string | null;
+        carrier: string | null;
+        shippedAt: Date | null;
+        deliveredAt: Date | null;
     }, ExtArgs["result"]["marketplaceOrderItem"]>;
     composites: {};
 };
@@ -891,7 +1379,8 @@ export interface MarketplaceOrderItemDelegate<ExtArgs extends runtime.Types.Exte
 export interface Prisma__MarketplaceOrderItemClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
     order<T extends Prisma.MarketplaceOrderDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceOrderDefaultArgs<ExtArgs>>): Prisma.Prisma__MarketplaceOrderClient<runtime.Types.Result.GetResult<Prisma.$MarketplaceOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
-    product<T extends Prisma.MarketplaceProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceProductDefaultArgs<ExtArgs>>): Prisma.Prisma__MarketplaceProductClient<runtime.Types.Result.GetResult<Prisma.$MarketplaceProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    variant<T extends Prisma.ProductVariantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductVariantDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductVariantClient<runtime.Types.Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    brand<T extends Prisma.BrandProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandProfileClient<runtime.Types.Result.GetResult<Prisma.$BrandProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -919,9 +1408,17 @@ export interface Prisma__MarketplaceOrderItemClient<T, Null = never, ExtArgs ext
 export interface MarketplaceOrderItemFieldRefs {
     readonly id: Prisma.FieldRef<"MarketplaceOrderItem", 'String'>;
     readonly orderId: Prisma.FieldRef<"MarketplaceOrderItem", 'String'>;
-    readonly productId: Prisma.FieldRef<"MarketplaceOrderItem", 'String'>;
+    readonly variantId: Prisma.FieldRef<"MarketplaceOrderItem", 'String'>;
+    readonly brandId: Prisma.FieldRef<"MarketplaceOrderItem", 'String'>;
     readonly quantity: Prisma.FieldRef<"MarketplaceOrderItem", 'Int'>;
     readonly price: Prisma.FieldRef<"MarketplaceOrderItem", 'Decimal'>;
+    readonly taxAmount: Prisma.FieldRef<"MarketplaceOrderItem", 'Decimal'>;
+    readonly discountAmount: Prisma.FieldRef<"MarketplaceOrderItem", 'Decimal'>;
+    readonly status: Prisma.FieldRef<"MarketplaceOrderItem", 'OrderStatus'>;
+    readonly trackingNumber: Prisma.FieldRef<"MarketplaceOrderItem", 'String'>;
+    readonly carrier: Prisma.FieldRef<"MarketplaceOrderItem", 'String'>;
+    readonly shippedAt: Prisma.FieldRef<"MarketplaceOrderItem", 'DateTime'>;
+    readonly deliveredAt: Prisma.FieldRef<"MarketplaceOrderItem", 'DateTime'>;
 }
 /**
  * MarketplaceOrderItem findUnique

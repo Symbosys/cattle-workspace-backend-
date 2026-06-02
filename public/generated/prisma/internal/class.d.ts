@@ -349,6 +349,28 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
         omit: OmitOpts;
     }>;
     /**
+     * `prisma.brandLocation`: Exposes CRUD operations for the **BrandLocation** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more BrandLocations
+      * const brandLocations = await prisma.brandLocation.findMany()
+      * ```
+      */
+    get brandLocation(): Prisma.BrandLocationDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.marketplaceCategory`: Exposes CRUD operations for the **MarketplaceCategory** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more MarketplaceCategories
+      * const marketplaceCategories = await prisma.marketplaceCategory.findMany()
+      * ```
+      */
+    get marketplaceCategory(): Prisma.MarketplaceCategoryDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
      * `prisma.marketplaceProduct`: Exposes CRUD operations for the **MarketplaceProduct** model.
       * Example usage:
       * ```ts
@@ -357,6 +379,39 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
       * ```
       */
     get marketplaceProduct(): Prisma.MarketplaceProductDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.productVariant`: Exposes CRUD operations for the **ProductVariant** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ProductVariants
+      * const productVariants = await prisma.productVariant.findMany()
+      * ```
+      */
+    get productVariant(): Prisma.ProductVariantDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.marketplaceOrder`: Exposes CRUD operations for the **MarketplaceOrder** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more MarketplaceOrders
+      * const marketplaceOrders = await prisma.marketplaceOrder.findMany()
+      * ```
+      */
+    get marketplaceOrder(): Prisma.MarketplaceOrderDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.marketplaceOrderItem`: Exposes CRUD operations for the **MarketplaceOrderItem** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more MarketplaceOrderItems
+      * const marketplaceOrderItems = await prisma.marketplaceOrderItem.findMany()
+      * ```
+      */
+    get marketplaceOrderItem(): Prisma.MarketplaceOrderItemDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
     /**
@@ -390,28 +445,6 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
       * ```
       */
     get cartItem(): Prisma.CartItemDelegate<ExtArgs, {
-        omit: OmitOpts;
-    }>;
-    /**
-     * `prisma.marketplaceOrder`: Exposes CRUD operations for the **MarketplaceOrder** model.
-      * Example usage:
-      * ```ts
-      * // Fetch zero or more MarketplaceOrders
-      * const marketplaceOrders = await prisma.marketplaceOrder.findMany()
-      * ```
-      */
-    get marketplaceOrder(): Prisma.MarketplaceOrderDelegate<ExtArgs, {
-        omit: OmitOpts;
-    }>;
-    /**
-     * `prisma.marketplaceOrderItem`: Exposes CRUD operations for the **MarketplaceOrderItem** model.
-      * Example usage:
-      * ```ts
-      * // Fetch zero or more MarketplaceOrderItems
-      * const marketplaceOrderItems = await prisma.marketplaceOrderItem.findMany()
-      * ```
-      */
-    get marketplaceOrderItem(): Prisma.MarketplaceOrderItemDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
     /**
@@ -500,6 +533,17 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
       * ```
       */
     get otpCode(): Prisma.OtpCodeDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.userAddress`: Exposes CRUD operations for the **UserAddress** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more UserAddresses
+      * const userAddresses = await prisma.userAddress.findMany()
+      * ```
+      */
+    get userAddress(): Prisma.UserAddressDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
 }

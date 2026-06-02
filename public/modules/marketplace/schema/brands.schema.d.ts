@@ -1,0 +1,41 @@
+import { z } from "zod";
+export declare const registerBrandSchema: z.ZodObject<{
+    brandName: z.ZodString;
+    slug: z.ZodString;
+    description: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    contactEmail: z.ZodOptional<z.ZodNullable<z.ZodUnion<[z.ZodString, z.ZodLiteral<"">]>>>;
+    contactPhone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    address: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    gstNumber: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    latitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    longitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateName: z.ZodString;
+    stateCode: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    stateLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityName: z.ZodString;
+    cityLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+}, z.core.$strip>;
+export type RegisterBrandDto = z.infer<typeof registerBrandSchema>;
+export declare const updateBrandSchema: z.ZodObject<{
+    brandName: z.ZodOptional<z.ZodString>;
+    slug: z.ZodOptional<z.ZodString>;
+    description: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    contactEmail: z.ZodOptional<z.ZodNullable<z.ZodUnion<[z.ZodString, z.ZodLiteral<"">]>>>;
+    contactPhone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    address: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    gstNumber: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    isActive: z.ZodOptional<z.ZodBoolean>;
+    latitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    longitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateName: z.ZodOptional<z.ZodString>;
+    stateCode: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    stateLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    stateLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityName: z.ZodOptional<z.ZodString>;
+    cityLatitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+    cityLongitude: z.ZodPreprocess<z.ZodOptional<z.ZodNullable<z.ZodNumber>>>;
+}, z.core.$strip>;
+export type UpdateBrandDto = z.infer<typeof updateBrandSchema>;
+//# sourceMappingURL=brands.schema.d.ts.map

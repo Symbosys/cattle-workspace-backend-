@@ -108,10 +108,35 @@ export type ListingLocation = Prisma.ListingLocationModel;
  */
 export type BrandProfile = Prisma.BrandProfileModel;
 /**
+ * Model BrandLocation
+ *
+ */
+export type BrandLocation = Prisma.BrandLocationModel;
+/**
+ * Model MarketplaceCategory
+ *
+ */
+export type MarketplaceCategory = Prisma.MarketplaceCategoryModel;
+/**
  * Model MarketplaceProduct
  *
  */
 export type MarketplaceProduct = Prisma.MarketplaceProductModel;
+/**
+ * Model ProductVariant
+ *
+ */
+export type ProductVariant = Prisma.ProductVariantModel;
+/**
+ * Model MarketplaceOrder
+ *
+ */
+export type MarketplaceOrder = Prisma.MarketplaceOrderModel;
+/**
+ * Model MarketplaceOrderItem
+ *
+ */
+export type MarketplaceOrderItem = Prisma.MarketplaceOrderItemModel;
 /**
  * Model ProductReview
  *
@@ -127,16 +152,6 @@ export type Cart = Prisma.CartModel;
  *
  */
 export type CartItem = Prisma.CartItemModel;
-/**
- * Model MarketplaceOrder
- *
- */
-export type MarketplaceOrder = Prisma.MarketplaceOrderModel;
-/**
- * Model MarketplaceOrderItem
- *
- */
-export type MarketplaceOrderItem = Prisma.MarketplaceOrderItemModel;
 /**
  * Model SubscriptionPlan
  *
@@ -177,4 +192,9 @@ export type Area = Prisma.AreaModel;
  *
  */
 export type OtpCode = Prisma.OtpCodeModel;
+/**
+ * Model UserAddress
+ *
+ */
+export type UserAddress = Prisma.UserAddressModel;
 //# sourceMappingURL=browser.d.ts.map
