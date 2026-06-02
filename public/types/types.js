@@ -1,4 +1,4 @@
-// export { Prisma } from "../generated/prisma/client.js";
+export { Prisma } from "../generated/prisma/client.js";
 export * from "../generated/prisma/client.js";
 export var statusCode;
 (function (statusCode) {

@@ -13,19 +13,24 @@ export type AggregateBrandProfile = {
     _max: BrandProfileMaxAggregateOutputType | null;
 };
 export type BrandProfileAvgAggregateOutputType = {
-    commissionRate: runtime.Decimal | null;
+    rating: runtime.Decimal | null;
 };
 export type BrandProfileSumAggregateOutputType = {
-    commissionRate: runtime.Decimal | null;
+    rating: runtime.Decimal | null;
 };
 export type BrandProfileMinAggregateOutputType = {
     id: string | null;
     userId: string | null;
     brandName: string | null;
+    slug: string | null;
     description: string | null;
-    logoUrl: string | null;
+    contactEmail: string | null;
+    contactPhone: string | null;
+    address: string | null;
+    gstNumber: string | null;
     isVerified: boolean | null;
-    commissionRate: runtime.Decimal | null;
+    isActive: boolean | null;
+    rating: runtime.Decimal | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
@@ -33,10 +38,15 @@ export type BrandProfileMaxAggregateOutputType = {
     id: string | null;
     userId: string | null;
     brandName: string | null;
+    slug: string | null;
     description: string | null;
-    logoUrl: string | null;
+    contactEmail: string | null;
+    contactPhone: string | null;
+    address: string | null;
+    gstNumber: string | null;
     isVerified: boolean | null;
-    commissionRate: runtime.Decimal | null;
+    isActive: boolean | null;
+    rating: runtime.Decimal | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
@@ -44,28 +54,40 @@ export type BrandProfileCountAggregateOutputType = {
     id: number;
     userId: number;
     brandName: number;
+    slug: number;
     description: number;
     logoUrl: number;
+    bannerUrl: number;
+    contactEmail: number;
+    contactPhone: number;
+    address: number;
+    gstNumber: number;
     isVerified: number;
-    commissionRate: number;
+    isActive: number;
+    rating: number;
     createdAt: number;
     updatedAt: number;
     _all: number;
 };
 export type BrandProfileAvgAggregateInputType = {
-    commissionRate?: true;
+    rating?: true;
 };
 export type BrandProfileSumAggregateInputType = {
-    commissionRate?: true;
+    rating?: true;
 };
 export type BrandProfileMinAggregateInputType = {
     id?: true;
     userId?: true;
     brandName?: true;
+    slug?: true;
     description?: true;
-    logoUrl?: true;
+    contactEmail?: true;
+    contactPhone?: true;
+    address?: true;
+    gstNumber?: true;
     isVerified?: true;
-    commissionRate?: true;
+    isActive?: true;
+    rating?: true;
     createdAt?: true;
     updatedAt?: true;
 };
@@ -73,10 +95,15 @@ export type BrandProfileMaxAggregateInputType = {
     id?: true;
     userId?: true;
     brandName?: true;
+    slug?: true;
     description?: true;
-    logoUrl?: true;
+    contactEmail?: true;
+    contactPhone?: true;
+    address?: true;
+    gstNumber?: true;
     isVerified?: true;
-    commissionRate?: true;
+    isActive?: true;
+    rating?: true;
     createdAt?: true;
     updatedAt?: true;
 };
@@ -84,10 +111,17 @@ export type BrandProfileCountAggregateInputType = {
     id?: true;
     userId?: true;
     brandName?: true;
+    slug?: true;
     description?: true;
     logoUrl?: true;
+    bannerUrl?: true;
+    contactEmail?: true;
+    contactPhone?: true;
+    address?: true;
+    gstNumber?: true;
     isVerified?: true;
-    commissionRate?: true;
+    isActive?: true;
+    rating?: true;
     createdAt?: true;
     updatedAt?: true;
     _all?: true;
@@ -172,10 +206,17 @@ export type BrandProfileGroupByOutputType = {
     id: string;
     userId: string;
     brandName: string;
+    slug: string;
     description: string | null;
-    logoUrl: string | null;
+    logoUrl: runtime.JsonValue | null;
+    bannerUrl: runtime.JsonValue | null;
+    contactEmail: string | null;
+    contactPhone: string | null;
+    address: string | null;
+    gstNumber: string | null;
     isVerified: boolean;
-    commissionRate: runtime.Decimal;
+    isActive: boolean;
+    rating: runtime.Decimal;
     createdAt: Date;
     updatedAt: Date;
     _count: BrandProfileCountAggregateOutputType | null;
@@ -194,52 +235,89 @@ export type BrandProfileWhereInput = {
     id?: Prisma.StringFilter<"BrandProfile"> | string;
     userId?: Prisma.StringFilter<"BrandProfile"> | string;
     brandName?: Prisma.StringFilter<"BrandProfile"> | string;
+    slug?: Prisma.StringFilter<"BrandProfile"> | string;
     description?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
-    logoUrl?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    logoUrl?: Prisma.JsonNullableFilter<"BrandProfile">;
+    bannerUrl?: Prisma.JsonNullableFilter<"BrandProfile">;
+    contactEmail?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    contactPhone?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    address?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    gstNumber?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
     isVerified?: Prisma.BoolFilter<"BrandProfile"> | boolean;
-    commissionRate?: Prisma.DecimalFilter<"BrandProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFilter<"BrandProfile"> | boolean;
+    rating?: Prisma.DecimalFilter<"BrandProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFilter<"BrandProfile"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"BrandProfile"> | Date | string;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     products?: Prisma.MarketplaceProductListRelationFilter;
+    orderItems?: Prisma.MarketplaceOrderItemListRelationFilter;
+    brandLocations?: Prisma.BrandLocationListRelationFilter;
+    marketplaceCategories?: Prisma.MarketplaceCategoryListRelationFilter;
 };
 export type BrandProfileOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     userId?: Prisma.SortOrder;
     brandName?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrderInput | Prisma.SortOrder;
     logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
+    bannerUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
+    contactEmail?: Prisma.SortOrderInput | Prisma.SortOrder;
+    contactPhone?: Prisma.SortOrderInput | Prisma.SortOrder;
+    address?: Prisma.SortOrderInput | Prisma.SortOrder;
+    gstNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
-    commissionRate?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     user?: Prisma.UserOrderByWithRelationInput;
     products?: Prisma.MarketplaceProductOrderByRelationAggregateInput;
+    orderItems?: Prisma.MarketplaceOrderItemOrderByRelationAggregateInput;
+    brandLocations?: Prisma.BrandLocationOrderByRelationAggregateInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryOrderByRelationAggregateInput;
 };
 export type BrandProfileWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
     userId?: string;
     brandName?: string;
+    slug?: string;
     AND?: Prisma.BrandProfileWhereInput | Prisma.BrandProfileWhereInput[];
     OR?: Prisma.BrandProfileWhereInput[];
     NOT?: Prisma.BrandProfileWhereInput | Prisma.BrandProfileWhereInput[];
     description?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
-    logoUrl?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    logoUrl?: Prisma.JsonNullableFilter<"BrandProfile">;
+    bannerUrl?: Prisma.JsonNullableFilter<"BrandProfile">;
+    contactEmail?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    contactPhone?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    address?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
+    gstNumber?: Prisma.StringNullableFilter<"BrandProfile"> | string | null;
     isVerified?: Prisma.BoolFilter<"BrandProfile"> | boolean;
-    commissionRate?: Prisma.DecimalFilter<"BrandProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFilter<"BrandProfile"> | boolean;
+    rating?: Prisma.DecimalFilter<"BrandProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFilter<"BrandProfile"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"BrandProfile"> | Date | string;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     products?: Prisma.MarketplaceProductListRelationFilter;
-}, "id" | "userId" | "brandName">;
+    orderItems?: Prisma.MarketplaceOrderItemListRelationFilter;
+    brandLocations?: Prisma.BrandLocationListRelationFilter;
+    marketplaceCategories?: Prisma.MarketplaceCategoryListRelationFilter;
+}, "id" | "userId" | "brandName" | "slug">;
 export type BrandProfileOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
     userId?: Prisma.SortOrder;
     brandName?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrderInput | Prisma.SortOrder;
     logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
+    bannerUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
+    contactEmail?: Prisma.SortOrderInput | Prisma.SortOrder;
+    contactPhone?: Prisma.SortOrderInput | Prisma.SortOrder;
+    address?: Prisma.SortOrderInput | Prisma.SortOrder;
+    gstNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
-    commissionRate?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     _count?: Prisma.BrandProfileCountOrderByAggregateInput;
@@ -255,79 +333,140 @@ export type BrandProfileScalarWhereWithAggregatesInput = {
     id?: Prisma.StringWithAggregatesFilter<"BrandProfile"> | string;
     userId?: Prisma.StringWithAggregatesFilter<"BrandProfile"> | string;
     brandName?: Prisma.StringWithAggregatesFilter<"BrandProfile"> | string;
+    slug?: Prisma.StringWithAggregatesFilter<"BrandProfile"> | string;
     description?: Prisma.StringNullableWithAggregatesFilter<"BrandProfile"> | string | null;
-    logoUrl?: Prisma.StringNullableWithAggregatesFilter<"BrandProfile"> | string | null;
+    logoUrl?: Prisma.JsonNullableWithAggregatesFilter<"BrandProfile">;
+    bannerUrl?: Prisma.JsonNullableWithAggregatesFilter<"BrandProfile">;
+    contactEmail?: Prisma.StringNullableWithAggregatesFilter<"BrandProfile"> | string | null;
+    contactPhone?: Prisma.StringNullableWithAggregatesFilter<"BrandProfile"> | string | null;
+    address?: Prisma.StringNullableWithAggregatesFilter<"BrandProfile"> | string | null;
+    gstNumber?: Prisma.StringNullableWithAggregatesFilter<"BrandProfile"> | string | null;
     isVerified?: Prisma.BoolWithAggregatesFilter<"BrandProfile"> | boolean;
-    commissionRate?: Prisma.DecimalWithAggregatesFilter<"BrandProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolWithAggregatesFilter<"BrandProfile"> | boolean;
+    rating?: Prisma.DecimalWithAggregatesFilter<"BrandProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"BrandProfile"> | Date | string;
     updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BrandProfile"> | Date | string;
 };
 export type BrandProfileCreateInput = {
     id?: string;
     brandName: string;
+    slug: string;
     description?: string | null;
-    logoUrl?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
     isVerified?: boolean;
-    commissionRate?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     user: Prisma.UserCreateNestedOneWithoutBrandProfileInput;
     products?: Prisma.MarketplaceProductCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryCreateNestedManyWithoutBrandInput;
 };
 export type BrandProfileUncheckedCreateInput = {
     id?: string;
     userId: string;
     brandName: string;
+    slug: string;
     description?: string | null;
-    logoUrl?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
     isVerified?: boolean;
-    commissionRate?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     products?: Prisma.MarketplaceProductUncheckedCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationUncheckedCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedCreateNestedManyWithoutBrandInput;
 };
 export type BrandProfileUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     user?: Prisma.UserUpdateOneRequiredWithoutBrandProfileNestedInput;
     products?: Prisma.MarketplaceProductUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUpdateManyWithoutBrandNestedInput;
 };
 export type BrandProfileUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     products?: Prisma.MarketplaceProductUncheckedUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUncheckedUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedUpdateManyWithoutBrandNestedInput;
 };
 export type BrandProfileCreateManyInput = {
     id?: string;
     userId: string;
     brandName: string;
+    slug: string;
     description?: string | null;
-    logoUrl?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
     isVerified?: boolean;
-    commissionRate?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 };
 export type BrandProfileUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -335,10 +474,17 @@ export type BrandProfileUncheckedUpdateManyInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -346,24 +492,36 @@ export type BrandProfileCountOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     userId?: Prisma.SortOrder;
     brandName?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
     logoUrl?: Prisma.SortOrder;
+    bannerUrl?: Prisma.SortOrder;
+    contactEmail?: Prisma.SortOrder;
+    contactPhone?: Prisma.SortOrder;
+    address?: Prisma.SortOrder;
+    gstNumber?: Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
-    commissionRate?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
 export type BrandProfileAvgOrderByAggregateInput = {
-    commissionRate?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
 };
 export type BrandProfileMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     userId?: Prisma.SortOrder;
     brandName?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
-    logoUrl?: Prisma.SortOrder;
+    contactEmail?: Prisma.SortOrder;
+    contactPhone?: Prisma.SortOrder;
+    address?: Prisma.SortOrder;
+    gstNumber?: Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
-    commissionRate?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
@@ -371,15 +529,20 @@ export type BrandProfileMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     userId?: Prisma.SortOrder;
     brandName?: Prisma.SortOrder;
+    slug?: Prisma.SortOrder;
     description?: Prisma.SortOrder;
-    logoUrl?: Prisma.SortOrder;
+    contactEmail?: Prisma.SortOrder;
+    contactPhone?: Prisma.SortOrder;
+    address?: Prisma.SortOrder;
+    gstNumber?: Prisma.SortOrder;
     isVerified?: Prisma.SortOrder;
-    commissionRate?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
 export type BrandProfileSumOrderByAggregateInput = {
-    commissionRate?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
 };
 export type BrandProfileScalarRelationFilter = {
     is?: Prisma.BrandProfileWhereInput;
@@ -388,6 +551,30 @@ export type BrandProfileScalarRelationFilter = {
 export type BrandProfileNullableScalarRelationFilter = {
     is?: Prisma.BrandProfileWhereInput | null;
     isNot?: Prisma.BrandProfileWhereInput | null;
+};
+export type BrandProfileCreateNestedOneWithoutBrandLocationsInput = {
+    create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutBrandLocationsInput, Prisma.BrandProfileUncheckedCreateWithoutBrandLocationsInput>;
+    connectOrCreate?: Prisma.BrandProfileCreateOrConnectWithoutBrandLocationsInput;
+    connect?: Prisma.BrandProfileWhereUniqueInput;
+};
+export type BrandProfileUpdateOneRequiredWithoutBrandLocationsNestedInput = {
+    create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutBrandLocationsInput, Prisma.BrandProfileUncheckedCreateWithoutBrandLocationsInput>;
+    connectOrCreate?: Prisma.BrandProfileCreateOrConnectWithoutBrandLocationsInput;
+    upsert?: Prisma.BrandProfileUpsertWithoutBrandLocationsInput;
+    connect?: Prisma.BrandProfileWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.BrandProfileUpdateToOneWithWhereWithoutBrandLocationsInput, Prisma.BrandProfileUpdateWithoutBrandLocationsInput>, Prisma.BrandProfileUncheckedUpdateWithoutBrandLocationsInput>;
+};
+export type BrandProfileCreateNestedOneWithoutMarketplaceCategoriesInput = {
+    create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutMarketplaceCategoriesInput, Prisma.BrandProfileUncheckedCreateWithoutMarketplaceCategoriesInput>;
+    connectOrCreate?: Prisma.BrandProfileCreateOrConnectWithoutMarketplaceCategoriesInput;
+    connect?: Prisma.BrandProfileWhereUniqueInput;
+};
+export type BrandProfileUpdateOneRequiredWithoutMarketplaceCategoriesNestedInput = {
+    create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutMarketplaceCategoriesInput, Prisma.BrandProfileUncheckedCreateWithoutMarketplaceCategoriesInput>;
+    connectOrCreate?: Prisma.BrandProfileCreateOrConnectWithoutMarketplaceCategoriesInput;
+    upsert?: Prisma.BrandProfileUpsertWithoutMarketplaceCategoriesInput;
+    connect?: Prisma.BrandProfileWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.BrandProfileUpdateToOneWithWhereWithoutMarketplaceCategoriesInput, Prisma.BrandProfileUpdateWithoutMarketplaceCategoriesInput>, Prisma.BrandProfileUncheckedUpdateWithoutMarketplaceCategoriesInput>;
 };
 export type BrandProfileCreateNestedOneWithoutProductsInput = {
     create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutProductsInput, Prisma.BrandProfileUncheckedCreateWithoutProductsInput>;
@@ -400,6 +587,18 @@ export type BrandProfileUpdateOneRequiredWithoutProductsNestedInput = {
     upsert?: Prisma.BrandProfileUpsertWithoutProductsInput;
     connect?: Prisma.BrandProfileWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.BrandProfileUpdateToOneWithWhereWithoutProductsInput, Prisma.BrandProfileUpdateWithoutProductsInput>, Prisma.BrandProfileUncheckedUpdateWithoutProductsInput>;
+};
+export type BrandProfileCreateNestedOneWithoutOrderItemsInput = {
+    create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutOrderItemsInput, Prisma.BrandProfileUncheckedCreateWithoutOrderItemsInput>;
+    connectOrCreate?: Prisma.BrandProfileCreateOrConnectWithoutOrderItemsInput;
+    connect?: Prisma.BrandProfileWhereUniqueInput;
+};
+export type BrandProfileUpdateOneRequiredWithoutOrderItemsNestedInput = {
+    create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutOrderItemsInput, Prisma.BrandProfileUncheckedCreateWithoutOrderItemsInput>;
+    connectOrCreate?: Prisma.BrandProfileCreateOrConnectWithoutOrderItemsInput;
+    upsert?: Prisma.BrandProfileUpsertWithoutOrderItemsInput;
+    connect?: Prisma.BrandProfileWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.BrandProfileUpdateToOneWithWhereWithoutOrderItemsInput, Prisma.BrandProfileUpdateWithoutOrderItemsInput>, Prisma.BrandProfileUncheckedUpdateWithoutOrderItemsInput>;
 };
 export type BrandProfileCreateNestedOneWithoutUserInput = {
     create?: Prisma.XOR<Prisma.BrandProfileCreateWithoutUserInput, Prisma.BrandProfileUncheckedCreateWithoutUserInput>;
@@ -429,27 +628,241 @@ export type BrandProfileUncheckedUpdateOneWithoutUserNestedInput = {
     connect?: Prisma.BrandProfileWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.BrandProfileUpdateToOneWithWhereWithoutUserInput, Prisma.BrandProfileUpdateWithoutUserInput>, Prisma.BrandProfileUncheckedUpdateWithoutUserInput>;
 };
-export type BrandProfileCreateWithoutProductsInput = {
+export type BrandProfileCreateWithoutBrandLocationsInput = {
     id?: string;
     brandName: string;
+    slug: string;
     description?: string | null;
-    logoUrl?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
     isVerified?: boolean;
-    commissionRate?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     user: Prisma.UserCreateNestedOneWithoutBrandProfileInput;
+    products?: Prisma.MarketplaceProductCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryCreateNestedManyWithoutBrandInput;
+};
+export type BrandProfileUncheckedCreateWithoutBrandLocationsInput = {
+    id?: string;
+    userId: string;
+    brandName: string;
+    slug: string;
+    description?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
+    isVerified?: boolean;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    products?: Prisma.MarketplaceProductUncheckedCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedCreateNestedManyWithoutBrandInput;
+};
+export type BrandProfileCreateOrConnectWithoutBrandLocationsInput = {
+    where: Prisma.BrandProfileWhereUniqueInput;
+    create: Prisma.XOR<Prisma.BrandProfileCreateWithoutBrandLocationsInput, Prisma.BrandProfileUncheckedCreateWithoutBrandLocationsInput>;
+};
+export type BrandProfileUpsertWithoutBrandLocationsInput = {
+    update: Prisma.XOR<Prisma.BrandProfileUpdateWithoutBrandLocationsInput, Prisma.BrandProfileUncheckedUpdateWithoutBrandLocationsInput>;
+    create: Prisma.XOR<Prisma.BrandProfileCreateWithoutBrandLocationsInput, Prisma.BrandProfileUncheckedCreateWithoutBrandLocationsInput>;
+    where?: Prisma.BrandProfileWhereInput;
+};
+export type BrandProfileUpdateToOneWithWhereWithoutBrandLocationsInput = {
+    where?: Prisma.BrandProfileWhereInput;
+    data: Prisma.XOR<Prisma.BrandProfileUpdateWithoutBrandLocationsInput, Prisma.BrandProfileUncheckedUpdateWithoutBrandLocationsInput>;
+};
+export type BrandProfileUpdateWithoutBrandLocationsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutBrandProfileNestedInput;
+    products?: Prisma.MarketplaceProductUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUpdateManyWithoutBrandNestedInput;
+};
+export type BrandProfileUncheckedUpdateWithoutBrandLocationsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    products?: Prisma.MarketplaceProductUncheckedUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedUpdateManyWithoutBrandNestedInput;
+};
+export type BrandProfileCreateWithoutMarketplaceCategoriesInput = {
+    id?: string;
+    brandName: string;
+    slug: string;
+    description?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
+    isVerified?: boolean;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutBrandProfileInput;
+    products?: Prisma.MarketplaceProductCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationCreateNestedManyWithoutBrandInput;
+};
+export type BrandProfileUncheckedCreateWithoutMarketplaceCategoriesInput = {
+    id?: string;
+    userId: string;
+    brandName: string;
+    slug: string;
+    description?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
+    isVerified?: boolean;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    products?: Prisma.MarketplaceProductUncheckedCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationUncheckedCreateNestedManyWithoutBrandInput;
+};
+export type BrandProfileCreateOrConnectWithoutMarketplaceCategoriesInput = {
+    where: Prisma.BrandProfileWhereUniqueInput;
+    create: Prisma.XOR<Prisma.BrandProfileCreateWithoutMarketplaceCategoriesInput, Prisma.BrandProfileUncheckedCreateWithoutMarketplaceCategoriesInput>;
+};
+export type BrandProfileUpsertWithoutMarketplaceCategoriesInput = {
+    update: Prisma.XOR<Prisma.BrandProfileUpdateWithoutMarketplaceCategoriesInput, Prisma.BrandProfileUncheckedUpdateWithoutMarketplaceCategoriesInput>;
+    create: Prisma.XOR<Prisma.BrandProfileCreateWithoutMarketplaceCategoriesInput, Prisma.BrandProfileUncheckedCreateWithoutMarketplaceCategoriesInput>;
+    where?: Prisma.BrandProfileWhereInput;
+};
+export type BrandProfileUpdateToOneWithWhereWithoutMarketplaceCategoriesInput = {
+    where?: Prisma.BrandProfileWhereInput;
+    data: Prisma.XOR<Prisma.BrandProfileUpdateWithoutMarketplaceCategoriesInput, Prisma.BrandProfileUncheckedUpdateWithoutMarketplaceCategoriesInput>;
+};
+export type BrandProfileUpdateWithoutMarketplaceCategoriesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutBrandProfileNestedInput;
+    products?: Prisma.MarketplaceProductUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUpdateManyWithoutBrandNestedInput;
+};
+export type BrandProfileUncheckedUpdateWithoutMarketplaceCategoriesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    products?: Prisma.MarketplaceProductUncheckedUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUncheckedUpdateManyWithoutBrandNestedInput;
+};
+export type BrandProfileCreateWithoutProductsInput = {
+    id?: string;
+    brandName: string;
+    slug: string;
+    description?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
+    isVerified?: boolean;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutBrandProfileInput;
+    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryCreateNestedManyWithoutBrandInput;
 };
 export type BrandProfileUncheckedCreateWithoutProductsInput = {
     id?: string;
     userId: string;
     brandName: string;
+    slug: string;
     description?: string | null;
-    logoUrl?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
     isVerified?: boolean;
-    commissionRate?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationUncheckedCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedCreateNestedManyWithoutBrandInput;
 };
 export type BrandProfileCreateOrConnectWithoutProductsInput = {
     where: Prisma.BrandProfileWhereUniqueInput;
@@ -467,46 +880,183 @@ export type BrandProfileUpdateToOneWithWhereWithoutProductsInput = {
 export type BrandProfileUpdateWithoutProductsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     user?: Prisma.UserUpdateOneRequiredWithoutBrandProfileNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUpdateManyWithoutBrandNestedInput;
 };
 export type BrandProfileUncheckedUpdateWithoutProductsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUncheckedUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedUpdateManyWithoutBrandNestedInput;
+};
+export type BrandProfileCreateWithoutOrderItemsInput = {
+    id?: string;
+    brandName: string;
+    slug: string;
+    description?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
+    isVerified?: boolean;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutBrandProfileInput;
+    products?: Prisma.MarketplaceProductCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryCreateNestedManyWithoutBrandInput;
+};
+export type BrandProfileUncheckedCreateWithoutOrderItemsInput = {
+    id?: string;
+    userId: string;
+    brandName: string;
+    slug: string;
+    description?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
+    isVerified?: boolean;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    products?: Prisma.MarketplaceProductUncheckedCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationUncheckedCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedCreateNestedManyWithoutBrandInput;
+};
+export type BrandProfileCreateOrConnectWithoutOrderItemsInput = {
+    where: Prisma.BrandProfileWhereUniqueInput;
+    create: Prisma.XOR<Prisma.BrandProfileCreateWithoutOrderItemsInput, Prisma.BrandProfileUncheckedCreateWithoutOrderItemsInput>;
+};
+export type BrandProfileUpsertWithoutOrderItemsInput = {
+    update: Prisma.XOR<Prisma.BrandProfileUpdateWithoutOrderItemsInput, Prisma.BrandProfileUncheckedUpdateWithoutOrderItemsInput>;
+    create: Prisma.XOR<Prisma.BrandProfileCreateWithoutOrderItemsInput, Prisma.BrandProfileUncheckedCreateWithoutOrderItemsInput>;
+    where?: Prisma.BrandProfileWhereInput;
+};
+export type BrandProfileUpdateToOneWithWhereWithoutOrderItemsInput = {
+    where?: Prisma.BrandProfileWhereInput;
+    data: Prisma.XOR<Prisma.BrandProfileUpdateWithoutOrderItemsInput, Prisma.BrandProfileUncheckedUpdateWithoutOrderItemsInput>;
+};
+export type BrandProfileUpdateWithoutOrderItemsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutBrandProfileNestedInput;
+    products?: Prisma.MarketplaceProductUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUpdateManyWithoutBrandNestedInput;
+};
+export type BrandProfileUncheckedUpdateWithoutOrderItemsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    products?: Prisma.MarketplaceProductUncheckedUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUncheckedUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedUpdateManyWithoutBrandNestedInput;
 };
 export type BrandProfileCreateWithoutUserInput = {
     id?: string;
     brandName: string;
+    slug: string;
     description?: string | null;
-    logoUrl?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
     isVerified?: boolean;
-    commissionRate?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     products?: Prisma.MarketplaceProductCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryCreateNestedManyWithoutBrandInput;
 };
 export type BrandProfileUncheckedCreateWithoutUserInput = {
     id?: string;
     brandName: string;
+    slug: string;
     description?: string | null;
-    logoUrl?: string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: string | null;
+    contactPhone?: string | null;
+    address?: string | null;
+    gstNumber?: string | null;
     isVerified?: boolean;
-    commissionRate?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: boolean;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     products?: Prisma.MarketplaceProductUncheckedCreateNestedManyWithoutBrandInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutBrandInput;
+    brandLocations?: Prisma.BrandLocationUncheckedCreateNestedManyWithoutBrandInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedCreateNestedManyWithoutBrandInput;
 };
 export type BrandProfileCreateOrConnectWithoutUserInput = {
     where: Prisma.BrandProfileWhereUniqueInput;
@@ -524,33 +1074,59 @@ export type BrandProfileUpdateToOneWithWhereWithoutUserInput = {
 export type BrandProfileUpdateWithoutUserInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     products?: Prisma.MarketplaceProductUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUpdateManyWithoutBrandNestedInput;
 };
 export type BrandProfileUncheckedUpdateWithoutUserInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     brandName?: Prisma.StringFieldUpdateOperationsInput | string;
+    slug?: Prisma.StringFieldUpdateOperationsInput | string;
     description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    bannerUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    gstNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
-    commissionRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    rating?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     products?: Prisma.MarketplaceProductUncheckedUpdateManyWithoutBrandNestedInput;
+    orderItems?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutBrandNestedInput;
+    brandLocations?: Prisma.BrandLocationUncheckedUpdateManyWithoutBrandNestedInput;
+    marketplaceCategories?: Prisma.MarketplaceCategoryUncheckedUpdateManyWithoutBrandNestedInput;
 };
 /**
  * Count Type BrandProfileCountOutputType
  */
 export type BrandProfileCountOutputType = {
     products: number;
+    orderItems: number;
+    brandLocations: number;
+    marketplaceCategories: number;
 };
 export type BrandProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     products?: boolean | BrandProfileCountOutputTypeCountProductsArgs;
+    orderItems?: boolean | BrandProfileCountOutputTypeCountOrderItemsArgs;
+    brandLocations?: boolean | BrandProfileCountOutputTypeCountBrandLocationsArgs;
+    marketplaceCategories?: boolean | BrandProfileCountOutputTypeCountMarketplaceCategoriesArgs;
 };
 /**
  * BrandProfileCountOutputType without action
@@ -567,28 +1143,63 @@ export type BrandProfileCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types
 export type BrandProfileCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.MarketplaceProductWhereInput;
 };
+/**
+ * BrandProfileCountOutputType without action
+ */
+export type BrandProfileCountOutputTypeCountOrderItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.MarketplaceOrderItemWhereInput;
+};
+/**
+ * BrandProfileCountOutputType without action
+ */
+export type BrandProfileCountOutputTypeCountBrandLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.BrandLocationWhereInput;
+};
+/**
+ * BrandProfileCountOutputType without action
+ */
+export type BrandProfileCountOutputTypeCountMarketplaceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.MarketplaceCategoryWhereInput;
+};
 export type BrandProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     userId?: boolean;
     brandName?: boolean;
+    slug?: boolean;
     description?: boolean;
     logoUrl?: boolean;
+    bannerUrl?: boolean;
+    contactEmail?: boolean;
+    contactPhone?: boolean;
+    address?: boolean;
+    gstNumber?: boolean;
     isVerified?: boolean;
-    commissionRate?: boolean;
+    isActive?: boolean;
+    rating?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     products?: boolean | Prisma.BrandProfile$productsArgs<ExtArgs>;
+    orderItems?: boolean | Prisma.BrandProfile$orderItemsArgs<ExtArgs>;
+    brandLocations?: boolean | Prisma.BrandProfile$brandLocationsArgs<ExtArgs>;
+    marketplaceCategories?: boolean | Prisma.BrandProfile$marketplaceCategoriesArgs<ExtArgs>;
     _count?: boolean | Prisma.BrandProfileCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["brandProfile"]>;
 export type BrandProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     userId?: boolean;
     brandName?: boolean;
+    slug?: boolean;
     description?: boolean;
     logoUrl?: boolean;
+    bannerUrl?: boolean;
+    contactEmail?: boolean;
+    contactPhone?: boolean;
+    address?: boolean;
+    gstNumber?: boolean;
     isVerified?: boolean;
-    commissionRate?: boolean;
+    isActive?: boolean;
+    rating?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
@@ -597,10 +1208,17 @@ export type BrandProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
     id?: boolean;
     userId?: boolean;
     brandName?: boolean;
+    slug?: boolean;
     description?: boolean;
     logoUrl?: boolean;
+    bannerUrl?: boolean;
+    contactEmail?: boolean;
+    contactPhone?: boolean;
+    address?: boolean;
+    gstNumber?: boolean;
     isVerified?: boolean;
-    commissionRate?: boolean;
+    isActive?: boolean;
+    rating?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
@@ -609,17 +1227,27 @@ export type BrandProfileSelectScalar = {
     id?: boolean;
     userId?: boolean;
     brandName?: boolean;
+    slug?: boolean;
     description?: boolean;
     logoUrl?: boolean;
+    bannerUrl?: boolean;
+    contactEmail?: boolean;
+    contactPhone?: boolean;
+    address?: boolean;
+    gstNumber?: boolean;
     isVerified?: boolean;
-    commissionRate?: boolean;
+    isActive?: boolean;
+    rating?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
 };
-export type BrandProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "brandName" | "description" | "logoUrl" | "isVerified" | "commissionRate" | "createdAt" | "updatedAt", ExtArgs["result"]["brandProfile"]>;
+export type BrandProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "brandName" | "slug" | "description" | "logoUrl" | "bannerUrl" | "contactEmail" | "contactPhone" | "address" | "gstNumber" | "isVerified" | "isActive" | "rating" | "createdAt" | "updatedAt", ExtArgs["result"]["brandProfile"]>;
 export type BrandProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     products?: boolean | Prisma.BrandProfile$productsArgs<ExtArgs>;
+    orderItems?: boolean | Prisma.BrandProfile$orderItemsArgs<ExtArgs>;
+    brandLocations?: boolean | Prisma.BrandProfile$brandLocationsArgs<ExtArgs>;
+    marketplaceCategories?: boolean | Prisma.BrandProfile$marketplaceCategoriesArgs<ExtArgs>;
     _count?: boolean | Prisma.BrandProfileCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type BrandProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -633,15 +1261,25 @@ export type $BrandProfilePayload<ExtArgs extends runtime.Types.Extensions.Intern
     objects: {
         user: Prisma.$UserPayload<ExtArgs>;
         products: Prisma.$MarketplaceProductPayload<ExtArgs>[];
+        orderItems: Prisma.$MarketplaceOrderItemPayload<ExtArgs>[];
+        brandLocations: Prisma.$BrandLocationPayload<ExtArgs>[];
+        marketplaceCategories: Prisma.$MarketplaceCategoryPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
         userId: string;
         brandName: string;
+        slug: string;
         description: string | null;
-        logoUrl: string | null;
+        logoUrl: runtime.JsonValue | null;
+        bannerUrl: runtime.JsonValue | null;
+        contactEmail: string | null;
+        contactPhone: string | null;
+        address: string | null;
+        gstNumber: string | null;
         isVerified: boolean;
-        commissionRate: runtime.Decimal;
+        isActive: boolean;
+        rating: runtime.Decimal;
         createdAt: Date;
         updatedAt: Date;
     }, ExtArgs["result"]["brandProfile"]>;
@@ -975,6 +1613,9 @@ export interface Prisma__BrandProfileClient<T, Null = never, ExtArgs extends run
     readonly [Symbol.toStringTag]: "PrismaPromise";
     user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     products<T extends Prisma.BrandProfile$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandProfile$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketplaceProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    orderItems<T extends Prisma.BrandProfile$orderItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandProfile$orderItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketplaceOrderItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    brandLocations<T extends Prisma.BrandProfile$brandLocationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandProfile$brandLocationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BrandLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    marketplaceCategories<T extends Prisma.BrandProfile$marketplaceCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandProfile$marketplaceCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketplaceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1003,10 +1644,17 @@ export interface BrandProfileFieldRefs {
     readonly id: Prisma.FieldRef<"BrandProfile", 'String'>;
     readonly userId: Prisma.FieldRef<"BrandProfile", 'String'>;
     readonly brandName: Prisma.FieldRef<"BrandProfile", 'String'>;
+    readonly slug: Prisma.FieldRef<"BrandProfile", 'String'>;
     readonly description: Prisma.FieldRef<"BrandProfile", 'String'>;
-    readonly logoUrl: Prisma.FieldRef<"BrandProfile", 'String'>;
+    readonly logoUrl: Prisma.FieldRef<"BrandProfile", 'Json'>;
+    readonly bannerUrl: Prisma.FieldRef<"BrandProfile", 'Json'>;
+    readonly contactEmail: Prisma.FieldRef<"BrandProfile", 'String'>;
+    readonly contactPhone: Prisma.FieldRef<"BrandProfile", 'String'>;
+    readonly address: Prisma.FieldRef<"BrandProfile", 'String'>;
+    readonly gstNumber: Prisma.FieldRef<"BrandProfile", 'String'>;
     readonly isVerified: Prisma.FieldRef<"BrandProfile", 'Boolean'>;
-    readonly commissionRate: Prisma.FieldRef<"BrandProfile", 'Decimal'>;
+    readonly isActive: Prisma.FieldRef<"BrandProfile", 'Boolean'>;
+    readonly rating: Prisma.FieldRef<"BrandProfile", 'Decimal'>;
     readonly createdAt: Prisma.FieldRef<"BrandProfile", 'DateTime'>;
     readonly updatedAt: Prisma.FieldRef<"BrandProfile", 'DateTime'>;
 }
@@ -1414,6 +2062,75 @@ export type BrandProfile$productsArgs<ExtArgs extends runtime.Types.Extensions.I
     take?: number;
     skip?: number;
     distinct?: Prisma.MarketplaceProductScalarFieldEnum | Prisma.MarketplaceProductScalarFieldEnum[];
+};
+/**
+ * BrandProfile.orderItems
+ */
+export type BrandProfile$orderItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MarketplaceOrderItem
+     */
+    select?: Prisma.MarketplaceOrderItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the MarketplaceOrderItem
+     */
+    omit?: Prisma.MarketplaceOrderItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.MarketplaceOrderItemInclude<ExtArgs> | null;
+    where?: Prisma.MarketplaceOrderItemWhereInput;
+    orderBy?: Prisma.MarketplaceOrderItemOrderByWithRelationInput | Prisma.MarketplaceOrderItemOrderByWithRelationInput[];
+    cursor?: Prisma.MarketplaceOrderItemWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.MarketplaceOrderItemScalarFieldEnum | Prisma.MarketplaceOrderItemScalarFieldEnum[];
+};
+/**
+ * BrandProfile.brandLocations
+ */
+export type BrandProfile$brandLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLocation
+     */
+    select?: Prisma.BrandLocationSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLocation
+     */
+    omit?: Prisma.BrandLocationOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BrandLocationInclude<ExtArgs> | null;
+    where?: Prisma.BrandLocationWhereInput;
+    orderBy?: Prisma.BrandLocationOrderByWithRelationInput | Prisma.BrandLocationOrderByWithRelationInput[];
+    cursor?: Prisma.BrandLocationWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.BrandLocationScalarFieldEnum | Prisma.BrandLocationScalarFieldEnum[];
+};
+/**
+ * BrandProfile.marketplaceCategories
+ */
+export type BrandProfile$marketplaceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MarketplaceCategory
+     */
+    select?: Prisma.MarketplaceCategorySelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the MarketplaceCategory
+     */
+    omit?: Prisma.MarketplaceCategoryOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.MarketplaceCategoryInclude<ExtArgs> | null;
+    where?: Prisma.MarketplaceCategoryWhereInput;
+    orderBy?: Prisma.MarketplaceCategoryOrderByWithRelationInput | Prisma.MarketplaceCategoryOrderByWithRelationInput[];
+    cursor?: Prisma.MarketplaceCategoryWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.MarketplaceCategoryScalarFieldEnum | Prisma.MarketplaceCategoryScalarFieldEnum[];
 };
 /**
  * BrandProfile without action

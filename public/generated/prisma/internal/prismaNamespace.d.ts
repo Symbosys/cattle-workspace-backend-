@@ -252,12 +252,15 @@ export declare const ModelName: {
     readonly ListingImage: "ListingImage";
     readonly ListingLocation: "ListingLocation";
     readonly BrandProfile: "BrandProfile";
+    readonly BrandLocation: "BrandLocation";
+    readonly MarketplaceCategory: "MarketplaceCategory";
     readonly MarketplaceProduct: "MarketplaceProduct";
+    readonly ProductVariant: "ProductVariant";
+    readonly MarketplaceOrder: "MarketplaceOrder";
+    readonly MarketplaceOrderItem: "MarketplaceOrderItem";
     readonly ProductReview: "ProductReview";
     readonly Cart: "Cart";
     readonly CartItem: "CartItem";
-    readonly MarketplaceOrder: "MarketplaceOrder";
-    readonly MarketplaceOrderItem: "MarketplaceOrderItem";
     readonly SubscriptionPlan: "SubscriptionPlan";
     readonly Subscription: "Subscription";
     readonly PlatformLedger: "PlatformLedger";
@@ -266,6 +269,7 @@ export declare const ModelName: {
     readonly City: "City";
     readonly Area: "Area";
     readonly OtpCode: "OtpCode";
+    readonly UserAddress: "UserAddress";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -278,7 +282,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "animal" | "vaccinationRecord" | "category" | "subCategory" | "breederProfile" | "breedingRequest" | "breederReview" | "doctorProfile" | "doctorLocation" | "doctorVerificationLog" | "doctorAppointment" | "doctorReview" | "forumQuestion" | "forumAnswer" | "questionVote" | "answerVote" | "forumReport" | "cattleListing" | "listingImage" | "listingLocation" | "brandProfile" | "marketplaceProduct" | "productReview" | "cart" | "cartItem" | "marketplaceOrder" | "marketplaceOrderItem" | "subscriptionPlan" | "subscription" | "platformLedger" | "user" | "state" | "city" | "area" | "otpCode";
+        modelProps: "animal" | "vaccinationRecord" | "category" | "subCategory" | "breederProfile" | "breedingRequest" | "breederReview" | "doctorProfile" | "doctorLocation" | "doctorVerificationLog" | "doctorAppointment" | "doctorReview" | "forumQuestion" | "forumAnswer" | "questionVote" | "answerVote" | "forumReport" | "cattleListing" | "listingImage" | "listingLocation" | "brandProfile" | "brandLocation" | "marketplaceCategory" | "marketplaceProduct" | "productVariant" | "marketplaceOrder" | "marketplaceOrderItem" | "productReview" | "cart" | "cartItem" | "subscriptionPlan" | "subscription" | "platformLedger" | "user" | "state" | "city" | "area" | "otpCode" | "userAddress";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -1836,6 +1840,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        BrandLocation: {
+            payload: Prisma.$BrandLocationPayload<ExtArgs>;
+            fields: Prisma.BrandLocationFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.BrandLocationFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.BrandLocationFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>;
+                };
+                findFirst: {
+                    args: Prisma.BrandLocationFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.BrandLocationFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>;
+                };
+                findMany: {
+                    args: Prisma.BrandLocationFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>[];
+                };
+                create: {
+                    args: Prisma.BrandLocationCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>;
+                };
+                createMany: {
+                    args: Prisma.BrandLocationCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.BrandLocationCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>[];
+                };
+                delete: {
+                    args: Prisma.BrandLocationDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>;
+                };
+                update: {
+                    args: Prisma.BrandLocationUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.BrandLocationDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.BrandLocationUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.BrandLocationUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>[];
+                };
+                upsert: {
+                    args: Prisma.BrandLocationUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandLocationPayload>;
+                };
+                aggregate: {
+                    args: Prisma.BrandLocationAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateBrandLocation>;
+                };
+                groupBy: {
+                    args: Prisma.BrandLocationGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.BrandLocationGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.BrandLocationCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.BrandLocationCountAggregateOutputType> | number;
+                };
+            };
+        };
+        MarketplaceCategory: {
+            payload: Prisma.$MarketplaceCategoryPayload<ExtArgs>;
+            fields: Prisma.MarketplaceCategoryFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.MarketplaceCategoryFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.MarketplaceCategoryFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>;
+                };
+                findFirst: {
+                    args: Prisma.MarketplaceCategoryFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.MarketplaceCategoryFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>;
+                };
+                findMany: {
+                    args: Prisma.MarketplaceCategoryFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>[];
+                };
+                create: {
+                    args: Prisma.MarketplaceCategoryCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>;
+                };
+                createMany: {
+                    args: Prisma.MarketplaceCategoryCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.MarketplaceCategoryCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>[];
+                };
+                delete: {
+                    args: Prisma.MarketplaceCategoryDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>;
+                };
+                update: {
+                    args: Prisma.MarketplaceCategoryUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.MarketplaceCategoryDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.MarketplaceCategoryUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.MarketplaceCategoryUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>[];
+                };
+                upsert: {
+                    args: Prisma.MarketplaceCategoryUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceCategoryPayload>;
+                };
+                aggregate: {
+                    args: Prisma.MarketplaceCategoryAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateMarketplaceCategory>;
+                };
+                groupBy: {
+                    args: Prisma.MarketplaceCategoryGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceCategoryGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.MarketplaceCategoryCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceCategoryCountAggregateOutputType> | number;
+                };
+            };
+        };
         MarketplaceProduct: {
             payload: Prisma.$MarketplaceProductPayload<ExtArgs>;
             fields: Prisma.MarketplaceProductFieldRefs;
@@ -1907,6 +2059,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 count: {
                     args: Prisma.MarketplaceProductCountArgs<ExtArgs>;
                     result: runtime.Types.Utils.Optional<Prisma.MarketplaceProductCountAggregateOutputType> | number;
+                };
+            };
+        };
+        ProductVariant: {
+            payload: Prisma.$ProductVariantPayload<ExtArgs>;
+            fields: Prisma.ProductVariantFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.ProductVariantFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.ProductVariantFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>;
+                };
+                findFirst: {
+                    args: Prisma.ProductVariantFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.ProductVariantFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>;
+                };
+                findMany: {
+                    args: Prisma.ProductVariantFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>[];
+                };
+                create: {
+                    args: Prisma.ProductVariantCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>;
+                };
+                createMany: {
+                    args: Prisma.ProductVariantCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.ProductVariantCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>[];
+                };
+                delete: {
+                    args: Prisma.ProductVariantDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>;
+                };
+                update: {
+                    args: Prisma.ProductVariantUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.ProductVariantDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.ProductVariantUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.ProductVariantUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>[];
+                };
+                upsert: {
+                    args: Prisma.ProductVariantUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductVariantPayload>;
+                };
+                aggregate: {
+                    args: Prisma.ProductVariantAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateProductVariant>;
+                };
+                groupBy: {
+                    args: Prisma.ProductVariantGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProductVariantGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.ProductVariantCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProductVariantCountAggregateOutputType> | number;
+                };
+            };
+        };
+        MarketplaceOrder: {
+            payload: Prisma.$MarketplaceOrderPayload<ExtArgs>;
+            fields: Prisma.MarketplaceOrderFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.MarketplaceOrderFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.MarketplaceOrderFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
+                };
+                findFirst: {
+                    args: Prisma.MarketplaceOrderFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.MarketplaceOrderFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
+                };
+                findMany: {
+                    args: Prisma.MarketplaceOrderFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>[];
+                };
+                create: {
+                    args: Prisma.MarketplaceOrderCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
+                };
+                createMany: {
+                    args: Prisma.MarketplaceOrderCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.MarketplaceOrderCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>[];
+                };
+                delete: {
+                    args: Prisma.MarketplaceOrderDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
+                };
+                update: {
+                    args: Prisma.MarketplaceOrderUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.MarketplaceOrderDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.MarketplaceOrderUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.MarketplaceOrderUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>[];
+                };
+                upsert: {
+                    args: Prisma.MarketplaceOrderUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
+                };
+                aggregate: {
+                    args: Prisma.MarketplaceOrderAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateMarketplaceOrder>;
+                };
+                groupBy: {
+                    args: Prisma.MarketplaceOrderGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.MarketplaceOrderCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderCountAggregateOutputType> | number;
+                };
+            };
+        };
+        MarketplaceOrderItem: {
+            payload: Prisma.$MarketplaceOrderItemPayload<ExtArgs>;
+            fields: Prisma.MarketplaceOrderItemFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.MarketplaceOrderItemFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.MarketplaceOrderItemFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
+                };
+                findFirst: {
+                    args: Prisma.MarketplaceOrderItemFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.MarketplaceOrderItemFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
+                };
+                findMany: {
+                    args: Prisma.MarketplaceOrderItemFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>[];
+                };
+                create: {
+                    args: Prisma.MarketplaceOrderItemCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
+                };
+                createMany: {
+                    args: Prisma.MarketplaceOrderItemCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.MarketplaceOrderItemCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>[];
+                };
+                delete: {
+                    args: Prisma.MarketplaceOrderItemDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
+                };
+                update: {
+                    args: Prisma.MarketplaceOrderItemUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.MarketplaceOrderItemDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.MarketplaceOrderItemUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.MarketplaceOrderItemUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>[];
+                };
+                upsert: {
+                    args: Prisma.MarketplaceOrderItemUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
+                };
+                aggregate: {
+                    args: Prisma.MarketplaceOrderItemAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateMarketplaceOrderItem>;
+                };
+                groupBy: {
+                    args: Prisma.MarketplaceOrderItemGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderItemGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.MarketplaceOrderItemCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderItemCountAggregateOutputType> | number;
                 };
             };
         };
@@ -2129,154 +2503,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 count: {
                     args: Prisma.CartItemCountArgs<ExtArgs>;
                     result: runtime.Types.Utils.Optional<Prisma.CartItemCountAggregateOutputType> | number;
-                };
-            };
-        };
-        MarketplaceOrder: {
-            payload: Prisma.$MarketplaceOrderPayload<ExtArgs>;
-            fields: Prisma.MarketplaceOrderFieldRefs;
-            operations: {
-                findUnique: {
-                    args: Prisma.MarketplaceOrderFindUniqueArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload> | null;
-                };
-                findUniqueOrThrow: {
-                    args: Prisma.MarketplaceOrderFindUniqueOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
-                };
-                findFirst: {
-                    args: Prisma.MarketplaceOrderFindFirstArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload> | null;
-                };
-                findFirstOrThrow: {
-                    args: Prisma.MarketplaceOrderFindFirstOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
-                };
-                findMany: {
-                    args: Prisma.MarketplaceOrderFindManyArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>[];
-                };
-                create: {
-                    args: Prisma.MarketplaceOrderCreateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
-                };
-                createMany: {
-                    args: Prisma.MarketplaceOrderCreateManyArgs<ExtArgs>;
-                    result: BatchPayload;
-                };
-                createManyAndReturn: {
-                    args: Prisma.MarketplaceOrderCreateManyAndReturnArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>[];
-                };
-                delete: {
-                    args: Prisma.MarketplaceOrderDeleteArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
-                };
-                update: {
-                    args: Prisma.MarketplaceOrderUpdateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
-                };
-                deleteMany: {
-                    args: Prisma.MarketplaceOrderDeleteManyArgs<ExtArgs>;
-                    result: BatchPayload;
-                };
-                updateMany: {
-                    args: Prisma.MarketplaceOrderUpdateManyArgs<ExtArgs>;
-                    result: BatchPayload;
-                };
-                updateManyAndReturn: {
-                    args: Prisma.MarketplaceOrderUpdateManyAndReturnArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>[];
-                };
-                upsert: {
-                    args: Prisma.MarketplaceOrderUpsertArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderPayload>;
-                };
-                aggregate: {
-                    args: Prisma.MarketplaceOrderAggregateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.AggregateMarketplaceOrder>;
-                };
-                groupBy: {
-                    args: Prisma.MarketplaceOrderGroupByArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderGroupByOutputType>[];
-                };
-                count: {
-                    args: Prisma.MarketplaceOrderCountArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderCountAggregateOutputType> | number;
-                };
-            };
-        };
-        MarketplaceOrderItem: {
-            payload: Prisma.$MarketplaceOrderItemPayload<ExtArgs>;
-            fields: Prisma.MarketplaceOrderItemFieldRefs;
-            operations: {
-                findUnique: {
-                    args: Prisma.MarketplaceOrderItemFindUniqueArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload> | null;
-                };
-                findUniqueOrThrow: {
-                    args: Prisma.MarketplaceOrderItemFindUniqueOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
-                };
-                findFirst: {
-                    args: Prisma.MarketplaceOrderItemFindFirstArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload> | null;
-                };
-                findFirstOrThrow: {
-                    args: Prisma.MarketplaceOrderItemFindFirstOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
-                };
-                findMany: {
-                    args: Prisma.MarketplaceOrderItemFindManyArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>[];
-                };
-                create: {
-                    args: Prisma.MarketplaceOrderItemCreateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
-                };
-                createMany: {
-                    args: Prisma.MarketplaceOrderItemCreateManyArgs<ExtArgs>;
-                    result: BatchPayload;
-                };
-                createManyAndReturn: {
-                    args: Prisma.MarketplaceOrderItemCreateManyAndReturnArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>[];
-                };
-                delete: {
-                    args: Prisma.MarketplaceOrderItemDeleteArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
-                };
-                update: {
-                    args: Prisma.MarketplaceOrderItemUpdateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
-                };
-                deleteMany: {
-                    args: Prisma.MarketplaceOrderItemDeleteManyArgs<ExtArgs>;
-                    result: BatchPayload;
-                };
-                updateMany: {
-                    args: Prisma.MarketplaceOrderItemUpdateManyArgs<ExtArgs>;
-                    result: BatchPayload;
-                };
-                updateManyAndReturn: {
-                    args: Prisma.MarketplaceOrderItemUpdateManyAndReturnArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>[];
-                };
-                upsert: {
-                    args: Prisma.MarketplaceOrderItemUpsertArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketplaceOrderItemPayload>;
-                };
-                aggregate: {
-                    args: Prisma.MarketplaceOrderItemAggregateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.AggregateMarketplaceOrderItem>;
-                };
-                groupBy: {
-                    args: Prisma.MarketplaceOrderItemGroupByArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderItemGroupByOutputType>[];
-                };
-                count: {
-                    args: Prisma.MarketplaceOrderItemCountArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.MarketplaceOrderItemCountAggregateOutputType> | number;
                 };
             };
         };
@@ -2872,6 +3098,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        UserAddress: {
+            payload: Prisma.$UserAddressPayload<ExtArgs>;
+            fields: Prisma.UserAddressFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.UserAddressFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.UserAddressFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>;
+                };
+                findFirst: {
+                    args: Prisma.UserAddressFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.UserAddressFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>;
+                };
+                findMany: {
+                    args: Prisma.UserAddressFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>[];
+                };
+                create: {
+                    args: Prisma.UserAddressCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>;
+                };
+                createMany: {
+                    args: Prisma.UserAddressCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.UserAddressCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>[];
+                };
+                delete: {
+                    args: Prisma.UserAddressDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>;
+                };
+                update: {
+                    args: Prisma.UserAddressUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.UserAddressDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.UserAddressUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.UserAddressUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>[];
+                };
+                upsert: {
+                    args: Prisma.UserAddressUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$UserAddressPayload>;
+                };
+                aggregate: {
+                    args: Prisma.UserAddressAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateUserAddress>;
+                };
+                groupBy: {
+                    args: Prisma.UserAddressGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.UserAddressGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.UserAddressCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.UserAddressCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -3133,61 +3433,86 @@ export declare const BrandProfileScalarFieldEnum: {
     readonly id: "id";
     readonly userId: "userId";
     readonly brandName: "brandName";
+    readonly slug: "slug";
     readonly description: "description";
     readonly logoUrl: "logoUrl";
+    readonly bannerUrl: "bannerUrl";
+    readonly contactEmail: "contactEmail";
+    readonly contactPhone: "contactPhone";
+    readonly address: "address";
+    readonly gstNumber: "gstNumber";
     readonly isVerified: "isVerified";
-    readonly commissionRate: "commissionRate";
+    readonly isActive: "isActive";
+    readonly rating: "rating";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
 export type BrandProfileScalarFieldEnum = (typeof BrandProfileScalarFieldEnum)[keyof typeof BrandProfileScalarFieldEnum];
+export declare const BrandLocationScalarFieldEnum: {
+    readonly id: "id";
+    readonly brandId: "brandId";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly stateId: "stateId";
+    readonly cityId: "cityId";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type BrandLocationScalarFieldEnum = (typeof BrandLocationScalarFieldEnum)[keyof typeof BrandLocationScalarFieldEnum];
+export declare const MarketplaceCategoryScalarFieldEnum: {
+    readonly id: "id";
+    readonly name: "name";
+    readonly brandId: "brandId";
+    readonly description: "description";
+    readonly parentId: "parentId";
+    readonly isActive: "isActive";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type MarketplaceCategoryScalarFieldEnum = (typeof MarketplaceCategoryScalarFieldEnum)[keyof typeof MarketplaceCategoryScalarFieldEnum];
 export declare const MarketplaceProductScalarFieldEnum: {
     readonly id: "id";
     readonly brandId: "brandId";
+    readonly categoryId: "categoryId";
     readonly title: "title";
+    readonly slug: "slug";
     readonly description: "description";
-    readonly category: "category";
-    readonly price: "price";
-    readonly stock: "stock";
-    readonly imageUrl: "imageUrl";
     readonly status: "status";
+    readonly metaTitle: "metaTitle";
+    readonly metaDescription: "metaDescription";
+    readonly images: "images";
+    readonly attributes: "attributes";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
 export type MarketplaceProductScalarFieldEnum = (typeof MarketplaceProductScalarFieldEnum)[keyof typeof MarketplaceProductScalarFieldEnum];
-export declare const ProductReviewScalarFieldEnum: {
+export declare const ProductVariantScalarFieldEnum: {
     readonly id: "id";
     readonly productId: "productId";
-    readonly userId: "userId";
-    readonly rating: "rating";
-    readonly comment: "comment";
-    readonly createdAt: "createdAt";
-};
-export type ProductReviewScalarFieldEnum = (typeof ProductReviewScalarFieldEnum)[keyof typeof ProductReviewScalarFieldEnum];
-export declare const CartScalarFieldEnum: {
-    readonly id: "id";
-    readonly userId: "userId";
+    readonly sku: "sku";
+    readonly title: "title";
+    readonly price: "price";
+    readonly compareAtPrice: "compareAtPrice";
+    readonly stock: "stock";
+    readonly imageUrl: "imageUrl";
+    readonly isActive: "isActive";
+    readonly isDefault: "isDefault";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
-export type CartScalarFieldEnum = (typeof CartScalarFieldEnum)[keyof typeof CartScalarFieldEnum];
-export declare const CartItemScalarFieldEnum: {
-    readonly id: "id";
-    readonly cartId: "cartId";
-    readonly productId: "productId";
-    readonly quantity: "quantity";
-};
-export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typeof CartItemScalarFieldEnum];
+export type ProductVariantScalarFieldEnum = (typeof ProductVariantScalarFieldEnum)[keyof typeof ProductVariantScalarFieldEnum];
 export declare const MarketplaceOrderScalarFieldEnum: {
     readonly id: "id";
     readonly buyerId: "buyerId";
+    readonly subTotal: "subTotal";
+    readonly discountAmount: "discountAmount";
+    readonly shippingAmount: "shippingAmount";
+    readonly taxAmount: "taxAmount";
     readonly totalAmount: "totalAmount";
-    readonly commissionAmount: "commissionAmount";
-    readonly status: "status";
+    readonly paymentStatus: "paymentStatus";
     readonly paymentIntentId: "paymentIntentId";
-    readonly shippingAddress: "shippingAddress";
-    readonly trackingNumber: "trackingNumber";
-    readonly carrier: "carrier";
+    readonly shippingAddressId: "shippingAddressId";
+    readonly billingAddressId: "billingAddressId";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
@@ -3195,11 +3520,49 @@ export type MarketplaceOrderScalarFieldEnum = (typeof MarketplaceOrderScalarFiel
 export declare const MarketplaceOrderItemScalarFieldEnum: {
     readonly id: "id";
     readonly orderId: "orderId";
-    readonly productId: "productId";
+    readonly variantId: "variantId";
+    readonly brandId: "brandId";
     readonly quantity: "quantity";
     readonly price: "price";
+    readonly taxAmount: "taxAmount";
+    readonly discountAmount: "discountAmount";
+    readonly status: "status";
+    readonly trackingNumber: "trackingNumber";
+    readonly carrier: "carrier";
+    readonly shippedAt: "shippedAt";
+    readonly deliveredAt: "deliveredAt";
 };
 export type MarketplaceOrderItemScalarFieldEnum = (typeof MarketplaceOrderItemScalarFieldEnum)[keyof typeof MarketplaceOrderItemScalarFieldEnum];
+export declare const ProductReviewScalarFieldEnum: {
+    readonly id: "id";
+    readonly productId: "productId";
+    readonly userId: "userId";
+    readonly rating: "rating";
+    readonly comment: "comment";
+    readonly images: "images";
+    readonly isVerifiedPurchase: "isVerifiedPurchase";
+    readonly sellerReply: "sellerReply";
+    readonly createdAt: "createdAt";
+};
+export type ProductReviewScalarFieldEnum = (typeof ProductReviewScalarFieldEnum)[keyof typeof ProductReviewScalarFieldEnum];
+export declare const CartScalarFieldEnum: {
+    readonly id: "id";
+    readonly userId: "userId";
+    readonly subTotal: "subTotal";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type CartScalarFieldEnum = (typeof CartScalarFieldEnum)[keyof typeof CartScalarFieldEnum];
+export declare const CartItemScalarFieldEnum: {
+    readonly id: "id";
+    readonly cartId: "cartId";
+    readonly variantId: "variantId";
+    readonly quantity: "quantity";
+    readonly total: "total";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typeof CartItemScalarFieldEnum];
 export declare const SubscriptionPlanScalarFieldEnum: {
     readonly id: "id";
     readonly name: "name";
@@ -3308,6 +3671,25 @@ export declare const OtpCodeScalarFieldEnum: {
     readonly updatedAt: "updatedAt";
 };
 export type OtpCodeScalarFieldEnum = (typeof OtpCodeScalarFieldEnum)[keyof typeof OtpCodeScalarFieldEnum];
+export declare const UserAddressScalarFieldEnum: {
+    readonly id: "id";
+    readonly userId: "userId";
+    readonly name: "name";
+    readonly recipientName: "recipientName";
+    readonly phone: "phone";
+    readonly streetAddress: "streetAddress";
+    readonly apartment: "apartment";
+    readonly city: "city";
+    readonly state: "state";
+    readonly country: "country";
+    readonly postalCode: "postalCode";
+    readonly latitude: "latitude";
+    readonly longitude: "longitude";
+    readonly isDefault: "isDefault";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type UserAddressScalarFieldEnum = (typeof UserAddressScalarFieldEnum)[keyof typeof UserAddressScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -3437,6 +3819,14 @@ export type EnumProductStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'ProductStatus[]'
  */
 export type ListEnumProductStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductStatus[]'>;
+/**
+ * Reference to a field of type 'PaymentStatus'
+ */
+export type EnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus'>;
+/**
+ * Reference to a field of type 'PaymentStatus[]'
+ */
+export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus[]'>;
 /**
  * Reference to a field of type 'OrderStatus'
  */
@@ -3631,12 +4021,15 @@ export type GlobalOmitConfig = {
     listingImage?: Prisma.ListingImageOmit;
     listingLocation?: Prisma.ListingLocationOmit;
     brandProfile?: Prisma.BrandProfileOmit;
+    brandLocation?: Prisma.BrandLocationOmit;
+    marketplaceCategory?: Prisma.MarketplaceCategoryOmit;
     marketplaceProduct?: Prisma.MarketplaceProductOmit;
+    productVariant?: Prisma.ProductVariantOmit;
+    marketplaceOrder?: Prisma.MarketplaceOrderOmit;
+    marketplaceOrderItem?: Prisma.MarketplaceOrderItemOmit;
     productReview?: Prisma.ProductReviewOmit;
     cart?: Prisma.CartOmit;
     cartItem?: Prisma.CartItemOmit;
-    marketplaceOrder?: Prisma.MarketplaceOrderOmit;
-    marketplaceOrderItem?: Prisma.MarketplaceOrderItemOmit;
     subscriptionPlan?: Prisma.SubscriptionPlanOmit;
     subscription?: Prisma.SubscriptionOmit;
     platformLedger?: Prisma.PlatformLedgerOmit;
@@ -3645,6 +4038,7 @@ export type GlobalOmitConfig = {
     city?: Prisma.CityOmit;
     area?: Prisma.AreaOmit;
     otpCode?: Prisma.OtpCodeOmit;
+    userAddress?: Prisma.UserAddressOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

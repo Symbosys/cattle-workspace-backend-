@@ -27,25 +27,33 @@ export type AggregateMarketplaceOrder = {
 }
 
 export type MarketplaceOrderAvgAggregateOutputType = {
+  subTotal: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  shippingAmount: runtime.Decimal | null
+  taxAmount: runtime.Decimal | null
   totalAmount: runtime.Decimal | null
-  commissionAmount: runtime.Decimal | null
 }
 
 export type MarketplaceOrderSumAggregateOutputType = {
+  subTotal: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  shippingAmount: runtime.Decimal | null
+  taxAmount: runtime.Decimal | null
   totalAmount: runtime.Decimal | null
-  commissionAmount: runtime.Decimal | null
 }
 
 export type MarketplaceOrderMinAggregateOutputType = {
   id: string | null
   buyerId: string | null
+  subTotal: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  shippingAmount: runtime.Decimal | null
+  taxAmount: runtime.Decimal | null
   totalAmount: runtime.Decimal | null
-  commissionAmount: runtime.Decimal | null
-  status: $Enums.OrderStatus | null
+  paymentStatus: $Enums.PaymentStatus | null
   paymentIntentId: string | null
-  shippingAddress: string | null
-  trackingNumber: string | null
-  carrier: string | null
+  shippingAddressId: string | null
+  billingAddressId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -53,13 +61,15 @@ export type MarketplaceOrderMinAggregateOutputType = {
 export type MarketplaceOrderMaxAggregateOutputType = {
   id: string | null
   buyerId: string | null
+  subTotal: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  shippingAmount: runtime.Decimal | null
+  taxAmount: runtime.Decimal | null
   totalAmount: runtime.Decimal | null
-  commissionAmount: runtime.Decimal | null
-  status: $Enums.OrderStatus | null
+  paymentStatus: $Enums.PaymentStatus | null
   paymentIntentId: string | null
-  shippingAddress: string | null
-  trackingNumber: string | null
-  carrier: string | null
+  shippingAddressId: string | null
+  billingAddressId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -67,13 +77,15 @@ export type MarketplaceOrderMaxAggregateOutputType = {
 export type MarketplaceOrderCountAggregateOutputType = {
   id: number
   buyerId: number
+  subTotal: number
+  discountAmount: number
+  shippingAmount: number
+  taxAmount: number
   totalAmount: number
-  commissionAmount: number
-  status: number
+  paymentStatus: number
   paymentIntentId: number
-  shippingAddress: number
-  trackingNumber: number
-  carrier: number
+  shippingAddressId: number
+  billingAddressId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -81,25 +93,33 @@ export type MarketplaceOrderCountAggregateOutputType = {
 
 
 export type MarketplaceOrderAvgAggregateInputType = {
+  subTotal?: true
+  discountAmount?: true
+  shippingAmount?: true
+  taxAmount?: true
   totalAmount?: true
-  commissionAmount?: true
 }
 
 export type MarketplaceOrderSumAggregateInputType = {
+  subTotal?: true
+  discountAmount?: true
+  shippingAmount?: true
+  taxAmount?: true
   totalAmount?: true
-  commissionAmount?: true
 }
 
 export type MarketplaceOrderMinAggregateInputType = {
   id?: true
   buyerId?: true
+  subTotal?: true
+  discountAmount?: true
+  shippingAmount?: true
+  taxAmount?: true
   totalAmount?: true
-  commissionAmount?: true
-  status?: true
+  paymentStatus?: true
   paymentIntentId?: true
-  shippingAddress?: true
-  trackingNumber?: true
-  carrier?: true
+  shippingAddressId?: true
+  billingAddressId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -107,13 +127,15 @@ export type MarketplaceOrderMinAggregateInputType = {
 export type MarketplaceOrderMaxAggregateInputType = {
   id?: true
   buyerId?: true
+  subTotal?: true
+  discountAmount?: true
+  shippingAmount?: true
+  taxAmount?: true
   totalAmount?: true
-  commissionAmount?: true
-  status?: true
+  paymentStatus?: true
   paymentIntentId?: true
-  shippingAddress?: true
-  trackingNumber?: true
-  carrier?: true
+  shippingAddressId?: true
+  billingAddressId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -121,13 +143,15 @@ export type MarketplaceOrderMaxAggregateInputType = {
 export type MarketplaceOrderCountAggregateInputType = {
   id?: true
   buyerId?: true
+  subTotal?: true
+  discountAmount?: true
+  shippingAmount?: true
+  taxAmount?: true
   totalAmount?: true
-  commissionAmount?: true
-  status?: true
+  paymentStatus?: true
   paymentIntentId?: true
-  shippingAddress?: true
-  trackingNumber?: true
-  carrier?: true
+  shippingAddressId?: true
+  billingAddressId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -222,13 +246,15 @@ export type MarketplaceOrderGroupByArgs<ExtArgs extends runtime.Types.Extensions
 export type MarketplaceOrderGroupByOutputType = {
   id: string
   buyerId: string
+  subTotal: runtime.Decimal
+  discountAmount: runtime.Decimal
+  shippingAmount: runtime.Decimal
+  taxAmount: runtime.Decimal
   totalAmount: runtime.Decimal
-  commissionAmount: runtime.Decimal
-  status: $Enums.OrderStatus
+  paymentStatus: $Enums.PaymentStatus
   paymentIntentId: string | null
-  shippingAddress: string
-  trackingNumber: string | null
-  carrier: string | null
+  shippingAddressId: string
+  billingAddressId: string | null
   createdAt: Date
   updatedAt: Date
   _count: MarketplaceOrderCountAggregateOutputType | null
@@ -259,32 +285,40 @@ export type MarketplaceOrderWhereInput = {
   NOT?: Prisma.MarketplaceOrderWhereInput | Prisma.MarketplaceOrderWhereInput[]
   id?: Prisma.StringFilter<"MarketplaceOrder"> | string
   buyerId?: Prisma.StringFilter<"MarketplaceOrder"> | string
+  subTotal?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFilter<"MarketplaceOrder"> | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFilter<"MarketplaceOrder"> | $Enums.PaymentStatus
   paymentIntentId?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
-  shippingAddress?: Prisma.StringFilter<"MarketplaceOrder"> | string
-  trackingNumber?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
-  carrier?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
+  shippingAddressId?: Prisma.StringFilter<"MarketplaceOrder"> | string
+  billingAddressId?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
   createdAt?: Prisma.DateTimeFilter<"MarketplaceOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MarketplaceOrder"> | Date | string
   buyer?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  shippingAddress?: Prisma.XOR<Prisma.UserAddressScalarRelationFilter, Prisma.UserAddressWhereInput>
+  billingAddress?: Prisma.XOR<Prisma.UserAddressNullableScalarRelationFilter, Prisma.UserAddressWhereInput> | null
   items?: Prisma.MarketplaceOrderItemListRelationFilter
 }
 
 export type MarketplaceOrderOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   buyerId?: Prisma.SortOrder
+  subTotal?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  shippingAmount?: Prisma.SortOrder
+  taxAmount?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
-  commissionAmount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   paymentIntentId?: Prisma.SortOrderInput | Prisma.SortOrder
-  shippingAddress?: Prisma.SortOrder
-  trackingNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  carrier?: Prisma.SortOrderInput | Prisma.SortOrder
+  shippingAddressId?: Prisma.SortOrder
+  billingAddressId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   buyer?: Prisma.UserOrderByWithRelationInput
+  shippingAddress?: Prisma.UserAddressOrderByWithRelationInput
+  billingAddress?: Prisma.UserAddressOrderByWithRelationInput
   items?: Prisma.MarketplaceOrderItemOrderByRelationAggregateInput
 }
 
@@ -295,28 +329,34 @@ export type MarketplaceOrderWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.MarketplaceOrderWhereInput[]
   NOT?: Prisma.MarketplaceOrderWhereInput | Prisma.MarketplaceOrderWhereInput[]
   buyerId?: Prisma.StringFilter<"MarketplaceOrder"> | string
+  subTotal?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFilter<"MarketplaceOrder"> | $Enums.OrderStatus
-  shippingAddress?: Prisma.StringFilter<"MarketplaceOrder"> | string
-  trackingNumber?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
-  carrier?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
+  paymentStatus?: Prisma.EnumPaymentStatusFilter<"MarketplaceOrder"> | $Enums.PaymentStatus
+  shippingAddressId?: Prisma.StringFilter<"MarketplaceOrder"> | string
+  billingAddressId?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
   createdAt?: Prisma.DateTimeFilter<"MarketplaceOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MarketplaceOrder"> | Date | string
   buyer?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  shippingAddress?: Prisma.XOR<Prisma.UserAddressScalarRelationFilter, Prisma.UserAddressWhereInput>
+  billingAddress?: Prisma.XOR<Prisma.UserAddressNullableScalarRelationFilter, Prisma.UserAddressWhereInput> | null
   items?: Prisma.MarketplaceOrderItemListRelationFilter
 }, "id" | "paymentIntentId">
 
 export type MarketplaceOrderOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   buyerId?: Prisma.SortOrder
+  subTotal?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  shippingAmount?: Prisma.SortOrder
+  taxAmount?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
-  commissionAmount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   paymentIntentId?: Prisma.SortOrderInput | Prisma.SortOrder
-  shippingAddress?: Prisma.SortOrder
-  trackingNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  carrier?: Prisma.SortOrderInput | Prisma.SortOrder
+  shippingAddressId?: Prisma.SortOrder
+  billingAddressId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.MarketplaceOrderCountOrderByAggregateInput
@@ -332,42 +372,48 @@ export type MarketplaceOrderScalarWhereWithAggregatesInput = {
   NOT?: Prisma.MarketplaceOrderScalarWhereWithAggregatesInput | Prisma.MarketplaceOrderScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"MarketplaceOrder"> | string
   buyerId?: Prisma.StringWithAggregatesFilter<"MarketplaceOrder"> | string
+  subTotal?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalWithAggregatesFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusWithAggregatesFilter<"MarketplaceOrder"> | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusWithAggregatesFilter<"MarketplaceOrder"> | $Enums.PaymentStatus
   paymentIntentId?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceOrder"> | string | null
-  shippingAddress?: Prisma.StringWithAggregatesFilter<"MarketplaceOrder"> | string
-  trackingNumber?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceOrder"> | string | null
-  carrier?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceOrder"> | string | null
+  shippingAddressId?: Prisma.StringWithAggregatesFilter<"MarketplaceOrder"> | string
+  billingAddressId?: Prisma.StringNullableWithAggregatesFilter<"MarketplaceOrder"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"MarketplaceOrder"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"MarketplaceOrder"> | Date | string
 }
 
 export type MarketplaceOrderCreateInput = {
   id?: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   buyer: Prisma.UserCreateNestedOneWithoutOrdersInput
+  shippingAddress: Prisma.UserAddressCreateNestedOneWithoutShippingOrdersInput
+  billingAddress?: Prisma.UserAddressCreateNestedOneWithoutBillingOrdersInput
   items?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutOrderInput
 }
 
 export type MarketplaceOrderUncheckedCreateInput = {
   id?: string
   buyerId: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
+  shippingAddressId: string
+  billingAddressId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutOrderInput
@@ -375,29 +421,33 @@ export type MarketplaceOrderUncheckedCreateInput = {
 
 export type MarketplaceOrderUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   buyer?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
+  shippingAddress?: Prisma.UserAddressUpdateOneRequiredWithoutShippingOrdersNestedInput
+  billingAddress?: Prisma.UserAddressUpdateOneWithoutBillingOrdersNestedInput
   items?: Prisma.MarketplaceOrderItemUpdateManyWithoutOrderNestedInput
 }
 
 export type MarketplaceOrderUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shippingAddressId?: Prisma.StringFieldUpdateOperationsInput | string
+  billingAddressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutOrderNestedInput
@@ -406,26 +456,28 @@ export type MarketplaceOrderUncheckedUpdateInput = {
 export type MarketplaceOrderCreateManyInput = {
   id?: string
   buyerId: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
+  shippingAddressId: string
+  billingAddressId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type MarketplaceOrderUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -433,13 +485,15 @@ export type MarketplaceOrderUpdateManyMutationInput = {
 export type MarketplaceOrderUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shippingAddressId?: Prisma.StringFieldUpdateOperationsInput | string
+  billingAddressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -447,32 +501,39 @@ export type MarketplaceOrderUncheckedUpdateManyInput = {
 export type MarketplaceOrderCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   buyerId?: Prisma.SortOrder
+  subTotal?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  shippingAmount?: Prisma.SortOrder
+  taxAmount?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
-  commissionAmount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   paymentIntentId?: Prisma.SortOrder
-  shippingAddress?: Prisma.SortOrder
-  trackingNumber?: Prisma.SortOrder
-  carrier?: Prisma.SortOrder
+  shippingAddressId?: Prisma.SortOrder
+  billingAddressId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type MarketplaceOrderAvgOrderByAggregateInput = {
+  subTotal?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  shippingAmount?: Prisma.SortOrder
+  taxAmount?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
-  commissionAmount?: Prisma.SortOrder
 }
 
 export type MarketplaceOrderMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   buyerId?: Prisma.SortOrder
+  subTotal?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  shippingAmount?: Prisma.SortOrder
+  taxAmount?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
-  commissionAmount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   paymentIntentId?: Prisma.SortOrder
-  shippingAddress?: Prisma.SortOrder
-  trackingNumber?: Prisma.SortOrder
-  carrier?: Prisma.SortOrder
+  shippingAddressId?: Prisma.SortOrder
+  billingAddressId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -480,20 +541,25 @@ export type MarketplaceOrderMaxOrderByAggregateInput = {
 export type MarketplaceOrderMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   buyerId?: Prisma.SortOrder
+  subTotal?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  shippingAmount?: Prisma.SortOrder
+  taxAmount?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
-  commissionAmount?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   paymentIntentId?: Prisma.SortOrder
-  shippingAddress?: Prisma.SortOrder
-  trackingNumber?: Prisma.SortOrder
-  carrier?: Prisma.SortOrder
+  shippingAddressId?: Prisma.SortOrder
+  billingAddressId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type MarketplaceOrderSumOrderByAggregateInput = {
+  subTotal?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  shippingAmount?: Prisma.SortOrder
+  taxAmount?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
-  commissionAmount?: Prisma.SortOrder
 }
 
 export type MarketplaceOrderScalarRelationFilter = {
@@ -511,8 +577,8 @@ export type MarketplaceOrderOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type EnumOrderStatusFieldUpdateOperationsInput = {
-  set?: $Enums.OrderStatus
+export type EnumPaymentStatusFieldUpdateOperationsInput = {
+  set?: $Enums.PaymentStatus
 }
 
 export type MarketplaceOrderCreateNestedOneWithoutItemsInput = {
@@ -571,30 +637,118 @@ export type MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput = {
   deleteMany?: Prisma.MarketplaceOrderScalarWhereInput | Prisma.MarketplaceOrderScalarWhereInput[]
 }
 
+export type MarketplaceOrderCreateNestedManyWithoutShippingAddressInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput> | Prisma.MarketplaceOrderCreateWithoutShippingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyShippingAddressInputEnvelope
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+}
+
+export type MarketplaceOrderCreateNestedManyWithoutBillingAddressInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput> | Prisma.MarketplaceOrderCreateWithoutBillingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyBillingAddressInputEnvelope
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+}
+
+export type MarketplaceOrderUncheckedCreateNestedManyWithoutShippingAddressInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput> | Prisma.MarketplaceOrderCreateWithoutShippingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyShippingAddressInputEnvelope
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+}
+
+export type MarketplaceOrderUncheckedCreateNestedManyWithoutBillingAddressInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput> | Prisma.MarketplaceOrderCreateWithoutBillingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyBillingAddressInputEnvelope
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+}
+
+export type MarketplaceOrderUpdateManyWithoutShippingAddressNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput> | Prisma.MarketplaceOrderCreateWithoutShippingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput[]
+  upsert?: Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutShippingAddressInput | Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutShippingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyShippingAddressInputEnvelope
+  set?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  disconnect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  delete?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  update?: Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutShippingAddressInput | Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutShippingAddressInput[]
+  updateMany?: Prisma.MarketplaceOrderUpdateManyWithWhereWithoutShippingAddressInput | Prisma.MarketplaceOrderUpdateManyWithWhereWithoutShippingAddressInput[]
+  deleteMany?: Prisma.MarketplaceOrderScalarWhereInput | Prisma.MarketplaceOrderScalarWhereInput[]
+}
+
+export type MarketplaceOrderUpdateManyWithoutBillingAddressNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput> | Prisma.MarketplaceOrderCreateWithoutBillingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput[]
+  upsert?: Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutBillingAddressInput | Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutBillingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyBillingAddressInputEnvelope
+  set?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  disconnect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  delete?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  update?: Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutBillingAddressInput | Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutBillingAddressInput[]
+  updateMany?: Prisma.MarketplaceOrderUpdateManyWithWhereWithoutBillingAddressInput | Prisma.MarketplaceOrderUpdateManyWithWhereWithoutBillingAddressInput[]
+  deleteMany?: Prisma.MarketplaceOrderScalarWhereInput | Prisma.MarketplaceOrderScalarWhereInput[]
+}
+
+export type MarketplaceOrderUncheckedUpdateManyWithoutShippingAddressNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput> | Prisma.MarketplaceOrderCreateWithoutShippingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutShippingAddressInput[]
+  upsert?: Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutShippingAddressInput | Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutShippingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyShippingAddressInputEnvelope
+  set?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  disconnect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  delete?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  update?: Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutShippingAddressInput | Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutShippingAddressInput[]
+  updateMany?: Prisma.MarketplaceOrderUpdateManyWithWhereWithoutShippingAddressInput | Prisma.MarketplaceOrderUpdateManyWithWhereWithoutShippingAddressInput[]
+  deleteMany?: Prisma.MarketplaceOrderScalarWhereInput | Prisma.MarketplaceOrderScalarWhereInput[]
+}
+
+export type MarketplaceOrderUncheckedUpdateManyWithoutBillingAddressNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput> | Prisma.MarketplaceOrderCreateWithoutBillingAddressInput[] | Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput[]
+  connectOrCreate?: Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput | Prisma.MarketplaceOrderCreateOrConnectWithoutBillingAddressInput[]
+  upsert?: Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutBillingAddressInput | Prisma.MarketplaceOrderUpsertWithWhereUniqueWithoutBillingAddressInput[]
+  createMany?: Prisma.MarketplaceOrderCreateManyBillingAddressInputEnvelope
+  set?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  disconnect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  delete?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  connect?: Prisma.MarketplaceOrderWhereUniqueInput | Prisma.MarketplaceOrderWhereUniqueInput[]
+  update?: Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutBillingAddressInput | Prisma.MarketplaceOrderUpdateWithWhereUniqueWithoutBillingAddressInput[]
+  updateMany?: Prisma.MarketplaceOrderUpdateManyWithWhereWithoutBillingAddressInput | Prisma.MarketplaceOrderUpdateManyWithWhereWithoutBillingAddressInput[]
+  deleteMany?: Prisma.MarketplaceOrderScalarWhereInput | Prisma.MarketplaceOrderScalarWhereInput[]
+}
+
 export type MarketplaceOrderCreateWithoutItemsInput = {
   id?: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   buyer: Prisma.UserCreateNestedOneWithoutOrdersInput
+  shippingAddress: Prisma.UserAddressCreateNestedOneWithoutShippingOrdersInput
+  billingAddress?: Prisma.UserAddressCreateNestedOneWithoutBillingOrdersInput
 }
 
 export type MarketplaceOrderUncheckedCreateWithoutItemsInput = {
   id?: string
   buyerId: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
+  shippingAddressId: string
+  billingAddressId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -617,55 +771,63 @@ export type MarketplaceOrderUpdateToOneWithWhereWithoutItemsInput = {
 
 export type MarketplaceOrderUpdateWithoutItemsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   buyer?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
+  shippingAddress?: Prisma.UserAddressUpdateOneRequiredWithoutShippingOrdersNestedInput
+  billingAddress?: Prisma.UserAddressUpdateOneWithoutBillingOrdersNestedInput
 }
 
 export type MarketplaceOrderUncheckedUpdateWithoutItemsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shippingAddressId?: Prisma.StringFieldUpdateOperationsInput | string
+  billingAddressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type MarketplaceOrderCreateWithoutBuyerInput = {
   id?: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  shippingAddress: Prisma.UserAddressCreateNestedOneWithoutShippingOrdersInput
+  billingAddress?: Prisma.UserAddressCreateNestedOneWithoutBillingOrdersInput
   items?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutOrderInput
 }
 
 export type MarketplaceOrderUncheckedCreateWithoutBuyerInput = {
   id?: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
+  shippingAddressId: string
+  billingAddressId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutOrderInput
@@ -703,53 +865,177 @@ export type MarketplaceOrderScalarWhereInput = {
   NOT?: Prisma.MarketplaceOrderScalarWhereInput | Prisma.MarketplaceOrderScalarWhereInput[]
   id?: Prisma.StringFilter<"MarketplaceOrder"> | string
   buyerId?: Prisma.StringFilter<"MarketplaceOrder"> | string
+  subTotal?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFilter<"MarketplaceOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFilter<"MarketplaceOrder"> | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFilter<"MarketplaceOrder"> | $Enums.PaymentStatus
   paymentIntentId?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
-  shippingAddress?: Prisma.StringFilter<"MarketplaceOrder"> | string
-  trackingNumber?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
-  carrier?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
+  shippingAddressId?: Prisma.StringFilter<"MarketplaceOrder"> | string
+  billingAddressId?: Prisma.StringNullableFilter<"MarketplaceOrder"> | string | null
   createdAt?: Prisma.DateTimeFilter<"MarketplaceOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MarketplaceOrder"> | Date | string
 }
 
+export type MarketplaceOrderCreateWithoutShippingAddressInput = {
+  id?: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: $Enums.PaymentStatus
+  paymentIntentId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  buyer: Prisma.UserCreateNestedOneWithoutOrdersInput
+  billingAddress?: Prisma.UserAddressCreateNestedOneWithoutBillingOrdersInput
+  items?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutOrderInput
+}
+
+export type MarketplaceOrderUncheckedCreateWithoutShippingAddressInput = {
+  id?: string
+  buyerId: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: $Enums.PaymentStatus
+  paymentIntentId?: string | null
+  billingAddressId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  items?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutOrderInput
+}
+
+export type MarketplaceOrderCreateOrConnectWithoutShippingAddressInput = {
+  where: Prisma.MarketplaceOrderWhereUniqueInput
+  create: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput>
+}
+
+export type MarketplaceOrderCreateManyShippingAddressInputEnvelope = {
+  data: Prisma.MarketplaceOrderCreateManyShippingAddressInput | Prisma.MarketplaceOrderCreateManyShippingAddressInput[]
+  skipDuplicates?: boolean
+}
+
+export type MarketplaceOrderCreateWithoutBillingAddressInput = {
+  id?: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: $Enums.PaymentStatus
+  paymentIntentId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  buyer: Prisma.UserCreateNestedOneWithoutOrdersInput
+  shippingAddress: Prisma.UserAddressCreateNestedOneWithoutShippingOrdersInput
+  items?: Prisma.MarketplaceOrderItemCreateNestedManyWithoutOrderInput
+}
+
+export type MarketplaceOrderUncheckedCreateWithoutBillingAddressInput = {
+  id?: string
+  buyerId: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: $Enums.PaymentStatus
+  paymentIntentId?: string | null
+  shippingAddressId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  items?: Prisma.MarketplaceOrderItemUncheckedCreateNestedManyWithoutOrderInput
+}
+
+export type MarketplaceOrderCreateOrConnectWithoutBillingAddressInput = {
+  where: Prisma.MarketplaceOrderWhereUniqueInput
+  create: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput>
+}
+
+export type MarketplaceOrderCreateManyBillingAddressInputEnvelope = {
+  data: Prisma.MarketplaceOrderCreateManyBillingAddressInput | Prisma.MarketplaceOrderCreateManyBillingAddressInput[]
+  skipDuplicates?: boolean
+}
+
+export type MarketplaceOrderUpsertWithWhereUniqueWithoutShippingAddressInput = {
+  where: Prisma.MarketplaceOrderWhereUniqueInput
+  update: Prisma.XOR<Prisma.MarketplaceOrderUpdateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedUpdateWithoutShippingAddressInput>
+  create: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutShippingAddressInput>
+}
+
+export type MarketplaceOrderUpdateWithWhereUniqueWithoutShippingAddressInput = {
+  where: Prisma.MarketplaceOrderWhereUniqueInput
+  data: Prisma.XOR<Prisma.MarketplaceOrderUpdateWithoutShippingAddressInput, Prisma.MarketplaceOrderUncheckedUpdateWithoutShippingAddressInput>
+}
+
+export type MarketplaceOrderUpdateManyWithWhereWithoutShippingAddressInput = {
+  where: Prisma.MarketplaceOrderScalarWhereInput
+  data: Prisma.XOR<Prisma.MarketplaceOrderUpdateManyMutationInput, Prisma.MarketplaceOrderUncheckedUpdateManyWithoutShippingAddressInput>
+}
+
+export type MarketplaceOrderUpsertWithWhereUniqueWithoutBillingAddressInput = {
+  where: Prisma.MarketplaceOrderWhereUniqueInput
+  update: Prisma.XOR<Prisma.MarketplaceOrderUpdateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedUpdateWithoutBillingAddressInput>
+  create: Prisma.XOR<Prisma.MarketplaceOrderCreateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedCreateWithoutBillingAddressInput>
+}
+
+export type MarketplaceOrderUpdateWithWhereUniqueWithoutBillingAddressInput = {
+  where: Prisma.MarketplaceOrderWhereUniqueInput
+  data: Prisma.XOR<Prisma.MarketplaceOrderUpdateWithoutBillingAddressInput, Prisma.MarketplaceOrderUncheckedUpdateWithoutBillingAddressInput>
+}
+
+export type MarketplaceOrderUpdateManyWithWhereWithoutBillingAddressInput = {
+  where: Prisma.MarketplaceOrderScalarWhereInput
+  data: Prisma.XOR<Prisma.MarketplaceOrderUpdateManyMutationInput, Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBillingAddressInput>
+}
+
 export type MarketplaceOrderCreateManyBuyerInput = {
   id?: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: $Enums.OrderStatus
+  paymentStatus?: $Enums.PaymentStatus
   paymentIntentId?: string | null
-  shippingAddress: string
-  trackingNumber?: string | null
-  carrier?: string | null
+  shippingAddressId: string
+  billingAddressId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type MarketplaceOrderUpdateWithoutBuyerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shippingAddress?: Prisma.UserAddressUpdateOneRequiredWithoutShippingOrdersNestedInput
+  billingAddress?: Prisma.UserAddressUpdateOneWithoutBillingOrdersNestedInput
   items?: Prisma.MarketplaceOrderItemUpdateManyWithoutOrderNestedInput
 }
 
 export type MarketplaceOrderUncheckedUpdateWithoutBuyerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shippingAddressId?: Prisma.StringFieldUpdateOperationsInput | string
+  billingAddressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutOrderNestedInput
@@ -757,13 +1043,139 @@ export type MarketplaceOrderUncheckedUpdateWithoutBuyerInput = {
 
 export type MarketplaceOrderUncheckedUpdateManyWithoutBuyerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  commissionAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shippingAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  trackingNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carrier?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shippingAddressId?: Prisma.StringFieldUpdateOperationsInput | string
+  billingAddressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type MarketplaceOrderCreateManyShippingAddressInput = {
+  id?: string
+  buyerId: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: $Enums.PaymentStatus
+  paymentIntentId?: string | null
+  billingAddressId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type MarketplaceOrderCreateManyBillingAddressInput = {
+  id?: string
+  buyerId: string
+  subTotal: runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: $Enums.PaymentStatus
+  paymentIntentId?: string | null
+  shippingAddressId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type MarketplaceOrderUpdateWithoutShippingAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  buyer?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
+  billingAddress?: Prisma.UserAddressUpdateOneWithoutBillingOrdersNestedInput
+  items?: Prisma.MarketplaceOrderItemUpdateManyWithoutOrderNestedInput
+}
+
+export type MarketplaceOrderUncheckedUpdateWithoutShippingAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  billingAddressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  items?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutOrderNestedInput
+}
+
+export type MarketplaceOrderUncheckedUpdateManyWithoutShippingAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  billingAddressId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type MarketplaceOrderUpdateWithoutBillingAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  buyer?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
+  shippingAddress?: Prisma.UserAddressUpdateOneRequiredWithoutShippingOrdersNestedInput
+  items?: Prisma.MarketplaceOrderItemUpdateManyWithoutOrderNestedInput
+}
+
+export type MarketplaceOrderUncheckedUpdateWithoutBillingAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shippingAddressId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  items?: Prisma.MarketplaceOrderItemUncheckedUpdateManyWithoutOrderNestedInput
+}
+
+export type MarketplaceOrderUncheckedUpdateManyWithoutBillingAddressInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  buyerId?: Prisma.StringFieldUpdateOperationsInput | string
+  subTotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  discountAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shippingAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  taxAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  paymentIntentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shippingAddressId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -802,16 +1214,20 @@ export type MarketplaceOrderCountOutputTypeCountItemsArgs<ExtArgs extends runtim
 export type MarketplaceOrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   buyerId?: boolean
+  subTotal?: boolean
+  discountAmount?: boolean
+  shippingAmount?: boolean
+  taxAmount?: boolean
   totalAmount?: boolean
-  commissionAmount?: boolean
-  status?: boolean
+  paymentStatus?: boolean
   paymentIntentId?: boolean
-  shippingAddress?: boolean
-  trackingNumber?: boolean
-  carrier?: boolean
+  shippingAddressId?: boolean
+  billingAddressId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   buyer?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  shippingAddress?: boolean | Prisma.UserAddressDefaultArgs<ExtArgs>
+  billingAddress?: boolean | Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs>
   items?: boolean | Prisma.MarketplaceOrder$itemsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketplaceOrderCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["marketplaceOrder"]>
@@ -819,76 +1235,96 @@ export type MarketplaceOrderSelect<ExtArgs extends runtime.Types.Extensions.Inte
 export type MarketplaceOrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   buyerId?: boolean
+  subTotal?: boolean
+  discountAmount?: boolean
+  shippingAmount?: boolean
+  taxAmount?: boolean
   totalAmount?: boolean
-  commissionAmount?: boolean
-  status?: boolean
+  paymentStatus?: boolean
   paymentIntentId?: boolean
-  shippingAddress?: boolean
-  trackingNumber?: boolean
-  carrier?: boolean
+  shippingAddressId?: boolean
+  billingAddressId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   buyer?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  shippingAddress?: boolean | Prisma.UserAddressDefaultArgs<ExtArgs>
+  billingAddress?: boolean | Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs>
 }, ExtArgs["result"]["marketplaceOrder"]>
 
 export type MarketplaceOrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   buyerId?: boolean
+  subTotal?: boolean
+  discountAmount?: boolean
+  shippingAmount?: boolean
+  taxAmount?: boolean
   totalAmount?: boolean
-  commissionAmount?: boolean
-  status?: boolean
+  paymentStatus?: boolean
   paymentIntentId?: boolean
-  shippingAddress?: boolean
-  trackingNumber?: boolean
-  carrier?: boolean
+  shippingAddressId?: boolean
+  billingAddressId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   buyer?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  shippingAddress?: boolean | Prisma.UserAddressDefaultArgs<ExtArgs>
+  billingAddress?: boolean | Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs>
 }, ExtArgs["result"]["marketplaceOrder"]>
 
 export type MarketplaceOrderSelectScalar = {
   id?: boolean
   buyerId?: boolean
+  subTotal?: boolean
+  discountAmount?: boolean
+  shippingAmount?: boolean
+  taxAmount?: boolean
   totalAmount?: boolean
-  commissionAmount?: boolean
-  status?: boolean
+  paymentStatus?: boolean
   paymentIntentId?: boolean
-  shippingAddress?: boolean
-  trackingNumber?: boolean
-  carrier?: boolean
+  shippingAddressId?: boolean
+  billingAddressId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type MarketplaceOrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "buyerId" | "totalAmount" | "commissionAmount" | "status" | "paymentIntentId" | "shippingAddress" | "trackingNumber" | "carrier" | "createdAt" | "updatedAt", ExtArgs["result"]["marketplaceOrder"]>
+export type MarketplaceOrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "buyerId" | "subTotal" | "discountAmount" | "shippingAmount" | "taxAmount" | "totalAmount" | "paymentStatus" | "paymentIntentId" | "shippingAddressId" | "billingAddressId" | "createdAt" | "updatedAt", ExtArgs["result"]["marketplaceOrder"]>
 export type MarketplaceOrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   buyer?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  shippingAddress?: boolean | Prisma.UserAddressDefaultArgs<ExtArgs>
+  billingAddress?: boolean | Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs>
   items?: boolean | Prisma.MarketplaceOrder$itemsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketplaceOrderCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MarketplaceOrderIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   buyer?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  shippingAddress?: boolean | Prisma.UserAddressDefaultArgs<ExtArgs>
+  billingAddress?: boolean | Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs>
 }
 export type MarketplaceOrderIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   buyer?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  shippingAddress?: boolean | Prisma.UserAddressDefaultArgs<ExtArgs>
+  billingAddress?: boolean | Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs>
 }
 
 export type $MarketplaceOrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "MarketplaceOrder"
   objects: {
     buyer: Prisma.$UserPayload<ExtArgs>
+    shippingAddress: Prisma.$UserAddressPayload<ExtArgs>
+    billingAddress: Prisma.$UserAddressPayload<ExtArgs> | null
     items: Prisma.$MarketplaceOrderItemPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     buyerId: string
+    subTotal: runtime.Decimal
+    discountAmount: runtime.Decimal
+    shippingAmount: runtime.Decimal
+    taxAmount: runtime.Decimal
     totalAmount: runtime.Decimal
-    commissionAmount: runtime.Decimal
-    status: $Enums.OrderStatus
+    paymentStatus: $Enums.PaymentStatus
     paymentIntentId: string | null
-    shippingAddress: string
-    trackingNumber: string | null
-    carrier: string | null
+    shippingAddressId: string
+    billingAddressId: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["marketplaceOrder"]>
@@ -1286,6 +1722,8 @@ readonly fields: MarketplaceOrderFieldRefs;
 export interface Prisma__MarketplaceOrderClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   buyer<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  shippingAddress<T extends Prisma.UserAddressDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserAddressDefaultArgs<ExtArgs>>): Prisma.Prisma__UserAddressClient<runtime.Types.Result.GetResult<Prisma.$UserAddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  billingAddress<T extends Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceOrder$billingAddressArgs<ExtArgs>>): Prisma.Prisma__UserAddressClient<runtime.Types.Result.GetResult<Prisma.$UserAddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   items<T extends Prisma.MarketplaceOrder$itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceOrder$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketplaceOrderItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1318,13 +1756,15 @@ export interface Prisma__MarketplaceOrderClient<T, Null = never, ExtArgs extends
 export interface MarketplaceOrderFieldRefs {
   readonly id: Prisma.FieldRef<"MarketplaceOrder", 'String'>
   readonly buyerId: Prisma.FieldRef<"MarketplaceOrder", 'String'>
+  readonly subTotal: Prisma.FieldRef<"MarketplaceOrder", 'Decimal'>
+  readonly discountAmount: Prisma.FieldRef<"MarketplaceOrder", 'Decimal'>
+  readonly shippingAmount: Prisma.FieldRef<"MarketplaceOrder", 'Decimal'>
+  readonly taxAmount: Prisma.FieldRef<"MarketplaceOrder", 'Decimal'>
   readonly totalAmount: Prisma.FieldRef<"MarketplaceOrder", 'Decimal'>
-  readonly commissionAmount: Prisma.FieldRef<"MarketplaceOrder", 'Decimal'>
-  readonly status: Prisma.FieldRef<"MarketplaceOrder", 'OrderStatus'>
+  readonly paymentStatus: Prisma.FieldRef<"MarketplaceOrder", 'PaymentStatus'>
   readonly paymentIntentId: Prisma.FieldRef<"MarketplaceOrder", 'String'>
-  readonly shippingAddress: Prisma.FieldRef<"MarketplaceOrder", 'String'>
-  readonly trackingNumber: Prisma.FieldRef<"MarketplaceOrder", 'String'>
-  readonly carrier: Prisma.FieldRef<"MarketplaceOrder", 'String'>
+  readonly shippingAddressId: Prisma.FieldRef<"MarketplaceOrder", 'String'>
+  readonly billingAddressId: Prisma.FieldRef<"MarketplaceOrder", 'String'>
   readonly createdAt: Prisma.FieldRef<"MarketplaceOrder", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"MarketplaceOrder", 'DateTime'>
 }
@@ -1725,6 +2165,25 @@ export type MarketplaceOrderDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many MarketplaceOrders to delete.
    */
   limit?: number
+}
+
+/**
+ * MarketplaceOrder.billingAddress
+ */
+export type MarketplaceOrder$billingAddressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserAddress
+   */
+  select?: Prisma.UserAddressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserAddress
+   */
+  omit?: Prisma.UserAddressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserAddressInclude<ExtArgs> | null
+  where?: Prisma.UserAddressWhereInput
 }
 
 /**

@@ -51,7 +51,14 @@ export const OrderStatus = {
     PAID: 'PAID',
     SHIPPED: 'SHIPPED',
     DELIVERED: 'DELIVERED',
-    CANCELLED: 'CANCELLED'
+    CANCELLED: 'CANCELLED',
+    RETURNED: 'RETURNED'
+};
+export const PaymentStatus = {
+    PENDING: 'PENDING',
+    PAID: 'PAID',
+    FAILED: 'FAILED',
+    REFUNDED: 'REFUNDED'
 };
 export const PlanType = {
     CATTLE_LISTING: 'CATTLE_LISTING',

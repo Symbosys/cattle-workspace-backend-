@@ -24,6 +24,8 @@ export type ProductReviewMinAggregateOutputType = {
     userId: string | null;
     rating: number | null;
     comment: string | null;
+    isVerifiedPurchase: boolean | null;
+    sellerReply: string | null;
     createdAt: Date | null;
 };
 export type ProductReviewMaxAggregateOutputType = {
@@ -32,6 +34,8 @@ export type ProductReviewMaxAggregateOutputType = {
     userId: string | null;
     rating: number | null;
     comment: string | null;
+    isVerifiedPurchase: boolean | null;
+    sellerReply: string | null;
     createdAt: Date | null;
 };
 export type ProductReviewCountAggregateOutputType = {
@@ -40,6 +44,9 @@ export type ProductReviewCountAggregateOutputType = {
     userId: number;
     rating: number;
     comment: number;
+    images: number;
+    isVerifiedPurchase: number;
+    sellerReply: number;
     createdAt: number;
     _all: number;
 };
@@ -55,6 +62,8 @@ export type ProductReviewMinAggregateInputType = {
     userId?: true;
     rating?: true;
     comment?: true;
+    isVerifiedPurchase?: true;
+    sellerReply?: true;
     createdAt?: true;
 };
 export type ProductReviewMaxAggregateInputType = {
@@ -63,6 +72,8 @@ export type ProductReviewMaxAggregateInputType = {
     userId?: true;
     rating?: true;
     comment?: true;
+    isVerifiedPurchase?: true;
+    sellerReply?: true;
     createdAt?: true;
 };
 export type ProductReviewCountAggregateInputType = {
@@ -71,6 +82,9 @@ export type ProductReviewCountAggregateInputType = {
     userId?: true;
     rating?: true;
     comment?: true;
+    images?: true;
+    isVerifiedPurchase?: true;
+    sellerReply?: true;
     createdAt?: true;
     _all?: true;
 };
@@ -156,6 +170,9 @@ export type ProductReviewGroupByOutputType = {
     userId: string;
     rating: number;
     comment: string | null;
+    images: runtime.JsonValue | null;
+    isVerifiedPurchase: boolean;
+    sellerReply: string | null;
     createdAt: Date;
     _count: ProductReviewCountAggregateOutputType | null;
     _avg: ProductReviewAvgAggregateOutputType | null;
@@ -175,8 +192,12 @@ export type ProductReviewWhereInput = {
     userId?: Prisma.StringFilter<"ProductReview"> | string;
     rating?: Prisma.IntFilter<"ProductReview"> | number;
     comment?: Prisma.StringNullableFilter<"ProductReview"> | string | null;
+    images?: Prisma.JsonNullableFilter<"ProductReview">;
+    isVerifiedPurchase?: Prisma.BoolFilter<"ProductReview"> | boolean;
+    sellerReply?: Prisma.StringNullableFilter<"ProductReview"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"ProductReview"> | Date | string;
     product?: Prisma.XOR<Prisma.MarketplaceProductScalarRelationFilter, Prisma.MarketplaceProductWhereInput>;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
 export type ProductReviewOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -184,8 +205,12 @@ export type ProductReviewOrderByWithRelationInput = {
     userId?: Prisma.SortOrder;
     rating?: Prisma.SortOrder;
     comment?: Prisma.SortOrderInput | Prisma.SortOrder;
+    images?: Prisma.SortOrderInput | Prisma.SortOrder;
+    isVerifiedPurchase?: Prisma.SortOrder;
+    sellerReply?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     product?: Prisma.MarketplaceProductOrderByWithRelationInput;
+    user?: Prisma.UserOrderByWithRelationInput;
 };
 export type ProductReviewWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -196,8 +221,12 @@ export type ProductReviewWhereUniqueInput = Prisma.AtLeast<{
     userId?: Prisma.StringFilter<"ProductReview"> | string;
     rating?: Prisma.IntFilter<"ProductReview"> | number;
     comment?: Prisma.StringNullableFilter<"ProductReview"> | string | null;
+    images?: Prisma.JsonNullableFilter<"ProductReview">;
+    isVerifiedPurchase?: Prisma.BoolFilter<"ProductReview"> | boolean;
+    sellerReply?: Prisma.StringNullableFilter<"ProductReview"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"ProductReview"> | Date | string;
     product?: Prisma.XOR<Prisma.MarketplaceProductScalarRelationFilter, Prisma.MarketplaceProductWhereInput>;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 }, "id">;
 export type ProductReviewOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -205,6 +234,9 @@ export type ProductReviewOrderByWithAggregationInput = {
     userId?: Prisma.SortOrder;
     rating?: Prisma.SortOrder;
     comment?: Prisma.SortOrderInput | Prisma.SortOrder;
+    images?: Prisma.SortOrderInput | Prisma.SortOrder;
+    isVerifiedPurchase?: Prisma.SortOrder;
+    sellerReply?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     _count?: Prisma.ProductReviewCountOrderByAggregateInput;
     _avg?: Prisma.ProductReviewAvgOrderByAggregateInput;
@@ -221,15 +253,21 @@ export type ProductReviewScalarWhereWithAggregatesInput = {
     userId?: Prisma.StringWithAggregatesFilter<"ProductReview"> | string;
     rating?: Prisma.IntWithAggregatesFilter<"ProductReview"> | number;
     comment?: Prisma.StringNullableWithAggregatesFilter<"ProductReview"> | string | null;
+    images?: Prisma.JsonNullableWithAggregatesFilter<"ProductReview">;
+    isVerifiedPurchase?: Prisma.BoolWithAggregatesFilter<"ProductReview"> | boolean;
+    sellerReply?: Prisma.StringNullableWithAggregatesFilter<"ProductReview"> | string | null;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"ProductReview"> | Date | string;
 };
 export type ProductReviewCreateInput = {
     id?: string;
-    userId: string;
     rating: number;
     comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
     createdAt?: Date | string;
     product: Prisma.MarketplaceProductCreateNestedOneWithoutReviewsInput;
+    user: Prisma.UserCreateNestedOneWithoutReviewsInput;
 };
 export type ProductReviewUncheckedCreateInput = {
     id?: string;
@@ -237,15 +275,21 @@ export type ProductReviewUncheckedCreateInput = {
     userId: string;
     rating: number;
     comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
     createdAt?: Date | string;
 };
 export type ProductReviewUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    userId?: Prisma.StringFieldUpdateOperationsInput | string;
     rating?: Prisma.IntFieldUpdateOperationsInput | number;
     comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     product?: Prisma.MarketplaceProductUpdateOneRequiredWithoutReviewsNestedInput;
+    user?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput;
 };
 export type ProductReviewUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -253,6 +297,9 @@ export type ProductReviewUncheckedUpdateInput = {
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
     rating?: Prisma.IntFieldUpdateOperationsInput | number;
     comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProductReviewCreateManyInput = {
@@ -261,13 +308,18 @@ export type ProductReviewCreateManyInput = {
     userId: string;
     rating: number;
     comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
     createdAt?: Date | string;
 };
 export type ProductReviewUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    userId?: Prisma.StringFieldUpdateOperationsInput | string;
     rating?: Prisma.IntFieldUpdateOperationsInput | number;
     comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProductReviewUncheckedUpdateManyInput = {
@@ -276,6 +328,9 @@ export type ProductReviewUncheckedUpdateManyInput = {
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
     rating?: Prisma.IntFieldUpdateOperationsInput | number;
     comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProductReviewListRelationFilter = {
@@ -292,6 +347,9 @@ export type ProductReviewCountOrderByAggregateInput = {
     userId?: Prisma.SortOrder;
     rating?: Prisma.SortOrder;
     comment?: Prisma.SortOrder;
+    images?: Prisma.SortOrder;
+    isVerifiedPurchase?: Prisma.SortOrder;
+    sellerReply?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
 };
 export type ProductReviewAvgOrderByAggregateInput = {
@@ -303,6 +361,8 @@ export type ProductReviewMaxOrderByAggregateInput = {
     userId?: Prisma.SortOrder;
     rating?: Prisma.SortOrder;
     comment?: Prisma.SortOrder;
+    isVerifiedPurchase?: Prisma.SortOrder;
+    sellerReply?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
 };
 export type ProductReviewMinOrderByAggregateInput = {
@@ -311,6 +371,8 @@ export type ProductReviewMinOrderByAggregateInput = {
     userId?: Prisma.SortOrder;
     rating?: Prisma.SortOrder;
     comment?: Prisma.SortOrder;
+    isVerifiedPurchase?: Prisma.SortOrder;
+    sellerReply?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
 };
 export type ProductReviewSumOrderByAggregateInput = {
@@ -354,18 +416,62 @@ export type ProductReviewUncheckedUpdateManyWithoutProductNestedInput = {
     updateMany?: Prisma.ProductReviewUpdateManyWithWhereWithoutProductInput | Prisma.ProductReviewUpdateManyWithWhereWithoutProductInput[];
     deleteMany?: Prisma.ProductReviewScalarWhereInput | Prisma.ProductReviewScalarWhereInput[];
 };
+export type ProductReviewCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.ProductReviewCreateWithoutUserInput, Prisma.ProductReviewUncheckedCreateWithoutUserInput> | Prisma.ProductReviewCreateWithoutUserInput[] | Prisma.ProductReviewUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.ProductReviewCreateOrConnectWithoutUserInput | Prisma.ProductReviewCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.ProductReviewCreateManyUserInputEnvelope;
+    connect?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+};
+export type ProductReviewUncheckedCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.ProductReviewCreateWithoutUserInput, Prisma.ProductReviewUncheckedCreateWithoutUserInput> | Prisma.ProductReviewCreateWithoutUserInput[] | Prisma.ProductReviewUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.ProductReviewCreateOrConnectWithoutUserInput | Prisma.ProductReviewCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.ProductReviewCreateManyUserInputEnvelope;
+    connect?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+};
+export type ProductReviewUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.ProductReviewCreateWithoutUserInput, Prisma.ProductReviewUncheckedCreateWithoutUserInput> | Prisma.ProductReviewCreateWithoutUserInput[] | Prisma.ProductReviewUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.ProductReviewCreateOrConnectWithoutUserInput | Prisma.ProductReviewCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.ProductReviewUpsertWithWhereUniqueWithoutUserInput | Prisma.ProductReviewUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.ProductReviewCreateManyUserInputEnvelope;
+    set?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    disconnect?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    delete?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    connect?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    update?: Prisma.ProductReviewUpdateWithWhereUniqueWithoutUserInput | Prisma.ProductReviewUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.ProductReviewUpdateManyWithWhereWithoutUserInput | Prisma.ProductReviewUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.ProductReviewScalarWhereInput | Prisma.ProductReviewScalarWhereInput[];
+};
+export type ProductReviewUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.ProductReviewCreateWithoutUserInput, Prisma.ProductReviewUncheckedCreateWithoutUserInput> | Prisma.ProductReviewCreateWithoutUserInput[] | Prisma.ProductReviewUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.ProductReviewCreateOrConnectWithoutUserInput | Prisma.ProductReviewCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.ProductReviewUpsertWithWhereUniqueWithoutUserInput | Prisma.ProductReviewUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.ProductReviewCreateManyUserInputEnvelope;
+    set?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    disconnect?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    delete?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    connect?: Prisma.ProductReviewWhereUniqueInput | Prisma.ProductReviewWhereUniqueInput[];
+    update?: Prisma.ProductReviewUpdateWithWhereUniqueWithoutUserInput | Prisma.ProductReviewUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.ProductReviewUpdateManyWithWhereWithoutUserInput | Prisma.ProductReviewUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.ProductReviewScalarWhereInput | Prisma.ProductReviewScalarWhereInput[];
+};
 export type ProductReviewCreateWithoutProductInput = {
     id?: string;
-    userId: string;
     rating: number;
     comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
     createdAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutReviewsInput;
 };
 export type ProductReviewUncheckedCreateWithoutProductInput = {
     id?: string;
     userId: string;
     rating: number;
     comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
     createdAt?: Date | string;
 };
 export type ProductReviewCreateOrConnectWithoutProductInput = {
@@ -398,27 +504,80 @@ export type ProductReviewScalarWhereInput = {
     userId?: Prisma.StringFilter<"ProductReview"> | string;
     rating?: Prisma.IntFilter<"ProductReview"> | number;
     comment?: Prisma.StringNullableFilter<"ProductReview"> | string | null;
+    images?: Prisma.JsonNullableFilter<"ProductReview">;
+    isVerifiedPurchase?: Prisma.BoolFilter<"ProductReview"> | boolean;
+    sellerReply?: Prisma.StringNullableFilter<"ProductReview"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"ProductReview"> | Date | string;
+};
+export type ProductReviewCreateWithoutUserInput = {
+    id?: string;
+    rating: number;
+    comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
+    createdAt?: Date | string;
+    product: Prisma.MarketplaceProductCreateNestedOneWithoutReviewsInput;
+};
+export type ProductReviewUncheckedCreateWithoutUserInput = {
+    id?: string;
+    productId: string;
+    rating: number;
+    comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
+    createdAt?: Date | string;
+};
+export type ProductReviewCreateOrConnectWithoutUserInput = {
+    where: Prisma.ProductReviewWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ProductReviewCreateWithoutUserInput, Prisma.ProductReviewUncheckedCreateWithoutUserInput>;
+};
+export type ProductReviewCreateManyUserInputEnvelope = {
+    data: Prisma.ProductReviewCreateManyUserInput | Prisma.ProductReviewCreateManyUserInput[];
+    skipDuplicates?: boolean;
+};
+export type ProductReviewUpsertWithWhereUniqueWithoutUserInput = {
+    where: Prisma.ProductReviewWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ProductReviewUpdateWithoutUserInput, Prisma.ProductReviewUncheckedUpdateWithoutUserInput>;
+    create: Prisma.XOR<Prisma.ProductReviewCreateWithoutUserInput, Prisma.ProductReviewUncheckedCreateWithoutUserInput>;
+};
+export type ProductReviewUpdateWithWhereUniqueWithoutUserInput = {
+    where: Prisma.ProductReviewWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ProductReviewUpdateWithoutUserInput, Prisma.ProductReviewUncheckedUpdateWithoutUserInput>;
+};
+export type ProductReviewUpdateManyWithWhereWithoutUserInput = {
+    where: Prisma.ProductReviewScalarWhereInput;
+    data: Prisma.XOR<Prisma.ProductReviewUpdateManyMutationInput, Prisma.ProductReviewUncheckedUpdateManyWithoutUserInput>;
 };
 export type ProductReviewCreateManyProductInput = {
     id?: string;
     userId: string;
     rating: number;
     comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
     createdAt?: Date | string;
 };
 export type ProductReviewUpdateWithoutProductInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    userId?: Prisma.StringFieldUpdateOperationsInput | string;
     rating?: Prisma.IntFieldUpdateOperationsInput | number;
     comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput;
 };
 export type ProductReviewUncheckedUpdateWithoutProductInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
     rating?: Prisma.IntFieldUpdateOperationsInput | number;
     comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProductReviewUncheckedUpdateManyWithoutProductInput = {
@@ -426,6 +585,49 @@ export type ProductReviewUncheckedUpdateManyWithoutProductInput = {
     userId?: Prisma.StringFieldUpdateOperationsInput | string;
     rating?: Prisma.IntFieldUpdateOperationsInput | number;
     comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductReviewCreateManyUserInput = {
+    id?: string;
+    productId: string;
+    rating: number;
+    comment?: string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: string | null;
+    createdAt?: Date | string;
+};
+export type ProductReviewUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.IntFieldUpdateOperationsInput | number;
+    comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    product?: Prisma.MarketplaceProductUpdateOneRequiredWithoutReviewsNestedInput;
+};
+export type ProductReviewUncheckedUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.IntFieldUpdateOperationsInput | number;
+    comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductReviewUncheckedUpdateManyWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.IntFieldUpdateOperationsInput | number;
+    comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    isVerifiedPurchase?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    sellerReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProductReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -434,8 +636,12 @@ export type ProductReviewSelect<ExtArgs extends runtime.Types.Extensions.Interna
     userId?: boolean;
     rating?: boolean;
     comment?: boolean;
+    images?: boolean;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: boolean;
     createdAt?: boolean;
     product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["productReview"]>;
 export type ProductReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -443,8 +649,12 @@ export type ProductReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types
     userId?: boolean;
     rating?: boolean;
     comment?: boolean;
+    images?: boolean;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: boolean;
     createdAt?: boolean;
     product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["productReview"]>;
 export type ProductReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -452,8 +662,12 @@ export type ProductReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
     userId?: boolean;
     rating?: boolean;
     comment?: boolean;
+    images?: boolean;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: boolean;
     createdAt?: boolean;
     product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["productReview"]>;
 export type ProductReviewSelectScalar = {
     id?: boolean;
@@ -461,22 +675,29 @@ export type ProductReviewSelectScalar = {
     userId?: boolean;
     rating?: boolean;
     comment?: boolean;
+    images?: boolean;
+    isVerifiedPurchase?: boolean;
+    sellerReply?: boolean;
     createdAt?: boolean;
 };
-export type ProductReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "userId" | "rating" | "comment" | "createdAt", ExtArgs["result"]["productReview"]>;
+export type ProductReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "userId" | "rating" | "comment" | "images" | "isVerifiedPurchase" | "sellerReply" | "createdAt", ExtArgs["result"]["productReview"]>;
 export type ProductReviewInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type ProductReviewIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type ProductReviewIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     product?: boolean | Prisma.MarketplaceProductDefaultArgs<ExtArgs>;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 };
 export type $ProductReviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "ProductReview";
     objects: {
         product: Prisma.$MarketplaceProductPayload<ExtArgs>;
+        user: Prisma.$UserPayload<ExtArgs>;
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -484,6 +705,9 @@ export type $ProductReviewPayload<ExtArgs extends runtime.Types.Extensions.Inter
         userId: string;
         rating: number;
         comment: string | null;
+        images: runtime.JsonValue | null;
+        isVerifiedPurchase: boolean;
+        sellerReply: string | null;
         createdAt: Date;
     }, ExtArgs["result"]["productReview"]>;
     composites: {};
@@ -815,6 +1039,7 @@ export interface ProductReviewDelegate<ExtArgs extends runtime.Types.Extensions.
 export interface Prisma__ProductReviewClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
     product<T extends Prisma.MarketplaceProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketplaceProductDefaultArgs<ExtArgs>>): Prisma.Prisma__MarketplaceProductClient<runtime.Types.Result.GetResult<Prisma.$MarketplaceProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -845,6 +1070,9 @@ export interface ProductReviewFieldRefs {
     readonly userId: Prisma.FieldRef<"ProductReview", 'String'>;
     readonly rating: Prisma.FieldRef<"ProductReview", 'Int'>;
     readonly comment: Prisma.FieldRef<"ProductReview", 'String'>;
+    readonly images: Prisma.FieldRef<"ProductReview", 'Json'>;
+    readonly isVerifiedPurchase: Prisma.FieldRef<"ProductReview", 'Boolean'>;
+    readonly sellerReply: Prisma.FieldRef<"ProductReview", 'String'>;
     readonly createdAt: Prisma.FieldRef<"ProductReview", 'DateTime'>;
 }
 /**
