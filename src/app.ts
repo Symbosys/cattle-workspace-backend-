@@ -9,7 +9,6 @@ import animalRouter from "./modules/animal/routes/index.js";
 import doctorRouter from "./modules/doctor/routes/index.js";
 import marketplaceRouter from "./modules/marketplace/routes/index.js";
 
-
 const app = express();
 
 app.use(express.json({ limit: "20mb" }));

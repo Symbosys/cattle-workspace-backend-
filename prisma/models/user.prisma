@@ -35,8 +35,9 @@ model User {
   orders             MarketplaceOrder[]
   questions          ForumQuestion[]
   answers            ForumAnswer[]
-  questionVotes      QuestionVote[]
-  answerVotes        AnswerVote[]
+  forumComments      ForumComment[]
+  forumVotes         ForumVote[]
+  forumBookmarks     ForumBookmark[]
   reportsFiled       ForumReport[]       @relation("ReporterRelation")
   reportsReviewed    ForumReport[]       @relation("ReviewerRelation")
   subscriptions      Subscription[]

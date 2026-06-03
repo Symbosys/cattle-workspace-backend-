@@ -4,85 +4,156 @@ enum ReportStatus {
   DISMISSED
 }
 
+enum ReportTargetType {
+  QUESTION
+  ANSWER
+  COMMENT
+}
+
+enum VoteType {
+  UPVOTE
+  DOWNVOTE
+}
+
 model ForumQuestion {
-  id        String   @id @default(uuid())
-  authorId  String
-  title     String
-  content   String
-  tags      String[]
-  viewCount Int      @default(0)
-  isLocked  Boolean  @default(false)
-  isPinned  Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String    @id @default(uuid())
+  authorId    String
+  title       String
+  slug        String    @unique
+  content     String
+  tags        String[]
+  viewCount   Int       @default(0)
+  voteScore   Int       @default(0)
+  answerCount Int       @default(0)
+  isLocked    Boolean   @default(false)
+  isPinned    Boolean   @default(false)
+  isSolved    Boolean   @default(false)
+  deletedAt   DateTime?
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   // Relations
-  author  User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  answers ForumAnswer[]
-  votes   QuestionVote[]
-  reports ForumReport[]
+  author      User               @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  answers     ForumAnswer[]
+  comments    ForumComment[]
+  votes       ForumVote[]        @relation("QuestionVotes")
+  reports     ForumReport[]      @relation("QuestionReports")
+  bookmarks   ForumBookmark[]
 
   @@index([authorId])
   @@index([createdAt])
+  @@index([voteScore])
+  @@index([isSolved, createdAt])
+  @@index([deletedAt])
 }
 
 model ForumAnswer {
-  id         String   @id @default(uuid())
-  questionId String
-  authorId   String
-  content    String
-  isAccepted Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id          String    @id @default(uuid())
+  questionId  String
+  authorId    String
+  content     String
+  isAccepted  Boolean   @default(false)
+  voteScore   Int       @default(0)
+  deletedAt   DateTime?
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   // Relations
-  question ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  votes    AnswerVote[]
+  question    ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  author      User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments    ForumComment[]
+  votes       ForumVote[]   @relation("AnswerVotes")
+  reports     ForumReport[] @relation("AnswerReports")
+
+  @@index([questionId, voteScore])
+  @@index([authorId])
+  @@index([isAccepted])
+  @@index([deletedAt])
+}
+
+model ForumComment {
+  id          String    @id @default(uuid())
+  authorId    String
+  questionId  String?
+  answerId    String?
+  content     String
+  deletedAt   DateTime?
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  author      User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  question    ForumQuestion? @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  answer      ForumAnswer?   @relation(fields: [answerId], references: [id], onDelete: Cascade)
+  reports     ForumReport[]  @relation("CommentReports")
 
   @@index([questionId])
+  @@index([answerId])
+  @@index([authorId])
 }
 
-model QuestionVote {
-  id         String @id @default(uuid())
-  questionId String
-  userId     String
-  value      Int
+model ForumVote {
+  id          String   @id @default(uuid())
+  userId      String
+  voteType    VoteType
+  questionId  String?
+  answerId    String?
+
+  createdAt   DateTime @default(now())
 
   // Relations
-  question ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question    ForumQuestion? @relation("QuestionVotes", fields: [questionId], references: [id], onDelete: Cascade)
+  answer      ForumAnswer?   @relation("AnswerVotes", fields: [answerId], references: [id], onDelete: Cascade)
 
-  @@unique([questionId, userId])
+  @@unique([userId, questionId])
+  @@unique([userId, answerId])
+  @@index([questionId])
+  @@index([answerId])
 }
 
-model AnswerVote {
-  id       String @id @default(uuid())
-  answerId String
-  userId   String
-  value    Int
+model ForumBookmark {
+  id          String   @id @default(uuid())
+  userId      String
+  questionId  String
+
+  createdAt   DateTime @default(now())
 
   // Relations
-  answer ForumAnswer @relation(fields: [answerId], references: [id], onDelete: Cascade)
-  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question    ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
-  @@unique([answerId, userId])
+  @@unique([userId, questionId])
+  @@index([userId])
 }
 
 model ForumReport {
-  id         String       @id @default(uuid())
-  questionId String
-  reporterId String
-  reason     String
-  status     ReportStatus @default(PENDING)
-  reviewerId String?
-  remarks    String?
-  createdAt  DateTime     @default(now())
+  id          String           @id @default(uuid())
+  reporterId  String
+  targetType  ReportTargetType
+  questionId  String?
+  answerId    String?
+  commentId   String?
+  reason      String
+  status      ReportStatus     @default(PENDING)
+  reviewerId  String?
+  remarks     String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   // Relations
-  question ForumQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  reporter User          @relation("ReporterRelation", fields: [reporterId], references: [id], onDelete: Cascade)
-  reviewer User?         @relation("ReviewerRelation", fields: [reviewerId], references: [id])
+  reporter    User           @relation("ReporterRelation", fields: [reporterId], references: [id], onDelete: Cascade)
+  reviewer    User?          @relation("ReviewerRelation", fields: [reviewerId], references: [id])
+  question    ForumQuestion? @relation("QuestionReports", fields: [questionId], references: [id], onDelete: Cascade)
+  answer      ForumAnswer?   @relation("AnswerReports", fields: [answerId], references: [id], onDelete: Cascade)
+  comment     ForumComment?  @relation("CommentReports", fields: [commentId], references: [id], onDelete: Cascade)
 
+  @@index([targetType, status])
+  @@index([reporterId])
   @@index([questionId])
+  @@index([answerId])
 }
