@@ -1,0 +1,1706 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model ForumComment
+ *
+ */
+export type ForumCommentModel = runtime.Types.Result.DefaultSelection<Prisma.$ForumCommentPayload>;
+export type AggregateForumComment = {
+    _count: ForumCommentCountAggregateOutputType | null;
+    _min: ForumCommentMinAggregateOutputType | null;
+    _max: ForumCommentMaxAggregateOutputType | null;
+};
+export type ForumCommentMinAggregateOutputType = {
+    id: string | null;
+    authorId: string | null;
+    questionId: string | null;
+    answerId: string | null;
+    content: string | null;
+    deletedAt: Date | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type ForumCommentMaxAggregateOutputType = {
+    id: string | null;
+    authorId: string | null;
+    questionId: string | null;
+    answerId: string | null;
+    content: string | null;
+    deletedAt: Date | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type ForumCommentCountAggregateOutputType = {
+    id: number;
+    authorId: number;
+    questionId: number;
+    answerId: number;
+    content: number;
+    deletedAt: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type ForumCommentMinAggregateInputType = {
+    id?: true;
+    authorId?: true;
+    questionId?: true;
+    answerId?: true;
+    content?: true;
+    deletedAt?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type ForumCommentMaxAggregateInputType = {
+    id?: true;
+    authorId?: true;
+    questionId?: true;
+    answerId?: true;
+    content?: true;
+    deletedAt?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type ForumCommentCountAggregateInputType = {
+    id?: true;
+    authorId?: true;
+    questionId?: true;
+    answerId?: true;
+    content?: true;
+    deletedAt?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type ForumCommentAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumComment to aggregate.
+     */
+    where?: Prisma.ForumCommentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ForumComments to fetch.
+     */
+    orderBy?: Prisma.ForumCommentOrderByWithRelationInput | Prisma.ForumCommentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.ForumCommentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ForumComments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ForumComments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned ForumComments
+    **/
+    _count?: true | ForumCommentCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumCommentMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumCommentMaxAggregateInputType;
+};
+export type GetForumCommentAggregateType<T extends ForumCommentAggregateArgs> = {
+    [P in keyof T & keyof AggregateForumComment]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateForumComment[P]> : Prisma.GetScalarType<T[P], AggregateForumComment[P]>;
+};
+export type ForumCommentGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ForumCommentWhereInput;
+    orderBy?: Prisma.ForumCommentOrderByWithAggregationInput | Prisma.ForumCommentOrderByWithAggregationInput[];
+    by: Prisma.ForumCommentScalarFieldEnum[] | Prisma.ForumCommentScalarFieldEnum;
+    having?: Prisma.ForumCommentScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: ForumCommentCountAggregateInputType | true;
+    _min?: ForumCommentMinAggregateInputType;
+    _max?: ForumCommentMaxAggregateInputType;
+};
+export type ForumCommentGroupByOutputType = {
+    id: string;
+    authorId: string;
+    questionId: string | null;
+    answerId: string | null;
+    content: string;
+    deletedAt: Date | null;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: ForumCommentCountAggregateOutputType | null;
+    _min: ForumCommentMinAggregateOutputType | null;
+    _max: ForumCommentMaxAggregateOutputType | null;
+};
+export type GetForumCommentGroupByPayload<T extends ForumCommentGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<ForumCommentGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof ForumCommentGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], ForumCommentGroupByOutputType[P]> : Prisma.GetScalarType<T[P], ForumCommentGroupByOutputType[P]>;
+}>>;
+export type ForumCommentWhereInput = {
+    AND?: Prisma.ForumCommentWhereInput | Prisma.ForumCommentWhereInput[];
+    OR?: Prisma.ForumCommentWhereInput[];
+    NOT?: Prisma.ForumCommentWhereInput | Prisma.ForumCommentWhereInput[];
+    id?: Prisma.StringFilter<"ForumComment"> | string;
+    authorId?: Prisma.StringFilter<"ForumComment"> | string;
+    questionId?: Prisma.StringNullableFilter<"ForumComment"> | string | null;
+    answerId?: Prisma.StringNullableFilter<"ForumComment"> | string | null;
+    content?: Prisma.StringFilter<"ForumComment"> | string;
+    deletedAt?: Prisma.DateTimeNullableFilter<"ForumComment"> | Date | string | null;
+    createdAt?: Prisma.DateTimeFilter<"ForumComment"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"ForumComment"> | Date | string;
+    author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    question?: Prisma.XOR<Prisma.ForumQuestionNullableScalarRelationFilter, Prisma.ForumQuestionWhereInput> | null;
+    answer?: Prisma.XOR<Prisma.ForumAnswerNullableScalarRelationFilter, Prisma.ForumAnswerWhereInput> | null;
+    reports?: Prisma.ForumReportListRelationFilter;
+};
+export type ForumCommentOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    authorId?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    answerId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    author?: Prisma.UserOrderByWithRelationInput;
+    question?: Prisma.ForumQuestionOrderByWithRelationInput;
+    answer?: Prisma.ForumAnswerOrderByWithRelationInput;
+    reports?: Prisma.ForumReportOrderByRelationAggregateInput;
+};
+export type ForumCommentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.ForumCommentWhereInput | Prisma.ForumCommentWhereInput[];
+    OR?: Prisma.ForumCommentWhereInput[];
+    NOT?: Prisma.ForumCommentWhereInput | Prisma.ForumCommentWhereInput[];
+    authorId?: Prisma.StringFilter<"ForumComment"> | string;
+    questionId?: Prisma.StringNullableFilter<"ForumComment"> | string | null;
+    answerId?: Prisma.StringNullableFilter<"ForumComment"> | string | null;
+    content?: Prisma.StringFilter<"ForumComment"> | string;
+    deletedAt?: Prisma.DateTimeNullableFilter<"ForumComment"> | Date | string | null;
+    createdAt?: Prisma.DateTimeFilter<"ForumComment"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"ForumComment"> | Date | string;
+    author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    question?: Prisma.XOR<Prisma.ForumQuestionNullableScalarRelationFilter, Prisma.ForumQuestionWhereInput> | null;
+    answer?: Prisma.XOR<Prisma.ForumAnswerNullableScalarRelationFilter, Prisma.ForumAnswerWhereInput> | null;
+    reports?: Prisma.ForumReportListRelationFilter;
+}, "id">;
+export type ForumCommentOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    authorId?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    answerId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.ForumCommentCountOrderByAggregateInput;
+    _max?: Prisma.ForumCommentMaxOrderByAggregateInput;
+    _min?: Prisma.ForumCommentMinOrderByAggregateInput;
+};
+export type ForumCommentScalarWhereWithAggregatesInput = {
+    AND?: Prisma.ForumCommentScalarWhereWithAggregatesInput | Prisma.ForumCommentScalarWhereWithAggregatesInput[];
+    OR?: Prisma.ForumCommentScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.ForumCommentScalarWhereWithAggregatesInput | Prisma.ForumCommentScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"ForumComment"> | string;
+    authorId?: Prisma.StringWithAggregatesFilter<"ForumComment"> | string;
+    questionId?: Prisma.StringNullableWithAggregatesFilter<"ForumComment"> | string | null;
+    answerId?: Prisma.StringNullableWithAggregatesFilter<"ForumComment"> | string | null;
+    content?: Prisma.StringWithAggregatesFilter<"ForumComment"> | string;
+    deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ForumComment"> | Date | string | null;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"ForumComment"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ForumComment"> | Date | string;
+};
+export type ForumCommentCreateInput = {
+    id?: string;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    author: Prisma.UserCreateNestedOneWithoutForumCommentsInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutCommentsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutCommentsInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentUncheckedCreateInput = {
+    id?: string;
+    authorId: string;
+    questionId?: string | null;
+    answerId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    author?: Prisma.UserUpdateOneRequiredWithoutForumCommentsNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutCommentsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutCommentsNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentCreateManyInput = {
+    id?: string;
+    authorId: string;
+    questionId?: string | null;
+    answerId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumCommentUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumCommentUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumCommentListRelationFilter = {
+    every?: Prisma.ForumCommentWhereInput;
+    some?: Prisma.ForumCommentWhereInput;
+    none?: Prisma.ForumCommentWhereInput;
+};
+export type ForumCommentOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type ForumCommentCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    authorId?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type ForumCommentMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    authorId?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type ForumCommentMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    authorId?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type ForumCommentNullableScalarRelationFilter = {
+    is?: Prisma.ForumCommentWhereInput | null;
+    isNot?: Prisma.ForumCommentWhereInput | null;
+};
+export type ForumCommentCreateNestedManyWithoutQuestionInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutQuestionInput, Prisma.ForumCommentUncheckedCreateWithoutQuestionInput> | Prisma.ForumCommentCreateWithoutQuestionInput[] | Prisma.ForumCommentUncheckedCreateWithoutQuestionInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutQuestionInput | Prisma.ForumCommentCreateOrConnectWithoutQuestionInput[];
+    createMany?: Prisma.ForumCommentCreateManyQuestionInputEnvelope;
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+};
+export type ForumCommentUncheckedCreateNestedManyWithoutQuestionInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutQuestionInput, Prisma.ForumCommentUncheckedCreateWithoutQuestionInput> | Prisma.ForumCommentCreateWithoutQuestionInput[] | Prisma.ForumCommentUncheckedCreateWithoutQuestionInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutQuestionInput | Prisma.ForumCommentCreateOrConnectWithoutQuestionInput[];
+    createMany?: Prisma.ForumCommentCreateManyQuestionInputEnvelope;
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+};
+export type ForumCommentUpdateManyWithoutQuestionNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutQuestionInput, Prisma.ForumCommentUncheckedCreateWithoutQuestionInput> | Prisma.ForumCommentCreateWithoutQuestionInput[] | Prisma.ForumCommentUncheckedCreateWithoutQuestionInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutQuestionInput | Prisma.ForumCommentCreateOrConnectWithoutQuestionInput[];
+    upsert?: Prisma.ForumCommentUpsertWithWhereUniqueWithoutQuestionInput | Prisma.ForumCommentUpsertWithWhereUniqueWithoutQuestionInput[];
+    createMany?: Prisma.ForumCommentCreateManyQuestionInputEnvelope;
+    set?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    disconnect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    delete?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    update?: Prisma.ForumCommentUpdateWithWhereUniqueWithoutQuestionInput | Prisma.ForumCommentUpdateWithWhereUniqueWithoutQuestionInput[];
+    updateMany?: Prisma.ForumCommentUpdateManyWithWhereWithoutQuestionInput | Prisma.ForumCommentUpdateManyWithWhereWithoutQuestionInput[];
+    deleteMany?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+};
+export type ForumCommentUncheckedUpdateManyWithoutQuestionNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutQuestionInput, Prisma.ForumCommentUncheckedCreateWithoutQuestionInput> | Prisma.ForumCommentCreateWithoutQuestionInput[] | Prisma.ForumCommentUncheckedCreateWithoutQuestionInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutQuestionInput | Prisma.ForumCommentCreateOrConnectWithoutQuestionInput[];
+    upsert?: Prisma.ForumCommentUpsertWithWhereUniqueWithoutQuestionInput | Prisma.ForumCommentUpsertWithWhereUniqueWithoutQuestionInput[];
+    createMany?: Prisma.ForumCommentCreateManyQuestionInputEnvelope;
+    set?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    disconnect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    delete?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    update?: Prisma.ForumCommentUpdateWithWhereUniqueWithoutQuestionInput | Prisma.ForumCommentUpdateWithWhereUniqueWithoutQuestionInput[];
+    updateMany?: Prisma.ForumCommentUpdateManyWithWhereWithoutQuestionInput | Prisma.ForumCommentUpdateManyWithWhereWithoutQuestionInput[];
+    deleteMany?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+};
+export type ForumCommentCreateNestedManyWithoutAnswerInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAnswerInput, Prisma.ForumCommentUncheckedCreateWithoutAnswerInput> | Prisma.ForumCommentCreateWithoutAnswerInput[] | Prisma.ForumCommentUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAnswerInput | Prisma.ForumCommentCreateOrConnectWithoutAnswerInput[];
+    createMany?: Prisma.ForumCommentCreateManyAnswerInputEnvelope;
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+};
+export type ForumCommentUncheckedCreateNestedManyWithoutAnswerInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAnswerInput, Prisma.ForumCommentUncheckedCreateWithoutAnswerInput> | Prisma.ForumCommentCreateWithoutAnswerInput[] | Prisma.ForumCommentUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAnswerInput | Prisma.ForumCommentCreateOrConnectWithoutAnswerInput[];
+    createMany?: Prisma.ForumCommentCreateManyAnswerInputEnvelope;
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+};
+export type ForumCommentUpdateManyWithoutAnswerNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAnswerInput, Prisma.ForumCommentUncheckedCreateWithoutAnswerInput> | Prisma.ForumCommentCreateWithoutAnswerInput[] | Prisma.ForumCommentUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAnswerInput | Prisma.ForumCommentCreateOrConnectWithoutAnswerInput[];
+    upsert?: Prisma.ForumCommentUpsertWithWhereUniqueWithoutAnswerInput | Prisma.ForumCommentUpsertWithWhereUniqueWithoutAnswerInput[];
+    createMany?: Prisma.ForumCommentCreateManyAnswerInputEnvelope;
+    set?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    disconnect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    delete?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    update?: Prisma.ForumCommentUpdateWithWhereUniqueWithoutAnswerInput | Prisma.ForumCommentUpdateWithWhereUniqueWithoutAnswerInput[];
+    updateMany?: Prisma.ForumCommentUpdateManyWithWhereWithoutAnswerInput | Prisma.ForumCommentUpdateManyWithWhereWithoutAnswerInput[];
+    deleteMany?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+};
+export type ForumCommentUncheckedUpdateManyWithoutAnswerNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAnswerInput, Prisma.ForumCommentUncheckedCreateWithoutAnswerInput> | Prisma.ForumCommentCreateWithoutAnswerInput[] | Prisma.ForumCommentUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAnswerInput | Prisma.ForumCommentCreateOrConnectWithoutAnswerInput[];
+    upsert?: Prisma.ForumCommentUpsertWithWhereUniqueWithoutAnswerInput | Prisma.ForumCommentUpsertWithWhereUniqueWithoutAnswerInput[];
+    createMany?: Prisma.ForumCommentCreateManyAnswerInputEnvelope;
+    set?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    disconnect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    delete?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    update?: Prisma.ForumCommentUpdateWithWhereUniqueWithoutAnswerInput | Prisma.ForumCommentUpdateWithWhereUniqueWithoutAnswerInput[];
+    updateMany?: Prisma.ForumCommentUpdateManyWithWhereWithoutAnswerInput | Prisma.ForumCommentUpdateManyWithWhereWithoutAnswerInput[];
+    deleteMany?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+};
+export type ForumCommentCreateNestedOneWithoutReportsInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutReportsInput, Prisma.ForumCommentUncheckedCreateWithoutReportsInput>;
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutReportsInput;
+    connect?: Prisma.ForumCommentWhereUniqueInput;
+};
+export type ForumCommentUpdateOneWithoutReportsNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutReportsInput, Prisma.ForumCommentUncheckedCreateWithoutReportsInput>;
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutReportsInput;
+    upsert?: Prisma.ForumCommentUpsertWithoutReportsInput;
+    disconnect?: Prisma.ForumCommentWhereInput | boolean;
+    delete?: Prisma.ForumCommentWhereInput | boolean;
+    connect?: Prisma.ForumCommentWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.ForumCommentUpdateToOneWithWhereWithoutReportsInput, Prisma.ForumCommentUpdateWithoutReportsInput>, Prisma.ForumCommentUncheckedUpdateWithoutReportsInput>;
+};
+export type ForumCommentCreateNestedManyWithoutAuthorInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAuthorInput, Prisma.ForumCommentUncheckedCreateWithoutAuthorInput> | Prisma.ForumCommentCreateWithoutAuthorInput[] | Prisma.ForumCommentUncheckedCreateWithoutAuthorInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAuthorInput | Prisma.ForumCommentCreateOrConnectWithoutAuthorInput[];
+    createMany?: Prisma.ForumCommentCreateManyAuthorInputEnvelope;
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+};
+export type ForumCommentUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAuthorInput, Prisma.ForumCommentUncheckedCreateWithoutAuthorInput> | Prisma.ForumCommentCreateWithoutAuthorInput[] | Prisma.ForumCommentUncheckedCreateWithoutAuthorInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAuthorInput | Prisma.ForumCommentCreateOrConnectWithoutAuthorInput[];
+    createMany?: Prisma.ForumCommentCreateManyAuthorInputEnvelope;
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+};
+export type ForumCommentUpdateManyWithoutAuthorNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAuthorInput, Prisma.ForumCommentUncheckedCreateWithoutAuthorInput> | Prisma.ForumCommentCreateWithoutAuthorInput[] | Prisma.ForumCommentUncheckedCreateWithoutAuthorInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAuthorInput | Prisma.ForumCommentCreateOrConnectWithoutAuthorInput[];
+    upsert?: Prisma.ForumCommentUpsertWithWhereUniqueWithoutAuthorInput | Prisma.ForumCommentUpsertWithWhereUniqueWithoutAuthorInput[];
+    createMany?: Prisma.ForumCommentCreateManyAuthorInputEnvelope;
+    set?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    disconnect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    delete?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    update?: Prisma.ForumCommentUpdateWithWhereUniqueWithoutAuthorInput | Prisma.ForumCommentUpdateWithWhereUniqueWithoutAuthorInput[];
+    updateMany?: Prisma.ForumCommentUpdateManyWithWhereWithoutAuthorInput | Prisma.ForumCommentUpdateManyWithWhereWithoutAuthorInput[];
+    deleteMany?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+};
+export type ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumCommentCreateWithoutAuthorInput, Prisma.ForumCommentUncheckedCreateWithoutAuthorInput> | Prisma.ForumCommentCreateWithoutAuthorInput[] | Prisma.ForumCommentUncheckedCreateWithoutAuthorInput[];
+    connectOrCreate?: Prisma.ForumCommentCreateOrConnectWithoutAuthorInput | Prisma.ForumCommentCreateOrConnectWithoutAuthorInput[];
+    upsert?: Prisma.ForumCommentUpsertWithWhereUniqueWithoutAuthorInput | Prisma.ForumCommentUpsertWithWhereUniqueWithoutAuthorInput[];
+    createMany?: Prisma.ForumCommentCreateManyAuthorInputEnvelope;
+    set?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    disconnect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    delete?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    connect?: Prisma.ForumCommentWhereUniqueInput | Prisma.ForumCommentWhereUniqueInput[];
+    update?: Prisma.ForumCommentUpdateWithWhereUniqueWithoutAuthorInput | Prisma.ForumCommentUpdateWithWhereUniqueWithoutAuthorInput[];
+    updateMany?: Prisma.ForumCommentUpdateManyWithWhereWithoutAuthorInput | Prisma.ForumCommentUpdateManyWithWhereWithoutAuthorInput[];
+    deleteMany?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+};
+export type ForumCommentCreateWithoutQuestionInput = {
+    id?: string;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    author: Prisma.UserCreateNestedOneWithoutForumCommentsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutCommentsInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentUncheckedCreateWithoutQuestionInput = {
+    id?: string;
+    authorId: string;
+    answerId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentCreateOrConnectWithoutQuestionInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutQuestionInput, Prisma.ForumCommentUncheckedCreateWithoutQuestionInput>;
+};
+export type ForumCommentCreateManyQuestionInputEnvelope = {
+    data: Prisma.ForumCommentCreateManyQuestionInput | Prisma.ForumCommentCreateManyQuestionInput[];
+    skipDuplicates?: boolean;
+};
+export type ForumCommentUpsertWithWhereUniqueWithoutQuestionInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ForumCommentUpdateWithoutQuestionInput, Prisma.ForumCommentUncheckedUpdateWithoutQuestionInput>;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutQuestionInput, Prisma.ForumCommentUncheckedCreateWithoutQuestionInput>;
+};
+export type ForumCommentUpdateWithWhereUniqueWithoutQuestionInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ForumCommentUpdateWithoutQuestionInput, Prisma.ForumCommentUncheckedUpdateWithoutQuestionInput>;
+};
+export type ForumCommentUpdateManyWithWhereWithoutQuestionInput = {
+    where: Prisma.ForumCommentScalarWhereInput;
+    data: Prisma.XOR<Prisma.ForumCommentUpdateManyMutationInput, Prisma.ForumCommentUncheckedUpdateManyWithoutQuestionInput>;
+};
+export type ForumCommentScalarWhereInput = {
+    AND?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+    OR?: Prisma.ForumCommentScalarWhereInput[];
+    NOT?: Prisma.ForumCommentScalarWhereInput | Prisma.ForumCommentScalarWhereInput[];
+    id?: Prisma.StringFilter<"ForumComment"> | string;
+    authorId?: Prisma.StringFilter<"ForumComment"> | string;
+    questionId?: Prisma.StringNullableFilter<"ForumComment"> | string | null;
+    answerId?: Prisma.StringNullableFilter<"ForumComment"> | string | null;
+    content?: Prisma.StringFilter<"ForumComment"> | string;
+    deletedAt?: Prisma.DateTimeNullableFilter<"ForumComment"> | Date | string | null;
+    createdAt?: Prisma.DateTimeFilter<"ForumComment"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"ForumComment"> | Date | string;
+};
+export type ForumCommentCreateWithoutAnswerInput = {
+    id?: string;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    author: Prisma.UserCreateNestedOneWithoutForumCommentsInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutCommentsInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentUncheckedCreateWithoutAnswerInput = {
+    id?: string;
+    authorId: string;
+    questionId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentCreateOrConnectWithoutAnswerInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutAnswerInput, Prisma.ForumCommentUncheckedCreateWithoutAnswerInput>;
+};
+export type ForumCommentCreateManyAnswerInputEnvelope = {
+    data: Prisma.ForumCommentCreateManyAnswerInput | Prisma.ForumCommentCreateManyAnswerInput[];
+    skipDuplicates?: boolean;
+};
+export type ForumCommentUpsertWithWhereUniqueWithoutAnswerInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ForumCommentUpdateWithoutAnswerInput, Prisma.ForumCommentUncheckedUpdateWithoutAnswerInput>;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutAnswerInput, Prisma.ForumCommentUncheckedCreateWithoutAnswerInput>;
+};
+export type ForumCommentUpdateWithWhereUniqueWithoutAnswerInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ForumCommentUpdateWithoutAnswerInput, Prisma.ForumCommentUncheckedUpdateWithoutAnswerInput>;
+};
+export type ForumCommentUpdateManyWithWhereWithoutAnswerInput = {
+    where: Prisma.ForumCommentScalarWhereInput;
+    data: Prisma.XOR<Prisma.ForumCommentUpdateManyMutationInput, Prisma.ForumCommentUncheckedUpdateManyWithoutAnswerInput>;
+};
+export type ForumCommentCreateWithoutReportsInput = {
+    id?: string;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    author: Prisma.UserCreateNestedOneWithoutForumCommentsInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutCommentsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutCommentsInput;
+};
+export type ForumCommentUncheckedCreateWithoutReportsInput = {
+    id?: string;
+    authorId: string;
+    questionId?: string | null;
+    answerId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumCommentCreateOrConnectWithoutReportsInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutReportsInput, Prisma.ForumCommentUncheckedCreateWithoutReportsInput>;
+};
+export type ForumCommentUpsertWithoutReportsInput = {
+    update: Prisma.XOR<Prisma.ForumCommentUpdateWithoutReportsInput, Prisma.ForumCommentUncheckedUpdateWithoutReportsInput>;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutReportsInput, Prisma.ForumCommentUncheckedCreateWithoutReportsInput>;
+    where?: Prisma.ForumCommentWhereInput;
+};
+export type ForumCommentUpdateToOneWithWhereWithoutReportsInput = {
+    where?: Prisma.ForumCommentWhereInput;
+    data: Prisma.XOR<Prisma.ForumCommentUpdateWithoutReportsInput, Prisma.ForumCommentUncheckedUpdateWithoutReportsInput>;
+};
+export type ForumCommentUpdateWithoutReportsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    author?: Prisma.UserUpdateOneRequiredWithoutForumCommentsNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutCommentsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutCommentsNestedInput;
+};
+export type ForumCommentUncheckedUpdateWithoutReportsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumCommentCreateWithoutAuthorInput = {
+    id?: string;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutCommentsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutCommentsInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentUncheckedCreateWithoutAuthorInput = {
+    id?: string;
+    questionId?: string | null;
+    answerId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutCommentInput;
+};
+export type ForumCommentCreateOrConnectWithoutAuthorInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutAuthorInput, Prisma.ForumCommentUncheckedCreateWithoutAuthorInput>;
+};
+export type ForumCommentCreateManyAuthorInputEnvelope = {
+    data: Prisma.ForumCommentCreateManyAuthorInput | Prisma.ForumCommentCreateManyAuthorInput[];
+    skipDuplicates?: boolean;
+};
+export type ForumCommentUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ForumCommentUpdateWithoutAuthorInput, Prisma.ForumCommentUncheckedUpdateWithoutAuthorInput>;
+    create: Prisma.XOR<Prisma.ForumCommentCreateWithoutAuthorInput, Prisma.ForumCommentUncheckedCreateWithoutAuthorInput>;
+};
+export type ForumCommentUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: Prisma.ForumCommentWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ForumCommentUpdateWithoutAuthorInput, Prisma.ForumCommentUncheckedUpdateWithoutAuthorInput>;
+};
+export type ForumCommentUpdateManyWithWhereWithoutAuthorInput = {
+    where: Prisma.ForumCommentScalarWhereInput;
+    data: Prisma.XOR<Prisma.ForumCommentUpdateManyMutationInput, Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorInput>;
+};
+export type ForumCommentCreateManyQuestionInput = {
+    id?: string;
+    authorId: string;
+    answerId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumCommentUpdateWithoutQuestionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    author?: Prisma.UserUpdateOneRequiredWithoutForumCommentsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutCommentsNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentUncheckedUpdateWithoutQuestionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentUncheckedUpdateManyWithoutQuestionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumCommentCreateManyAnswerInput = {
+    id?: string;
+    authorId: string;
+    questionId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumCommentUpdateWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    author?: Prisma.UserUpdateOneRequiredWithoutForumCommentsNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutCommentsNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentUncheckedUpdateWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentUncheckedUpdateManyWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumCommentCreateManyAuthorInput = {
+    id?: string;
+    questionId?: string | null;
+    answerId?: string | null;
+    content: string;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumCommentUpdateWithoutAuthorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    question?: Prisma.ForumQuestionUpdateOneWithoutCommentsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutCommentsNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentUncheckedUpdateWithoutAuthorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutCommentNestedInput;
+};
+export type ForumCommentUncheckedUpdateManyWithoutAuthorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+/**
+ * Count Type ForumCommentCountOutputType
+ */
+export type ForumCommentCountOutputType = {
+    reports: number;
+};
+export type ForumCommentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    reports?: boolean | ForumCommentCountOutputTypeCountReportsArgs;
+};
+/**
+ * ForumCommentCountOutputType without action
+ */
+export type ForumCommentCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCommentCountOutputType
+     */
+    select?: Prisma.ForumCommentCountOutputTypeSelect<ExtArgs> | null;
+};
+/**
+ * ForumCommentCountOutputType without action
+ */
+export type ForumCommentCountOutputTypeCountReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ForumReportWhereInput;
+};
+export type ForumCommentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    authorId?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    content?: boolean;
+    deletedAt?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumComment$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumComment$answerArgs<ExtArgs>;
+    reports?: boolean | Prisma.ForumComment$reportsArgs<ExtArgs>;
+    _count?: boolean | Prisma.ForumCommentCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["forumComment"]>;
+export type ForumCommentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    authorId?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    content?: boolean;
+    deletedAt?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumComment$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumComment$answerArgs<ExtArgs>;
+}, ExtArgs["result"]["forumComment"]>;
+export type ForumCommentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    authorId?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    content?: boolean;
+    deletedAt?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumComment$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumComment$answerArgs<ExtArgs>;
+}, ExtArgs["result"]["forumComment"]>;
+export type ForumCommentSelectScalar = {
+    id?: boolean;
+    authorId?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    content?: boolean;
+    deletedAt?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type ForumCommentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "authorId" | "questionId" | "answerId" | "content" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["forumComment"]>;
+export type ForumCommentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumComment$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumComment$answerArgs<ExtArgs>;
+    reports?: boolean | Prisma.ForumComment$reportsArgs<ExtArgs>;
+    _count?: boolean | Prisma.ForumCommentCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type ForumCommentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumComment$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumComment$answerArgs<ExtArgs>;
+};
+export type ForumCommentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumComment$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumComment$answerArgs<ExtArgs>;
+};
+export type $ForumCommentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "ForumComment";
+    objects: {
+        author: Prisma.$UserPayload<ExtArgs>;
+        question: Prisma.$ForumQuestionPayload<ExtArgs> | null;
+        answer: Prisma.$ForumAnswerPayload<ExtArgs> | null;
+        reports: Prisma.$ForumReportPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        authorId: string;
+        questionId: string | null;
+        answerId: string | null;
+        content: string;
+        deletedAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["forumComment"]>;
+    composites: {};
+};
+export type ForumCommentGetPayload<S extends boolean | null | undefined | ForumCommentDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload, S>;
+export type ForumCommentCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<ForumCommentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: ForumCommentCountAggregateInputType | true;
+};
+export interface ForumCommentDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['ForumComment'];
+        meta: {
+            name: 'ForumComment';
+        };
+    };
+    /**
+     * Find zero or one ForumComment that matches the filter.
+     * @param {ForumCommentFindUniqueArgs} args - Arguments to find a ForumComment
+     * @example
+     * // Get one ForumComment
+     * const forumComment = await prisma.forumComment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumCommentFindUniqueArgs>(args: Prisma.SelectSubset<T, ForumCommentFindUniqueArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one ForumComment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumCommentFindUniqueOrThrowArgs} args - Arguments to find a ForumComment
+     * @example
+     * // Get one ForumComment
+     * const forumComment = await prisma.forumComment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumCommentFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, ForumCommentFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first ForumComment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCommentFindFirstArgs} args - Arguments to find a ForumComment
+     * @example
+     * // Get one ForumComment
+     * const forumComment = await prisma.forumComment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumCommentFindFirstArgs>(args?: Prisma.SelectSubset<T, ForumCommentFindFirstArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first ForumComment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCommentFindFirstOrThrowArgs} args - Arguments to find a ForumComment
+     * @example
+     * // Get one ForumComment
+     * const forumComment = await prisma.forumComment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumCommentFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, ForumCommentFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more ForumComments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCommentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumComments
+     * const forumComments = await prisma.forumComment.findMany()
+     *
+     * // Get first 10 ForumComments
+     * const forumComments = await prisma.forumComment.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const forumCommentWithIdOnly = await prisma.forumComment.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends ForumCommentFindManyArgs>(args?: Prisma.SelectSubset<T, ForumCommentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a ForumComment.
+     * @param {ForumCommentCreateArgs} args - Arguments to create a ForumComment.
+     * @example
+     * // Create one ForumComment
+     * const ForumComment = await prisma.forumComment.create({
+     *   data: {
+     *     // ... data to create a ForumComment
+     *   }
+     * })
+     *
+     */
+    create<T extends ForumCommentCreateArgs>(args: Prisma.SelectSubset<T, ForumCommentCreateArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many ForumComments.
+     * @param {ForumCommentCreateManyArgs} args - Arguments to create many ForumComments.
+     * @example
+     * // Create many ForumComments
+     * const forumComment = await prisma.forumComment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends ForumCommentCreateManyArgs>(args?: Prisma.SelectSubset<T, ForumCommentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many ForumComments and returns the data saved in the database.
+     * @param {ForumCommentCreateManyAndReturnArgs} args - Arguments to create many ForumComments.
+     * @example
+     * // Create many ForumComments
+     * const forumComment = await prisma.forumComment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many ForumComments and only return the `id`
+     * const forumCommentWithIdOnly = await prisma.forumComment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends ForumCommentCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, ForumCommentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a ForumComment.
+     * @param {ForumCommentDeleteArgs} args - Arguments to delete one ForumComment.
+     * @example
+     * // Delete one ForumComment
+     * const ForumComment = await prisma.forumComment.delete({
+     *   where: {
+     *     // ... filter to delete one ForumComment
+     *   }
+     * })
+     *
+     */
+    delete<T extends ForumCommentDeleteArgs>(args: Prisma.SelectSubset<T, ForumCommentDeleteArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one ForumComment.
+     * @param {ForumCommentUpdateArgs} args - Arguments to update one ForumComment.
+     * @example
+     * // Update one ForumComment
+     * const forumComment = await prisma.forumComment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends ForumCommentUpdateArgs>(args: Prisma.SelectSubset<T, ForumCommentUpdateArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more ForumComments.
+     * @param {ForumCommentDeleteManyArgs} args - Arguments to filter ForumComments to delete.
+     * @example
+     * // Delete a few ForumComments
+     * const { count } = await prisma.forumComment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends ForumCommentDeleteManyArgs>(args?: Prisma.SelectSubset<T, ForumCommentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more ForumComments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCommentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumComments
+     * const forumComment = await prisma.forumComment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends ForumCommentUpdateManyArgs>(args: Prisma.SelectSubset<T, ForumCommentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more ForumComments and returns the data updated in the database.
+     * @param {ForumCommentUpdateManyAndReturnArgs} args - Arguments to update many ForumComments.
+     * @example
+     * // Update many ForumComments
+     * const forumComment = await prisma.forumComment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more ForumComments and only return the `id`
+     * const forumCommentWithIdOnly = await prisma.forumComment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends ForumCommentUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, ForumCommentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one ForumComment.
+     * @param {ForumCommentUpsertArgs} args - Arguments to update or create a ForumComment.
+     * @example
+     * // Update or create a ForumComment
+     * const forumComment = await prisma.forumComment.upsert({
+     *   create: {
+     *     // ... data to create a ForumComment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumComment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumCommentUpsertArgs>(args: Prisma.SelectSubset<T, ForumCommentUpsertArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of ForumComments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCommentCountArgs} args - Arguments to filter ForumComments to count.
+     * @example
+     * // Count the number of ForumComments
+     * const count = await prisma.forumComment.count({
+     *   where: {
+     *     // ... the filter for the ForumComments we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumCommentCountArgs>(args?: Prisma.Subset<T, ForumCommentCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], ForumCommentCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a ForumComment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCommentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumCommentAggregateArgs>(args: Prisma.Subset<T, ForumCommentAggregateArgs>): Prisma.PrismaPromise<GetForumCommentAggregateType<T>>;
+    /**
+     * Group by ForumComment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCommentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends ForumCommentGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: ForumCommentGroupByArgs['orderBy'];
+    } : {
+        orderBy?: ForumCommentGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, ForumCommentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumCommentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the ForumComment model
+     */
+    readonly fields: ForumCommentFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for ForumComment.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__ForumCommentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    question<T extends Prisma.ForumComment$questionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumComment$questionArgs<ExtArgs>>): Prisma.Prisma__ForumQuestionClient<runtime.Types.Result.GetResult<Prisma.$ForumQuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    answer<T extends Prisma.ForumComment$answerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumComment$answerArgs<ExtArgs>>): Prisma.Prisma__ForumAnswerClient<runtime.Types.Result.GetResult<Prisma.$ForumAnswerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    reports<T extends Prisma.ForumComment$reportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumComment$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the ForumComment model
+ */
+export interface ForumCommentFieldRefs {
+    readonly id: Prisma.FieldRef<"ForumComment", 'String'>;
+    readonly authorId: Prisma.FieldRef<"ForumComment", 'String'>;
+    readonly questionId: Prisma.FieldRef<"ForumComment", 'String'>;
+    readonly answerId: Prisma.FieldRef<"ForumComment", 'String'>;
+    readonly content: Prisma.FieldRef<"ForumComment", 'String'>;
+    readonly deletedAt: Prisma.FieldRef<"ForumComment", 'DateTime'>;
+    readonly createdAt: Prisma.FieldRef<"ForumComment", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"ForumComment", 'DateTime'>;
+}
+/**
+ * ForumComment findUnique
+ */
+export type ForumCommentFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * Filter, which ForumComment to fetch.
+     */
+    where: Prisma.ForumCommentWhereUniqueInput;
+};
+/**
+ * ForumComment findUniqueOrThrow
+ */
+export type ForumCommentFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * Filter, which ForumComment to fetch.
+     */
+    where: Prisma.ForumCommentWhereUniqueInput;
+};
+/**
+ * ForumComment findFirst
+ */
+export type ForumCommentFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * Filter, which ForumComment to fetch.
+     */
+    where?: Prisma.ForumCommentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ForumComments to fetch.
+     */
+    orderBy?: Prisma.ForumCommentOrderByWithRelationInput | Prisma.ForumCommentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for ForumComments.
+     */
+    cursor?: Prisma.ForumCommentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ForumComments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ForumComments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of ForumComments.
+     */
+    distinct?: Prisma.ForumCommentScalarFieldEnum | Prisma.ForumCommentScalarFieldEnum[];
+};
+/**
+ * ForumComment findFirstOrThrow
+ */
+export type ForumCommentFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * Filter, which ForumComment to fetch.
+     */
+    where?: Prisma.ForumCommentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ForumComments to fetch.
+     */
+    orderBy?: Prisma.ForumCommentOrderByWithRelationInput | Prisma.ForumCommentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for ForumComments.
+     */
+    cursor?: Prisma.ForumCommentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ForumComments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ForumComments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of ForumComments.
+     */
+    distinct?: Prisma.ForumCommentScalarFieldEnum | Prisma.ForumCommentScalarFieldEnum[];
+};
+/**
+ * ForumComment findMany
+ */
+export type ForumCommentFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * Filter, which ForumComments to fetch.
+     */
+    where?: Prisma.ForumCommentWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ForumComments to fetch.
+     */
+    orderBy?: Prisma.ForumCommentOrderByWithRelationInput | Prisma.ForumCommentOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing ForumComments.
+     */
+    cursor?: Prisma.ForumCommentWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ForumComments from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ForumComments.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of ForumComments.
+     */
+    distinct?: Prisma.ForumCommentScalarFieldEnum | Prisma.ForumCommentScalarFieldEnum[];
+};
+/**
+ * ForumComment create
+ */
+export type ForumCommentCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a ForumComment.
+     */
+    data: Prisma.XOR<Prisma.ForumCommentCreateInput, Prisma.ForumCommentUncheckedCreateInput>;
+};
+/**
+ * ForumComment createMany
+ */
+export type ForumCommentCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumComments.
+     */
+    data: Prisma.ForumCommentCreateManyInput | Prisma.ForumCommentCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * ForumComment createManyAndReturn
+ */
+export type ForumCommentCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * The data used to create many ForumComments.
+     */
+    data: Prisma.ForumCommentCreateManyInput | Prisma.ForumCommentCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * ForumComment update
+ */
+export type ForumCommentUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a ForumComment.
+     */
+    data: Prisma.XOR<Prisma.ForumCommentUpdateInput, Prisma.ForumCommentUncheckedUpdateInput>;
+    /**
+     * Choose, which ForumComment to update.
+     */
+    where: Prisma.ForumCommentWhereUniqueInput;
+};
+/**
+ * ForumComment updateMany
+ */
+export type ForumCommentUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumComments.
+     */
+    data: Prisma.XOR<Prisma.ForumCommentUpdateManyMutationInput, Prisma.ForumCommentUncheckedUpdateManyInput>;
+    /**
+     * Filter which ForumComments to update
+     */
+    where?: Prisma.ForumCommentWhereInput;
+    /**
+     * Limit how many ForumComments to update.
+     */
+    limit?: number;
+};
+/**
+ * ForumComment updateManyAndReturn
+ */
+export type ForumCommentUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * The data used to update ForumComments.
+     */
+    data: Prisma.XOR<Prisma.ForumCommentUpdateManyMutationInput, Prisma.ForumCommentUncheckedUpdateManyInput>;
+    /**
+     * Filter which ForumComments to update
+     */
+    where?: Prisma.ForumCommentWhereInput;
+    /**
+     * Limit how many ForumComments to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * ForumComment upsert
+ */
+export type ForumCommentUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the ForumComment to update in case it exists.
+     */
+    where: Prisma.ForumCommentWhereUniqueInput;
+    /**
+     * In case the ForumComment found by the `where` argument doesn't exist, create a new ForumComment with this data.
+     */
+    create: Prisma.XOR<Prisma.ForumCommentCreateInput, Prisma.ForumCommentUncheckedCreateInput>;
+    /**
+     * In case the ForumComment was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.ForumCommentUpdateInput, Prisma.ForumCommentUncheckedUpdateInput>;
+};
+/**
+ * ForumComment delete
+ */
+export type ForumCommentDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    /**
+     * Filter which ForumComment to delete.
+     */
+    where: Prisma.ForumCommentWhereUniqueInput;
+};
+/**
+ * ForumComment deleteMany
+ */
+export type ForumCommentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumComments to delete
+     */
+    where?: Prisma.ForumCommentWhereInput;
+    /**
+     * Limit how many ForumComments to delete.
+     */
+    limit?: number;
+};
+/**
+ * ForumComment.question
+ */
+export type ForumComment$questionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumQuestion
+     */
+    select?: Prisma.ForumQuestionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumQuestion
+     */
+    omit?: Prisma.ForumQuestionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumQuestionInclude<ExtArgs> | null;
+    where?: Prisma.ForumQuestionWhereInput;
+};
+/**
+ * ForumComment.answer
+ */
+export type ForumComment$answerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumAnswer
+     */
+    select?: Prisma.ForumAnswerSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumAnswer
+     */
+    omit?: Prisma.ForumAnswerOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumAnswerInclude<ExtArgs> | null;
+    where?: Prisma.ForumAnswerWhereInput;
+};
+/**
+ * ForumComment.reports
+ */
+export type ForumComment$reportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReport
+     */
+    select?: Prisma.ForumReportSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumReport
+     */
+    omit?: Prisma.ForumReportOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumReportInclude<ExtArgs> | null;
+    where?: Prisma.ForumReportWhereInput;
+    orderBy?: Prisma.ForumReportOrderByWithRelationInput | Prisma.ForumReportOrderByWithRelationInput[];
+    cursor?: Prisma.ForumReportWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ForumReportScalarFieldEnum | Prisma.ForumReportScalarFieldEnum[];
+};
+/**
+ * ForumComment without action
+ */
+export type ForumCommentDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+};
+//# sourceMappingURL=ForumComment.d.ts.map

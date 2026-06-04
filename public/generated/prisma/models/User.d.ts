@@ -192,8 +192,9 @@ export type UserWhereInput = {
     orders?: Prisma.MarketplaceOrderListRelationFilter;
     questions?: Prisma.ForumQuestionListRelationFilter;
     answers?: Prisma.ForumAnswerListRelationFilter;
-    questionVotes?: Prisma.QuestionVoteListRelationFilter;
-    answerVotes?: Prisma.AnswerVoteListRelationFilter;
+    forumComments?: Prisma.ForumCommentListRelationFilter;
+    forumVotes?: Prisma.ForumVoteListRelationFilter;
+    forumBookmarks?: Prisma.ForumBookmarkListRelationFilter;
     reportsFiled?: Prisma.ForumReportListRelationFilter;
     reportsReviewed?: Prisma.ForumReportListRelationFilter;
     subscriptions?: Prisma.SubscriptionListRelationFilter;
@@ -224,8 +225,9 @@ export type UserOrderByWithRelationInput = {
     orders?: Prisma.MarketplaceOrderOrderByRelationAggregateInput;
     questions?: Prisma.ForumQuestionOrderByRelationAggregateInput;
     answers?: Prisma.ForumAnswerOrderByRelationAggregateInput;
-    questionVotes?: Prisma.QuestionVoteOrderByRelationAggregateInput;
-    answerVotes?: Prisma.AnswerVoteOrderByRelationAggregateInput;
+    forumComments?: Prisma.ForumCommentOrderByRelationAggregateInput;
+    forumVotes?: Prisma.ForumVoteOrderByRelationAggregateInput;
+    forumBookmarks?: Prisma.ForumBookmarkOrderByRelationAggregateInput;
     reportsFiled?: Prisma.ForumReportOrderByRelationAggregateInput;
     reportsReviewed?: Prisma.ForumReportOrderByRelationAggregateInput;
     subscriptions?: Prisma.SubscriptionOrderByRelationAggregateInput;
@@ -259,8 +261,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
     orders?: Prisma.MarketplaceOrderListRelationFilter;
     questions?: Prisma.ForumQuestionListRelationFilter;
     answers?: Prisma.ForumAnswerListRelationFilter;
-    questionVotes?: Prisma.QuestionVoteListRelationFilter;
-    answerVotes?: Prisma.AnswerVoteListRelationFilter;
+    forumComments?: Prisma.ForumCommentListRelationFilter;
+    forumVotes?: Prisma.ForumVoteListRelationFilter;
+    forumBookmarks?: Prisma.ForumBookmarkListRelationFilter;
     reportsFiled?: Prisma.ForumReportListRelationFilter;
     reportsReviewed?: Prisma.ForumReportListRelationFilter;
     subscriptions?: Prisma.SubscriptionListRelationFilter;
@@ -323,8 +326,9 @@ export type UserCreateInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -355,8 +359,9 @@ export type UserUncheckedCreateInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -387,8 +392,9 @@ export type UserUpdateInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -419,8 +425,9 @@ export type UserUncheckedUpdateInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -600,29 +607,41 @@ export type UserUpdateOneRequiredWithoutAnswersNestedInput = {
     connect?: Prisma.UserWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAnswersInput, Prisma.UserUpdateWithoutAnswersInput>, Prisma.UserUncheckedUpdateWithoutAnswersInput>;
 };
-export type UserCreateNestedOneWithoutQuestionVotesInput = {
-    create?: Prisma.XOR<Prisma.UserCreateWithoutQuestionVotesInput, Prisma.UserUncheckedCreateWithoutQuestionVotesInput>;
-    connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuestionVotesInput;
+export type UserCreateNestedOneWithoutForumCommentsInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutForumCommentsInput, Prisma.UserUncheckedCreateWithoutForumCommentsInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumCommentsInput;
     connect?: Prisma.UserWhereUniqueInput;
 };
-export type UserUpdateOneRequiredWithoutQuestionVotesNestedInput = {
-    create?: Prisma.XOR<Prisma.UserCreateWithoutQuestionVotesInput, Prisma.UserUncheckedCreateWithoutQuestionVotesInput>;
-    connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuestionVotesInput;
-    upsert?: Prisma.UserUpsertWithoutQuestionVotesInput;
+export type UserUpdateOneRequiredWithoutForumCommentsNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutForumCommentsInput, Prisma.UserUncheckedCreateWithoutForumCommentsInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumCommentsInput;
+    upsert?: Prisma.UserUpsertWithoutForumCommentsInput;
     connect?: Prisma.UserWhereUniqueInput;
-    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutQuestionVotesInput, Prisma.UserUpdateWithoutQuestionVotesInput>, Prisma.UserUncheckedUpdateWithoutQuestionVotesInput>;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutForumCommentsInput, Prisma.UserUpdateWithoutForumCommentsInput>, Prisma.UserUncheckedUpdateWithoutForumCommentsInput>;
 };
-export type UserCreateNestedOneWithoutAnswerVotesInput = {
-    create?: Prisma.XOR<Prisma.UserCreateWithoutAnswerVotesInput, Prisma.UserUncheckedCreateWithoutAnswerVotesInput>;
-    connectOrCreate?: Prisma.UserCreateOrConnectWithoutAnswerVotesInput;
+export type UserCreateNestedOneWithoutForumVotesInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutForumVotesInput, Prisma.UserUncheckedCreateWithoutForumVotesInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumVotesInput;
     connect?: Prisma.UserWhereUniqueInput;
 };
-export type UserUpdateOneRequiredWithoutAnswerVotesNestedInput = {
-    create?: Prisma.XOR<Prisma.UserCreateWithoutAnswerVotesInput, Prisma.UserUncheckedCreateWithoutAnswerVotesInput>;
-    connectOrCreate?: Prisma.UserCreateOrConnectWithoutAnswerVotesInput;
-    upsert?: Prisma.UserUpsertWithoutAnswerVotesInput;
+export type UserUpdateOneRequiredWithoutForumVotesNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutForumVotesInput, Prisma.UserUncheckedCreateWithoutForumVotesInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumVotesInput;
+    upsert?: Prisma.UserUpsertWithoutForumVotesInput;
     connect?: Prisma.UserWhereUniqueInput;
-    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAnswerVotesInput, Prisma.UserUpdateWithoutAnswerVotesInput>, Prisma.UserUncheckedUpdateWithoutAnswerVotesInput>;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutForumVotesInput, Prisma.UserUpdateWithoutForumVotesInput>, Prisma.UserUncheckedUpdateWithoutForumVotesInput>;
+};
+export type UserCreateNestedOneWithoutForumBookmarksInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutForumBookmarksInput, Prisma.UserUncheckedCreateWithoutForumBookmarksInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumBookmarksInput;
+    connect?: Prisma.UserWhereUniqueInput;
+};
+export type UserUpdateOneRequiredWithoutForumBookmarksNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutForumBookmarksInput, Prisma.UserUncheckedCreateWithoutForumBookmarksInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumBookmarksInput;
+    upsert?: Prisma.UserUpsertWithoutForumBookmarksInput;
+    connect?: Prisma.UserWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutForumBookmarksInput, Prisma.UserUpdateWithoutForumBookmarksInput>, Prisma.UserUncheckedUpdateWithoutForumBookmarksInput>;
 };
 export type UserCreateNestedOneWithoutReportsFiledInput = {
     create?: Prisma.XOR<Prisma.UserCreateWithoutReportsFiledInput, Prisma.UserUncheckedCreateWithoutReportsFiledInput>;
@@ -772,8 +791,9 @@ export type UserCreateWithoutAnimalsInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -803,8 +823,9 @@ export type UserUncheckedCreateWithoutAnimalsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -847,8 +868,9 @@ export type UserUpdateWithoutAnimalsInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -878,8 +900,9 @@ export type UserUncheckedUpdateWithoutAnimalsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -910,8 +933,9 @@ export type UserCreateWithoutVaccinationRecordsInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -941,8 +965,9 @@ export type UserUncheckedCreateWithoutVaccinationRecordsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -985,8 +1010,9 @@ export type UserUpdateWithoutVaccinationRecordsInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1016,8 +1042,9 @@ export type UserUncheckedUpdateWithoutVaccinationRecordsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1046,8 +1073,9 @@ export type UserCreateWithoutBreederProfileInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -1077,8 +1105,9 @@ export type UserUncheckedCreateWithoutBreederProfileInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -1121,8 +1150,9 @@ export type UserUpdateWithoutBreederProfileInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1152,8 +1182,9 @@ export type UserUncheckedUpdateWithoutBreederProfileInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1183,8 +1214,9 @@ export type UserCreateWithoutDoctorProfileInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -1214,8 +1246,9 @@ export type UserUncheckedCreateWithoutDoctorProfileInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -1258,8 +1291,9 @@ export type UserUpdateWithoutDoctorProfileInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1289,8 +1323,9 @@ export type UserUncheckedUpdateWithoutDoctorProfileInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1320,8 +1355,9 @@ export type UserCreateWithoutAppointmentsInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -1351,8 +1387,9 @@ export type UserUncheckedCreateWithoutAppointmentsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -1395,8 +1432,9 @@ export type UserUpdateWithoutAppointmentsInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1426,8 +1464,9 @@ export type UserUncheckedUpdateWithoutAppointmentsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1457,8 +1496,9 @@ export type UserCreateWithoutQuestionsInput = {
     appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput;
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -1488,8 +1528,9 @@ export type UserUncheckedCreateWithoutQuestionsInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput;
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -1532,8 +1573,9 @@ export type UserUpdateWithoutQuestionsInput = {
     appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput;
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1563,8 +1605,9 @@ export type UserUncheckedUpdateWithoutQuestionsInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput;
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1594,8 +1637,9 @@ export type UserCreateWithoutAnswersInput = {
     appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput;
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -1625,8 +1669,9 @@ export type UserUncheckedCreateWithoutAnswersInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput;
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -1669,8 +1714,9 @@ export type UserUpdateWithoutAnswersInput = {
     appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput;
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1700,8 +1746,9 @@ export type UserUncheckedUpdateWithoutAnswersInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput;
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1711,7 +1758,7 @@ export type UserUncheckedUpdateWithoutAnswersInput = {
     cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput;
     addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput;
 };
-export type UserCreateWithoutQuestionVotesInput = {
+export type UserCreateWithoutForumCommentsInput = {
     id?: string;
     email?: string | null;
     name?: string | null;
@@ -1732,7 +1779,8 @@ export type UserCreateWithoutQuestionVotesInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -1742,7 +1790,7 @@ export type UserCreateWithoutQuestionVotesInput = {
     cart?: Prisma.CartCreateNestedOneWithoutUserInput;
     addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput;
 };
-export type UserUncheckedCreateWithoutQuestionVotesInput = {
+export type UserUncheckedCreateWithoutForumCommentsInput = {
     id?: string;
     email?: string | null;
     name?: string | null;
@@ -1763,7 +1811,8 @@ export type UserUncheckedCreateWithoutQuestionVotesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -1773,20 +1822,20 @@ export type UserUncheckedCreateWithoutQuestionVotesInput = {
     cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput;
     addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput;
 };
-export type UserCreateOrConnectWithoutQuestionVotesInput = {
+export type UserCreateOrConnectWithoutForumCommentsInput = {
     where: Prisma.UserWhereUniqueInput;
-    create: Prisma.XOR<Prisma.UserCreateWithoutQuestionVotesInput, Prisma.UserUncheckedCreateWithoutQuestionVotesInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutForumCommentsInput, Prisma.UserUncheckedCreateWithoutForumCommentsInput>;
 };
-export type UserUpsertWithoutQuestionVotesInput = {
-    update: Prisma.XOR<Prisma.UserUpdateWithoutQuestionVotesInput, Prisma.UserUncheckedUpdateWithoutQuestionVotesInput>;
-    create: Prisma.XOR<Prisma.UserCreateWithoutQuestionVotesInput, Prisma.UserUncheckedCreateWithoutQuestionVotesInput>;
+export type UserUpsertWithoutForumCommentsInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutForumCommentsInput, Prisma.UserUncheckedUpdateWithoutForumCommentsInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutForumCommentsInput, Prisma.UserUncheckedCreateWithoutForumCommentsInput>;
     where?: Prisma.UserWhereInput;
 };
-export type UserUpdateToOneWithWhereWithoutQuestionVotesInput = {
+export type UserUpdateToOneWithWhereWithoutForumCommentsInput = {
     where?: Prisma.UserWhereInput;
-    data: Prisma.XOR<Prisma.UserUpdateWithoutQuestionVotesInput, Prisma.UserUncheckedUpdateWithoutQuestionVotesInput>;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutForumCommentsInput, Prisma.UserUncheckedUpdateWithoutForumCommentsInput>;
 };
-export type UserUpdateWithoutQuestionVotesInput = {
+export type UserUpdateWithoutForumCommentsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1807,7 +1856,8 @@ export type UserUpdateWithoutQuestionVotesInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1817,7 +1867,7 @@ export type UserUpdateWithoutQuestionVotesInput = {
     cart?: Prisma.CartUpdateOneWithoutUserNestedInput;
     addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput;
 };
-export type UserUncheckedUpdateWithoutQuestionVotesInput = {
+export type UserUncheckedUpdateWithoutForumCommentsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1838,7 +1888,8 @@ export type UserUncheckedUpdateWithoutQuestionVotesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -1848,7 +1899,7 @@ export type UserUncheckedUpdateWithoutQuestionVotesInput = {
     cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput;
     addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput;
 };
-export type UserCreateWithoutAnswerVotesInput = {
+export type UserCreateWithoutForumVotesInput = {
     id?: string;
     email?: string | null;
     name?: string | null;
@@ -1869,7 +1920,8 @@ export type UserCreateWithoutAnswerVotesInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -1879,7 +1931,7 @@ export type UserCreateWithoutAnswerVotesInput = {
     cart?: Prisma.CartCreateNestedOneWithoutUserInput;
     addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput;
 };
-export type UserUncheckedCreateWithoutAnswerVotesInput = {
+export type UserUncheckedCreateWithoutForumVotesInput = {
     id?: string;
     email?: string | null;
     name?: string | null;
@@ -1900,7 +1952,8 @@ export type UserUncheckedCreateWithoutAnswerVotesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -1910,20 +1963,20 @@ export type UserUncheckedCreateWithoutAnswerVotesInput = {
     cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput;
     addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput;
 };
-export type UserCreateOrConnectWithoutAnswerVotesInput = {
+export type UserCreateOrConnectWithoutForumVotesInput = {
     where: Prisma.UserWhereUniqueInput;
-    create: Prisma.XOR<Prisma.UserCreateWithoutAnswerVotesInput, Prisma.UserUncheckedCreateWithoutAnswerVotesInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutForumVotesInput, Prisma.UserUncheckedCreateWithoutForumVotesInput>;
 };
-export type UserUpsertWithoutAnswerVotesInput = {
-    update: Prisma.XOR<Prisma.UserUpdateWithoutAnswerVotesInput, Prisma.UserUncheckedUpdateWithoutAnswerVotesInput>;
-    create: Prisma.XOR<Prisma.UserCreateWithoutAnswerVotesInput, Prisma.UserUncheckedCreateWithoutAnswerVotesInput>;
+export type UserUpsertWithoutForumVotesInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutForumVotesInput, Prisma.UserUncheckedUpdateWithoutForumVotesInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutForumVotesInput, Prisma.UserUncheckedCreateWithoutForumVotesInput>;
     where?: Prisma.UserWhereInput;
 };
-export type UserUpdateToOneWithWhereWithoutAnswerVotesInput = {
+export type UserUpdateToOneWithWhereWithoutForumVotesInput = {
     where?: Prisma.UserWhereInput;
-    data: Prisma.XOR<Prisma.UserUpdateWithoutAnswerVotesInput, Prisma.UserUncheckedUpdateWithoutAnswerVotesInput>;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutForumVotesInput, Prisma.UserUncheckedUpdateWithoutForumVotesInput>;
 };
-export type UserUpdateWithoutAnswerVotesInput = {
+export type UserUpdateWithoutForumVotesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1944,7 +1997,8 @@ export type UserUpdateWithoutAnswerVotesInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -1954,7 +2008,7 @@ export type UserUpdateWithoutAnswerVotesInput = {
     cart?: Prisma.CartUpdateOneWithoutUserNestedInput;
     addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput;
 };
-export type UserUncheckedUpdateWithoutAnswerVotesInput = {
+export type UserUncheckedUpdateWithoutForumVotesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
@@ -1975,7 +2029,149 @@ export type UserUncheckedUpdateWithoutAnswerVotesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
+    reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
+    reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
+    subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
+    ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedUpdateManyWithoutDoctorNestedInput;
+    reviews?: Prisma.ProductReviewUncheckedUpdateManyWithoutUserNestedInput;
+    cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput;
+    addresses?: Prisma.UserAddressUncheckedUpdateManyWithoutUserNestedInput;
+};
+export type UserCreateWithoutForumBookmarksInput = {
+    id?: string;
+    email?: string | null;
+    name?: string | null;
+    phone: string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: $Enums.UserRole;
+    status?: $Enums.UserStatus;
+    lastLoginAt?: Date | string | null;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    animals?: Prisma.AnimalCreateNestedManyWithoutOwnerInput;
+    listings?: Prisma.CattleListingCreateNestedManyWithoutOwnerInput;
+    doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput;
+    breederProfile?: Prisma.BreederProfileCreateNestedOneWithoutUserInput;
+    brandProfile?: Prisma.BrandProfileCreateNestedOneWithoutUserInput;
+    appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput;
+    orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
+    questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
+    answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
+    reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
+    subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
+    ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordCreateNestedManyWithoutDoctorInput;
+    reviews?: Prisma.ProductReviewCreateNestedManyWithoutUserInput;
+    cart?: Prisma.CartCreateNestedOneWithoutUserInput;
+    addresses?: Prisma.UserAddressCreateNestedManyWithoutUserInput;
+};
+export type UserUncheckedCreateWithoutForumBookmarksInput = {
+    id?: string;
+    email?: string | null;
+    name?: string | null;
+    phone: string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: $Enums.UserRole;
+    status?: $Enums.UserStatus;
+    lastLoginAt?: Date | string | null;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    animals?: Prisma.AnimalUncheckedCreateNestedManyWithoutOwnerInput;
+    listings?: Prisma.CattleListingUncheckedCreateNestedManyWithoutOwnerInput;
+    doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput;
+    breederProfile?: Prisma.BreederProfileUncheckedCreateNestedOneWithoutUserInput;
+    brandProfile?: Prisma.BrandProfileUncheckedCreateNestedOneWithoutUserInput;
+    appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput;
+    orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
+    questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
+    answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
+    reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
+    subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
+    ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUncheckedCreateNestedManyWithoutDoctorInput;
+    reviews?: Prisma.ProductReviewUncheckedCreateNestedManyWithoutUserInput;
+    cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput;
+    addresses?: Prisma.UserAddressUncheckedCreateNestedManyWithoutUserInput;
+};
+export type UserCreateOrConnectWithoutForumBookmarksInput = {
+    where: Prisma.UserWhereUniqueInput;
+    create: Prisma.XOR<Prisma.UserCreateWithoutForumBookmarksInput, Prisma.UserUncheckedCreateWithoutForumBookmarksInput>;
+};
+export type UserUpsertWithoutForumBookmarksInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutForumBookmarksInput, Prisma.UserUncheckedUpdateWithoutForumBookmarksInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutForumBookmarksInput, Prisma.UserUncheckedCreateWithoutForumBookmarksInput>;
+    where?: Prisma.UserWhereInput;
+};
+export type UserUpdateToOneWithWhereWithoutForumBookmarksInput = {
+    where?: Prisma.UserWhereInput;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutForumBookmarksInput, Prisma.UserUncheckedUpdateWithoutForumBookmarksInput>;
+};
+export type UserUpdateWithoutForumBookmarksInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    phone?: Prisma.StringFieldUpdateOperationsInput | string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus;
+    lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    animals?: Prisma.AnimalUpdateManyWithoutOwnerNestedInput;
+    listings?: Prisma.CattleListingUpdateManyWithoutOwnerNestedInput;
+    doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput;
+    breederProfile?: Prisma.BreederProfileUpdateOneWithoutUserNestedInput;
+    brandProfile?: Prisma.BrandProfileUpdateOneWithoutUserNestedInput;
+    appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput;
+    orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
+    questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
+    answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
+    reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
+    subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
+    ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
+    vaccinationRecords?: Prisma.VaccinationRecordUpdateManyWithoutDoctorNestedInput;
+    reviews?: Prisma.ProductReviewUpdateManyWithoutUserNestedInput;
+    cart?: Prisma.CartUpdateOneWithoutUserNestedInput;
+    addresses?: Prisma.UserAddressUpdateManyWithoutUserNestedInput;
+};
+export type UserUncheckedUpdateWithoutForumBookmarksInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    phone?: Prisma.StringFieldUpdateOperationsInput | string;
+    avatarUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus;
+    lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    animals?: Prisma.AnimalUncheckedUpdateManyWithoutOwnerNestedInput;
+    listings?: Prisma.CattleListingUncheckedUpdateManyWithoutOwnerNestedInput;
+    doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput;
+    breederProfile?: Prisma.BreederProfileUncheckedUpdateOneWithoutUserNestedInput;
+    brandProfile?: Prisma.BrandProfileUncheckedUpdateOneWithoutUserNestedInput;
+    appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput;
+    orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
+    questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
+    answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -2006,8 +2202,9 @@ export type UserCreateWithoutReportsFiledInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
@@ -2037,8 +2234,9 @@ export type UserUncheckedCreateWithoutReportsFiledInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
@@ -2072,8 +2270,9 @@ export type UserCreateWithoutReportsReviewedInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
@@ -2103,8 +2302,9 @@ export type UserUncheckedCreateWithoutReportsReviewedInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
@@ -2147,8 +2347,9 @@ export type UserUpdateWithoutReportsFiledInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
@@ -2178,8 +2379,9 @@ export type UserUncheckedUpdateWithoutReportsFiledInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
@@ -2218,8 +2420,9 @@ export type UserUpdateWithoutReportsReviewedInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
@@ -2249,8 +2452,9 @@ export type UserUncheckedUpdateWithoutReportsReviewedInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
@@ -2279,8 +2483,9 @@ export type UserCreateWithoutListingsInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -2310,8 +2515,9 @@ export type UserUncheckedCreateWithoutListingsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -2354,8 +2560,9 @@ export type UserUpdateWithoutListingsInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -2385,8 +2592,9 @@ export type UserUncheckedUpdateWithoutListingsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -2416,8 +2624,9 @@ export type UserCreateWithoutBrandProfileInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -2447,8 +2656,9 @@ export type UserUncheckedCreateWithoutBrandProfileInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -2491,8 +2701,9 @@ export type UserUpdateWithoutBrandProfileInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -2522,8 +2733,9 @@ export type UserUncheckedUpdateWithoutBrandProfileInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -2553,8 +2765,9 @@ export type UserCreateWithoutOrdersInput = {
     appointments?: Prisma.DoctorAppointmentCreateNestedManyWithoutPatientInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -2584,8 +2797,9 @@ export type UserUncheckedCreateWithoutOrdersInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedCreateNestedManyWithoutPatientInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -2628,8 +2842,9 @@ export type UserUpdateWithoutOrdersInput = {
     appointments?: Prisma.DoctorAppointmentUpdateManyWithoutPatientNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -2659,8 +2874,9 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
     appointments?: Prisma.DoctorAppointmentUncheckedUpdateManyWithoutPatientNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -2691,8 +2907,9 @@ export type UserCreateWithoutReviewsInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -2722,8 +2939,9 @@ export type UserUncheckedCreateWithoutReviewsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -2766,8 +2984,9 @@ export type UserUpdateWithoutReviewsInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -2797,8 +3016,9 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -2828,8 +3048,9 @@ export type UserCreateWithoutCartInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -2859,8 +3080,9 @@ export type UserUncheckedCreateWithoutCartInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -2903,8 +3125,9 @@ export type UserUpdateWithoutCartInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -2934,8 +3157,9 @@ export type UserUncheckedUpdateWithoutCartInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -2965,8 +3189,9 @@ export type UserCreateWithoutSubscriptionsInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     ledgerEntries?: Prisma.PlatformLedgerCreateNestedManyWithoutUserInput;
@@ -2996,8 +3221,9 @@ export type UserUncheckedCreateWithoutSubscriptionsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedCreateNestedManyWithoutUserInput;
@@ -3040,8 +3266,9 @@ export type UserUpdateWithoutSubscriptionsInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUpdateManyWithoutUserNestedInput;
@@ -3071,8 +3298,9 @@ export type UserUncheckedUpdateWithoutSubscriptionsInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     ledgerEntries?: Prisma.PlatformLedgerUncheckedUpdateManyWithoutUserNestedInput;
@@ -3102,8 +3330,9 @@ export type UserCreateWithoutLedgerEntriesInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -3133,8 +3362,9 @@ export type UserUncheckedCreateWithoutLedgerEntriesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -3177,8 +3407,9 @@ export type UserUpdateWithoutLedgerEntriesInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -3208,8 +3439,9 @@ export type UserUncheckedUpdateWithoutLedgerEntriesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -3239,8 +3471,9 @@ export type UserCreateWithoutAddressesInput = {
     orders?: Prisma.MarketplaceOrderCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput;
@@ -3270,8 +3503,9 @@ export type UserUncheckedCreateWithoutAddressesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedCreateNestedManyWithoutBuyerInput;
     questions?: Prisma.ForumQuestionUncheckedCreateNestedManyWithoutAuthorInput;
     answers?: Prisma.ForumAnswerUncheckedCreateNestedManyWithoutAuthorInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedCreateNestedManyWithoutUserInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumComments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAuthorInput;
+    forumVotes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutUserInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedCreateNestedManyWithoutUserInput;
     reportsFiled?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReporterInput;
     reportsReviewed?: Prisma.ForumReportUncheckedCreateNestedManyWithoutReviewerInput;
     subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput;
@@ -3314,8 +3548,9 @@ export type UserUpdateWithoutAddressesInput = {
     orders?: Prisma.MarketplaceOrderUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput;
@@ -3345,8 +3580,9 @@ export type UserUncheckedUpdateWithoutAddressesInput = {
     orders?: Prisma.MarketplaceOrderUncheckedUpdateManyWithoutBuyerNestedInput;
     questions?: Prisma.ForumQuestionUncheckedUpdateManyWithoutAuthorNestedInput;
     answers?: Prisma.ForumAnswerUncheckedUpdateManyWithoutAuthorNestedInput;
-    questionVotes?: Prisma.QuestionVoteUncheckedUpdateManyWithoutUserNestedInput;
-    answerVotes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumComments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAuthorNestedInput;
+    forumVotes?: Prisma.ForumVoteUncheckedUpdateManyWithoutUserNestedInput;
+    forumBookmarks?: Prisma.ForumBookmarkUncheckedUpdateManyWithoutUserNestedInput;
     reportsFiled?: Prisma.ForumReportUncheckedUpdateManyWithoutReporterNestedInput;
     reportsReviewed?: Prisma.ForumReportUncheckedUpdateManyWithoutReviewerNestedInput;
     subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput;
@@ -3365,8 +3601,9 @@ export type UserCountOutputType = {
     orders: number;
     questions: number;
     answers: number;
-    questionVotes: number;
-    answerVotes: number;
+    forumComments: number;
+    forumVotes: number;
+    forumBookmarks: number;
     reportsFiled: number;
     reportsReviewed: number;
     subscriptions: number;
@@ -3382,8 +3619,9 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
     orders?: boolean | UserCountOutputTypeCountOrdersArgs;
     questions?: boolean | UserCountOutputTypeCountQuestionsArgs;
     answers?: boolean | UserCountOutputTypeCountAnswersArgs;
-    questionVotes?: boolean | UserCountOutputTypeCountQuestionVotesArgs;
-    answerVotes?: boolean | UserCountOutputTypeCountAnswerVotesArgs;
+    forumComments?: boolean | UserCountOutputTypeCountForumCommentsArgs;
+    forumVotes?: boolean | UserCountOutputTypeCountForumVotesArgs;
+    forumBookmarks?: boolean | UserCountOutputTypeCountForumBookmarksArgs;
     reportsFiled?: boolean | UserCountOutputTypeCountReportsFiledArgs;
     reportsReviewed?: boolean | UserCountOutputTypeCountReportsReviewedArgs;
     subscriptions?: boolean | UserCountOutputTypeCountSubscriptionsArgs;
@@ -3440,14 +3678,20 @@ export type UserCountOutputTypeCountAnswersArgs<ExtArgs extends runtime.Types.Ex
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountQuestionVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.QuestionVoteWhereInput;
+export type UserCountOutputTypeCountForumCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ForumCommentWhereInput;
 };
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountAnswerVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.AnswerVoteWhereInput;
+export type UserCountOutputTypeCountForumVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ForumVoteWhereInput;
+};
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountForumBookmarksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ForumBookmarkWhereInput;
 };
 /**
  * UserCountOutputType without action
@@ -3512,8 +3756,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
     orders?: boolean | Prisma.User$ordersArgs<ExtArgs>;
     questions?: boolean | Prisma.User$questionsArgs<ExtArgs>;
     answers?: boolean | Prisma.User$answersArgs<ExtArgs>;
-    questionVotes?: boolean | Prisma.User$questionVotesArgs<ExtArgs>;
-    answerVotes?: boolean | Prisma.User$answerVotesArgs<ExtArgs>;
+    forumComments?: boolean | Prisma.User$forumCommentsArgs<ExtArgs>;
+    forumVotes?: boolean | Prisma.User$forumVotesArgs<ExtArgs>;
+    forumBookmarks?: boolean | Prisma.User$forumBookmarksArgs<ExtArgs>;
     reportsFiled?: boolean | Prisma.User$reportsFiledArgs<ExtArgs>;
     reportsReviewed?: boolean | Prisma.User$reportsReviewedArgs<ExtArgs>;
     subscriptions?: boolean | Prisma.User$subscriptionsArgs<ExtArgs>;
@@ -3574,8 +3819,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     orders?: boolean | Prisma.User$ordersArgs<ExtArgs>;
     questions?: boolean | Prisma.User$questionsArgs<ExtArgs>;
     answers?: boolean | Prisma.User$answersArgs<ExtArgs>;
-    questionVotes?: boolean | Prisma.User$questionVotesArgs<ExtArgs>;
-    answerVotes?: boolean | Prisma.User$answerVotesArgs<ExtArgs>;
+    forumComments?: boolean | Prisma.User$forumCommentsArgs<ExtArgs>;
+    forumVotes?: boolean | Prisma.User$forumVotesArgs<ExtArgs>;
+    forumBookmarks?: boolean | Prisma.User$forumBookmarksArgs<ExtArgs>;
     reportsFiled?: boolean | Prisma.User$reportsFiledArgs<ExtArgs>;
     reportsReviewed?: boolean | Prisma.User$reportsReviewedArgs<ExtArgs>;
     subscriptions?: boolean | Prisma.User$subscriptionsArgs<ExtArgs>;
@@ -3600,8 +3846,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
         orders: Prisma.$MarketplaceOrderPayload<ExtArgs>[];
         questions: Prisma.$ForumQuestionPayload<ExtArgs>[];
         answers: Prisma.$ForumAnswerPayload<ExtArgs>[];
-        questionVotes: Prisma.$QuestionVotePayload<ExtArgs>[];
-        answerVotes: Prisma.$AnswerVotePayload<ExtArgs>[];
+        forumComments: Prisma.$ForumCommentPayload<ExtArgs>[];
+        forumVotes: Prisma.$ForumVotePayload<ExtArgs>[];
+        forumBookmarks: Prisma.$ForumBookmarkPayload<ExtArgs>[];
         reportsFiled: Prisma.$ForumReportPayload<ExtArgs>[];
         reportsReviewed: Prisma.$ForumReportPayload<ExtArgs>[];
         subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[];
@@ -3961,8 +4208,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
     orders<T extends Prisma.User$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketplaceOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     questions<T extends Prisma.User$questionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$questionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumQuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     answers<T extends Prisma.User$answersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$answersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumAnswerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    questionVotes<T extends Prisma.User$questionVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$questionVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuestionVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    answerVotes<T extends Prisma.User$answerVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$answerVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    forumComments<T extends Prisma.User$forumCommentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$forumCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    forumVotes<T extends Prisma.User$forumVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$forumVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    forumBookmarks<T extends Prisma.User$forumBookmarksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$forumBookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumBookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     reportsFiled<T extends Prisma.User$reportsFiledArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportsFiledArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     reportsReviewed<T extends Prisma.User$reportsReviewedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportsReviewedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     subscriptions<T extends Prisma.User$subscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
@@ -4575,50 +4823,73 @@ export type User$answersArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
     distinct?: Prisma.ForumAnswerScalarFieldEnum | Prisma.ForumAnswerScalarFieldEnum[];
 };
 /**
- * User.questionVotes
+ * User.forumComments
  */
-export type User$questionVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$forumCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the QuestionVote
+     * Select specific fields to fetch from the ForumComment
      */
-    select?: Prisma.QuestionVoteSelect<ExtArgs> | null;
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the QuestionVote
+     * Omit specific fields from the ForumComment
      */
-    omit?: Prisma.QuestionVoteOmit<ExtArgs> | null;
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Prisma.QuestionVoteInclude<ExtArgs> | null;
-    where?: Prisma.QuestionVoteWhereInput;
-    orderBy?: Prisma.QuestionVoteOrderByWithRelationInput | Prisma.QuestionVoteOrderByWithRelationInput[];
-    cursor?: Prisma.QuestionVoteWhereUniqueInput;
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    where?: Prisma.ForumCommentWhereInput;
+    orderBy?: Prisma.ForumCommentOrderByWithRelationInput | Prisma.ForumCommentOrderByWithRelationInput[];
+    cursor?: Prisma.ForumCommentWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.QuestionVoteScalarFieldEnum | Prisma.QuestionVoteScalarFieldEnum[];
+    distinct?: Prisma.ForumCommentScalarFieldEnum | Prisma.ForumCommentScalarFieldEnum[];
 };
 /**
- * User.answerVotes
+ * User.forumVotes
  */
-export type User$answerVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$forumVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AnswerVote
+     * Select specific fields to fetch from the ForumVote
      */
-    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    select?: Prisma.ForumVoteSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the AnswerVote
+     * Omit specific fields from the ForumVote
      */
-    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    omit?: Prisma.ForumVoteOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
-    where?: Prisma.AnswerVoteWhereInput;
-    orderBy?: Prisma.AnswerVoteOrderByWithRelationInput | Prisma.AnswerVoteOrderByWithRelationInput[];
-    cursor?: Prisma.AnswerVoteWhereUniqueInput;
+    include?: Prisma.ForumVoteInclude<ExtArgs> | null;
+    where?: Prisma.ForumVoteWhereInput;
+    orderBy?: Prisma.ForumVoteOrderByWithRelationInput | Prisma.ForumVoteOrderByWithRelationInput[];
+    cursor?: Prisma.ForumVoteWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.AnswerVoteScalarFieldEnum | Prisma.AnswerVoteScalarFieldEnum[];
+    distinct?: Prisma.ForumVoteScalarFieldEnum | Prisma.ForumVoteScalarFieldEnum[];
+};
+/**
+ * User.forumBookmarks
+ */
+export type User$forumBookmarksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumBookmark
+     */
+    select?: Prisma.ForumBookmarkSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumBookmark
+     */
+    omit?: Prisma.ForumBookmarkOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumBookmarkInclude<ExtArgs> | null;
+    where?: Prisma.ForumBookmarkWhereInput;
+    orderBy?: Prisma.ForumBookmarkOrderByWithRelationInput | Prisma.ForumBookmarkOrderByWithRelationInput[];
+    cursor?: Prisma.ForumBookmarkWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ForumBookmarkScalarFieldEnum | Prisma.ForumBookmarkScalarFieldEnum[];
 };
 /**
  * User.reportsFiled

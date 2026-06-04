@@ -40,8 +40,9 @@ export declare const ModelName: {
     readonly DoctorReview: "DoctorReview";
     readonly ForumQuestion: "ForumQuestion";
     readonly ForumAnswer: "ForumAnswer";
-    readonly QuestionVote: "QuestionVote";
-    readonly AnswerVote: "AnswerVote";
+    readonly ForumComment: "ForumComment";
+    readonly ForumVote: "ForumVote";
+    readonly ForumBookmark: "ForumBookmark";
     readonly ForumReport: "ForumReport";
     readonly CattleListing: "CattleListing";
     readonly ListingImage: "ListingImage";
@@ -219,11 +220,16 @@ export declare const ForumQuestionScalarFieldEnum: {
     readonly id: "id";
     readonly authorId: "authorId";
     readonly title: "title";
+    readonly slug: "slug";
     readonly content: "content";
     readonly tags: "tags";
     readonly viewCount: "viewCount";
+    readonly voteScore: "voteScore";
+    readonly answerCount: "answerCount";
     readonly isLocked: "isLocked";
     readonly isPinned: "isPinned";
+    readonly isSolved: "isSolved";
+    readonly deletedAt: "deletedAt";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
@@ -234,33 +240,52 @@ export declare const ForumAnswerScalarFieldEnum: {
     readonly authorId: "authorId";
     readonly content: "content";
     readonly isAccepted: "isAccepted";
+    readonly voteScore: "voteScore";
+    readonly deletedAt: "deletedAt";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
 };
 export type ForumAnswerScalarFieldEnum = (typeof ForumAnswerScalarFieldEnum)[keyof typeof ForumAnswerScalarFieldEnum];
-export declare const QuestionVoteScalarFieldEnum: {
+export declare const ForumCommentScalarFieldEnum: {
     readonly id: "id";
+    readonly authorId: "authorId";
     readonly questionId: "questionId";
-    readonly userId: "userId";
-    readonly value: "value";
-};
-export type QuestionVoteScalarFieldEnum = (typeof QuestionVoteScalarFieldEnum)[keyof typeof QuestionVoteScalarFieldEnum];
-export declare const AnswerVoteScalarFieldEnum: {
-    readonly id: "id";
     readonly answerId: "answerId";
-    readonly userId: "userId";
-    readonly value: "value";
+    readonly content: "content";
+    readonly deletedAt: "deletedAt";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
 };
-export type AnswerVoteScalarFieldEnum = (typeof AnswerVoteScalarFieldEnum)[keyof typeof AnswerVoteScalarFieldEnum];
+export type ForumCommentScalarFieldEnum = (typeof ForumCommentScalarFieldEnum)[keyof typeof ForumCommentScalarFieldEnum];
+export declare const ForumVoteScalarFieldEnum: {
+    readonly id: "id";
+    readonly userId: "userId";
+    readonly voteType: "voteType";
+    readonly questionId: "questionId";
+    readonly answerId: "answerId";
+    readonly createdAt: "createdAt";
+};
+export type ForumVoteScalarFieldEnum = (typeof ForumVoteScalarFieldEnum)[keyof typeof ForumVoteScalarFieldEnum];
+export declare const ForumBookmarkScalarFieldEnum: {
+    readonly id: "id";
+    readonly userId: "userId";
+    readonly questionId: "questionId";
+    readonly createdAt: "createdAt";
+};
+export type ForumBookmarkScalarFieldEnum = (typeof ForumBookmarkScalarFieldEnum)[keyof typeof ForumBookmarkScalarFieldEnum];
 export declare const ForumReportScalarFieldEnum: {
     readonly id: "id";
-    readonly questionId: "questionId";
     readonly reporterId: "reporterId";
+    readonly targetType: "targetType";
+    readonly questionId: "questionId";
+    readonly answerId: "answerId";
+    readonly commentId: "commentId";
     readonly reason: "reason";
     readonly status: "status";
     readonly reviewerId: "reviewerId";
     readonly remarks: "remarks";
     readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
 };
 export type ForumReportScalarFieldEnum = (typeof ForumReportScalarFieldEnum)[keyof typeof ForumReportScalarFieldEnum];
 export declare const CattleListingScalarFieldEnum: {

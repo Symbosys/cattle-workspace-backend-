@@ -65,8 +65,9 @@ export const ModelName = {
   DoctorReview: 'DoctorReview',
   ForumQuestion: 'ForumQuestion',
   ForumAnswer: 'ForumAnswer',
-  QuestionVote: 'QuestionVote',
-  AnswerVote: 'AnswerVote',
+  ForumComment: 'ForumComment',
+  ForumVote: 'ForumVote',
+  ForumBookmark: 'ForumBookmark',
   ForumReport: 'ForumReport',
   CattleListing: 'CattleListing',
   ListingImage: 'ListingImage',
@@ -289,11 +290,16 @@ export const ForumQuestionScalarFieldEnum = {
   id: 'id',
   authorId: 'authorId',
   title: 'title',
+  slug: 'slug',
   content: 'content',
   tags: 'tags',
   viewCount: 'viewCount',
+  voteScore: 'voteScore',
+  answerCount: 'answerCount',
   isLocked: 'isLocked',
   isPinned: 'isPinned',
+  isSolved: 'isSolved',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -307,6 +313,8 @@ export const ForumAnswerScalarFieldEnum = {
   authorId: 'authorId',
   content: 'content',
   isAccepted: 'isAccepted',
+  voteScore: 'voteScore',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -314,35 +322,55 @@ export const ForumAnswerScalarFieldEnum = {
 export type ForumAnswerScalarFieldEnum = (typeof ForumAnswerScalarFieldEnum)[keyof typeof ForumAnswerScalarFieldEnum]
 
 
-export const QuestionVoteScalarFieldEnum = {
+export const ForumCommentScalarFieldEnum = {
   id: 'id',
+  authorId: 'authorId',
   questionId: 'questionId',
-  userId: 'userId',
-  value: 'value'
-} as const
-
-export type QuestionVoteScalarFieldEnum = (typeof QuestionVoteScalarFieldEnum)[keyof typeof QuestionVoteScalarFieldEnum]
-
-
-export const AnswerVoteScalarFieldEnum = {
-  id: 'id',
   answerId: 'answerId',
-  userId: 'userId',
-  value: 'value'
+  content: 'content',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type AnswerVoteScalarFieldEnum = (typeof AnswerVoteScalarFieldEnum)[keyof typeof AnswerVoteScalarFieldEnum]
+export type ForumCommentScalarFieldEnum = (typeof ForumCommentScalarFieldEnum)[keyof typeof ForumCommentScalarFieldEnum]
+
+
+export const ForumVoteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  voteType: 'voteType',
+  questionId: 'questionId',
+  answerId: 'answerId',
+  createdAt: 'createdAt'
+} as const
+
+export type ForumVoteScalarFieldEnum = (typeof ForumVoteScalarFieldEnum)[keyof typeof ForumVoteScalarFieldEnum]
+
+
+export const ForumBookmarkScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  questionId: 'questionId',
+  createdAt: 'createdAt'
+} as const
+
+export type ForumBookmarkScalarFieldEnum = (typeof ForumBookmarkScalarFieldEnum)[keyof typeof ForumBookmarkScalarFieldEnum]
 
 
 export const ForumReportScalarFieldEnum = {
   id: 'id',
-  questionId: 'questionId',
   reporterId: 'reporterId',
+  targetType: 'targetType',
+  questionId: 'questionId',
+  answerId: 'answerId',
+  commentId: 'commentId',
   reason: 'reason',
   status: 'status',
   reviewerId: 'reviewerId',
   remarks: 'remarks',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ForumReportScalarFieldEnum = (typeof ForumReportScalarFieldEnum)[keyof typeof ForumReportScalarFieldEnum]

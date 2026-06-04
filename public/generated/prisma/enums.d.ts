@@ -30,6 +30,17 @@ export declare const ReportStatus: {
     readonly DISMISSED: "DISMISSED";
 };
 export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus];
+export declare const ReportTargetType: {
+    readonly QUESTION: "QUESTION";
+    readonly ANSWER: "ANSWER";
+    readonly COMMENT: "COMMENT";
+};
+export type ReportTargetType = (typeof ReportTargetType)[keyof typeof ReportTargetType];
+export declare const VoteType: {
+    readonly UPVOTE: "UPVOTE";
+    readonly DOWNVOTE: "DOWNVOTE";
+};
+export type VoteType = (typeof VoteType)[keyof typeof VoteType];
 export declare const ListingStatus: {
     readonly DRAFT: "DRAFT";
     readonly ACTIVE: "ACTIVE";

@@ -8,6 +8,7 @@ import userRouter from "./modules/user/routes/index.js";
 import animalRouter from "./modules/animal/routes/index.js";
 import doctorRouter from "./modules/doctor/routes/index.js";
 import marketplaceRouter from "./modules/marketplace/routes/index.js";
+import forumRouter from "./modules/forum/routes/index.js";
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/animal", animalRouter);
 app.use("/api/v1/doctor", doctorRouter);
 app.use("/api/v1/marketplace", marketplaceRouter);
+app.use("/api/v1/forum", forumRouter);
 
 app.use(errorMiddleware);
 

@@ -82,8 +82,9 @@ export const ModelName = {
     DoctorReview: 'DoctorReview',
     ForumQuestion: 'ForumQuestion',
     ForumAnswer: 'ForumAnswer',
-    QuestionVote: 'QuestionVote',
-    AnswerVote: 'AnswerVote',
+    ForumComment: 'ForumComment',
+    ForumVote: 'ForumVote',
+    ForumBookmark: 'ForumBookmark',
     ForumReport: 'ForumReport',
     CattleListing: 'CattleListing',
     ListingImage: 'ListingImage',
@@ -250,11 +251,16 @@ export const ForumQuestionScalarFieldEnum = {
     id: 'id',
     authorId: 'authorId',
     title: 'title',
+    slug: 'slug',
     content: 'content',
     tags: 'tags',
     viewCount: 'viewCount',
+    voteScore: 'voteScore',
+    answerCount: 'answerCount',
     isLocked: 'isLocked',
     isPinned: 'isPinned',
+    isSolved: 'isSolved',
+    deletedAt: 'deletedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
@@ -264,30 +270,48 @@ export const ForumAnswerScalarFieldEnum = {
     authorId: 'authorId',
     content: 'content',
     isAccepted: 'isAccepted',
+    voteScore: 'voteScore',
+    deletedAt: 'deletedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
-export const QuestionVoteScalarFieldEnum = {
+export const ForumCommentScalarFieldEnum = {
     id: 'id',
+    authorId: 'authorId',
     questionId: 'questionId',
-    userId: 'userId',
-    value: 'value'
-};
-export const AnswerVoteScalarFieldEnum = {
-    id: 'id',
     answerId: 'answerId',
+    content: 'content',
+    deletedAt: 'deletedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const ForumVoteScalarFieldEnum = {
+    id: 'id',
     userId: 'userId',
-    value: 'value'
+    voteType: 'voteType',
+    questionId: 'questionId',
+    answerId: 'answerId',
+    createdAt: 'createdAt'
+};
+export const ForumBookmarkScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    questionId: 'questionId',
+    createdAt: 'createdAt'
 };
 export const ForumReportScalarFieldEnum = {
     id: 'id',
-    questionId: 'questionId',
     reporterId: 'reporterId',
+    targetType: 'targetType',
+    questionId: 'questionId',
+    answerId: 'answerId',
+    commentId: 'commentId',
     reason: 'reason',
     status: 'status',
     reviewerId: 'reviewerId',
     remarks: 'remarks',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
 };
 export const CattleListingScalarFieldEnum = {
     id: 'id',
