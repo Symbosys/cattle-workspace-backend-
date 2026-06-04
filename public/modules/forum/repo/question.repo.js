@@ -106,13 +106,11 @@ export class QuestionRepo {
                 orderBy = { createdAt: "desc" };
                 break;
         }
-        // Cursor-based pagination
-        const cursorClause = cursor ? { cursor: { id: cursor }, skip: 1 } : {};
-        const questions = await db.forumQuestion.findMany({
+        // Build findMany args with conditional cursor
+        const findArgs = {
             where,
             orderBy,
             take: limit + 1, // Fetch one extra to determine hasMore
-            ...cursorClause,
             include: {
                 author: { select: AUTHOR_SELECT },
                 _count: {
@@ -126,7 +124,12 @@ export class QuestionRepo {
                     },
                 },
             },
-        });
+        };
+        if (cursor) {
+            findArgs.cursor = { id: cursor };
+            findArgs.skip = 1;
+        }
+        const questions = await db.forumQuestion.findMany(findArgs);
         const hasMore = questions.length > limit;
         const results = hasMore ? questions.slice(0, limit) : questions;
         const nextCursor = hasMore ? results[results.length - 1]?.id : undefined;

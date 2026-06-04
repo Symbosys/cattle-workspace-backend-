@@ -94,23 +94,13 @@ export declare class QuestionRepo {
      * List questions with cursor-based pagination, filtering, and sorting.
      */
     static list(params: {
-        cursor?: string;
+        cursor?: string | undefined;
         limit: number;
-        tag?: string;
-        search?: string;
+        tag?: string | undefined;
+        search?: string | undefined;
         sort: "recent" | "votes" | "unanswered";
     }): Promise<{
-        questions: ({
-            _count: {
-                comments: number;
-                answers: number;
-            };
-            author: {
-                id: string;
-                name: string | null;
-                avatarUrl: import("@prisma/client/runtime/client").JsonValue;
-            };
-        } & {
+        questions: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
@@ -126,7 +116,7 @@ export declare class QuestionRepo {
             isLocked: boolean;
             isPinned: boolean;
             isSolved: boolean;
-        })[];
+        }[];
         nextCursor: string | undefined;
         hasMore: boolean;
     }>;

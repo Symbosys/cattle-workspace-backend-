@@ -63,17 +63,7 @@ export declare class QuestionService {
      * List questions with cursor pagination, filtering, and sorting.
      */
     static listQuestions(query: ListQuestionsQuery): Promise<{
-        questions: ({
-            _count: {
-                comments: number;
-                answers: number;
-            };
-            author: {
-                id: string;
-                name: string | null;
-                avatarUrl: import("@prisma/client/runtime/client").JsonValue;
-            };
-        } & {
+        questions: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
@@ -89,7 +79,7 @@ export declare class QuestionService {
             isLocked: boolean;
             isPinned: boolean;
             isSolved: boolean;
-        })[];
+        }[];
         nextCursor: string | undefined;
         hasMore: boolean;
     }>;
