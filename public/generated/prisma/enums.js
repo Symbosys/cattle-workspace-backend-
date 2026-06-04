@@ -34,6 +34,15 @@ export const ReportStatus = {
     RESOLVED: 'RESOLVED',
     DISMISSED: 'DISMISSED'
 };
+export const ReportTargetType = {
+    QUESTION: 'QUESTION',
+    ANSWER: 'ANSWER',
+    COMMENT: 'COMMENT'
+};
+export const VoteType = {
+    UPVOTE: 'UPVOTE',
+    DOWNVOTE: 'DOWNVOTE'
+};
 export const ListingStatus = {
     DRAFT: 'DRAFT',
     ACTIVE: 'ACTIVE',

@@ -56,6 +56,23 @@ export const ReportStatus = {
 export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus]
 
 
+export const ReportTargetType = {
+  QUESTION: 'QUESTION',
+  ANSWER: 'ANSWER',
+  COMMENT: 'COMMENT'
+} as const
+
+export type ReportTargetType = (typeof ReportTargetType)[keyof typeof ReportTargetType]
+
+
+export const VoteType = {
+  UPVOTE: 'UPVOTE',
+  DOWNVOTE: 'DOWNVOTE'
+} as const
+
+export type VoteType = (typeof VoteType)[keyof typeof VoteType]
+
+
 export const ListingStatus = {
   DRAFT: 'DRAFT',
   ACTIVE: 'ACTIVE',

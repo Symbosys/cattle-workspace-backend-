@@ -272,25 +272,36 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
         omit: OmitOpts;
     }>;
     /**
-     * `prisma.questionVote`: Exposes CRUD operations for the **QuestionVote** model.
+     * `prisma.forumComment`: Exposes CRUD operations for the **ForumComment** model.
       * Example usage:
       * ```ts
-      * // Fetch zero or more QuestionVotes
-      * const questionVotes = await prisma.questionVote.findMany()
+      * // Fetch zero or more ForumComments
+      * const forumComments = await prisma.forumComment.findMany()
       * ```
       */
-    get questionVote(): Prisma.QuestionVoteDelegate<ExtArgs, {
+    get forumComment(): Prisma.ForumCommentDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
     /**
-     * `prisma.answerVote`: Exposes CRUD operations for the **AnswerVote** model.
+     * `prisma.forumVote`: Exposes CRUD operations for the **ForumVote** model.
       * Example usage:
       * ```ts
-      * // Fetch zero or more AnswerVotes
-      * const answerVotes = await prisma.answerVote.findMany()
+      * // Fetch zero or more ForumVotes
+      * const forumVotes = await prisma.forumVote.findMany()
       * ```
       */
-    get answerVote(): Prisma.AnswerVoteDelegate<ExtArgs, {
+    get forumVote(): Prisma.ForumVoteDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.forumBookmark`: Exposes CRUD operations for the **ForumBookmark** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ForumBookmarks
+      * const forumBookmarks = await prisma.forumBookmark.findMany()
+      * ```
+      */
+    get forumBookmark(): Prisma.ForumBookmarkDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
     /**

@@ -7,8 +7,16 @@ import type * as Prisma from "../internal/prismaNamespace.js";
 export type ForumAnswerModel = runtime.Types.Result.DefaultSelection<Prisma.$ForumAnswerPayload>;
 export type AggregateForumAnswer = {
     _count: ForumAnswerCountAggregateOutputType | null;
+    _avg: ForumAnswerAvgAggregateOutputType | null;
+    _sum: ForumAnswerSumAggregateOutputType | null;
     _min: ForumAnswerMinAggregateOutputType | null;
     _max: ForumAnswerMaxAggregateOutputType | null;
+};
+export type ForumAnswerAvgAggregateOutputType = {
+    voteScore: number | null;
+};
+export type ForumAnswerSumAggregateOutputType = {
+    voteScore: number | null;
 };
 export type ForumAnswerMinAggregateOutputType = {
     id: string | null;
@@ -16,6 +24,8 @@ export type ForumAnswerMinAggregateOutputType = {
     authorId: string | null;
     content: string | null;
     isAccepted: boolean | null;
+    voteScore: number | null;
+    deletedAt: Date | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
@@ -25,6 +35,8 @@ export type ForumAnswerMaxAggregateOutputType = {
     authorId: string | null;
     content: string | null;
     isAccepted: boolean | null;
+    voteScore: number | null;
+    deletedAt: Date | null;
     createdAt: Date | null;
     updatedAt: Date | null;
 };
@@ -34,9 +46,17 @@ export type ForumAnswerCountAggregateOutputType = {
     authorId: number;
     content: number;
     isAccepted: number;
+    voteScore: number;
+    deletedAt: number;
     createdAt: number;
     updatedAt: number;
     _all: number;
+};
+export type ForumAnswerAvgAggregateInputType = {
+    voteScore?: true;
+};
+export type ForumAnswerSumAggregateInputType = {
+    voteScore?: true;
 };
 export type ForumAnswerMinAggregateInputType = {
     id?: true;
@@ -44,6 +64,8 @@ export type ForumAnswerMinAggregateInputType = {
     authorId?: true;
     content?: true;
     isAccepted?: true;
+    voteScore?: true;
+    deletedAt?: true;
     createdAt?: true;
     updatedAt?: true;
 };
@@ -53,6 +75,8 @@ export type ForumAnswerMaxAggregateInputType = {
     authorId?: true;
     content?: true;
     isAccepted?: true;
+    voteScore?: true;
+    deletedAt?: true;
     createdAt?: true;
     updatedAt?: true;
 };
@@ -62,6 +86,8 @@ export type ForumAnswerCountAggregateInputType = {
     authorId?: true;
     content?: true;
     isAccepted?: true;
+    voteScore?: true;
+    deletedAt?: true;
     createdAt?: true;
     updatedAt?: true;
     _all?: true;
@@ -104,6 +130,18 @@ export type ForumAnswerAggregateArgs<ExtArgs extends runtime.Types.Extensions.In
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
+     * Select which fields to average
+    **/
+    _avg?: ForumAnswerAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: ForumAnswerSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
      * Select which fields to find the minimum value
     **/
     _min?: ForumAnswerMinAggregateInputType;
@@ -125,6 +163,8 @@ export type ForumAnswerGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
     take?: number;
     skip?: number;
     _count?: ForumAnswerCountAggregateInputType | true;
+    _avg?: ForumAnswerAvgAggregateInputType;
+    _sum?: ForumAnswerSumAggregateInputType;
     _min?: ForumAnswerMinAggregateInputType;
     _max?: ForumAnswerMaxAggregateInputType;
 };
@@ -134,9 +174,13 @@ export type ForumAnswerGroupByOutputType = {
     authorId: string;
     content: string;
     isAccepted: boolean;
+    voteScore: number;
+    deletedAt: Date | null;
     createdAt: Date;
     updatedAt: Date;
     _count: ForumAnswerCountAggregateOutputType | null;
+    _avg: ForumAnswerAvgAggregateOutputType | null;
+    _sum: ForumAnswerSumAggregateOutputType | null;
     _min: ForumAnswerMinAggregateOutputType | null;
     _max: ForumAnswerMaxAggregateOutputType | null;
 };
@@ -152,11 +196,15 @@ export type ForumAnswerWhereInput = {
     authorId?: Prisma.StringFilter<"ForumAnswer"> | string;
     content?: Prisma.StringFilter<"ForumAnswer"> | string;
     isAccepted?: Prisma.BoolFilter<"ForumAnswer"> | boolean;
+    voteScore?: Prisma.IntFilter<"ForumAnswer"> | number;
+    deletedAt?: Prisma.DateTimeNullableFilter<"ForumAnswer"> | Date | string | null;
     createdAt?: Prisma.DateTimeFilter<"ForumAnswer"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"ForumAnswer"> | Date | string;
     question?: Prisma.XOR<Prisma.ForumQuestionScalarRelationFilter, Prisma.ForumQuestionWhereInput>;
     author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
-    votes?: Prisma.AnswerVoteListRelationFilter;
+    comments?: Prisma.ForumCommentListRelationFilter;
+    votes?: Prisma.ForumVoteListRelationFilter;
+    reports?: Prisma.ForumReportListRelationFilter;
 };
 export type ForumAnswerOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -164,11 +212,15 @@ export type ForumAnswerOrderByWithRelationInput = {
     authorId?: Prisma.SortOrder;
     content?: Prisma.SortOrder;
     isAccepted?: Prisma.SortOrder;
+    voteScore?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     question?: Prisma.ForumQuestionOrderByWithRelationInput;
     author?: Prisma.UserOrderByWithRelationInput;
-    votes?: Prisma.AnswerVoteOrderByRelationAggregateInput;
+    comments?: Prisma.ForumCommentOrderByRelationAggregateInput;
+    votes?: Prisma.ForumVoteOrderByRelationAggregateInput;
+    reports?: Prisma.ForumReportOrderByRelationAggregateInput;
 };
 export type ForumAnswerWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -179,11 +231,15 @@ export type ForumAnswerWhereUniqueInput = Prisma.AtLeast<{
     authorId?: Prisma.StringFilter<"ForumAnswer"> | string;
     content?: Prisma.StringFilter<"ForumAnswer"> | string;
     isAccepted?: Prisma.BoolFilter<"ForumAnswer"> | boolean;
+    voteScore?: Prisma.IntFilter<"ForumAnswer"> | number;
+    deletedAt?: Prisma.DateTimeNullableFilter<"ForumAnswer"> | Date | string | null;
     createdAt?: Prisma.DateTimeFilter<"ForumAnswer"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"ForumAnswer"> | Date | string;
     question?: Prisma.XOR<Prisma.ForumQuestionScalarRelationFilter, Prisma.ForumQuestionWhereInput>;
     author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
-    votes?: Prisma.AnswerVoteListRelationFilter;
+    comments?: Prisma.ForumCommentListRelationFilter;
+    votes?: Prisma.ForumVoteListRelationFilter;
+    reports?: Prisma.ForumReportListRelationFilter;
 }, "id">;
 export type ForumAnswerOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -191,11 +247,15 @@ export type ForumAnswerOrderByWithAggregationInput = {
     authorId?: Prisma.SortOrder;
     content?: Prisma.SortOrder;
     isAccepted?: Prisma.SortOrder;
+    voteScore?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
     _count?: Prisma.ForumAnswerCountOrderByAggregateInput;
+    _avg?: Prisma.ForumAnswerAvgOrderByAggregateInput;
     _max?: Prisma.ForumAnswerMaxOrderByAggregateInput;
     _min?: Prisma.ForumAnswerMinOrderByAggregateInput;
+    _sum?: Prisma.ForumAnswerSumOrderByAggregateInput;
 };
 export type ForumAnswerScalarWhereWithAggregatesInput = {
     AND?: Prisma.ForumAnswerScalarWhereWithAggregatesInput | Prisma.ForumAnswerScalarWhereWithAggregatesInput[];
@@ -206,6 +266,8 @@ export type ForumAnswerScalarWhereWithAggregatesInput = {
     authorId?: Prisma.StringWithAggregatesFilter<"ForumAnswer"> | string;
     content?: Prisma.StringWithAggregatesFilter<"ForumAnswer"> | string;
     isAccepted?: Prisma.BoolWithAggregatesFilter<"ForumAnswer"> | boolean;
+    voteScore?: Prisma.IntWithAggregatesFilter<"ForumAnswer"> | number;
+    deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ForumAnswer"> | Date | string | null;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"ForumAnswer"> | Date | string;
     updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ForumAnswer"> | Date | string;
 };
@@ -213,11 +275,15 @@ export type ForumAnswerCreateInput = {
     id?: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     question: Prisma.ForumQuestionCreateNestedOneWithoutAnswersInput;
     author: Prisma.UserCreateNestedOneWithoutAnswersInput;
-    votes?: Prisma.AnswerVoteCreateNestedManyWithoutAnswerInput;
+    comments?: Prisma.ForumCommentCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerUncheckedCreateInput = {
     id?: string;
@@ -225,19 +291,27 @@ export type ForumAnswerUncheckedCreateInput = {
     authorId: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    votes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutAnswerInput;
+    comments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     question?: Prisma.ForumQuestionUpdateOneRequiredWithoutAnswersNestedInput;
     author?: Prisma.UserUpdateOneRequiredWithoutAnswersNestedInput;
-    votes?: Prisma.AnswerVoteUpdateManyWithoutAnswerNestedInput;
+    comments?: Prisma.ForumCommentUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -245,9 +319,13 @@ export type ForumAnswerUncheckedUpdateInput = {
     authorId?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    votes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutAnswerNestedInput;
+    comments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUncheckedUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerCreateManyInput = {
     id?: string;
@@ -255,6 +333,8 @@ export type ForumAnswerCreateManyInput = {
     authorId: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 };
@@ -262,6 +342,8 @@ export type ForumAnswerUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -271,6 +353,8 @@ export type ForumAnswerUncheckedUpdateManyInput = {
     authorId?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -288,8 +372,13 @@ export type ForumAnswerCountOrderByAggregateInput = {
     authorId?: Prisma.SortOrder;
     content?: Prisma.SortOrder;
     isAccepted?: Prisma.SortOrder;
+    voteScore?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+};
+export type ForumAnswerAvgOrderByAggregateInput = {
+    voteScore?: Prisma.SortOrder;
 };
 export type ForumAnswerMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
@@ -297,6 +386,8 @@ export type ForumAnswerMaxOrderByAggregateInput = {
     authorId?: Prisma.SortOrder;
     content?: Prisma.SortOrder;
     isAccepted?: Prisma.SortOrder;
+    voteScore?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
@@ -306,12 +397,17 @@ export type ForumAnswerMinOrderByAggregateInput = {
     authorId?: Prisma.SortOrder;
     content?: Prisma.SortOrder;
     isAccepted?: Prisma.SortOrder;
+    voteScore?: Prisma.SortOrder;
+    deletedAt?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
 };
-export type ForumAnswerScalarRelationFilter = {
-    is?: Prisma.ForumAnswerWhereInput;
-    isNot?: Prisma.ForumAnswerWhereInput;
+export type ForumAnswerSumOrderByAggregateInput = {
+    voteScore?: Prisma.SortOrder;
+};
+export type ForumAnswerNullableScalarRelationFilter = {
+    is?: Prisma.ForumAnswerWhereInput | null;
+    isNot?: Prisma.ForumAnswerWhereInput | null;
 };
 export type ForumAnswerCreateNestedManyWithoutQuestionInput = {
     create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutQuestionInput, Prisma.ForumAnswerUncheckedCreateWithoutQuestionInput> | Prisma.ForumAnswerCreateWithoutQuestionInput[] | Prisma.ForumAnswerUncheckedCreateWithoutQuestionInput[];
@@ -351,17 +447,47 @@ export type ForumAnswerUncheckedUpdateManyWithoutQuestionNestedInput = {
     updateMany?: Prisma.ForumAnswerUpdateManyWithWhereWithoutQuestionInput | Prisma.ForumAnswerUpdateManyWithWhereWithoutQuestionInput[];
     deleteMany?: Prisma.ForumAnswerScalarWhereInput | Prisma.ForumAnswerScalarWhereInput[];
 };
+export type ForumAnswerCreateNestedOneWithoutCommentsInput = {
+    create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutCommentsInput, Prisma.ForumAnswerUncheckedCreateWithoutCommentsInput>;
+    connectOrCreate?: Prisma.ForumAnswerCreateOrConnectWithoutCommentsInput;
+    connect?: Prisma.ForumAnswerWhereUniqueInput;
+};
+export type ForumAnswerUpdateOneWithoutCommentsNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutCommentsInput, Prisma.ForumAnswerUncheckedCreateWithoutCommentsInput>;
+    connectOrCreate?: Prisma.ForumAnswerCreateOrConnectWithoutCommentsInput;
+    upsert?: Prisma.ForumAnswerUpsertWithoutCommentsInput;
+    disconnect?: Prisma.ForumAnswerWhereInput | boolean;
+    delete?: Prisma.ForumAnswerWhereInput | boolean;
+    connect?: Prisma.ForumAnswerWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.ForumAnswerUpdateToOneWithWhereWithoutCommentsInput, Prisma.ForumAnswerUpdateWithoutCommentsInput>, Prisma.ForumAnswerUncheckedUpdateWithoutCommentsInput>;
+};
 export type ForumAnswerCreateNestedOneWithoutVotesInput = {
     create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutVotesInput, Prisma.ForumAnswerUncheckedCreateWithoutVotesInput>;
     connectOrCreate?: Prisma.ForumAnswerCreateOrConnectWithoutVotesInput;
     connect?: Prisma.ForumAnswerWhereUniqueInput;
 };
-export type ForumAnswerUpdateOneRequiredWithoutVotesNestedInput = {
+export type ForumAnswerUpdateOneWithoutVotesNestedInput = {
     create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutVotesInput, Prisma.ForumAnswerUncheckedCreateWithoutVotesInput>;
     connectOrCreate?: Prisma.ForumAnswerCreateOrConnectWithoutVotesInput;
     upsert?: Prisma.ForumAnswerUpsertWithoutVotesInput;
+    disconnect?: Prisma.ForumAnswerWhereInput | boolean;
+    delete?: Prisma.ForumAnswerWhereInput | boolean;
     connect?: Prisma.ForumAnswerWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.ForumAnswerUpdateToOneWithWhereWithoutVotesInput, Prisma.ForumAnswerUpdateWithoutVotesInput>, Prisma.ForumAnswerUncheckedUpdateWithoutVotesInput>;
+};
+export type ForumAnswerCreateNestedOneWithoutReportsInput = {
+    create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutReportsInput, Prisma.ForumAnswerUncheckedCreateWithoutReportsInput>;
+    connectOrCreate?: Prisma.ForumAnswerCreateOrConnectWithoutReportsInput;
+    connect?: Prisma.ForumAnswerWhereUniqueInput;
+};
+export type ForumAnswerUpdateOneWithoutReportsNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutReportsInput, Prisma.ForumAnswerUncheckedCreateWithoutReportsInput>;
+    connectOrCreate?: Prisma.ForumAnswerCreateOrConnectWithoutReportsInput;
+    upsert?: Prisma.ForumAnswerUpsertWithoutReportsInput;
+    disconnect?: Prisma.ForumAnswerWhereInput | boolean;
+    delete?: Prisma.ForumAnswerWhereInput | boolean;
+    connect?: Prisma.ForumAnswerWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.ForumAnswerUpdateToOneWithWhereWithoutReportsInput, Prisma.ForumAnswerUpdateWithoutReportsInput>, Prisma.ForumAnswerUncheckedUpdateWithoutReportsInput>;
 };
 export type ForumAnswerCreateNestedManyWithoutAuthorInput = {
     create?: Prisma.XOR<Prisma.ForumAnswerCreateWithoutAuthorInput, Prisma.ForumAnswerUncheckedCreateWithoutAuthorInput> | Prisma.ForumAnswerCreateWithoutAuthorInput[] | Prisma.ForumAnswerUncheckedCreateWithoutAuthorInput[];
@@ -405,19 +531,27 @@ export type ForumAnswerCreateWithoutQuestionInput = {
     id?: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     author: Prisma.UserCreateNestedOneWithoutAnswersInput;
-    votes?: Prisma.AnswerVoteCreateNestedManyWithoutAnswerInput;
+    comments?: Prisma.ForumCommentCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerUncheckedCreateWithoutQuestionInput = {
     id?: string;
     authorId: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    votes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutAnswerInput;
+    comments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerCreateOrConnectWithoutQuestionInput = {
     where: Prisma.ForumAnswerWhereUniqueInput;
@@ -449,17 +583,88 @@ export type ForumAnswerScalarWhereInput = {
     authorId?: Prisma.StringFilter<"ForumAnswer"> | string;
     content?: Prisma.StringFilter<"ForumAnswer"> | string;
     isAccepted?: Prisma.BoolFilter<"ForumAnswer"> | boolean;
+    voteScore?: Prisma.IntFilter<"ForumAnswer"> | number;
+    deletedAt?: Prisma.DateTimeNullableFilter<"ForumAnswer"> | Date | string | null;
     createdAt?: Prisma.DateTimeFilter<"ForumAnswer"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"ForumAnswer"> | Date | string;
+};
+export type ForumAnswerCreateWithoutCommentsInput = {
+    id?: string;
+    content: string;
+    isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    question: Prisma.ForumQuestionCreateNestedOneWithoutAnswersInput;
+    author: Prisma.UserCreateNestedOneWithoutAnswersInput;
+    votes?: Prisma.ForumVoteCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutAnswerInput;
+};
+export type ForumAnswerUncheckedCreateWithoutCommentsInput = {
+    id?: string;
+    questionId: string;
+    authorId: string;
+    content: string;
+    isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    votes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutAnswerInput;
+};
+export type ForumAnswerCreateOrConnectWithoutCommentsInput = {
+    where: Prisma.ForumAnswerWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumAnswerCreateWithoutCommentsInput, Prisma.ForumAnswerUncheckedCreateWithoutCommentsInput>;
+};
+export type ForumAnswerUpsertWithoutCommentsInput = {
+    update: Prisma.XOR<Prisma.ForumAnswerUpdateWithoutCommentsInput, Prisma.ForumAnswerUncheckedUpdateWithoutCommentsInput>;
+    create: Prisma.XOR<Prisma.ForumAnswerCreateWithoutCommentsInput, Prisma.ForumAnswerUncheckedCreateWithoutCommentsInput>;
+    where?: Prisma.ForumAnswerWhereInput;
+};
+export type ForumAnswerUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: Prisma.ForumAnswerWhereInput;
+    data: Prisma.XOR<Prisma.ForumAnswerUpdateWithoutCommentsInput, Prisma.ForumAnswerUncheckedUpdateWithoutCommentsInput>;
+};
+export type ForumAnswerUpdateWithoutCommentsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    question?: Prisma.ForumQuestionUpdateOneRequiredWithoutAnswersNestedInput;
+    author?: Prisma.UserUpdateOneRequiredWithoutAnswersNestedInput;
+    votes?: Prisma.ForumVoteUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutAnswerNestedInput;
+};
+export type ForumAnswerUncheckedUpdateWithoutCommentsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    votes?: Prisma.ForumVoteUncheckedUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerCreateWithoutVotesInput = {
     id?: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     question: Prisma.ForumQuestionCreateNestedOneWithoutAnswersInput;
     author: Prisma.UserCreateNestedOneWithoutAnswersInput;
+    comments?: Prisma.ForumCommentCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerUncheckedCreateWithoutVotesInput = {
     id?: string;
@@ -467,8 +672,12 @@ export type ForumAnswerUncheckedCreateWithoutVotesInput = {
     authorId: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    comments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerCreateOrConnectWithoutVotesInput = {
     where: Prisma.ForumAnswerWhereUniqueInput;
@@ -487,10 +696,14 @@ export type ForumAnswerUpdateWithoutVotesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     question?: Prisma.ForumQuestionUpdateOneRequiredWithoutAnswersNestedInput;
     author?: Prisma.UserUpdateOneRequiredWithoutAnswersNestedInput;
+    comments?: Prisma.ForumCommentUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerUncheckedUpdateWithoutVotesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -498,26 +711,103 @@ export type ForumAnswerUncheckedUpdateWithoutVotesInput = {
     authorId?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    comments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutAnswerNestedInput;
+};
+export type ForumAnswerCreateWithoutReportsInput = {
+    id?: string;
+    content: string;
+    isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    question: Prisma.ForumQuestionCreateNestedOneWithoutAnswersInput;
+    author: Prisma.UserCreateNestedOneWithoutAnswersInput;
+    comments?: Prisma.ForumCommentCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteCreateNestedManyWithoutAnswerInput;
+};
+export type ForumAnswerUncheckedCreateWithoutReportsInput = {
+    id?: string;
+    questionId: string;
+    authorId: string;
+    content: string;
+    isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    comments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutAnswerInput;
+};
+export type ForumAnswerCreateOrConnectWithoutReportsInput = {
+    where: Prisma.ForumAnswerWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumAnswerCreateWithoutReportsInput, Prisma.ForumAnswerUncheckedCreateWithoutReportsInput>;
+};
+export type ForumAnswerUpsertWithoutReportsInput = {
+    update: Prisma.XOR<Prisma.ForumAnswerUpdateWithoutReportsInput, Prisma.ForumAnswerUncheckedUpdateWithoutReportsInput>;
+    create: Prisma.XOR<Prisma.ForumAnswerCreateWithoutReportsInput, Prisma.ForumAnswerUncheckedCreateWithoutReportsInput>;
+    where?: Prisma.ForumAnswerWhereInput;
+};
+export type ForumAnswerUpdateToOneWithWhereWithoutReportsInput = {
+    where?: Prisma.ForumAnswerWhereInput;
+    data: Prisma.XOR<Prisma.ForumAnswerUpdateWithoutReportsInput, Prisma.ForumAnswerUncheckedUpdateWithoutReportsInput>;
+};
+export type ForumAnswerUpdateWithoutReportsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    question?: Prisma.ForumQuestionUpdateOneRequiredWithoutAnswersNestedInput;
+    author?: Prisma.UserUpdateOneRequiredWithoutAnswersNestedInput;
+    comments?: Prisma.ForumCommentUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUpdateManyWithoutAnswerNestedInput;
+};
+export type ForumAnswerUncheckedUpdateWithoutReportsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    authorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    comments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUncheckedUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerCreateWithoutAuthorInput = {
     id?: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     question: Prisma.ForumQuestionCreateNestedOneWithoutAnswersInput;
-    votes?: Prisma.AnswerVoteCreateNestedManyWithoutAnswerInput;
+    comments?: Prisma.ForumCommentCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerUncheckedCreateWithoutAuthorInput = {
     id?: string;
     questionId: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    votes?: Prisma.AnswerVoteUncheckedCreateNestedManyWithoutAnswerInput;
+    comments?: Prisma.ForumCommentUncheckedCreateNestedManyWithoutAnswerInput;
+    votes?: Prisma.ForumVoteUncheckedCreateNestedManyWithoutAnswerInput;
+    reports?: Prisma.ForumReportUncheckedCreateNestedManyWithoutAnswerInput;
 };
 export type ForumAnswerCreateOrConnectWithoutAuthorInput = {
     where: Prisma.ForumAnswerWhereUniqueInput;
@@ -545,6 +835,8 @@ export type ForumAnswerCreateManyQuestionInput = {
     authorId: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 };
@@ -552,25 +844,35 @@ export type ForumAnswerUpdateWithoutQuestionInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     author?: Prisma.UserUpdateOneRequiredWithoutAnswersNestedInput;
-    votes?: Prisma.AnswerVoteUpdateManyWithoutAnswerNestedInput;
+    comments?: Prisma.ForumCommentUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerUncheckedUpdateWithoutQuestionInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     authorId?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    votes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutAnswerNestedInput;
+    comments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUncheckedUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerUncheckedUpdateManyWithoutQuestionInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     authorId?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -579,6 +881,8 @@ export type ForumAnswerCreateManyAuthorInput = {
     questionId: string;
     content: string;
     isAccepted?: boolean;
+    voteScore?: number;
+    deletedAt?: Date | string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 };
@@ -586,25 +890,35 @@ export type ForumAnswerUpdateWithoutAuthorInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     question?: Prisma.ForumQuestionUpdateOneRequiredWithoutAnswersNestedInput;
-    votes?: Prisma.AnswerVoteUpdateManyWithoutAnswerNestedInput;
+    comments?: Prisma.ForumCommentUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerUncheckedUpdateWithoutAuthorInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     questionId?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    votes?: Prisma.AnswerVoteUncheckedUpdateManyWithoutAnswerNestedInput;
+    comments?: Prisma.ForumCommentUncheckedUpdateManyWithoutAnswerNestedInput;
+    votes?: Prisma.ForumVoteUncheckedUpdateManyWithoutAnswerNestedInput;
+    reports?: Prisma.ForumReportUncheckedUpdateManyWithoutAnswerNestedInput;
 };
 export type ForumAnswerUncheckedUpdateManyWithoutAuthorInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     questionId?: Prisma.StringFieldUpdateOperationsInput | string;
     content?: Prisma.StringFieldUpdateOperationsInput | string;
     isAccepted?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    voteScore?: Prisma.IntFieldUpdateOperationsInput | number;
+    deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -612,10 +926,14 @@ export type ForumAnswerUncheckedUpdateManyWithoutAuthorInput = {
  * Count Type ForumAnswerCountOutputType
  */
 export type ForumAnswerCountOutputType = {
+    comments: number;
     votes: number;
+    reports: number;
 };
 export type ForumAnswerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    comments?: boolean | ForumAnswerCountOutputTypeCountCommentsArgs;
     votes?: boolean | ForumAnswerCountOutputTypeCountVotesArgs;
+    reports?: boolean | ForumAnswerCountOutputTypeCountReportsArgs;
 };
 /**
  * ForumAnswerCountOutputType without action
@@ -629,8 +947,20 @@ export type ForumAnswerCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.
 /**
  * ForumAnswerCountOutputType without action
  */
+export type ForumAnswerCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ForumCommentWhereInput;
+};
+/**
+ * ForumAnswerCountOutputType without action
+ */
 export type ForumAnswerCountOutputTypeCountVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.AnswerVoteWhereInput;
+    where?: Prisma.ForumVoteWhereInput;
+};
+/**
+ * ForumAnswerCountOutputType without action
+ */
+export type ForumAnswerCountOutputTypeCountReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ForumReportWhereInput;
 };
 export type ForumAnswerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -638,11 +968,15 @@ export type ForumAnswerSelect<ExtArgs extends runtime.Types.Extensions.InternalA
     authorId?: boolean;
     content?: boolean;
     isAccepted?: boolean;
+    voteScore?: boolean;
+    deletedAt?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
     author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    comments?: boolean | Prisma.ForumAnswer$commentsArgs<ExtArgs>;
     votes?: boolean | Prisma.ForumAnswer$votesArgs<ExtArgs>;
+    reports?: boolean | Prisma.ForumAnswer$reportsArgs<ExtArgs>;
     _count?: boolean | Prisma.ForumAnswerCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["forumAnswer"]>;
 export type ForumAnswerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -651,6 +985,8 @@ export type ForumAnswerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
     authorId?: boolean;
     content?: boolean;
     isAccepted?: boolean;
+    voteScore?: boolean;
+    deletedAt?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
@@ -662,6 +998,8 @@ export type ForumAnswerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
     authorId?: boolean;
     content?: boolean;
     isAccepted?: boolean;
+    voteScore?: boolean;
+    deletedAt?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
     question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
@@ -673,14 +1011,18 @@ export type ForumAnswerSelectScalar = {
     authorId?: boolean;
     content?: boolean;
     isAccepted?: boolean;
+    voteScore?: boolean;
+    deletedAt?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
 };
-export type ForumAnswerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "questionId" | "authorId" | "content" | "isAccepted" | "createdAt" | "updatedAt", ExtArgs["result"]["forumAnswer"]>;
+export type ForumAnswerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "questionId" | "authorId" | "content" | "isAccepted" | "voteScore" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["forumAnswer"]>;
 export type ForumAnswerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
     author?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    comments?: boolean | Prisma.ForumAnswer$commentsArgs<ExtArgs>;
     votes?: boolean | Prisma.ForumAnswer$votesArgs<ExtArgs>;
+    reports?: boolean | Prisma.ForumAnswer$reportsArgs<ExtArgs>;
     _count?: boolean | Prisma.ForumAnswerCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type ForumAnswerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -696,7 +1038,9 @@ export type $ForumAnswerPayload<ExtArgs extends runtime.Types.Extensions.Interna
     objects: {
         question: Prisma.$ForumQuestionPayload<ExtArgs>;
         author: Prisma.$UserPayload<ExtArgs>;
-        votes: Prisma.$AnswerVotePayload<ExtArgs>[];
+        comments: Prisma.$ForumCommentPayload<ExtArgs>[];
+        votes: Prisma.$ForumVotePayload<ExtArgs>[];
+        reports: Prisma.$ForumReportPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -704,6 +1048,8 @@ export type $ForumAnswerPayload<ExtArgs extends runtime.Types.Extensions.Interna
         authorId: string;
         content: string;
         isAccepted: boolean;
+        voteScore: number;
+        deletedAt: Date | null;
         createdAt: Date;
         updatedAt: Date;
     }, ExtArgs["result"]["forumAnswer"]>;
@@ -1037,7 +1383,9 @@ export interface Prisma__ForumAnswerClient<T, Null = never, ExtArgs extends runt
     readonly [Symbol.toStringTag]: "PrismaPromise";
     question<T extends Prisma.ForumQuestionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumQuestionDefaultArgs<ExtArgs>>): Prisma.Prisma__ForumQuestionClient<runtime.Types.Result.GetResult<Prisma.$ForumQuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
-    votes<T extends Prisma.ForumAnswer$votesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumAnswer$votesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnswerVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    comments<T extends Prisma.ForumAnswer$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumAnswer$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    votes<T extends Prisma.ForumAnswer$votesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumAnswer$votesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    reports<T extends Prisma.ForumAnswer$reportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumAnswer$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1068,6 +1416,8 @@ export interface ForumAnswerFieldRefs {
     readonly authorId: Prisma.FieldRef<"ForumAnswer", 'String'>;
     readonly content: Prisma.FieldRef<"ForumAnswer", 'String'>;
     readonly isAccepted: Prisma.FieldRef<"ForumAnswer", 'Boolean'>;
+    readonly voteScore: Prisma.FieldRef<"ForumAnswer", 'Int'>;
+    readonly deletedAt: Prisma.FieldRef<"ForumAnswer", 'DateTime'>;
     readonly createdAt: Prisma.FieldRef<"ForumAnswer", 'DateTime'>;
     readonly updatedAt: Prisma.FieldRef<"ForumAnswer", 'DateTime'>;
 }
@@ -1454,27 +1804,73 @@ export type ForumAnswerDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
     limit?: number;
 };
 /**
+ * ForumAnswer.comments
+ */
+export type ForumAnswer$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    where?: Prisma.ForumCommentWhereInput;
+    orderBy?: Prisma.ForumCommentOrderByWithRelationInput | Prisma.ForumCommentOrderByWithRelationInput[];
+    cursor?: Prisma.ForumCommentWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ForumCommentScalarFieldEnum | Prisma.ForumCommentScalarFieldEnum[];
+};
+/**
  * ForumAnswer.votes
  */
 export type ForumAnswer$votesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AnswerVote
+     * Select specific fields to fetch from the ForumVote
      */
-    select?: Prisma.AnswerVoteSelect<ExtArgs> | null;
+    select?: Prisma.ForumVoteSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the AnswerVote
+     * Omit specific fields from the ForumVote
      */
-    omit?: Prisma.AnswerVoteOmit<ExtArgs> | null;
+    omit?: Prisma.ForumVoteOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Prisma.AnswerVoteInclude<ExtArgs> | null;
-    where?: Prisma.AnswerVoteWhereInput;
-    orderBy?: Prisma.AnswerVoteOrderByWithRelationInput | Prisma.AnswerVoteOrderByWithRelationInput[];
-    cursor?: Prisma.AnswerVoteWhereUniqueInput;
+    include?: Prisma.ForumVoteInclude<ExtArgs> | null;
+    where?: Prisma.ForumVoteWhereInput;
+    orderBy?: Prisma.ForumVoteOrderByWithRelationInput | Prisma.ForumVoteOrderByWithRelationInput[];
+    cursor?: Prisma.ForumVoteWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.AnswerVoteScalarFieldEnum | Prisma.AnswerVoteScalarFieldEnum[];
+    distinct?: Prisma.ForumVoteScalarFieldEnum | Prisma.ForumVoteScalarFieldEnum[];
+};
+/**
+ * ForumAnswer.reports
+ */
+export type ForumAnswer$reportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReport
+     */
+    select?: Prisma.ForumReportSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumReport
+     */
+    omit?: Prisma.ForumReportOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumReportInclude<ExtArgs> | null;
+    where?: Prisma.ForumReportWhereInput;
+    orderBy?: Prisma.ForumReportOrderByWithRelationInput | Prisma.ForumReportOrderByWithRelationInput[];
+    cursor?: Prisma.ForumReportWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ForumReportScalarFieldEnum | Prisma.ForumReportScalarFieldEnum[];
 };
 /**
  * ForumAnswer without action

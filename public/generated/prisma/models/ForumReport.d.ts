@@ -13,64 +13,88 @@ export type AggregateForumReport = {
 };
 export type ForumReportMinAggregateOutputType = {
     id: string | null;
-    questionId: string | null;
     reporterId: string | null;
+    targetType: $Enums.ReportTargetType | null;
+    questionId: string | null;
+    answerId: string | null;
+    commentId: string | null;
     reason: string | null;
     status: $Enums.ReportStatus | null;
     reviewerId: string | null;
     remarks: string | null;
     createdAt: Date | null;
+    updatedAt: Date | null;
 };
 export type ForumReportMaxAggregateOutputType = {
     id: string | null;
-    questionId: string | null;
     reporterId: string | null;
+    targetType: $Enums.ReportTargetType | null;
+    questionId: string | null;
+    answerId: string | null;
+    commentId: string | null;
     reason: string | null;
     status: $Enums.ReportStatus | null;
     reviewerId: string | null;
     remarks: string | null;
     createdAt: Date | null;
+    updatedAt: Date | null;
 };
 export type ForumReportCountAggregateOutputType = {
     id: number;
-    questionId: number;
     reporterId: number;
+    targetType: number;
+    questionId: number;
+    answerId: number;
+    commentId: number;
     reason: number;
     status: number;
     reviewerId: number;
     remarks: number;
     createdAt: number;
+    updatedAt: number;
     _all: number;
 };
 export type ForumReportMinAggregateInputType = {
     id?: true;
-    questionId?: true;
     reporterId?: true;
+    targetType?: true;
+    questionId?: true;
+    answerId?: true;
+    commentId?: true;
     reason?: true;
     status?: true;
     reviewerId?: true;
     remarks?: true;
     createdAt?: true;
+    updatedAt?: true;
 };
 export type ForumReportMaxAggregateInputType = {
     id?: true;
-    questionId?: true;
     reporterId?: true;
+    targetType?: true;
+    questionId?: true;
+    answerId?: true;
+    commentId?: true;
     reason?: true;
     status?: true;
     reviewerId?: true;
     remarks?: true;
     createdAt?: true;
+    updatedAt?: true;
 };
 export type ForumReportCountAggregateInputType = {
     id?: true;
-    questionId?: true;
     reporterId?: true;
+    targetType?: true;
+    questionId?: true;
+    answerId?: true;
+    commentId?: true;
     reason?: true;
     status?: true;
     reviewerId?: true;
     remarks?: true;
     createdAt?: true;
+    updatedAt?: true;
     _all?: true;
 };
 export type ForumReportAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -137,13 +161,17 @@ export type ForumReportGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 };
 export type ForumReportGroupByOutputType = {
     id: string;
-    questionId: string;
     reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId: string | null;
+    answerId: string | null;
+    commentId: string | null;
     reason: string;
     status: $Enums.ReportStatus;
     reviewerId: string | null;
     remarks: string | null;
     createdAt: Date;
+    updatedAt: Date;
     _count: ForumReportCountAggregateOutputType | null;
     _min: ForumReportMinAggregateOutputType | null;
     _max: ForumReportMaxAggregateOutputType | null;
@@ -156,55 +184,77 @@ export type ForumReportWhereInput = {
     OR?: Prisma.ForumReportWhereInput[];
     NOT?: Prisma.ForumReportWhereInput | Prisma.ForumReportWhereInput[];
     id?: Prisma.StringFilter<"ForumReport"> | string;
-    questionId?: Prisma.StringFilter<"ForumReport"> | string;
     reporterId?: Prisma.StringFilter<"ForumReport"> | string;
+    targetType?: Prisma.EnumReportTargetTypeFilter<"ForumReport"> | $Enums.ReportTargetType;
+    questionId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
+    answerId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
+    commentId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     reason?: Prisma.StringFilter<"ForumReport"> | string;
     status?: Prisma.EnumReportStatusFilter<"ForumReport"> | $Enums.ReportStatus;
     reviewerId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     remarks?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"ForumReport"> | Date | string;
-    question?: Prisma.XOR<Prisma.ForumQuestionScalarRelationFilter, Prisma.ForumQuestionWhereInput>;
+    updatedAt?: Prisma.DateTimeFilter<"ForumReport"> | Date | string;
     reporter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     reviewer?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null;
+    question?: Prisma.XOR<Prisma.ForumQuestionNullableScalarRelationFilter, Prisma.ForumQuestionWhereInput> | null;
+    answer?: Prisma.XOR<Prisma.ForumAnswerNullableScalarRelationFilter, Prisma.ForumAnswerWhereInput> | null;
+    comment?: Prisma.XOR<Prisma.ForumCommentNullableScalarRelationFilter, Prisma.ForumCommentWhereInput> | null;
 };
 export type ForumReportOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
-    questionId?: Prisma.SortOrder;
     reporterId?: Prisma.SortOrder;
+    targetType?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    answerId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    commentId?: Prisma.SortOrderInput | Prisma.SortOrder;
     reason?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     reviewerId?: Prisma.SortOrderInput | Prisma.SortOrder;
     remarks?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
-    question?: Prisma.ForumQuestionOrderByWithRelationInput;
+    updatedAt?: Prisma.SortOrder;
     reporter?: Prisma.UserOrderByWithRelationInput;
     reviewer?: Prisma.UserOrderByWithRelationInput;
+    question?: Prisma.ForumQuestionOrderByWithRelationInput;
+    answer?: Prisma.ForumAnswerOrderByWithRelationInput;
+    comment?: Prisma.ForumCommentOrderByWithRelationInput;
 };
 export type ForumReportWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
     AND?: Prisma.ForumReportWhereInput | Prisma.ForumReportWhereInput[];
     OR?: Prisma.ForumReportWhereInput[];
     NOT?: Prisma.ForumReportWhereInput | Prisma.ForumReportWhereInput[];
-    questionId?: Prisma.StringFilter<"ForumReport"> | string;
     reporterId?: Prisma.StringFilter<"ForumReport"> | string;
+    targetType?: Prisma.EnumReportTargetTypeFilter<"ForumReport"> | $Enums.ReportTargetType;
+    questionId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
+    answerId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
+    commentId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     reason?: Prisma.StringFilter<"ForumReport"> | string;
     status?: Prisma.EnumReportStatusFilter<"ForumReport"> | $Enums.ReportStatus;
     reviewerId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     remarks?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"ForumReport"> | Date | string;
-    question?: Prisma.XOR<Prisma.ForumQuestionScalarRelationFilter, Prisma.ForumQuestionWhereInput>;
+    updatedAt?: Prisma.DateTimeFilter<"ForumReport"> | Date | string;
     reporter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
     reviewer?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null;
+    question?: Prisma.XOR<Prisma.ForumQuestionNullableScalarRelationFilter, Prisma.ForumQuestionWhereInput> | null;
+    answer?: Prisma.XOR<Prisma.ForumAnswerNullableScalarRelationFilter, Prisma.ForumAnswerWhereInput> | null;
+    comment?: Prisma.XOR<Prisma.ForumCommentNullableScalarRelationFilter, Prisma.ForumCommentWhereInput> | null;
 }, "id">;
 export type ForumReportOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
-    questionId?: Prisma.SortOrder;
     reporterId?: Prisma.SortOrder;
+    targetType?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    answerId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    commentId?: Prisma.SortOrderInput | Prisma.SortOrder;
     reason?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     reviewerId?: Prisma.SortOrderInput | Prisma.SortOrder;
     remarks?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
     _count?: Prisma.ForumReportCountOrderByAggregateInput;
     _max?: Prisma.ForumReportMaxOrderByAggregateInput;
     _min?: Prisma.ForumReportMinOrderByAggregateInput;
@@ -214,80 +264,110 @@ export type ForumReportScalarWhereWithAggregatesInput = {
     OR?: Prisma.ForumReportScalarWhereWithAggregatesInput[];
     NOT?: Prisma.ForumReportScalarWhereWithAggregatesInput | Prisma.ForumReportScalarWhereWithAggregatesInput[];
     id?: Prisma.StringWithAggregatesFilter<"ForumReport"> | string;
-    questionId?: Prisma.StringWithAggregatesFilter<"ForumReport"> | string;
     reporterId?: Prisma.StringWithAggregatesFilter<"ForumReport"> | string;
+    targetType?: Prisma.EnumReportTargetTypeWithAggregatesFilter<"ForumReport"> | $Enums.ReportTargetType;
+    questionId?: Prisma.StringNullableWithAggregatesFilter<"ForumReport"> | string | null;
+    answerId?: Prisma.StringNullableWithAggregatesFilter<"ForumReport"> | string | null;
+    commentId?: Prisma.StringNullableWithAggregatesFilter<"ForumReport"> | string | null;
     reason?: Prisma.StringWithAggregatesFilter<"ForumReport"> | string;
     status?: Prisma.EnumReportStatusWithAggregatesFilter<"ForumReport"> | $Enums.ReportStatus;
     reviewerId?: Prisma.StringNullableWithAggregatesFilter<"ForumReport"> | string | null;
     remarks?: Prisma.StringNullableWithAggregatesFilter<"ForumReport"> | string | null;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"ForumReport"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ForumReport"> | Date | string;
 };
 export type ForumReportCreateInput = {
     id?: string;
+    targetType: $Enums.ReportTargetType;
     reason: string;
     status?: $Enums.ReportStatus;
     remarks?: string | null;
     createdAt?: Date | string;
-    question: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    updatedAt?: Date | string;
     reporter: Prisma.UserCreateNestedOneWithoutReportsFiledInput;
     reviewer?: Prisma.UserCreateNestedOneWithoutReportsReviewedInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutReportsInput;
+    comment?: Prisma.ForumCommentCreateNestedOneWithoutReportsInput;
 };
 export type ForumReportUncheckedCreateInput = {
     id?: string;
-    questionId: string;
     reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     reviewerId?: string | null;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    question?: Prisma.ForumQuestionUpdateOneRequiredWithoutReportsNestedInput;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     reporter?: Prisma.UserUpdateOneRequiredWithoutReportsFiledNestedInput;
     reviewer?: Prisma.UserUpdateOneWithoutReportsReviewedNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutReportsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutReportsNestedInput;
+    comment?: Prisma.ForumCommentUpdateOneWithoutReportsNestedInput;
 };
 export type ForumReportUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
     reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportCreateManyInput = {
     id?: string;
-    questionId: string;
     reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     reviewerId?: string | null;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportUncheckedUpdateManyInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
     reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportListRelationFilter = {
     every?: Prisma.ForumReportWhereInput;
@@ -299,33 +379,45 @@ export type ForumReportOrderByRelationAggregateInput = {
 };
 export type ForumReportCountOrderByAggregateInput = {
     id?: Prisma.SortOrder;
-    questionId?: Prisma.SortOrder;
     reporterId?: Prisma.SortOrder;
+    targetType?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    commentId?: Prisma.SortOrder;
     reason?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     reviewerId?: Prisma.SortOrder;
     remarks?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
 };
 export type ForumReportMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
-    questionId?: Prisma.SortOrder;
     reporterId?: Prisma.SortOrder;
+    targetType?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    commentId?: Prisma.SortOrder;
     reason?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     reviewerId?: Prisma.SortOrder;
     remarks?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
 };
 export type ForumReportMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
-    questionId?: Prisma.SortOrder;
     reporterId?: Prisma.SortOrder;
+    targetType?: Prisma.SortOrder;
+    questionId?: Prisma.SortOrder;
+    answerId?: Prisma.SortOrder;
+    commentId?: Prisma.SortOrder;
     reason?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
     reviewerId?: Prisma.SortOrder;
     remarks?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
 };
 export type ForumReportCreateNestedManyWithoutQuestionInput = {
     create?: Prisma.XOR<Prisma.ForumReportCreateWithoutQuestionInput, Prisma.ForumReportUncheckedCreateWithoutQuestionInput> | Prisma.ForumReportCreateWithoutQuestionInput[] | Prisma.ForumReportUncheckedCreateWithoutQuestionInput[];
@@ -364,6 +456,85 @@ export type ForumReportUncheckedUpdateManyWithoutQuestionNestedInput = {
     update?: Prisma.ForumReportUpdateWithWhereUniqueWithoutQuestionInput | Prisma.ForumReportUpdateWithWhereUniqueWithoutQuestionInput[];
     updateMany?: Prisma.ForumReportUpdateManyWithWhereWithoutQuestionInput | Prisma.ForumReportUpdateManyWithWhereWithoutQuestionInput[];
     deleteMany?: Prisma.ForumReportScalarWhereInput | Prisma.ForumReportScalarWhereInput[];
+};
+export type ForumReportCreateNestedManyWithoutAnswerInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutAnswerInput, Prisma.ForumReportUncheckedCreateWithoutAnswerInput> | Prisma.ForumReportCreateWithoutAnswerInput[] | Prisma.ForumReportUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutAnswerInput | Prisma.ForumReportCreateOrConnectWithoutAnswerInput[];
+    createMany?: Prisma.ForumReportCreateManyAnswerInputEnvelope;
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+};
+export type ForumReportUncheckedCreateNestedManyWithoutAnswerInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutAnswerInput, Prisma.ForumReportUncheckedCreateWithoutAnswerInput> | Prisma.ForumReportCreateWithoutAnswerInput[] | Prisma.ForumReportUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutAnswerInput | Prisma.ForumReportCreateOrConnectWithoutAnswerInput[];
+    createMany?: Prisma.ForumReportCreateManyAnswerInputEnvelope;
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+};
+export type ForumReportUpdateManyWithoutAnswerNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutAnswerInput, Prisma.ForumReportUncheckedCreateWithoutAnswerInput> | Prisma.ForumReportCreateWithoutAnswerInput[] | Prisma.ForumReportUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutAnswerInput | Prisma.ForumReportCreateOrConnectWithoutAnswerInput[];
+    upsert?: Prisma.ForumReportUpsertWithWhereUniqueWithoutAnswerInput | Prisma.ForumReportUpsertWithWhereUniqueWithoutAnswerInput[];
+    createMany?: Prisma.ForumReportCreateManyAnswerInputEnvelope;
+    set?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    disconnect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    delete?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    update?: Prisma.ForumReportUpdateWithWhereUniqueWithoutAnswerInput | Prisma.ForumReportUpdateWithWhereUniqueWithoutAnswerInput[];
+    updateMany?: Prisma.ForumReportUpdateManyWithWhereWithoutAnswerInput | Prisma.ForumReportUpdateManyWithWhereWithoutAnswerInput[];
+    deleteMany?: Prisma.ForumReportScalarWhereInput | Prisma.ForumReportScalarWhereInput[];
+};
+export type ForumReportUncheckedUpdateManyWithoutAnswerNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutAnswerInput, Prisma.ForumReportUncheckedCreateWithoutAnswerInput> | Prisma.ForumReportCreateWithoutAnswerInput[] | Prisma.ForumReportUncheckedCreateWithoutAnswerInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutAnswerInput | Prisma.ForumReportCreateOrConnectWithoutAnswerInput[];
+    upsert?: Prisma.ForumReportUpsertWithWhereUniqueWithoutAnswerInput | Prisma.ForumReportUpsertWithWhereUniqueWithoutAnswerInput[];
+    createMany?: Prisma.ForumReportCreateManyAnswerInputEnvelope;
+    set?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    disconnect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    delete?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    update?: Prisma.ForumReportUpdateWithWhereUniqueWithoutAnswerInput | Prisma.ForumReportUpdateWithWhereUniqueWithoutAnswerInput[];
+    updateMany?: Prisma.ForumReportUpdateManyWithWhereWithoutAnswerInput | Prisma.ForumReportUpdateManyWithWhereWithoutAnswerInput[];
+    deleteMany?: Prisma.ForumReportScalarWhereInput | Prisma.ForumReportScalarWhereInput[];
+};
+export type ForumReportCreateNestedManyWithoutCommentInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutCommentInput, Prisma.ForumReportUncheckedCreateWithoutCommentInput> | Prisma.ForumReportCreateWithoutCommentInput[] | Prisma.ForumReportUncheckedCreateWithoutCommentInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutCommentInput | Prisma.ForumReportCreateOrConnectWithoutCommentInput[];
+    createMany?: Prisma.ForumReportCreateManyCommentInputEnvelope;
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+};
+export type ForumReportUncheckedCreateNestedManyWithoutCommentInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutCommentInput, Prisma.ForumReportUncheckedCreateWithoutCommentInput> | Prisma.ForumReportCreateWithoutCommentInput[] | Prisma.ForumReportUncheckedCreateWithoutCommentInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutCommentInput | Prisma.ForumReportCreateOrConnectWithoutCommentInput[];
+    createMany?: Prisma.ForumReportCreateManyCommentInputEnvelope;
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+};
+export type ForumReportUpdateManyWithoutCommentNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutCommentInput, Prisma.ForumReportUncheckedCreateWithoutCommentInput> | Prisma.ForumReportCreateWithoutCommentInput[] | Prisma.ForumReportUncheckedCreateWithoutCommentInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutCommentInput | Prisma.ForumReportCreateOrConnectWithoutCommentInput[];
+    upsert?: Prisma.ForumReportUpsertWithWhereUniqueWithoutCommentInput | Prisma.ForumReportUpsertWithWhereUniqueWithoutCommentInput[];
+    createMany?: Prisma.ForumReportCreateManyCommentInputEnvelope;
+    set?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    disconnect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    delete?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    update?: Prisma.ForumReportUpdateWithWhereUniqueWithoutCommentInput | Prisma.ForumReportUpdateWithWhereUniqueWithoutCommentInput[];
+    updateMany?: Prisma.ForumReportUpdateManyWithWhereWithoutCommentInput | Prisma.ForumReportUpdateManyWithWhereWithoutCommentInput[];
+    deleteMany?: Prisma.ForumReportScalarWhereInput | Prisma.ForumReportScalarWhereInput[];
+};
+export type ForumReportUncheckedUpdateManyWithoutCommentNestedInput = {
+    create?: Prisma.XOR<Prisma.ForumReportCreateWithoutCommentInput, Prisma.ForumReportUncheckedCreateWithoutCommentInput> | Prisma.ForumReportCreateWithoutCommentInput[] | Prisma.ForumReportUncheckedCreateWithoutCommentInput[];
+    connectOrCreate?: Prisma.ForumReportCreateOrConnectWithoutCommentInput | Prisma.ForumReportCreateOrConnectWithoutCommentInput[];
+    upsert?: Prisma.ForumReportUpsertWithWhereUniqueWithoutCommentInput | Prisma.ForumReportUpsertWithWhereUniqueWithoutCommentInput[];
+    createMany?: Prisma.ForumReportCreateManyCommentInputEnvelope;
+    set?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    disconnect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    delete?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    connect?: Prisma.ForumReportWhereUniqueInput | Prisma.ForumReportWhereUniqueInput[];
+    update?: Prisma.ForumReportUpdateWithWhereUniqueWithoutCommentInput | Prisma.ForumReportUpdateWithWhereUniqueWithoutCommentInput[];
+    updateMany?: Prisma.ForumReportUpdateManyWithWhereWithoutCommentInput | Prisma.ForumReportUpdateManyWithWhereWithoutCommentInput[];
+    deleteMany?: Prisma.ForumReportScalarWhereInput | Prisma.ForumReportScalarWhereInput[];
+};
+export type EnumReportTargetTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ReportTargetType;
 };
 export type EnumReportStatusFieldUpdateOperationsInput = {
     set?: $Enums.ReportStatus;
@@ -446,21 +617,29 @@ export type ForumReportUncheckedUpdateManyWithoutReviewerNestedInput = {
 };
 export type ForumReportCreateWithoutQuestionInput = {
     id?: string;
+    targetType: $Enums.ReportTargetType;
     reason: string;
     status?: $Enums.ReportStatus;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
     reporter: Prisma.UserCreateNestedOneWithoutReportsFiledInput;
     reviewer?: Prisma.UserCreateNestedOneWithoutReportsReviewedInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutReportsInput;
+    comment?: Prisma.ForumCommentCreateNestedOneWithoutReportsInput;
 };
 export type ForumReportUncheckedCreateWithoutQuestionInput = {
     id?: string;
     reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    answerId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     reviewerId?: string | null;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportCreateOrConnectWithoutQuestionInput = {
     where: Prisma.ForumReportWhereUniqueInput;
@@ -488,31 +667,137 @@ export type ForumReportScalarWhereInput = {
     OR?: Prisma.ForumReportScalarWhereInput[];
     NOT?: Prisma.ForumReportScalarWhereInput | Prisma.ForumReportScalarWhereInput[];
     id?: Prisma.StringFilter<"ForumReport"> | string;
-    questionId?: Prisma.StringFilter<"ForumReport"> | string;
     reporterId?: Prisma.StringFilter<"ForumReport"> | string;
+    targetType?: Prisma.EnumReportTargetTypeFilter<"ForumReport"> | $Enums.ReportTargetType;
+    questionId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
+    answerId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
+    commentId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     reason?: Prisma.StringFilter<"ForumReport"> | string;
     status?: Prisma.EnumReportStatusFilter<"ForumReport"> | $Enums.ReportStatus;
     reviewerId?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     remarks?: Prisma.StringNullableFilter<"ForumReport"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"ForumReport"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"ForumReport"> | Date | string;
 };
-export type ForumReportCreateWithoutReporterInput = {
+export type ForumReportCreateWithoutAnswerInput = {
     id?: string;
+    targetType: $Enums.ReportTargetType;
     reason: string;
     status?: $Enums.ReportStatus;
     remarks?: string | null;
     createdAt?: Date | string;
-    question: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    updatedAt?: Date | string;
+    reporter: Prisma.UserCreateNestedOneWithoutReportsFiledInput;
     reviewer?: Prisma.UserCreateNestedOneWithoutReportsReviewedInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    comment?: Prisma.ForumCommentCreateNestedOneWithoutReportsInput;
 };
-export type ForumReportUncheckedCreateWithoutReporterInput = {
+export type ForumReportUncheckedCreateWithoutAnswerInput = {
     id?: string;
-    questionId: string;
+    reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     reviewerId?: string | null;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumReportCreateOrConnectWithoutAnswerInput = {
+    where: Prisma.ForumReportWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumReportCreateWithoutAnswerInput, Prisma.ForumReportUncheckedCreateWithoutAnswerInput>;
+};
+export type ForumReportCreateManyAnswerInputEnvelope = {
+    data: Prisma.ForumReportCreateManyAnswerInput | Prisma.ForumReportCreateManyAnswerInput[];
+    skipDuplicates?: boolean;
+};
+export type ForumReportUpsertWithWhereUniqueWithoutAnswerInput = {
+    where: Prisma.ForumReportWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ForumReportUpdateWithoutAnswerInput, Prisma.ForumReportUncheckedUpdateWithoutAnswerInput>;
+    create: Prisma.XOR<Prisma.ForumReportCreateWithoutAnswerInput, Prisma.ForumReportUncheckedCreateWithoutAnswerInput>;
+};
+export type ForumReportUpdateWithWhereUniqueWithoutAnswerInput = {
+    where: Prisma.ForumReportWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ForumReportUpdateWithoutAnswerInput, Prisma.ForumReportUncheckedUpdateWithoutAnswerInput>;
+};
+export type ForumReportUpdateManyWithWhereWithoutAnswerInput = {
+    where: Prisma.ForumReportScalarWhereInput;
+    data: Prisma.XOR<Prisma.ForumReportUpdateManyMutationInput, Prisma.ForumReportUncheckedUpdateManyWithoutAnswerInput>;
+};
+export type ForumReportCreateWithoutCommentInput = {
+    id?: string;
+    targetType: $Enums.ReportTargetType;
+    reason: string;
+    status?: $Enums.ReportStatus;
+    remarks?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reporter: Prisma.UserCreateNestedOneWithoutReportsFiledInput;
+    reviewer?: Prisma.UserCreateNestedOneWithoutReportsReviewedInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutReportsInput;
+};
+export type ForumReportUncheckedCreateWithoutCommentInput = {
+    id?: string;
+    reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    reason: string;
+    status?: $Enums.ReportStatus;
+    reviewerId?: string | null;
+    remarks?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumReportCreateOrConnectWithoutCommentInput = {
+    where: Prisma.ForumReportWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ForumReportCreateWithoutCommentInput, Prisma.ForumReportUncheckedCreateWithoutCommentInput>;
+};
+export type ForumReportCreateManyCommentInputEnvelope = {
+    data: Prisma.ForumReportCreateManyCommentInput | Prisma.ForumReportCreateManyCommentInput[];
+    skipDuplicates?: boolean;
+};
+export type ForumReportUpsertWithWhereUniqueWithoutCommentInput = {
+    where: Prisma.ForumReportWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ForumReportUpdateWithoutCommentInput, Prisma.ForumReportUncheckedUpdateWithoutCommentInput>;
+    create: Prisma.XOR<Prisma.ForumReportCreateWithoutCommentInput, Prisma.ForumReportUncheckedCreateWithoutCommentInput>;
+};
+export type ForumReportUpdateWithWhereUniqueWithoutCommentInput = {
+    where: Prisma.ForumReportWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ForumReportUpdateWithoutCommentInput, Prisma.ForumReportUncheckedUpdateWithoutCommentInput>;
+};
+export type ForumReportUpdateManyWithWhereWithoutCommentInput = {
+    where: Prisma.ForumReportScalarWhereInput;
+    data: Prisma.XOR<Prisma.ForumReportUpdateManyMutationInput, Prisma.ForumReportUncheckedUpdateManyWithoutCommentInput>;
+};
+export type ForumReportCreateWithoutReporterInput = {
+    id?: string;
+    targetType: $Enums.ReportTargetType;
+    reason: string;
+    status?: $Enums.ReportStatus;
+    remarks?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reviewer?: Prisma.UserCreateNestedOneWithoutReportsReviewedInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutReportsInput;
+    comment?: Prisma.ForumCommentCreateNestedOneWithoutReportsInput;
+};
+export type ForumReportUncheckedCreateWithoutReporterInput = {
+    id?: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    commentId?: string | null;
+    reason: string;
+    status?: $Enums.ReportStatus;
+    reviewerId?: string | null;
+    remarks?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportCreateOrConnectWithoutReporterInput = {
     where: Prisma.ForumReportWhereUniqueInput;
@@ -524,21 +809,29 @@ export type ForumReportCreateManyReporterInputEnvelope = {
 };
 export type ForumReportCreateWithoutReviewerInput = {
     id?: string;
+    targetType: $Enums.ReportTargetType;
     reason: string;
     status?: $Enums.ReportStatus;
     remarks?: string | null;
     createdAt?: Date | string;
-    question: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    updatedAt?: Date | string;
     reporter: Prisma.UserCreateNestedOneWithoutReportsFiledInput;
+    question?: Prisma.ForumQuestionCreateNestedOneWithoutReportsInput;
+    answer?: Prisma.ForumAnswerCreateNestedOneWithoutReportsInput;
+    comment?: Prisma.ForumCommentCreateNestedOneWithoutReportsInput;
 };
 export type ForumReportUncheckedCreateWithoutReviewerInput = {
     id?: string;
-    questionId: string;
     reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportCreateOrConnectWithoutReviewerInput = {
     where: Prisma.ForumReportWhereUniqueInput;
@@ -577,192 +870,378 @@ export type ForumReportUpdateManyWithWhereWithoutReviewerInput = {
 export type ForumReportCreateManyQuestionInput = {
     id?: string;
     reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    answerId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     reviewerId?: string | null;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportUpdateWithoutQuestionInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     reporter?: Prisma.UserUpdateOneRequiredWithoutReportsFiledNestedInput;
     reviewer?: Prisma.UserUpdateOneWithoutReportsReviewedNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutReportsNestedInput;
+    comment?: Prisma.ForumCommentUpdateOneWithoutReportsNestedInput;
 };
 export type ForumReportUncheckedUpdateWithoutQuestionInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportUncheckedUpdateManyWithoutQuestionInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
     reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
-export type ForumReportCreateManyReporterInput = {
+export type ForumReportCreateManyAnswerInput = {
     id?: string;
-    questionId: string;
+    reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     reviewerId?: string | null;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumReportUpdateWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
+    remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reporter?: Prisma.UserUpdateOneRequiredWithoutReportsFiledNestedInput;
+    reviewer?: Prisma.UserUpdateOneWithoutReportsReviewedNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutReportsNestedInput;
+    comment?: Prisma.ForumCommentUpdateOneWithoutReportsNestedInput;
+};
+export type ForumReportUncheckedUpdateWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
+    reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumReportUncheckedUpdateManyWithoutAnswerInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
+    reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumReportCreateManyCommentInput = {
+    id?: string;
+    reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    reason: string;
+    status?: $Enums.ReportStatus;
+    reviewerId?: string | null;
+    remarks?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type ForumReportUpdateWithoutCommentInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
+    remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reporter?: Prisma.UserUpdateOneRequiredWithoutReportsFiledNestedInput;
+    reviewer?: Prisma.UserUpdateOneWithoutReportsReviewedNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutReportsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutReportsNestedInput;
+};
+export type ForumReportUncheckedUpdateWithoutCommentInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
+    reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumReportUncheckedUpdateManyWithoutCommentInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
+    reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ForumReportCreateManyReporterInput = {
+    id?: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    commentId?: string | null;
+    reason: string;
+    status?: $Enums.ReportStatus;
+    reviewerId?: string | null;
+    remarks?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportCreateManyReviewerInput = {
     id?: string;
-    questionId: string;
     reporterId: string;
+    targetType: $Enums.ReportTargetType;
+    questionId?: string | null;
+    answerId?: string | null;
+    commentId?: string | null;
     reason: string;
     status?: $Enums.ReportStatus;
     remarks?: string | null;
     createdAt?: Date | string;
+    updatedAt?: Date | string;
 };
 export type ForumReportUpdateWithoutReporterInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    question?: Prisma.ForumQuestionUpdateOneRequiredWithoutReportsNestedInput;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     reviewer?: Prisma.UserUpdateOneWithoutReportsReviewedNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutReportsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutReportsNestedInput;
+    comment?: Prisma.ForumCommentUpdateOneWithoutReportsNestedInput;
 };
 export type ForumReportUncheckedUpdateWithoutReporterInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportUncheckedUpdateManyWithoutReporterInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportUpdateWithoutReviewerInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    question?: Prisma.ForumQuestionUpdateOneRequiredWithoutReportsNestedInput;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     reporter?: Prisma.UserUpdateOneRequiredWithoutReportsFiledNestedInput;
+    question?: Prisma.ForumQuestionUpdateOneWithoutReportsNestedInput;
+    answer?: Prisma.ForumAnswerUpdateOneWithoutReportsNestedInput;
+    comment?: Prisma.ForumCommentUpdateOneWithoutReportsNestedInput;
 };
 export type ForumReportUncheckedUpdateWithoutReviewerInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
     reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportUncheckedUpdateManyWithoutReviewerInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
-    questionId?: Prisma.StringFieldUpdateOperationsInput | string;
     reporterId?: Prisma.StringFieldUpdateOperationsInput | string;
+    targetType?: Prisma.EnumReportTargetTypeFieldUpdateOperationsInput | $Enums.ReportTargetType;
+    questionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    answerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     reason?: Prisma.StringFieldUpdateOperationsInput | string;
     status?: Prisma.EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus;
     remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ForumReportSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
-    questionId?: boolean;
     reporterId?: boolean;
+    targetType?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    commentId?: boolean;
     reason?: boolean;
     status?: boolean;
     reviewerId?: boolean;
     remarks?: boolean;
     createdAt?: boolean;
-    question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
+    updatedAt?: boolean;
     reporter?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     reviewer?: boolean | Prisma.ForumReport$reviewerArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumReport$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumReport$answerArgs<ExtArgs>;
+    comment?: boolean | Prisma.ForumReport$commentArgs<ExtArgs>;
 }, ExtArgs["result"]["forumReport"]>;
 export type ForumReportSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
-    questionId?: boolean;
     reporterId?: boolean;
+    targetType?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    commentId?: boolean;
     reason?: boolean;
     status?: boolean;
     reviewerId?: boolean;
     remarks?: boolean;
     createdAt?: boolean;
-    question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
+    updatedAt?: boolean;
     reporter?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     reviewer?: boolean | Prisma.ForumReport$reviewerArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumReport$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumReport$answerArgs<ExtArgs>;
+    comment?: boolean | Prisma.ForumReport$commentArgs<ExtArgs>;
 }, ExtArgs["result"]["forumReport"]>;
 export type ForumReportSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
-    questionId?: boolean;
     reporterId?: boolean;
+    targetType?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    commentId?: boolean;
     reason?: boolean;
     status?: boolean;
     reviewerId?: boolean;
     remarks?: boolean;
     createdAt?: boolean;
-    question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
+    updatedAt?: boolean;
     reporter?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     reviewer?: boolean | Prisma.ForumReport$reviewerArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumReport$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumReport$answerArgs<ExtArgs>;
+    comment?: boolean | Prisma.ForumReport$commentArgs<ExtArgs>;
 }, ExtArgs["result"]["forumReport"]>;
 export type ForumReportSelectScalar = {
     id?: boolean;
-    questionId?: boolean;
     reporterId?: boolean;
+    targetType?: boolean;
+    questionId?: boolean;
+    answerId?: boolean;
+    commentId?: boolean;
     reason?: boolean;
     status?: boolean;
     reviewerId?: boolean;
     remarks?: boolean;
     createdAt?: boolean;
+    updatedAt?: boolean;
 };
-export type ForumReportOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "questionId" | "reporterId" | "reason" | "status" | "reviewerId" | "remarks" | "createdAt", ExtArgs["result"]["forumReport"]>;
+export type ForumReportOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "reporterId" | "targetType" | "questionId" | "answerId" | "commentId" | "reason" | "status" | "reviewerId" | "remarks" | "createdAt" | "updatedAt", ExtArgs["result"]["forumReport"]>;
 export type ForumReportInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
     reporter?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     reviewer?: boolean | Prisma.ForumReport$reviewerArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumReport$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumReport$answerArgs<ExtArgs>;
+    comment?: boolean | Prisma.ForumReport$commentArgs<ExtArgs>;
 };
 export type ForumReportIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
     reporter?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     reviewer?: boolean | Prisma.ForumReport$reviewerArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumReport$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumReport$answerArgs<ExtArgs>;
+    comment?: boolean | Prisma.ForumReport$commentArgs<ExtArgs>;
 };
 export type ForumReportIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    question?: boolean | Prisma.ForumQuestionDefaultArgs<ExtArgs>;
     reporter?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
     reviewer?: boolean | Prisma.ForumReport$reviewerArgs<ExtArgs>;
+    question?: boolean | Prisma.ForumReport$questionArgs<ExtArgs>;
+    answer?: boolean | Prisma.ForumReport$answerArgs<ExtArgs>;
+    comment?: boolean | Prisma.ForumReport$commentArgs<ExtArgs>;
 };
 export type $ForumReportPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "ForumReport";
     objects: {
-        question: Prisma.$ForumQuestionPayload<ExtArgs>;
         reporter: Prisma.$UserPayload<ExtArgs>;
         reviewer: Prisma.$UserPayload<ExtArgs> | null;
+        question: Prisma.$ForumQuestionPayload<ExtArgs> | null;
+        answer: Prisma.$ForumAnswerPayload<ExtArgs> | null;
+        comment: Prisma.$ForumCommentPayload<ExtArgs> | null;
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
-        questionId: string;
         reporterId: string;
+        targetType: $Enums.ReportTargetType;
+        questionId: string | null;
+        answerId: string | null;
+        commentId: string | null;
         reason: string;
         status: $Enums.ReportStatus;
         reviewerId: string | null;
         remarks: string | null;
         createdAt: Date;
+        updatedAt: Date;
     }, ExtArgs["result"]["forumReport"]>;
     composites: {};
 };
@@ -1092,9 +1571,11 @@ export interface ForumReportDelegate<ExtArgs extends runtime.Types.Extensions.In
  */
 export interface Prisma__ForumReportClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
-    question<T extends Prisma.ForumQuestionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumQuestionDefaultArgs<ExtArgs>>): Prisma.Prisma__ForumQuestionClient<runtime.Types.Result.GetResult<Prisma.$ForumQuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     reporter<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     reviewer<T extends Prisma.ForumReport$reviewerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumReport$reviewerArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    question<T extends Prisma.ForumReport$questionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumReport$questionArgs<ExtArgs>>): Prisma.Prisma__ForumQuestionClient<runtime.Types.Result.GetResult<Prisma.$ForumQuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    answer<T extends Prisma.ForumReport$answerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumReport$answerArgs<ExtArgs>>): Prisma.Prisma__ForumAnswerClient<runtime.Types.Result.GetResult<Prisma.$ForumAnswerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    comment<T extends Prisma.ForumReport$commentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ForumReport$commentArgs<ExtArgs>>): Prisma.Prisma__ForumCommentClient<runtime.Types.Result.GetResult<Prisma.$ForumCommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1121,13 +1602,17 @@ export interface Prisma__ForumReportClient<T, Null = never, ExtArgs extends runt
  */
 export interface ForumReportFieldRefs {
     readonly id: Prisma.FieldRef<"ForumReport", 'String'>;
-    readonly questionId: Prisma.FieldRef<"ForumReport", 'String'>;
     readonly reporterId: Prisma.FieldRef<"ForumReport", 'String'>;
+    readonly targetType: Prisma.FieldRef<"ForumReport", 'ReportTargetType'>;
+    readonly questionId: Prisma.FieldRef<"ForumReport", 'String'>;
+    readonly answerId: Prisma.FieldRef<"ForumReport", 'String'>;
+    readonly commentId: Prisma.FieldRef<"ForumReport", 'String'>;
     readonly reason: Prisma.FieldRef<"ForumReport", 'String'>;
     readonly status: Prisma.FieldRef<"ForumReport", 'ReportStatus'>;
     readonly reviewerId: Prisma.FieldRef<"ForumReport", 'String'>;
     readonly remarks: Prisma.FieldRef<"ForumReport", 'String'>;
     readonly createdAt: Prisma.FieldRef<"ForumReport", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"ForumReport", 'DateTime'>;
 }
 /**
  * ForumReport findUnique
@@ -1528,6 +2013,60 @@ export type ForumReport$reviewerArgs<ExtArgs extends runtime.Types.Extensions.In
      */
     include?: Prisma.UserInclude<ExtArgs> | null;
     where?: Prisma.UserWhereInput;
+};
+/**
+ * ForumReport.question
+ */
+export type ForumReport$questionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumQuestion
+     */
+    select?: Prisma.ForumQuestionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumQuestion
+     */
+    omit?: Prisma.ForumQuestionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumQuestionInclude<ExtArgs> | null;
+    where?: Prisma.ForumQuestionWhereInput;
+};
+/**
+ * ForumReport.answer
+ */
+export type ForumReport$answerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumAnswer
+     */
+    select?: Prisma.ForumAnswerSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumAnswer
+     */
+    omit?: Prisma.ForumAnswerOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumAnswerInclude<ExtArgs> | null;
+    where?: Prisma.ForumAnswerWhereInput;
+};
+/**
+ * ForumReport.comment
+ */
+export type ForumReport$commentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumComment
+     */
+    select?: Prisma.ForumCommentSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ForumComment
+     */
+    omit?: Prisma.ForumCommentOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ForumCommentInclude<ExtArgs> | null;
+    where?: Prisma.ForumCommentWhereInput;
 };
 /**
  * ForumReport without action

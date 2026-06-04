@@ -88,15 +88,20 @@ export type ForumQuestion = Prisma.ForumQuestionModel
  */
 export type ForumAnswer = Prisma.ForumAnswerModel
 /**
- * Model QuestionVote
+ * Model ForumComment
  * 
  */
-export type QuestionVote = Prisma.QuestionVoteModel
+export type ForumComment = Prisma.ForumCommentModel
 /**
- * Model AnswerVote
+ * Model ForumVote
  * 
  */
-export type AnswerVote = Prisma.AnswerVoteModel
+export type ForumVote = Prisma.ForumVoteModel
+/**
+ * Model ForumBookmark
+ * 
+ */
+export type ForumBookmark = Prisma.ForumBookmarkModel
 /**
  * Model ForumReport
  * 
