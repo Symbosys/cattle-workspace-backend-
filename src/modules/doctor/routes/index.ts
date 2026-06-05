@@ -7,6 +7,11 @@ import {
   updateDoctor,
   getDoctorsByLocation
 } from "../controllers/doctor.controller.js";
+import {
+  createDoctorReview,
+  getDoctorReviews,
+  getReviewByAppointmentId
+} from "../controllers/review.controller.js";
 
 const doctorRouter = Router();
 
@@ -17,16 +22,32 @@ doctorRouter.post(
   registerDoctor
 );
 
+doctorRouter.post(
+  "/reviews",
+  authenticate,
+  createDoctorReview
+);
+
+doctorRouter.get(
+  "/reviews/appointment/:appointmentId",
+  authenticate,
+  getReviewByAppointmentId
+);
+
 doctorRouter.get(
   "/location",
   getDoctorsByLocation
 );
 
 doctorRouter.get(
+  "/:id/reviews",
+  getDoctorReviews
+);
+
+doctorRouter.get(
   "/:id",
   getDoctorById
 );
-
 
 doctorRouter.put(
   "/:id",

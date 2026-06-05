@@ -21,34 +21,34 @@ export declare class DoctorService {
     }): Promise<{
         doctorLocations: ({
             state: {
+                state: string | null;
                 id: string;
                 createdAt: Date;
                 updatedAt: Date;
-                name: string;
-                deletedAt: Date | null;
                 latitude: number | null;
                 longitude: number | null;
-                stateCode: string;
-                state: string | null;
+                name: string;
                 country: string;
                 countryCode: string;
+                stateCode: string;
                 isActive: boolean;
                 isHiring: boolean;
+                deletedAt: Date | null;
             };
             city: {
                 id: string;
                 createdAt: Date;
                 updatedAt: Date;
-                name: string;
-                deletedAt: Date | null;
                 latitude: number | null;
                 longitude: number | null;
-                stateCode: string;
                 stateId: string;
+                name: string;
                 country: string;
                 countryCode: string;
+                stateCode: string;
                 isActive: boolean;
                 isHiring: boolean;
+                deletedAt: Date | null;
             };
         } & {
             id: string;
@@ -62,16 +62,16 @@ export declare class DoctorService {
         })[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         licenseNumber: string | null;
         specialization: string;
         experienceYears: number;
-        consultationFee: import("@prisma/client-runtime-utils").Decimal;
         qualificationDocUrl: import("@prisma/client/runtime/client").JsonValue | null;
         isVerified: boolean;
         verificationStatus: import("../../../types/types.js").VerificationStatus;
         listingStatus: import("../../../types/types.js").DoctorListingStatus;
+        consultationFee: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
     }>;
     /**
@@ -87,34 +87,34 @@ export declare class DoctorService {
         };
         doctorLocations: ({
             state: {
+                state: string | null;
                 id: string;
                 createdAt: Date;
                 updatedAt: Date;
-                name: string;
-                deletedAt: Date | null;
                 latitude: number | null;
                 longitude: number | null;
-                stateCode: string;
-                state: string | null;
+                name: string;
                 country: string;
                 countryCode: string;
+                stateCode: string;
                 isActive: boolean;
                 isHiring: boolean;
+                deletedAt: Date | null;
             };
             city: {
                 id: string;
                 createdAt: Date;
                 updatedAt: Date;
-                name: string;
-                deletedAt: Date | null;
                 latitude: number | null;
                 longitude: number | null;
-                stateCode: string;
                 stateId: string;
+                name: string;
                 country: string;
                 countryCode: string;
+                stateCode: string;
                 isActive: boolean;
                 isHiring: boolean;
+                deletedAt: Date | null;
             };
         } & {
             id: string;
@@ -128,16 +128,16 @@ export declare class DoctorService {
         })[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         licenseNumber: string | null;
         specialization: string;
         experienceYears: number;
-        consultationFee: import("@prisma/client-runtime-utils").Decimal;
         qualificationDocUrl: import("@prisma/client/runtime/client").JsonValue | null;
         isVerified: boolean;
         verificationStatus: import("../../../types/types.js").VerificationStatus;
         listingStatus: import("../../../types/types.js").DoctorListingStatus;
+        consultationFee: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
     }) | null>;
     /**
@@ -162,34 +162,34 @@ export declare class DoctorService {
     } | null): Promise<{
         doctorLocations: ({
             state: {
+                state: string | null;
                 id: string;
                 createdAt: Date;
                 updatedAt: Date;
-                name: string;
-                deletedAt: Date | null;
                 latitude: number | null;
                 longitude: number | null;
-                stateCode: string;
-                state: string | null;
+                name: string;
                 country: string;
                 countryCode: string;
+                stateCode: string;
                 isActive: boolean;
                 isHiring: boolean;
+                deletedAt: Date | null;
             };
             city: {
                 id: string;
                 createdAt: Date;
                 updatedAt: Date;
-                name: string;
-                deletedAt: Date | null;
                 latitude: number | null;
                 longitude: number | null;
-                stateCode: string;
                 stateId: string;
+                name: string;
                 country: string;
                 countryCode: string;
+                stateCode: string;
                 isActive: boolean;
                 isHiring: boolean;
+                deletedAt: Date | null;
             };
         } & {
             id: string;
@@ -203,16 +203,16 @@ export declare class DoctorService {
         })[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         licenseNumber: string | null;
         specialization: string;
         experienceYears: number;
-        consultationFee: import("@prisma/client-runtime-utils").Decimal;
         qualificationDocUrl: import("@prisma/client/runtime/client").JsonValue | null;
         isVerified: boolean;
         verificationStatus: import("../../../types/types.js").VerificationStatus;
         listingStatus: import("../../../types/types.js").DoctorListingStatus;
+        consultationFee: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
     }>;
     /**
@@ -230,34 +230,34 @@ export declare class DoctorService {
             };
             doctorLocations: ({
                 state: {
+                    state: string | null;
                     id: string;
                     createdAt: Date;
                     updatedAt: Date;
-                    name: string;
-                    deletedAt: Date | null;
                     latitude: number | null;
                     longitude: number | null;
-                    stateCode: string;
-                    state: string | null;
+                    name: string;
                     country: string;
                     countryCode: string;
+                    stateCode: string;
                     isActive: boolean;
                     isHiring: boolean;
+                    deletedAt: Date | null;
                 };
                 city: {
                     id: string;
                     createdAt: Date;
                     updatedAt: Date;
-                    name: string;
-                    deletedAt: Date | null;
                     latitude: number | null;
                     longitude: number | null;
-                    stateCode: string;
                     stateId: string;
+                    name: string;
                     country: string;
                     countryCode: string;
+                    stateCode: string;
                     isActive: boolean;
                     isHiring: boolean;
+                    deletedAt: Date | null;
                 };
             } & {
                 id: string;
@@ -270,16 +270,16 @@ export declare class DoctorService {
                 doctorId: string;
             })[];
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             licenseNumber: string | null;
             specialization: string;
             experienceYears: number;
-            consultationFee: import("@prisma/client-runtime-utils").Decimal;
             qualificationDocUrl: import("@prisma/client/runtime/client").JsonValue | null;
             isVerified: boolean;
             verificationStatus: import("../../../types/types.js").VerificationStatus;
             listingStatus: import("../../../types/types.js").DoctorListingStatus;
+            consultationFee: import("@prisma/client-runtime-utils").Decimal;
+            createdAt: Date;
+            updatedAt: Date;
             userId: string;
         }[];
         total: number;
